@@ -1,0 +1,183 @@
+.sliderContainer {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+.sliderContainer .likeSlider {
+  position: absolute;
+  z-index: 5;
+  bottom: 1dvh;
+  right: 0px;
+  filter: invert(1);
+  background-color: white;
+  border-radius: 20px 0 0 20px;
+  padding-left: 10px;
+  opacity: 0.8;
+}
+.sliderContainer .carousel-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  overflow: hidden;
+}
+.sliderContainer .sl {
+  transition: translate 1.2s;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+.sliderContainer .slMax {
+  min-width: 100dvw;
+}
+.sliderContainer .carousel-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+}
+@media (aspect-ratio > 0.935/1) {
+  .sliderContainer .carousel-img {
+    width: 100%;
+  }
+}
+@media (aspect-ratio < 0.935/1) {
+  .sliderContainer .carousel-img {
+    height: 100%;
+  }
+}
+.sliderContainer .carousel-img-mini {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+.sliderContainer .sliderContent {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  white-space: initial;
+  background-color: black;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  opacity: 0.8;
+  border: solid 2px white;
+}
+@media (max-width: 650px) {
+  .sliderContainer .sliderContent {
+    font-size: 1rem;
+  }
+}
+.sliderContainer .sliderTextDiv {
+  bottom: 10dvh;
+  z-index: 4;
+  position: absolute;
+  width: 50dvw;
+}
+.sliderContainer .arrowAndCounter {
+  display: flex;
+  justify-content: center;
+}
+.sliderContainer .counter {
+  position: absolute;
+  z-index: 3;
+  bottom: 2dvh;
+  font-size: 18px;
+  color: #FFF;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.sliderContainer .arrowLeft {
+  position: absolute;
+  z-index: 7;
+  top: 30dvh;
+  left: 0px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 1s;
+}
+.sliderContainer .arrowRight {
+  position: absolute;
+  z-index: 7;
+  top: 30dvh;
+  right: 0px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 1s;
+}
+.sliderContainer .cooldown {
+  opacity: 0;
+  cursor: default;
+  transition: 1s;
+}
+.sliderContainer .previous {
+  translate: -100%;
+}
+.sliderContainer .selected {
+  translate: 0%;
+}
+.sliderContainer .next {
+  translate: 100%;
+}
+.sliderContainer .start {
+  translate: 100%;
+}
+.sliderContainer .beforStart {
+  translate: -100%;
+}
+.sliderContainer .dot {
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 15px;
+  margin: 10px;
+  z-index: 5;
+  border: solid 3px black;
+  transition: 0.4s;
+}
+.sliderContainer .dotSelected {
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  transition: 0.4s;
+}
+.sliderContainer .inner {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+}
+.sliderContainer .buttonArrow {
+  border: 0px;
+  background: none;
+}
+.sliderContainer .blinded {
+  opacity: 0;
+}
+
+.sliderField:hover .like {
+  right: -10px;
+  transition: 1000ms;
+  bottom: 10px;
+}
+
+.sliderField .like {
+  bottom: 10px;
+}/*# sourceMappingURL=slider.css.map */

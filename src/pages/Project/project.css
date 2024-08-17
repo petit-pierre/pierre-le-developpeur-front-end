@@ -1,0 +1,199 @@
+.projectContentAndBackground {
+  position: relative;
+  height: 55dvh;
+  width: 80%;
+  margin: auto;
+  margin-top: 12dvh;
+}
+@media (max-width: 650px) {
+  .projectContentAndBackground {
+    height: 85dvh;
+  }
+}
+.projectContentAndBackground .projectContent {
+  position: absolute;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: solid #6d477a;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+@media (max-width: 650px) {
+  .projectContentAndBackground .projectContent {
+    font-size: 0.8rem;
+  }
+}
+
+.projectPage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: calc(103dvh - 59px);
+}
+.projectPage .videoField {
+  width: 100%;
+  position: relative;
+  margin-bottom: 150px;
+}
+.projectPage .videoField p {
+  text-align: center;
+}
+.projectPage .video {
+  display: block;
+  width: 80%;
+  margin: auto;
+  z-index: 8;
+  position: relative;
+  border-radius: 20px;
+}
+.projectPage .transition {
+  background: linear-gradient(0deg, #FFFFFF, rgba(255, 255, 255, 0));
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  opacity: 1;
+}
+.projectPage #project {
+  position: absolute;
+  top: -100px;
+}
+@media (max-width: 650px) {
+  .projectPage #project {
+    top: -250px;
+  }
+}
+.projectPage .buttonLikeProjectContent {
+  position: absolute;
+  left: 92dvw;
+  z-index: 6;
+}
+@media (max-width: 650px) {
+  .projectPage .buttonLikeProjectContent {
+    left: 70dvw;
+  }
+}
+.projectPage .slider {
+  position: relative;
+  margin-top: 0px;
+  height: calc(103dvh - 59px);
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100%;
+}
+@media (max-width: 650px) {
+  .projectPage .slider {
+    height: calc(100dvh - 130px);
+    top: 130px;
+  }
+}
+.projectPage .textAndLinks {
+  width: 80dvw;
+  margin: auto;
+  margin-top: 100px;
+  position: relative;
+  z-index: 7;
+}
+.projectPage .tools {
+  margin-top: 210px;
+  margin-bottom: 150px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin-top: 120px;
+}
+@media (max-width: 650px) {
+  .projectPage .tools {
+    flex-direction: column;
+  }
+}
+.projectPage .collapse {
+  width: 30%;
+  padding-left: 1dvw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+@media (max-width: 650px) {
+  .projectPage .collapse {
+    width: 90%;
+    margin: auto;
+  }
+}
+.projectPage .skills {
+  margin: auto;
+}
+.projectPage .logoAndTitle {
+  display: flex;
+  flex-direction: row;
+}
+.projectPage .collapseContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.projectPage .collapseContent .toolTitle {
+  padding-right: 30px;
+}
+.projectPage .projectLink {
+  color: white;
+  transition: 1s;
+}
+.projectPage .projectLink:hover {
+  color: #99477a;
+  transition: 1s;
+}
+.projectPage .descriptionUnit {
+  width: 100%;
+  display: flex;
+  margin-top: 60px;
+}
+.projectPage .descriptionUnit .pics {
+  width: 30dvw;
+  display: flex;
+}
+@media (max-width: 650px) {
+  .projectPage .descriptionUnit .pics {
+    width: 100dvw;
+  }
+}
+.projectPage .descriptionUnit .pics img {
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+}
+@media (max-width: 650px) {
+  .projectPage .descriptionUnit .pics img {
+    width: 40%;
+  }
+}
+.projectPage .descriptionUnit .text {
+  width: 60dvw;
+}
+@media (max-width: 650px) {
+  .projectPage .descriptionUnit .text {
+    width: 100dvw;
+  }
+}
+.projectPage .left {
+  flex-direction: row;
+}
+@media (max-width: 650px) {
+  .projectPage .left {
+    flex-direction: column;
+  }
+}
+.projectPage .right {
+  flex-direction: row-reverse;
+}
+@media (max-width: 650px) {
+  .projectPage .right {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=project.css.map */

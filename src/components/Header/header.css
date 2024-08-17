@@ -1,0 +1,274 @@
+.placeforheader {
+  width: 100%;
+  height: 59px;
+}
+@media (max-width: 900px) {
+  .placeforheader {
+    height: 150px;
+  }
+}
+
+.shape {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.01));
+  opacity: 1;
+  z-index: -1;
+  position: fixed;
+  transition: 5s;
+}
+@media (max-width: 900px) {
+  .shape {
+    height: 250px;
+  }
+}
+
+.headerfield {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+}
+.headerfield .logIn {
+  filter: invert(1);
+  height: 35px;
+  width: 35px;
+  padding-left: 15px;
+}
+.headerfield nav {
+  background-color: #99477a;
+  transition: 1s;
+  box-shadow: 0px 5px 25px black;
+}
+@media (max-width: 900px) {
+  .headerfield nav {
+    height: 130px;
+    background-color: #99477a;
+  }
+}
+.headerfield .logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.headerfield .logos .logoLink {
+  width: 50px;
+}
+.headerfield .logos .logo {
+  height: 35px;
+  width: 35px;
+  filter: invert(1);
+}
+.headerfield .links {
+  padding-top: 8px;
+}
+@media (min-width: 900px) and (max-width: 2000px) {
+  .headerfield .links {
+    font-size: 1.4dvw;
+  }
+}
+
+.allHeader:hover nav {
+  transition: 1s;
+  background-color: #99477a;
+}
+.allHeader:hover .shape {
+  height: 140px;
+  transition: 5s;
+}
+@media (max-width: 900px) {
+  .allHeader:hover .shape {
+    height: 40dvh;
+  }
+}
+
+.header {
+  width: 100%;
+  z-index: 11;
+  top: 0px;
+  /**** NAVBAR ****/
+}
+.header .headerLogos img {
+  cursor: pointer;
+}
+.header .maGanache {
+  width: 150px;
+  transform-origin: center;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 10;
+  border-radius: 100px;
+}
+.header .topHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 20;
+}
+.header .language {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  cursor: default;
+}
+.header input[type=checkbox].demo5 {
+  display: none;
+}
+.header input[type=checkbox].demo5 + label {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background-color: black;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: -3px;
+  margin-left: 8px;
+}
+.header input[type=checkbox].demo5 + label::before {
+  box-sizing: border-box;
+  display: block;
+  content: "";
+  height: calc(1.5rem - 4px);
+  width: calc(1.5rem - 4px);
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.5s;
+}
+.header input[type=checkbox].demo5:checked + label {
+  background-color: white;
+  transition: 0.5s;
+}
+.header input[type=checkbox].demo5:checked + label::before {
+  margin-left: 1.5rem;
+  background-color: black;
+  transition: 0.5s;
+}
+.header img {
+  width: 5dvh;
+  color: white;
+}
+.header h1 {
+  color: white;
+  z-index: 2;
+}
+.header .li {
+  list-style: none;
+}
+.header a,
+.header a:visited {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.header a:hover {
+  color: #b674cc;
+  transition: 1s;
+}
+.header nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+.header nav .ul {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+}
+.header #icons {
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 900px) {
+  .header .logPlace:hover {
+    background-color: #6d477a;
+    transition: 0s;
+  }
+  .header .logos {
+    width: 100%;
+  }
+  .header .logos:hover {
+    background-color: #6d477a;
+  }
+  .header .logoLink {
+    padding-top: 2dvh;
+    padding-bottom: 2dvh;
+  }
+  .header .maGanache {
+    width: 130px;
+    top: 12px;
+    left: 25px;
+  }
+  .header .language {
+    justify-content: center;
+    padding-top: 2dvh;
+    padding-bottom: 2dvh;
+  }
+  .header .logIn {
+    padding-left: 0;
+    padding-top: 2dvh;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .header .language:hover {
+    background-color: #6d477a;
+  }
+  .header input[type=checkbox].demo5 + label {
+    background-color: #99477a;
+  }
+  .header input[type=checkbox].demo5:checked + label {
+    background-color: #492f52;
+  }
+  .header #icons {
+    display: block;
+    position: fixed;
+    right: 15px;
+    top: 30px;
+  }
+  .header #icons .icons {
+    width: 80px;
+  }
+  .header .headerSpaced {
+    position: fixed;
+    width: 100%;
+    background-color: #99477a;
+    height: 200px;
+    z-index: -1;
+    top: 0;
+  }
+  .header .txtLinks {
+    padding-top: 4dvh;
+  }
+  .header nav .ul {
+    position: fixed;
+    left: -550dvh;
+    top: 150px;
+    z-index: -1;
+    height: calc(100dvh - 150px);
+    flex-direction: column;
+    background: #b674cc;
+    width: 100%;
+    text-align: center;
+    transition: 0.25s ease;
+  }
+  .header nav .li {
+    height: 6dvh;
+    margin-top: 0;
+  }
+  .header nav .li:hover {
+    background: #6d477a;
+  }
+  .header nav.active .ul {
+    left: 0;
+    z-index: 10;
+  }
+  .header h1 {
+    font-size: 1.4rem;
+  }
+}/*# sourceMappingURL=header.css.map */

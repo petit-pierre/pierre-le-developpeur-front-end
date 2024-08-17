@@ -1,0 +1,267 @@
+.placeforheader{
+    width: 100%;
+    height: 59px;
+    @media (max-width: 900px) {
+        height: 150px;
+    }
+}
+.shape{
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.01));
+    opacity: 1;
+    z-index: -1;
+    position: fixed;
+    transition: 5s;
+    @media (max-width: 900px) {
+        height: 250px;
+    }
+}
+.headerfield{
+    width: 100%;
+    height:60px;
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+    .logIn{
+        filter: invert(1);
+        height: 35px;
+        width: 35px;
+        padding-left: 15px;
+    }
+    nav{
+        background-color: #99477a;
+        transition: 1s;
+        box-shadow: 0px 5px 25px black;
+        @media (max-width: 900px) {
+            height: 130px;
+            background-color: #99477a;
+        }
+    }
+    .logos{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .logoLink{
+        width: 50px;
+        }
+        .logo{
+            height: 35px;
+            width: 35px;
+            filter: invert(1);
+        }
+    }
+    .links{
+        padding-top: 8px;
+        @media (min-width: 900px) and (max-width: 2000px) {
+            font-size: 1.4dvw;
+        }
+    }
+}
+.allHeader:hover{
+    nav{
+        transition: 1s;
+        background-color: #99477a;
+    }
+    .shape{
+        height: 140px;
+        transition: 5s;
+        @media (max-width: 900px) {
+            height: 40dvh;
+        }
+    }
+}
+.header {
+    .headerLogos{
+        img{
+            cursor: pointer;
+        }
+    }
+    width: 100%;
+    z-index:11;
+    top: 0px;
+    .maGanache{
+        width: 150px;
+        transform-origin: center;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 10;
+        border-radius: 100px;
+    }
+    .topHeader{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        z-index: 20;
+    }
+    .language{
+        display: flex;
+        flex-direction: row;
+        color: white;
+        cursor: default;
+    }
+    input[type="checkbox"].demo5 {
+        display: none;
+    }
+    input[type="checkbox"].demo5 + label {
+        box-sizing: border-box;
+        display: inline-block;
+        width: 3rem;
+        height: 1.5rem;
+        border-radius: 1.5rem;
+        padding:2px;
+        background-color: black;
+        transition: all 0.5s ;
+        cursor: pointer;
+        margin-top: -3px;
+        margin-left: 8px;
+    }
+    input[type="checkbox"].demo5 + label::before {
+        box-sizing: border-box;
+        display: block;
+        content: "";
+        height: calc(1.5rem - 4px);
+        width: calc(1.5rem - 4px);
+        border-radius: 50%;
+        background-color: white;
+        transition: all 0.5s ;
+    }
+    input[type="checkbox"].demo5:checked + label {
+        background-color: white ;
+        transition: 0.5s;
+    }
+    input[type="checkbox"].demo5:checked + label::before {
+        margin-left: 1.5rem ;
+        background-color: black;
+        transition: 0.5s;
+    }
+    img {
+        width: 5dvh;
+        color: white;
+    }
+    h1 {
+        color:white;
+        z-index: 2;
+    }
+    .li {
+        list-style: none;
+      }
+    a,
+    a:visited {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    a:hover {
+        color: #b674cc;
+        transition: 1s;
+      }
+      /**** NAVBAR ****/
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+    }
+    nav .ul {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+    }
+    #icons {
+        cursor: pointer;
+        display: none;
+    }
+    @media (max-width: 900px) {
+        .logPlace:hover{
+            background-color: #6d477a;
+            transition: 0s;
+        }
+        .logos{
+            width: 100%;
+        }
+        .logos:hover{
+            background-color: #6d477a;
+        }
+        .logoLink{
+            padding-top: 2dvh;
+            padding-bottom: 2dvh;
+        }
+        .maGanache{
+            width: 130px;
+            top: 12px;
+            left: 25px;
+        }
+        .language{
+            justify-content: center;
+            padding-top: 2dvh;
+            padding-bottom: 2dvh;
+        }
+        .logIn{
+            padding-left: 0;
+            padding-top: 2dvh;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .language:hover{
+            background-color: #6d477a;
+        }
+        input[type="checkbox"].demo5 + label {
+            background-color: #99477a;
+        }
+        input[type="checkbox"].demo5:checked + label{
+            background-color: #492f52;
+        }
+        #icons {
+          display: block;
+          position: fixed;
+          right: 15px;
+          top: 30px;
+          .icons{
+            width: 80px;
+          }
+        }
+        .headerSpaced {
+            position: fixed;
+            width: 100%;
+            background-color: #99477a;
+            height: 200px;
+            z-index: -1;
+            top: 0;
+        }
+        .txtLinks{
+            padding-top: 4dvh;
+        }
+        nav .ul {
+          position: fixed;
+          left: -550dvh;
+          top: 150px;
+          z-index: -1;
+          height: calc(100dvh - 150px);
+          flex-direction: column;
+          background:#b674cc ;
+          width: 100%;
+          text-align: center;
+          transition: 0.25s ease;
+        }
+        nav .li {
+          height: 6dvh ;
+          margin-top: 0;
+        }
+        nav .li:hover {
+          background: #6d477a;
+        }
+        nav.active .ul {
+            left: 0;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 1.4rem;
+        }
+      }
+}
+
+
+

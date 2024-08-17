@@ -1,0 +1,122 @@
+.collapseField{
+    .blank {
+        height: 10px;
+    }
+    .content-parent {
+        max-height: 0px;
+        overflow: hidden;
+        transform: translateY(0px);
+        transition: all ease 1.9s;
+        margin: 0px 0px 0px 0px;
+        z-index: -1;
+        width: 100%;
+    }  
+    .content-show {
+        overflow: hidden;
+        transform: translateY(0px);
+        transition: all ease 1.9s;
+        transition-delay: 0.6s; 
+        max-height: 150dvh;
+        margin: 0px 0px 0px 0px;
+        z-index: -1;
+        width: 100%;
+        .content{
+            border-radius: 0 0 20px 20px;
+        }
+    }
+    .content {
+        margin-top: 0;
+        padding: 20px;
+        color: black;
+        background-color: white;
+        opacity: 0.8;
+        transition: all ease-in-out 4s; 
+        border-radius: 0 0 20px 20px;
+        display: flex;
+        flex-direction: column;
+        .logoAndTitle{
+            margin-bottom: 15px;
+        }
+        p{
+            margin: auto;
+        }
+        .logo{
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            padding-right: 10px;
+        }
+        .like{
+            color: white;
+            img{
+                filter: invert(1);
+            }
+        }
+    }
+    .headerCollapse {
+        border: 0px;
+        height: 5dvh;
+        width: 100%;
+        background-color: #99477a;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        z-index: 3;
+        cursor: pointer;
+        min-height: 30px;
+        @media (max-width: 650px) {
+            height: 5dvh;
+        }
+        span {
+            margin: auto;
+        }
+        img {
+            width: 24px;
+            height: 14px;
+            margin: auto;
+            cursor: pointer; 
+        }
+        .hiddenArrow{
+            opacity: 0;
+        }
+    }
+    .open{
+        border-radius:  20px 20px 0px 0px;
+        transition: 1s;
+    }
+    .close{
+        border-radius:  20px 20px 20px 20px;
+        transition: all 3s;
+        transition-delay: 1.8s;
+    }
+    .openArrow {
+        transform: rotate(180deg);
+        transition: all ease 0.9s;  
+    }
+    .closedArrow {
+        transform: rotate(0deg);
+        transition: all ease 0.9s;  
+    }
+    .collapseContent:hover{
+        @media (min-width:650px) {
+            .like{
+                right: -10px;
+                transition: 1000ms;
+            }
+        }
+    }
+    .collapseContent{
+        @media  (max-width: 649px){
+            .like{
+                right: -10px;
+                transition: 1000ms;
+            }
+        }
+    }
+}
+.collapseField:hover{
+    .content{
+        opacity: 1;
+        transition: all ease-in-out 4s; 
+    }
+}

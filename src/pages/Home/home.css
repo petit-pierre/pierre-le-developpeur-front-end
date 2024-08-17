@@ -1,0 +1,154 @@
+.home {
+  position: relative;
+  overflow: hidden;
+}
+.home .background {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.home .pictureJap img {
+  z-index: 2;
+}
+.home .contact {
+  width: 100%;
+  height: 170dvh;
+  position: absolute;
+  background: linear-gradient(rgb(255, 255, 255), rgba(157, 59, 143, 0));
+}
+.home .reco:hover .like {
+  right: -5px;
+  transition: 1000ms;
+}
+.home .recoAnchor {
+  position: absolute;
+  top: -30dvh;
+}
+.home #competences {
+  position: absolute;
+  top: -20dvh;
+}
+.home .reco {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100dvw;
+  overflow: hidden;
+  background-color: white;
+}
+@media (max-width: 650px) {
+  .home .reco {
+    flex-direction: column-reverse;
+  }
+  .home .reco .recoTxt {
+    width: 100%;
+  }
+  .home .reco .buttonAndBackground {
+    margin-bottom: 20px;
+  }
+}
+.home .reco .recoTxt {
+  width: 90%;
+  margin: auto;
+}
+.home .reco .like {
+  transition: 1000ms;
+  position: absolute;
+  bottom: 20px;
+  opacity: 0.6;
+  z-index: 6;
+  right: -350px;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+@media (max-width: 650px) {
+  .home .reco .like {
+    right: -5px;
+  }
+}
+.home .tools {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin-top: 80px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+@media (max-width: 650px) {
+  .home .tools {
+    flex-direction: column;
+  }
+}
+.home .collapse {
+  width: 30%;
+  padding-left: 1dvw;
+  position: relative;
+  z-index: 4;
+}
+@media (max-width: 650px) {
+  .home .collapse {
+    width: 90%;
+    margin: auto;
+  }
+}
+.home .competences {
+  width: 100dvw;
+  margin-top: 270px;
+}
+.home .competences .contentSkills {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  z-index: 4;
+}
+@media (max-width: 650px) {
+  .home .competences {
+    width: 100%;
+  }
+}
+.home .skills {
+  margin: auto;
+}
+.home .logoAndTitle {
+  display: flex;
+  flex-direction: row;
+}
+.home .logoAndTitle .logo {
+  align-items: center;
+}
+.home .collapseContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.home .accueil {
+  position: relative;
+  margin-bottom: 150px;
+}
+.home #accueil {
+  position: absolute;
+  top: -60px;
+}
+@media (max-width: 650px) {
+  .home #accueil {
+    top: -130px;
+  }
+}
+.home .competences {
+  position: relative;
+}
+.home .projets {
+  margin-top: 200px;
+  margin-bottom: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+@media (max-width: 650px) {
+  .home .projets {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}/*# sourceMappingURL=home.css.map */

@@ -1,0 +1,20 @@
+.postProject {
+  margin-top: 120px;
+}
+.postProject .sliderField {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.postProject .sliderField .sliderAdd {
+  width: 100%;
+  text-align: center;
+}
+.postProject .sliderField .sliderContainer {
+  width: 30%;
+  background-color: white;
+}
+.postProject .sliderField .sliderContainer .sliderPictureShow {
+  width: 100%;
+}/*# sourceMappingURL=postProject.css.map */

@@ -1,0 +1,306 @@
+@media (max-width: 650px) {
+  .contactHidden {
+    transition: 1s;
+    z-index: -1;
+  }
+}
+
+.contactField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.contactField .like {
+  right: -10px;
+  bottom: 2dvh;
+}
+@media (max-height: 270px) {
+  .contactField .like {
+    display: none;
+  }
+}
+.contactField .p {
+  padding-right: 5px;
+}
+.contactField .messageAndButton {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.contactField .dots {
+  padding-left: 4px;
+  width: 20px;
+}
+.contactField .one {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+.contactField .bd {
+  background-color: white;
+  height: 40px;
+  position: fixed;
+  border: 2px solid black;
+  top: 130px;
+  left: 25px;
+  z-index: 12;
+  border-radius: 10px;
+  display: flex;
+  transition: 1s;
+  overflow: hidden;
+}
+.contactField .bd .p {
+  margin: auto;
+}
+.contactField .textareaForContact {
+  margin: auto;
+  width: 95%;
+  height: 80%;
+  resize: none;
+  border: none;
+  box-shadow: 0px 2px 5px black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.contactField .textareaForContact:focus {
+  outline: 2px solid #99477a;
+}
+.contactField .textareaForMail {
+  margin: auto;
+  text-align: center;
+  width: 250px;
+  height: 20px;
+  min-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 22px;
+  resize: none;
+  border: none;
+  box-shadow: 0px 2px 5px black;
+  border-radius: 5px;
+  display: flex;
+}
+@media (max-width: 649px) {
+  .contactField .textareaForMail {
+    margin-left: 10px;
+    width: 50%;
+  }
+}
+.contactField .textareaForMail:focus {
+  outline: 2px solid #99477a;
+}
+.contactField .witheBack {
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  background-color: white;
+  transition: 1s;
+}
+.contactField .noBack {
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 4s;
+  background-color: none;
+}
+.contactField .reponse {
+  width: calc(100% - 50px);
+  height: calc(100dvh - 210px);
+  background-color: white;
+  position: fixed;
+  z-index: 13;
+  left: 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+}
+@media (max-width: 650px) {
+  .contactField .reponse {
+    height: calc(100dvh - 155px);
+  }
+}
+.contactField .triangleResponse {
+  z-index: 13;
+  position: absolute;
+  bottom: -15px;
+  transform: rotate(180deg);
+  right: 80px;
+  width: 22px;
+}
+.contactField .visibleResponse {
+  top: 180px;
+  transition: 1s;
+}
+@media (max-width: 650px) {
+  .contactField .visibleResponse {
+    top: 140px;
+  }
+}
+.contactField .hiddenResponse {
+  top: 200dvh;
+  transition: 1s;
+}
+.contactField .noDiscuss {
+  width: 100px;
+  cursor: pointer;
+}
+@media (max-width: 650px) {
+  .contactField .noDiscuss {
+    top: 90px;
+    left: 150px;
+  }
+}
+.contactField .noDiscuss:hover {
+  width: 140px;
+  transition: 1s;
+}
+@media (max-width: 650px) {
+  .contactField .noDiscuss:hover {
+    width: 100px;
+  }
+}
+.contactField .discuss {
+  width: calc(100% - 50px);
+}
+@media (max-width: 650px) {
+  .contactField .discuss {
+    top: 10px;
+    left: 150px;
+    width: calc(100% - 245px);
+    height: 120px;
+  }
+}
+@media (max-width: 450px) {
+  .contactField .discuss {
+    line-height: 0.6rem;
+  }
+  .contactField .discuss span {
+    font-size: 0.6rem;
+  }
+}
+.contactField .triangle {
+  z-index: 13;
+  position: fixed;
+  top: 117px;
+  left: 80px;
+  width: 22px;
+  transition: 1s;
+  transition-delay: 1s;
+  opacity: 1;
+}
+@media (max-width: 650px) {
+  .contactField .triangle {
+    opacity: 0;
+    transition: 0s;
+  }
+}
+.contactField .triangleMini {
+  z-index: 13;
+  position: fixed;
+  top: 100px;
+  transform: rotate(-90deg);
+  left: 134px;
+  width: 22px;
+  opacity: 0;
+  transition: 0s;
+}
+@media (max-width: 650px) {
+  .contactField .triangleMini {
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 1s;
+  }
+}
+.contactField .cross {
+  width: 30px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 30px;
+  cursor: pointer;
+}
+.contactField .hello {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.contactField .helloContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 30px;
+}
+@media (max-width: 450px) {
+  .contactField .helloContainer {
+    padding-left: 5px;
+  }
+}
+.contactField .bdContent {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+@media (max-width: 650px) {
+  .contactField .messagePlace .textArea textarea {
+    min-height: 200px;
+  }
+}
+.contactField .divForButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  z-index: 12;
+}
+.contactField .buttonSend {
+  border: 0px;
+  background-color: transparent;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  animation-name: clignote;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  display: flex;
+  flex-direction: row;
+}
+.contactField .buttonSend span {
+  padding-top: 19px;
+  padding-right: 5px;
+}
+@media (max-width: 460px) {
+  .contactField .buttonSend span {
+    display: none;
+  }
+}
+@keyframes clignote {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.contactField .buttonSend .purpleAndWitheTextarea {
+  height: 40px;
+  width: 40px;
+}
+.contactField .buttonSend .purpleAndWitheTextarea:hover {
+  box-shadow: none;
+  height: 40px;
+  width: 40px;
+}
+.contactField .buttonSend .send .purpleAndWitheTextarea:hover {
+  box-shadow: 0px 5px 5px black;
+}/*# sourceMappingURL=contact.css.map */

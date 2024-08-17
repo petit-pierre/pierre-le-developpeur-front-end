@@ -1,0 +1,144 @@
+.signPage {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.6));
+}
+@media (max-width: 650px) {
+  .signPage {
+    flex-direction: column-reverse;
+  }
+}
+.signPage img {
+  width: 30%;
+  margin: auto;
+  margin-top: 100px;
+}
+@media (max-width: 650px) {
+  .signPage img {
+    margin-top: 20px;
+    width: 60%;
+  }
+}
+.signPage .signin {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25dvw;
+  margin-top: 12dvh;
+  width: 25%;
+}
+@media (max-width: 650px) {
+  .signPage .signin {
+    margin: 2dvw;
+    width: 96dvw;
+  }
+  .signPage .signin p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 650px) {
+  .signPage .signin form {
+    margin: auto;
+  }
+}
+.signPage .signin .backOfficeTxt {
+  min-height: 200px;
+}
+@media (max-width: 650px) {
+  .signPage .signin .backOfficeTxt {
+    min-height: 140px;
+  }
+}
+.signPage .signin .remember {
+  margin-left: 10px;
+}
+.signPage .signin input:-webkit-autofill {
+  -webkit-transition: all 5000s ease-in-out 0s;
+  transition: all 5000s ease-in-out 0s;
+}
+.signPage .signin #username {
+  background: transparent;
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.signPage .signin #password {
+  background: transparent;
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.signPage .signin input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+}
+.signPage .signin input[type=checkbox] {
+  border-radius: 5px;
+  height: 15px;
+  width: 15px;
+  background: #fff;
+  border: 2px solid black;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 5px;
+  margin-left: 100px;
+  transition: 0.5s;
+}
+.signPage .signin .connectMe {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-left: 100px;
+  color: white;
+  height: 35px;
+  transition: 1s;
+}
+.signPage .signin .connectMe img {
+  margin: auto;
+  margin-top: 2px;
+  width: 80px;
+  filter: invert(1);
+}
+.signPage .signin .connectMe:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 6px black;
+  transition: 2s;
+}
+.signPage .signin input[type=checkbox]:hover {
+  cursor: pointer;
+}
+.signPage .signin input[type=checkbox]:checked {
+  position: relative;
+  margin: auto;
+  margin-top: 5px;
+  margin-left: 100px;
+  transition: all 1s;
+  background-color: black;
+}
+.signPage .signin input[type=checkbox]:checked:before {
+  background-color: black;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15px;
+  width: 15px;
+}
+.signPage .signin .username {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.signPage .signin .username label {
+  width: 100px;
+}
+.signPage .signin .password {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 5px;
+}
+.signPage .signin .password label {
+  width: 100px;
+}/*# sourceMappingURL=signin.css.map */

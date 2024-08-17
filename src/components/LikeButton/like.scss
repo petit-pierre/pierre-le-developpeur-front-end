@@ -1,0 +1,136 @@
+.like{
+    display: flex;
+    flex-direction: row;
+    min-width: 100px;
+    transition: 1000ms;
+    position: absolute;
+    right: -350px;
+    opacity: 0.8;
+    z-index: 6;
+    border-radius: 20px;
+    padding-left: 20px;
+    height: 36px;
+    justify-content: flex-end;
+    text-align: right;
+    p{
+        margin: auto;
+    }
+    @media (max-width: 650px) {
+        right: -10px;
+    }
+    .poc{
+        position: absolute;
+        display: none;
+        margin-top: -5px;
+    }
+    .pocContain{
+        position: relative;
+        margin-right: 35px;
+    }
+    .poc1{
+        left: 0px;
+        top: -4px;
+    }
+    .poc2{
+        left: 3px;
+        top: -9px;
+    }
+    .poc3{
+        left: 10px;
+        top: -11px;
+    }
+    .poc4{
+        left: 17px;
+        top: -9px;
+    }
+    .poc5{
+        left: 20px;
+        top: -4px;
+    }
+    .checked{
+            animation-name: like;
+            animation-duration: 2000ms;
+            .poc{
+                display: block;
+                animation-name: poc;
+                animation-duration: 2000ms;
+            }
+        }
+    .buttonLike{
+        background: none;
+
+	    border: none;
+        .logoLike{
+            width: 20px;
+            cursor: pointer;
+        }
+    }
+}
+@keyframes like{
+    0% {
+        transform: translateX(-1px);
+    }
+    6% {
+        transform: translateX(1px);
+    }
+    12% {
+        transform: translateX(-1px);
+    }  
+    18% {
+        transform: translateX(1px);
+    }  
+    24% {
+        transform: translateX(-1px);
+    }  
+    32% {
+        transform: translateX(1px);
+    }  
+    40% {
+        transform: translateX(0px);
+    }  
+    100%{
+        transform: translateX(0px);
+    }
+  }
+  @keyframes poc{
+    0% {
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+
+    37% {
+        opacity: 1;
+    }  
+    70% {
+        opacity: 1;
+    }  
+    100% {
+        opacity: 1;
+    }  
+  }
+
+.likeColorwithe{
+    background-color: white;
+    .buttonLike{
+        color: black;
+    }
+    p{
+        color: black;
+    }
+    color: black;
+    img{
+        filter: invert(0);
+    }
+}
+.likeColorblack{
+    background-color: black;
+    color: white;
+    .buttonLike{
+        color: inherit;
+    }
+    img{
+        filter: invert(1);
+    }
+}

@@ -1,0 +1,178 @@
+.projectContentAndBackground {
+    position: relative;
+    height: 55dvh;
+    @media (max-width: 650px) {
+        height: 85dvh;
+    }
+    width: 80%;
+    margin: auto;
+    margin-top: 12dvh;
+    .projectContent{
+        position: absolute;
+        padding: 10px;
+        color: white;
+        text-align: center;
+        z-index: 2;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 20px;
+        border: solid  #6d477a;
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        @media (max-width: 650px) {
+              font-size: 0.8rem;
+          }
+    }
+}
+.projectPage{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: calc(103dvh - 59px);
+    .videoField{
+        width: 100%;
+        position: relative;
+        margin-bottom: 150px;
+        p{
+            text-align: center;
+        }
+    }
+    .video{
+        display: block;
+        width: 80%;
+        margin: auto;
+        z-index: 8;
+        position: relative;
+        border-radius: 20px;
+    }
+    .transition{
+        background: linear-gradient(0deg, #FFFFFF, rgba(255,255,255, 0));
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        opacity: 1;
+    }
+    #project{
+        position: absolute;
+        top: -100px;
+        @media (max-width: 650px){
+            top: -250px;
+        }
+    }
+    .buttonLikeProjectContent{
+        position: absolute;
+        left: 92dvw;
+        z-index: 6;
+        @media (max-width: 650px){
+            left: 70dvw;
+        }
+    }
+    .slider{
+        position: relative;
+        margin-top: 0px;
+        height: calc(103dvh - 59px);
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 100%;  
+        @media (max-width: 650px){
+            height: calc(100dvh - 130px);
+            top: 130px;
+        }
+    }
+    .textAndLinks{
+        width: 80dvw;
+        margin: auto;
+        margin-top: 100px;
+        position: relative;
+        z-index: 7;
+    }
+    .tools{
+        margin-top: 210px;
+        margin-bottom: 150px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        @media (max-width: 650px){
+            flex-direction: column;
+        }
+        margin-top: 120px;
+    }
+    .collapse{
+        width: 30%;
+        padding-left: 1dvw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        @media (max-width: 650px){
+            width: 90%;
+            margin: auto;
+        }
+    }
+    .skills{
+        margin: auto;
+    }
+    .logoAndTitle{
+        display: flex;
+        flex-direction: row;
+    }
+    .collapseContent{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .toolTitle{
+            padding-right: 30px;
+        }
+    }
+    .projectLink{
+        color: white;
+        transition: 1s;
+    }
+    .projectLink:hover{
+        color: #99477a;
+        transition: 1s;
+    }
+    .descriptionUnit{
+        width: 100%;
+        display: flex;
+        margin-top: 60px;
+        .pics{
+            width: 30dvw;
+            display: flex;
+            @media (max-width: 650px){
+                width: 100dvw;
+            }
+            img{
+                width: 80%;
+                margin: auto;
+                border-radius: 20px;
+                @media (max-width: 650px){
+                    width: 40%;
+                }
+            }
+        }
+        .text{
+            width: 60dvw;
+            @media (max-width: 650px){
+                width: 100dvw;
+            }
+        }
+    }
+    .left{
+        flex-direction: row;
+        @media (max-width: 650px){
+            flex-direction: column;
+        }
+    }
+    .right{
+        flex-direction: row-reverse;
+        @media (max-width: 650px){
+            flex-direction: column;
+        }
+    }
+}
+
+

@@ -1,0 +1,179 @@
+.textareafield{
+    .windows{
+        background-image:   url("../../../public/assets/snow.gif");
+        border: solid 3px black;
+        border-radius: 20px;
+        overflow: hidden;
+        textarea{
+            color: white;
+        }
+        .like{
+            bottom: 60px;
+        }
+        .padding{
+            padding-right: 100px;
+        }
+        .fullResum{
+            p{
+                font-family: "abacaxi-devanagari", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                color: white;
+            }
+            line-height:1rem;
+            margin: 20px;
+            margin-top: 40px;
+        }
+    }
+    .empty{
+        border-radius: 20px;
+        .like{
+            bottom: 20px;
+        }
+        .fullResum{
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+            justify-content: space-around;
+            p{
+                font-family: "abacaxi-devanagari", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+        }
+    }
+    .purpleAndWitheTextarea{
+        border-radius: 20px;
+        overflow: hidden;
+        .title{
+            width: 100%;
+            background-color: #99477a;
+            color: white;
+            text-align: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        .mise-en-page{
+            background-color: white;
+            opacity: 0.8;
+            transition: 1s;
+        }
+        .mise-en-page:hover{
+            opacity: 1;
+            transition: 1s;
+        }
+        .like{
+            bottom: 20px;
+        }
+        .fullResum{
+            p{
+                font-family: "abacaxi-devanagari", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+            margin: 20px;
+        }
+    }
+    .textArea{
+        position: relative;
+        background-size: 100%;
+        overflow: hidden;
+        @media  (max-width: 649px){
+            .like{
+                right: -35px;
+                transition: 1000ms;
+            }
+        }
+        .sign{
+            padding-left: 20px;
+            font-family: "abacaxi-devanagari", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            font-style: normal;
+            transition: 1s;
+            color: #99477a;
+            margin-bottom: 4px;
+        }
+        .sign:hover{
+            transition: 1s;
+            text-shadow: 5px 5px 5px;
+            padding-left: 16px;
+            padding-top: -2px;
+        }
+        .softSkills{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            .logoAndTitle{
+                display: flex;
+                flex-direction: column;
+                p{
+                    margin: auto;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+                .logo{
+                    width: 25px;
+                    margin: auto;
+                }
+            }
+        }
+        .textareaLinks{
+            color: white;
+            text-align: center;
+        }
+        .spacedTextArea{
+            @media  (max-width: 649px){
+                height: 60px;
+            }
+        }
+        .like{
+            transition: 1000ms;
+            position: absolute;
+            opacity: 0.6;
+            z-index: 6;
+            right: -350px;
+            border-radius: 20px;
+            padding-left: 20px;
+            @media (max-width: 650px) {
+                right: -15px;
+              }
+        }
+        textarea{
+            resize: none;
+            border: none;
+            padding: 20px;
+            text-decoration:none;
+            background-color: rgba(0, 0, 255, 0.0);
+            transition: all 1s;
+            border-radius: 20px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;	
+            width: 100%;
+            overflow: hidden;
+        }
+        textarea:focus{
+            outline: none;
+        }
+    }
+    .textArea:hover{
+        .like{
+            right: -15px;
+            transition: 1000ms;
+        }
+    }
+    .edit:focus{
+        outline: none;
+        background-image: 0.5;
+        background-color: white;
+        color: black;
+        transition: all 1s;
+    }
+}
+
+
+

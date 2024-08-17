@@ -1,0 +1,30 @@
+.error404 {
+  height: calc(100dvh - 60px);
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 650px) {
+  .error404 {
+    height: calc(100dvh - 150px);
+  }
+}
+.error404 .errorRedirect {
+  text-align: center;
+  padding-top: 30dvh;
+}
+.error404 .travoltaContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+}
+.error404 .travoltaContainer .travolta {
+  height: calc(60dvh - 60px);
+}
+@media (max-width: 650px) {
+  .error404 .travoltaContainer .travolta {
+    height: calc(60dvh - 150px);
+  }
+}/*# sourceMappingURL=404.css.map */

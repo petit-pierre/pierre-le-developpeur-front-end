@@ -1,0 +1,78 @@
+.buttonDiv .purpleAndWitheTextarea:hover {
+  max-width: 105px;
+  height: 105px;
+  transition: 1s;
+  box-shadow: 0px 10px 10px black;
+}
+.buttonDiv .purpleAndWitheTextarea {
+  border: 6px solid #99477a;
+  max-width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  transition: 1s;
+  background-color: white;
+}
+.buttonDiv .purpleAndWitheTextarea img {
+  padding-top: 4px;
+  width: 30px;
+}
+.buttonDiv .purpleAndWitheTextarea .button {
+  font-family: "hayanbaram", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0);
+  z-index: 2;
+  box-sizing: border-box;
+  border: none;
+}
+.buttonDiv .purpleAndWitheTextarea .buttonAndBackground {
+  margin: auto;
+}
+.buttonDiv .purpleAndWitheTextarea .visible {
+  cursor: pointer;
+}
+.buttonDiv .windows {
+  width: 300px;
+  height: 35px;
+  margin: auto;
+}
+.buttonDiv .windows .button {
+  color: white;
+  transition: all 1s;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0);
+  box-sizing: border-box;
+  border: none;
+}
+.buttonDiv .windows .buttonAndBackground {
+  background-image: url("../../../public/assets/snow.gif");
+  border-radius: 20px;
+  overflow: hidden;
+  height: 35px;
+  width: 300px;
+  border: solid black;
+  margin: auto;
+}
+.buttonDiv .windows .button:active {
+  background-color: white;
+  color: black;
+  transition: all 0s;
+}
+.buttonDiv .windows .visible {
+  cursor: pointer;
+}
+.buttonDiv .send {
+  opacity: 1;
+  cursor: pointer;
+}
+.buttonDiv .cantSend {
+  opacity: 0.6;
+}
+.buttonDiv .cantSend .button:active {
+  background-color: transparent;
+  color: white;
+  transition: all 0s;
+}/*# sourceMappingURL=button.css.map */

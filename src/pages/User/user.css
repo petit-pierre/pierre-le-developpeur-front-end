@@ -1,0 +1,12 @@
+.mainDashboard .dashboard {
+  margin-top: 12dvh;
+  text-align: center;
+}
+.mainDashboard h3 {
+  text-align: center;
+}
+.mainDashboard fieldset {
+  border-radius: 10px;
+  width: 95%;
+  margin: auto;
+}/*# sourceMappingURL=user.css.map */

@@ -1,0 +1,137 @@
+.like {
+  display: flex;
+  flex-direction: row;
+  min-width: 100px;
+  transition: 1000ms;
+  position: absolute;
+  right: -350px;
+  opacity: 0.8;
+  z-index: 6;
+  border-radius: 20px;
+  padding-left: 20px;
+  height: 36px;
+  justify-content: flex-end;
+  text-align: right;
+}
+.like p {
+  margin: auto;
+}
+@media (max-width: 650px) {
+  .like {
+    right: -10px;
+  }
+}
+.like .poc {
+  position: absolute;
+  display: none;
+  margin-top: -5px;
+}
+.like .pocContain {
+  position: relative;
+  margin-right: 35px;
+}
+.like .poc1 {
+  left: 0px;
+  top: -4px;
+}
+.like .poc2 {
+  left: 3px;
+  top: -9px;
+}
+.like .poc3 {
+  left: 10px;
+  top: -11px;
+}
+.like .poc4 {
+  left: 17px;
+  top: -9px;
+}
+.like .poc5 {
+  left: 20px;
+  top: -4px;
+}
+.like .checked {
+  animation-name: like;
+  animation-duration: 2000ms;
+}
+.like .checked .poc {
+  display: block;
+  animation-name: poc;
+  animation-duration: 2000ms;
+}
+.like .buttonLike {
+  background: none;
+  border: none;
+}
+.like .buttonLike .logoLike {
+  width: 20px;
+  cursor: pointer;
+}
+
+@keyframes like {
+  0% {
+    transform: translateX(-1px);
+  }
+  6% {
+    transform: translateX(1px);
+  }
+  12% {
+    transform: translateX(-1px);
+  }
+  18% {
+    transform: translateX(1px);
+  }
+  24% {
+    transform: translateX(-1px);
+  }
+  32% {
+    transform: translateX(1px);
+  }
+  40% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes poc {
+  0% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0;
+  }
+  37% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.likeColorwithe {
+  background-color: white;
+  color: black;
+}
+.likeColorwithe .buttonLike {
+  color: black;
+}
+.likeColorwithe p {
+  color: black;
+}
+.likeColorwithe img {
+  filter: invert(0);
+}
+
+.likeColorblack {
+  background-color: black;
+  color: white;
+}
+.likeColorblack .buttonLike {
+  color: inherit;
+}
+.likeColorblack img {
+  filter: invert(1);
+}/*# sourceMappingURL=like.css.map */

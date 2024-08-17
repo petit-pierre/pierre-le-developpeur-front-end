@@ -1,0 +1,20 @@
+.postProject{
+    margin-top: 120px;
+    .sliderField{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .sliderAdd{
+            width: 100%;
+            text-align: center;
+        }
+        .sliderContainer{
+            width: 30%;
+            background-color: white;
+            .sliderPictureShow{
+                width: 100%;
+            }
+        }
+    }
+}

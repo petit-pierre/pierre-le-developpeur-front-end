@@ -1,0 +1,117 @@
+.collapseField .blank {
+  height: 10px;
+}
+.collapseField .content-parent {
+  max-height: 0px;
+  overflow: hidden;
+  transform: translateY(0px);
+  transition: all ease 1.9s;
+  margin: 0px 0px 0px 0px;
+  z-index: -1;
+  width: 100%;
+}
+.collapseField .content-show {
+  overflow: hidden;
+  transform: translateY(0px);
+  transition: all ease 1.9s;
+  transition-delay: 0.6s;
+  max-height: 150dvh;
+  margin: 0px 0px 0px 0px;
+  z-index: -1;
+  width: 100%;
+}
+.collapseField .content-show .content {
+  border-radius: 0 0 20px 20px;
+}
+.collapseField .content {
+  margin-top: 0;
+  padding: 20px;
+  color: black;
+  background-color: white;
+  opacity: 0.8;
+  transition: all ease-in-out 4s;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.collapseField .content .logoAndTitle {
+  margin-bottom: 15px;
+}
+.collapseField .content p {
+  margin: auto;
+}
+.collapseField .content .logo {
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+}
+.collapseField .content .like {
+  color: white;
+}
+.collapseField .content .like img {
+  filter: invert(1);
+}
+.collapseField .headerCollapse {
+  border: 0px;
+  height: 5dvh;
+  width: 100%;
+  background-color: #99477a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  cursor: pointer;
+  min-height: 30px;
+}
+@media (max-width: 650px) {
+  .collapseField .headerCollapse {
+    height: 5dvh;
+  }
+}
+.collapseField .headerCollapse span {
+  margin: auto;
+}
+.collapseField .headerCollapse img {
+  width: 24px;
+  height: 14px;
+  margin: auto;
+  cursor: pointer;
+}
+.collapseField .headerCollapse .hiddenArrow {
+  opacity: 0;
+}
+.collapseField .open {
+  border-radius: 20px 20px 0px 0px;
+  transition: 1s;
+}
+.collapseField .close {
+  border-radius: 20px 20px 20px 20px;
+  transition: all 3s;
+  transition-delay: 1.8s;
+}
+.collapseField .openArrow {
+  transform: rotate(180deg);
+  transition: all ease 0.9s;
+}
+.collapseField .closedArrow {
+  transform: rotate(0deg);
+  transition: all ease 0.9s;
+}
+@media (min-width: 650px) {
+  .collapseField .collapseContent:hover .like {
+    right: -10px;
+    transition: 1000ms;
+  }
+}
+@media (max-width: 649px) {
+  .collapseField .collapseContent .like {
+    right: -10px;
+    transition: 1000ms;
+  }
+}
+
+.collapseField:hover .content {
+  opacity: 1;
+  transition: all ease-in-out 4s;
+}/*# sourceMappingURL=collapse.css.map */

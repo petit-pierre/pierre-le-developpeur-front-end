@@ -1,0 +1,54 @@
+.cardField{
+    width: 20%;
+    min-width: 250px;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin: 20px;
+    z-index: 5;
+    @media (max-width: 650px) {
+        width: 80%;
+    }
+    border: solid white;
+    text-align: center;
+    .likeSlide{
+        top: 114px;
+    }
+    .cardSlide{
+        opacity: 1;
+        height: 162px;
+    }
+    .cardResum{
+        position: absolute;
+        top: 150px;
+        color: white;
+        background-color: #99477a ;
+        opacity: 0.8;
+        transition: all ease-in-out 4s; 
+        z-index: 1;
+        height: calc( 100% - 150px);
+        min-width: 230px;
+        width: 100% ;
+        display: flex;
+        p{
+            padding: 10px;
+            margin: auto;
+        }
+        .like{
+            top: 50px;
+        }
+    }
+}
+.cardField:hover {
+    .cardResum{
+        opacity: 1;
+        transition: all ease-in-out 4s; 
+    }
+    .like{
+        right: -10px;
+        transition: 1000ms;
+    }
+}
+
