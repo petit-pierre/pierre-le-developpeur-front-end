@@ -29,6 +29,8 @@
             -moz-box-sizing: border-box;
             box-sizing: border-box;
             border: none;
+            display: flex;
+            flex-direction: column;
         }
         .buttonAndBackground{
             margin: auto;

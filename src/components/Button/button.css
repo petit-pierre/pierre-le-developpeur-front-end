@@ -26,6 +26,8 @@
   z-index: 2;
   box-sizing: border-box;
   border: none;
+  display: flex;
+  flex-direction: column;
 }
 .buttonDiv .purpleAndWitheTextarea .buttonAndBackground {
   margin: auto;

@@ -256,8 +256,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <span id="projets"></span>
-          <div className="projets">
+          <div className="projets" id="projets">
             {projects.map((project) => (
               <div key={project._id}>
                 <Cards project={project}></Cards>

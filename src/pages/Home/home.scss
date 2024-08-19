@@ -25,11 +25,14 @@
     }
     .recoAnchor{
         position: absolute;
-        top: -30dvh;
+        top: -20dvh;
     }
     #competences{
         position: absolute;
         top: -20dvh; 
+        @media (max-width: 900px) {
+            top: -30dvh;
+        }
     }
     .reco{
         position: relative;
@@ -117,7 +120,7 @@
 
     .accueil{
         position: relative;
-        margin-bottom: 150px;
+        //margin-bottom: 150px;
     }
     #accueil{
         position: absolute;
@@ -130,15 +133,21 @@
         position: relative;
     }
     .projets{
-        margin-top: 200px;
+        margin-top: 100px;
+        padding-top: 100px;
         margin-bottom: 150px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
+        position: relative;
         @media (max-width: 650px){
             flex-direction: column;
             flex-wrap: nowrap;
+        }
+        @media (max-width: 900px){
+            margin-top: 50px;
+            padding-top: 150px;
         }
     }
 }

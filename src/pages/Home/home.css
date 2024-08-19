@@ -22,11 +22,16 @@
 }
 .home .recoAnchor {
   position: absolute;
-  top: -30dvh;
+  top: -20dvh;
 }
 .home #competences {
   position: absolute;
   top: -20dvh;
+}
+@media (max-width: 900px) {
+  .home #competences {
+    top: -30dvh;
+  }
 }
 .home .reco {
   position: relative;
@@ -124,7 +129,6 @@
 }
 .home .accueil {
   position: relative;
-  margin-bottom: 150px;
 }
 .home #accueil {
   position: absolute;
@@ -139,16 +143,24 @@
   position: relative;
 }
 .home .projets {
-  margin-top: 200px;
+  margin-top: 100px;
+  padding-top: 100px;
   margin-bottom: 150px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
 }
 @media (max-width: 650px) {
   .home .projets {
     flex-direction: column;
     flex-wrap: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .home .projets {
+    margin-top: 50px;
+    padding-top: 150px;
   }
 }/*# sourceMappingURL=home.css.map */
