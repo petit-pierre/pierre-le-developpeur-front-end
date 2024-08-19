@@ -135,12 +135,11 @@ function Project() {
               height: scrollTop * 4,
             }}
           ></div>
-
           <Slider
             sliders={sortedSlider}
             mini={false}
             likeId={project.slider_likes_id}
-          ></Slider>
+          ></Slider>{" "}
         </div>
         <div
           className="textAndLinks"

@@ -100,7 +100,13 @@ function Home() {
     return (
       <div>
         <div className="home body">
-          {Lscreen > 650 ? <Snow></Snow> : ""}
+          {Lscreen > 650 ? (
+            <div className="petales">
+              <Snow></Snow>
+            </div>
+          ) : (
+            ""
+          )}
 
           <span id="accueil"></span>
           <Accueil></Accueil>

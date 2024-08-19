@@ -34,12 +34,18 @@
   }
 }
 .home .reco {
+  margin-top: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100dvw;
   overflow: hidden;
   background-color: white;
+}
+@media (max-width: 900px) {
+  .home .reco {
+    padding-top: 30px;
+  }
 }
 @media (max-width: 650px) {
   .home .reco {
@@ -129,6 +135,7 @@
 }
 .home .accueil {
   position: relative;
+  margin-bottom: 0px;
 }
 .home #accueil {
   position: absolute;

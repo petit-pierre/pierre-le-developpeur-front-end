@@ -6,8 +6,18 @@ function Accueil() {
   const language = useSelector((state) => state.data.language);
   const translations = useSelector((state) => state.data.translations);
 
+  let Hscreen = window.innerHeight;
+  if (Hscreen < 650) {
+    Hscreen = 650;
+  }
+
   return language === "FR" ? (
-    <div className="accueilField">
+    <div
+      className="accueilField"
+      style={{
+        height: Hscreen,
+      }}
+    >
       <div className="placeForMaGanache"></div>
       <h2>Bienvenue sur mon portfolio !</h2>
       <br></br>
@@ -46,7 +56,12 @@ function Accueil() {
       </p>
     </div>
   ) : (
-    <div className="accueilField">
+    <div
+      className="accueilField"
+      style={{
+        height: Hscreen,
+      }}
+    >
       <div className="placeForMaGanache"></div>
       <h2>Welcome to my portfolio!</h2>
       <br></br>

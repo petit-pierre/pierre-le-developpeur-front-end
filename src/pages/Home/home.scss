@@ -35,12 +35,16 @@
         }
     }
     .reco{
+        margin-top: 0;
         position: relative;
         display: flex;
         flex-direction: column;
         width: 100dvw;
         overflow: hidden;
         background-color: white;
+        @media (max-width: 900px) {
+            padding-top: 30px;
+        }
         @media (max-width: 650px) {
             flex-direction: column-reverse;
             .recoTxt{
@@ -120,7 +124,7 @@
 
     .accueil{
         position: relative;
-        //margin-bottom: 150px;
+        margin-bottom: 0px;
     }
     #accueil{
         position: absolute;
