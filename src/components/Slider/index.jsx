@@ -300,10 +300,10 @@ function Slider({ sliders, mini, likeId }) {
               alt="fleche vers la droite"
             ></img>
           </button>
-          {sortedSlider.length === 2 ? (
+          {sliders.length === 2 ? (
             <div className="counter">
-              <div className="dot dotSelected d0"></div>
-              <div className="dot d1"></div>
+              <div className="dot dotSelected d0 d2"></div>
+              <div className="dot d1 d3"></div>
             </div>
           ) : (
             <div className="counter">
