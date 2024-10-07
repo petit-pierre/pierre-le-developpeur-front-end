@@ -88,7 +88,9 @@ function App() {
         <Route path="/Project/:title" element={<Project />} />
         <Route path="/Sign-in" element={<SignIn />} />
         <Route path="/Flyers" element={<Flyers />} />
+
         <Route path="*" element={<Error404 />} />
+
         <Route path="/404" element={<Error404 />} />
       </Routes>
     </Router>

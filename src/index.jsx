@@ -9,24 +9,43 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./Slices/userSlice";
 import { thunk } from "redux-thunk";
 
-const store = configureStore({
-  reducer: combineReducers({
-    data: userSlice.reducer,
-  }),
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
-  devTools: true,
-});
+if (
+  document.location.href.includes("https://pierre-le-developpeur.com/kasa") ||
+  document.location.href.includes("https://pierre-le-developpeur.com/724")
+) {
+  if (
+    document.location.href === "https://pierre-le-developpeur.com/kasa" ||
+    document.location.href === "https://pierre-le-developpeur.com/kasa/"
+  ) {
+    document.location.href =
+      "https://pierre-le-developpeur.com/kasa/index.html";
+  }
+  if (
+    document.location.href === "https://pierre-le-developpeur.com/724" ||
+    document.location.href === "https://pierre-le-developpeur.com/724/"
+  ) {
+    document.location.href = "https://pierre-le-developpeur.com/724/index.html";
+  }
+} else {
+  const store = configureStore({
+    reducer: combineReducers({
+      data: userSlice.reducer,
+    }),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+    devTools: true,
+  });
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  // If you want to start measuring performance in your app, pass a function
+  // to log results (for example: reportWebVitals(console.log))
+  // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+  reportWebVitals();
+}
