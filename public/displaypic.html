@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Portfolio de pierre le developpeur"
+    />
+
+    <meta name="robots" content="all" />
+	<meta name="language" content="fr-FR">
+
+	<meta property="og:site_name" content="pierre le developpeur" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://pierre-le-developpeur.com" />
+	<meta property="og:title" content="pierre le developpeur" />
+	<meta property="og:description" content="Portfolio de pierre le developpeur" />
+	<meta property="og:image" content="http://api.petitpierre.net/images/slide3.webp" />
+	<meta property="fb:app_id" content="00001" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@monCompteTwitter" />
+	<meta name="twitter:title" content="pierre le developpeur" />
+	<meta name="twitter:description" content="Portfolio de pierre le developpeur" />
+	<meta name="twitter:image" content="http://api.petitpierre.net/images/slide3.webp" />
+	<meta name="twitter:url" content="http://pierre-le-developpeur.com" />
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+
+
+    <title>Pierre le developpeur</title>
+    <style>
+        .picture{
+            width: 100%;
+        }
+        .undo{
+            display: flex;
+            margin: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <img class="picture">
+    <button class="undo">Change</button>
+  </body>
+  <script>
+    const urlParameters = window.location.search;
+    const urlParams = new URLSearchParams(urlParameters);
+    //const type = urlParams.get("type");
+    const picture = urlParams.get("picture");
+    const password = urlParams.get("password");
+    const title = urlParams.get("title");
+    const type = urlParams.get("type");
+    document.querySelector(".picture").setAttribute("src",picture)
+    document.querySelector(".undo").addEventListener("click",(evt)=> remove(evt))
+    function remove(evt) {
+        window.location.href ="https://www.pierre-le-developpeur.com/deletepic.php?title="+title+"&password="+password+"&type="+type
+    }
+    //console.log(document.location.href)
+
+
+</script>
+</html>

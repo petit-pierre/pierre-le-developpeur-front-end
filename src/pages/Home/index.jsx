@@ -25,8 +25,6 @@ function Home() {
 
   /*on trie le tableau des projets par dates*/
 
-  const [title, setTitle] = useState([]);
-
   let projects = structuredClone(unsortedprojects);
   projects.sort(function (a, b) {
     if (a.date > b.date) return -1;
@@ -100,51 +98,8 @@ function Home() {
 
     const Lscreen = window.innerWidth;
 
-    function titlee(evt) {
-      evt.preventDefault();
-      setTitle(
-        Date.now() + document.querySelector(".form-control").files[0].name
-      );
-      //console.log(title);
-      //document.querySelector(".btn-primary").click();
-    }
-
-    let password = "password";
-
     return (
       <div>
-        <form
-          action={
-            "https://pierre-le-developpeur.com/index.php?title=" +
-            title +
-            "&location=" +
-            document.location.href +
-            "&password=" +
-            password
-          }
-          method="POST"
-          encType="multipart/form-data"
-        >
-          <div className="mb-3">
-            <label htmlFor="screenshot" className="form-label">
-              Votre capture d\'écran
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="screenshot"
-              name="screenshot"
-              onChange={(evt) => titlee(evt)}
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            //style={{ opacity: "0" }}
-          >
-            Envoyer
-          </button>
-        </form>
         <div className="home body">
           {Lscreen > 650 ? (
             <div className="petales">

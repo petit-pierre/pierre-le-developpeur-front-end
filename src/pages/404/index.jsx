@@ -31,7 +31,7 @@ function Error404() {
         </h1>
         <div className="travoltaContainer">
           <img
-            src="../assets/so-really.gif"
+            src="https://www.pierre-le-developpeur.com/assets/so-really.gif"
             alt="meme travolta"
             className="travolta"
           ></img>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Portfolio de pierre le developpeur"
+    />
+
+    <meta name="robots" content="all" />
+	<meta name="language" content="fr-FR">
+
+	<meta property="og:site_name" content="pierre le developpeur" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://pierre-le-developpeur.com" />
+	<meta property="og:title" content="pierre le developpeur" />
+	<meta property="og:description" content="Portfolio de pierre le developpeur" />
+	<meta property="og:image" content="http://api.petitpierre.net/images/slide3.webp" />
+	<meta property="fb:app_id" content="00001" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@monCompteTwitter" />
+	<meta name="twitter:title" content="pierre le developpeur" />
+	<meta name="twitter:description" content="Portfolio de pierre le developpeur" />
+	<meta name="twitter:image" content="http://api.petitpierre.net/images/slide3.webp" />
+	<meta name="twitter:url" content="http://pierre-le-developpeur.com" />
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+
+
+    <title>Pierre le developpeur</title>
+  </head>
+  <body>
+    <form
+    action=""
+    method="POST"
+    encType="multipart/form-data"
+    class="theForm"
+  >
+    <input
+      type="file"
+      class="form-control"
+      id="screenshot"
+      name="screenshot"
+    />
+  </form>
+  <p class="p"></p>
+
+  </body>
+  <script>
+    const retur=document.location.href
+    const urlParameters = window.location.search;
+    const urlParams = new URLSearchParams(urlParameters);
+    const type = urlParams.get("type");
+    const title = urlParams.get("title");
+    const password = urlParams.get("password");
+
+    document.querySelector(".form-control").setAttribute("accept",type)
+    //let password = "password";
+    document.querySelector(".form-control").addEventListener("change",(evt)=> titlee(evt))
+    function titlee(evt) {
+      evt.preventDefault();
+      document.querySelector(".theForm").setAttribute(  "action",   "https://pierre-le-developpeur.com/addpic.php?title=" +title +"&password=" +password+"&type="+type)
+      setTimeout(() => {
+        document.querySelector(".theForm").submit();
+      }, 1000);
+    }
+    //titlee()
+
+
+</script>
+</html>

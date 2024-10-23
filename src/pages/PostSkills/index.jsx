@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import Header from "../../components/Header";
+//import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setLikeThunk,
@@ -12,6 +12,9 @@ import {
 function PostSkills() {
   const frenchTitle = useRef();
   const englishTitle = useRef();
+  const link = useRef();
+
+  //const [title, setTitle] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -78,20 +81,36 @@ function PostSkills() {
   function cancelSkill() {
     navigate("/User");
   }
+  const title = Date.now() + "skill.png";
+
+  let password = localStorage.getItem("password");
+
   return (
-    <div style={{ "margin-top": "20dvh" }}>
+    <div style={{ marginTop: "20dvh" }} className="postSkills">
       <p>title in french :</p>
       <input type="text" ref={frenchTitle}></input>
       <p>title in english :</p>
       <input type="text" ref={englishTitle}></input>
+      <p>link to certificate (optional) :</p>
+      <input type="text" ref={link}></input>
       <p>picture :</p>
-      <input
-        type="file"
-        className="Picture"
-        name="Picture"
-        accept="image/png"
-      ></input>
+
       <p></p>
+
+      <iframe
+        src={
+          "https://pierre-le-developpeur.com/picture.html?type=image/png&title=" +
+          title +
+          "&password=" +
+          password
+        }
+        width="fit-content"
+        height="300"
+        frameBorder="0"
+        title="Upload"
+        className="iframe"
+      ></iframe>
+
       <div>
         <button onClick={(evt) => saveSkill(evt)}>Save</button>
         <button onClick={(evt) => cancelSkill(evt)}>Cancel</button>
