@@ -1,0 +1,35 @@
+[22-Oct-2024 11:10:44 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 20
+[22-Oct-2024 11:10:53 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 20
+[22-Oct-2024 11:11:10 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 20
+[22-Oct-2024 11:12:03 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 20
+[22-Oct-2024 11:14:19 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 18
+[22-Oct-2024 11:14:19 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpPcRoOa' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 18
+[22-Oct-2024 11:15:48 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 26
+[22-Oct-2024 11:15:48 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpvR9493' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 26
+[22-Oct-2024 11:17:24 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 20
+[22-Oct-2024 11:18:47 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 18
+[22-Oct-2024 11:20:18 UTC] PHP Warning:  mime_content_type(): Can only process string or stream arguments in /home/petit794/pierre-le-developpeur.com/index.php on line 15
+[22-Oct-2024 11:22:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/petit794/pierre-le-developpeur.com/index.php:1) in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:45:56 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:45:56 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php6ZicGm' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:49:33 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:49:33 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpLi37UW' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:49:51 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:49:51 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php0O042e' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:50:35 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:50:35 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpa7SJRl' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:52:40 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:52:40 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phph7NeKh' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:53:37 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:53:37 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpeoDwp6' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:54:42 UTC] PHP Warning:  move_uploaded_file(): The second argument to copy() function cannot be a directory in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 11:54:42 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpiwyIGT' to '/home/petit794/pierre-le-developpeur.com/assets/images/' in /home/petit794/pierre-le-developpeur.com/index.php on line 25
+[22-Oct-2024 12:06:44 UTC] PHP Parse error:  syntax error, unexpected '$_title' (T_VARIABLE), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 29
+[22-Oct-2024 12:07:51 UTC] PHP Parse error:  syntax error, unexpected '$_title' (T_VARIABLE), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 29
+[22-Oct-2024 12:08:41 UTC] PHP Parse error:  syntax error, unexpected '$_title' (T_VARIABLE), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 29
+[22-Oct-2024 12:09:10 UTC] PHP Parse error:  syntax error, unexpected '$_title' (T_VARIABLE), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 29
+[22-Oct-2024 12:10:37 UTC] PHP Parse error:  syntax error, unexpected '$_title' (T_VARIABLE), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 28
+[22-Oct-2024 12:11:30 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 28
+[22-Oct-2024 12:11:39 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 28
+[22-Oct-2024 12:12:15 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 28
+[22-Oct-2024 12:12:23 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ';' or ',' in /home/petit794/pierre-le-developpeur.com/index.php on line 28
