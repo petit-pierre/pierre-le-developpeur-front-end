@@ -13,8 +13,9 @@ function PostSkills() {
   const frenchTitle = useRef();
   const englishTitle = useRef();
   const link = useRef();
+  const now = useRef(new Date());
 
-  //const [title, setTitle] = useState(null);
+  const [close, setClose] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -27,64 +28,59 @@ function PostSkills() {
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
   }
-
   function saveSkill(evt) {
     evt.preventDefault();
-    let photo = document.querySelector(".Picture");
-    if (
-      frenchTitle.current.value &&
-      englishTitle.current.value &&
-      photo.files[0] !== ""
-    ) {
+    if (frenchTitle.current.value && englishTitle.current.value) {
       const skill = {
         french_title: frenchTitle.current.value,
         english_title: englishTitle.current.value,
+        picture_url: "https://pierre-le-developpeur.com/assets/images/" + title,
+        picture_id: title,
+        link: link.current.value,
+      };
+      console.log(skill);
+      const likeSubmit = async () => {
+        const likes = {
+          title: skill.french_title,
+          likes: 0,
+        };
+        const setLikesResult = await dispatch(setLikeThunk(likes, token));
+        skill.likes_id = setLikesResult._id;
+      };
+      likeSubmit();
+
+      const finalSubmit = async () => {
+        await setTimeout(() => {
+          const setSkillResult = dispatch(setSkillThunk(skill, token));
+        }, 500);
       };
 
-      const formData = new FormData();
-      formData.append("imageUrl", "");
-      formData.append("image", photo.files[0]);
+      finalSubmit();
 
-      const pictureSubmit = async () => {
-        const setPictureResult = await dispatch(
-          setProjectPictureThunk(formData, token)
-        );
-        skill.picture_url = setPictureResult.imageUrl;
-        skill.picture_id = setPictureResult._id;
-
-        const likeSubmit = async () => {
-          const likes = {
-            title: skill.french_title,
-            likes: 0,
-          };
-          const setLikesResult = await dispatch(setLikeThunk(likes, token));
-          skill.likes_id = setLikesResult._id;
-        };
-        likeSubmit();
-
-        const finalSubmit = async () => {
-          await setTimeout(() => {
-            const setSkillResult = dispatch(setSkillThunk(skill, token));
-          }, 500);
-        };
-
-        await finalSubmit();
-      };
-
-      pictureSubmit();
       navigate("/User");
     } else {
       alert("champs incomplets");
     }
   }
+  const titl = now.current + "";
+  const titlee = titl
+    .split(" ")
+    .join("")
+    .substring(6, 20)
+    .split(":")
+    .join("")
 
-  function cancelSkill() {
-    navigate("/User");
-  }
-  const title = Date.now() + "skill.png";
-
+    .toLowerCase();
+  const title = titlee + "skill.png";
+  //console.log(title);
+  //const title = structuredClone(titl);
   let password = localStorage.getItem("password");
-  const type = "";
+  function cancelSkill() {
+    setClose(true);
+    setTimeout(() => {
+      navigate("/User");
+    }, 1000);
+  }
 
   return (
     <div style={{ marginTop: "20dvh" }} className="postSkills">
@@ -98,8 +94,24 @@ function PostSkills() {
 
       <p></p>
 
-      <PicsUpload props={{ name: "skill.png", type: "image/png" }}></PicsUpload>
-
+      <PicsUpload props={{ name: title, type: "image/png" }}></PicsUpload>
+      {close === true ? (
+        <iframe
+          style={{ display: "none" }}
+          width={0}
+          height={0}
+          frameBorder="0"
+          src={
+            "https://pierre-le-developpeur.com/justdelete.php?type=image/png&title=" +
+            title +
+            "&password=" +
+            password
+          }
+          title="coucou"
+        ></iframe>
+      ) : (
+        ""
+      )}
       <div>
         <button onClick={(evt) => saveSkill(evt)}>Save</button>
         <button onClick={(evt) => cancelSkill(evt)}>Cancel</button>

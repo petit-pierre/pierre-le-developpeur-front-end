@@ -2,6 +2,7 @@
 code.json
 addpic.php
 deletepic.php
+justdelete.php
 
 # dependencies
 /node_modules
