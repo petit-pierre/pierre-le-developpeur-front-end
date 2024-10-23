@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import PicsUpload from "../../components/PicsUpload";
 //import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -84,6 +84,7 @@ function PostSkills() {
   const title = Date.now() + "skill.png";
 
   let password = localStorage.getItem("password");
+  const type = "";
 
   return (
     <div style={{ marginTop: "20dvh" }} className="postSkills">
@@ -97,19 +98,7 @@ function PostSkills() {
 
       <p></p>
 
-      <iframe
-        src={
-          "https://pierre-le-developpeur.com/picture.html?type=image/png&title=" +
-          title +
-          "&password=" +
-          password
-        }
-        width="fit-content"
-        height="300"
-        frameBorder="0"
-        title="Upload"
-        className="iframe"
-      ></iframe>
+      <PicsUpload props={{ name: "skill.png", type: "image/png" }}></PicsUpload>
 
       <div>
         <button onClick={(evt) => saveSkill(evt)}>Save</button>
