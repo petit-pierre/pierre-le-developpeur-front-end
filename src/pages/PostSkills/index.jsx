@@ -38,7 +38,7 @@ function PostSkills() {
         picture_id: title,
         link: link.current.value,
       };
-      console.log(skill);
+      //console.log(skill);
       const likeSubmit = async () => {
         const likes = {
           title: skill.french_title,
@@ -77,6 +77,7 @@ function PostSkills() {
   let password = localStorage.getItem("password");
   function cancelSkill() {
     setClose(true);
+    console.log(link.current.value);
     setTimeout(() => {
       navigate("/User");
     }, 1000);
@@ -89,7 +90,7 @@ function PostSkills() {
       <p>title in english :</p>
       <input type="text" ref={englishTitle}></input>
       <p>link to certificate (optional) :</p>
-      <input type="text" ref={link}></input>
+      <input type="text" ref={link} defaultValue={"none"}></input>
       <p>picture :</p>
 
       <p></p>
@@ -107,7 +108,7 @@ function PostSkills() {
             "&password=" +
             password
           }
-          title="coucou"
+          title="delete picture"
         ></iframe>
       ) : (
         ""
