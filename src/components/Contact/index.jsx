@@ -164,14 +164,14 @@ function Contact({ props }) {
               language === "FR" ? (
                 <div className="p">
                   <Typewrite
-                    props={{ text: contact.french.content }}
+                    props={{ text: contact.french.contact }}
                   ></Typewrite>
                 </div>
               ) : (
                 <div className="p">
                   <div>
                     <Typewrite
-                      props={{ text: contact.english.content }}
+                      props={{ text: contact.english.contact }}
                     ></Typewrite>
                   </div>
                 </div>

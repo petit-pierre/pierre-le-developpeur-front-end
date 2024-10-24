@@ -57,25 +57,25 @@ function UpdateInfo() {
     const translation = {
       english: {
         placeholder_mail: english_placeholder_mail.current.value,
-        placeholder_content: english_placeholder_content.current.value,
-        content: english_content.current.value,
+        skills: english_placeholder_content.current.value,
+        contact: english_content.current.value,
         button: english_button.current.value,
         error_mail: english_error_mail.current.value,
         error_content: english_error_content.current.value,
         succes: english_succes.current.value,
-        recommendation: english_recommendation.current.value,
+        recommendation: [english_recommendation.current.value],
         cv: translations.english.cv,
         cv_id: translations.english.cv_id,
       },
       french: {
         placeholder_mail: french_placeholder_mail.current.value,
-        placeholder_content: french_placeholder_content.current.value,
-        content: french_content.current.value,
+        skills: french_placeholder_content.current.value,
+        contact: french_content.current.value,
         button: french_button.current.value,
         error_mail: french_error_mail.current.value,
         error_content: french_error_content.current.value,
         succes: french_succes.current.value,
-        recommendation: french_recommendation.current.value,
+        recommendation: [french_recommendation.current.value],
         cv: translations.french.cv,
         cv_id: translations.french.cv_id,
       },
@@ -137,6 +137,18 @@ function UpdateInfo() {
       <div>
         <h1>Info</h1>
         <fieldset>
+          <p>Skills in french :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.french.placeholder_content}
+            ref={french_placeholder_content}
+          ></textarea>
+          <p>Skills in english :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.english.placeholder_content}
+            ref={english_placeholder_content}
+          ></textarea>
           <p>CV in french :</p>
           <embed
             src={translations.french.cv}
@@ -164,6 +176,18 @@ function UpdateInfo() {
           ></input>
         </fieldset>
         <fieldset>
+          <p>Contact in french :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.french.content}
+            ref={french_content}
+          ></textarea>
+          <p>Contact in english :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.english.content}
+            ref={english_content}
+          ></textarea>
           <p>Placeholder for mail in french :</p>
           <textarea
             ref={french_placeholder_mail}
@@ -175,30 +199,7 @@ function UpdateInfo() {
             defaultValue={translations.english.placeholder_mail}
             type="text"
           ></textarea>
-          <p>Placeholder for message in french :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.french.placeholder_content}
-            ref={french_placeholder_content}
-          ></textarea>
-          <p>Placeholder for message in english :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.english.placeholder_content}
-            ref={english_placeholder_content}
-          ></textarea>
-          <p>Content in french :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.french.content}
-            ref={french_content}
-          ></textarea>
-          <p>Content in english :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.english.content}
-            ref={english_content}
-          ></textarea>
+
           <p>Button in french :</p>
           <textarea
             type="text"

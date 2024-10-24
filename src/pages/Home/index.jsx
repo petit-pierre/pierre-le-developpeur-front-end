@@ -143,8 +143,8 @@ function Home() {
               <div className="contentSkills">
                 <AreaForText
                   props={{
-                    french: translations.french.placeholder_content,
-                    english: translations.english.placeholder_content,
+                    french: translations.french.skills,
+                    english: translations.english.skills,
                     likes: null,
                     links: null,
                     edit: false,
