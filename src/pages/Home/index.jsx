@@ -117,14 +117,16 @@ function Home() {
               <div className="recoTxt">
                 <AreaForText
                   props={{
-                    french: translations.french.recommendation[0],
-                    english: translations.english.recommendation[0],
+                    french: translations.french.recommendation[0].content,
+                    english: translations.english.recommendation[0].content,
                     likes: null,
                     links: null,
                     edit: false,
                     style: "empty",
                     id: "home02",
                     sign: true,
+                    author: translations.french.recommendation[0].author,
+                    authorLink: translations.french.recommendation[0].link,
                   }}
                 ></AreaForText>
               </div>

@@ -83,12 +83,9 @@ function AreaForText({ props, content }) {
             ""
           )}
           {props.sign === true ? (
-            <a
-              href="https://www.linkedin.com/in/stephane-fassetta-748aa8129/"
-              target="blank"
-            >
+            <a href={props.authorLink} target="blank">
               <p className={language === "FR" ? "sign" : "sign"}>
-                Fassetta Stéphane.
+                {props.author}
               </p>
             </a>
           ) : (

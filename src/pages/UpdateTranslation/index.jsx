@@ -24,6 +24,10 @@ function UpdateInfo() {
   const english_succes = useRef();
   const french_recommendation = useRef();
   const english_recommendation = useRef();
+  const french_author = useRef();
+  const english_author = useRef();
+  const french_link = useRef();
+  const english_link = useRef();
 
   const token = useSelector((state) => state.data.token);
   const reduxTranslation = useSelector((state) => state.data.translations);
@@ -63,7 +67,13 @@ function UpdateInfo() {
         error_mail: english_error_mail.current.value,
         error_content: english_error_content.current.value,
         succes: english_succes.current.value,
-        recommendation: [english_recommendation.current.value],
+        recommendation: [
+          {
+            content: english_recommendation.current.value,
+            author: english_author.current.value,
+            link: english_link.current.value,
+          },
+        ],
         cv: translations.english.cv,
         cv_id: translations.english.cv_id,
       },
@@ -75,7 +85,13 @@ function UpdateInfo() {
         error_mail: french_error_mail.current.value,
         error_content: french_error_content.current.value,
         succes: french_succes.current.value,
-        recommendation: [french_recommendation.current.value],
+        recommendation: [
+          {
+            content: french_recommendation.current.value,
+            author: french_author.current.value,
+            link: french_link.current.value,
+          },
+        ],
         cv: translations.french.cv,
         cv_id: translations.french.cv_id,
       },
@@ -255,14 +271,38 @@ function UpdateInfo() {
           <p>Recommendation in french :</p>
           <textarea
             type="text"
-            defaultValue={translations.french.recommendation[0]}
+            defaultValue={translations.french.recommendation[0].content}
             ref={french_recommendation}
+          ></textarea>
+          <p>Author :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.french.recommendation[0].author}
+            ref={french_author}
+          ></textarea>
+          <p>Link :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.french.recommendation[0].link}
+            ref={french_link}
           ></textarea>
           <p>Recommendation in english :</p>
           <textarea
             type="text"
-            defaultValue={translations.english.recommendation[0]}
+            defaultValue={translations.english.recommendation[0].content}
             ref={english_recommendation}
+          ></textarea>
+          <p>Author :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.english.recommendation[0].author}
+            ref={english_author}
+          ></textarea>
+          <p>Link :</p>
+          <textarea
+            type="text"
+            defaultValue={translations.english.recommendation[0].link}
+            ref={english_link}
           ></textarea>
         </fieldset>
         <p></p>
