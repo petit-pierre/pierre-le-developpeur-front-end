@@ -1,13 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
-import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setLikeThunk,
-  setProjectPictureThunk,
-  setToolThunk,
-} from "../../thunkActionsCreator";
+import { setLikeThunk, setToolThunk } from "../../thunkActionsCreator";
+import PicsUpload from "../../components/PicsUpload";
 
 function PostTools() {
   const Title = useRef();
@@ -21,7 +16,24 @@ function PostTools() {
 
   const navigate = useNavigate();
 
+  const now = useRef(new Date());
+  const link = useRef();
+
+  const [close, setClose] = useState(false);
+
   const token = useSelector((state) => state.data.token);
+
+  const titl = now.current + "";
+  const titlee = titl
+    .split(" ")
+    .join("")
+    .substring(6, 20)
+    .split(":")
+    .join("")
+    .toLowerCase();
+  const title = titlee + "tool.png";
+  let password = localStorage.getItem("password");
+
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
   }
@@ -38,40 +50,30 @@ function PostTools() {
     const tool = {
       title: Title.current.value,
       categorie: selectedCategory,
+      picture_url: "https://pierre-le-developpeur.com/assets/images/" + title,
+      picture_id: title,
+      link: link.current.value,
     };
-    let photo = document.querySelector(".Picture");
-    if (Title.current.value && selectedCategory && photo.files[0] !== "") {
-      const formData = new FormData();
-      formData.append("imageUrl", "");
-      formData.append("image", photo.files[0]);
 
-      const pictureSubmit = async () => {
-        const setPictureResult = await dispatch(
-          setProjectPictureThunk(formData, token)
-        );
-        tool.picture_url = setPictureResult.imageUrl;
-        tool.picture_id = setPictureResult._id;
-
-        const likeSubmit = async () => {
-          const likes = {
-            title: tool.title,
-            likes: 0,
-          };
-          const setLikesResult = await dispatch(setLikeThunk(likes, token));
-          tool.likes_id = setLikesResult._id;
+    if (Title.current.value && selectedCategory !== "") {
+      const likeSubmit = async () => {
+        const likes = {
+          title: tool.title,
+          likes: 0,
         };
-        likeSubmit();
+        const setLikesResult = await dispatch(setLikeThunk(likes, token));
+        tool.likes_id = setLikesResult._id;
+      };
+      likeSubmit();
 
-        const finalSubmit = async () => {
-          await setTimeout(() => {
-            const setToolResult = dispatch(setToolThunk(tool, token));
-          }, 500);
-        };
-
-        await finalSubmit();
+      const finalSubmit = async () => {
+        await setTimeout(() => {
+          const setToolResult = dispatch(setToolThunk(tool, token));
+        }, 500);
       };
 
-      pictureSubmit();
+      finalSubmit();
+
       navigate("/User");
     } else {
       alert("champs incomplets");
@@ -79,7 +81,10 @@ function PostTools() {
   }
 
   function cancelSkill() {
-    navigate("/User");
+    setClose(true);
+    setTimeout(() => {
+      navigate("/User");
+    }, 1000);
   }
   return (
     <div style={{ "margin-top": "20dvh" }}>
@@ -97,14 +102,29 @@ function PostTools() {
           <label htmlFor="React">{cat.name}</label>
         </div>
       ))}
+      <p>link to certificate (optional) :</p>
+      <input type="text" ref={link} defaultValue={"none"}></input>
       <p>picture :</p>
-      <input
-        type="file"
-        className="Picture"
-        name="Picture"
-        accept="image/png"
-      ></input>
+
       <p></p>
+      <PicsUpload props={{ name: title, type: "image/png" }}></PicsUpload>
+      {close === true ? (
+        <iframe
+          style={{ display: "none" }}
+          width={0}
+          height={0}
+          frameBorder="0"
+          src={
+            "https://pierre-le-developpeur.com/justdelete.php?type=image/png&title=" +
+            title +
+            "&password=" +
+            password
+          }
+          title="delete picture"
+        ></iframe>
+      ) : (
+        ""
+      )}
       <div>
         <button onClick={(evt) => saveSkill(evt)}>Save</button>
         <button onClick={(evt) => cancelSkill(evt)}>Cancel</button>

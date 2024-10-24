@@ -1,13 +1,8 @@
 import { useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import PicsUpload from "../../components/PicsUpload";
-//import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setLikeThunk,
-  setProjectPictureThunk,
-  setSkillThunk,
-} from "../../thunkActionsCreator";
+import { setLikeThunk, setSkillThunk } from "../../thunkActionsCreator";
 
 function PostSkills() {
   const frenchTitle = useRef();
@@ -22,8 +17,6 @@ function PostSkills() {
   const navigate = useNavigate();
 
   const token = useSelector((state) => state.data.token);
-  //let translations = useSelector((state) => state.data.translations);
-  //let translation = structuredClone(translations);
 
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
@@ -38,7 +31,6 @@ function PostSkills() {
         picture_id: title,
         link: link.current.value,
       };
-      //console.log(skill);
       const likeSubmit = async () => {
         const likes = {
           title: skill.french_title,
@@ -69,15 +61,11 @@ function PostSkills() {
     .substring(6, 20)
     .split(":")
     .join("")
-
     .toLowerCase();
   const title = titlee + "skill.png";
-  //console.log(title);
-  //const title = structuredClone(titl);
   let password = localStorage.getItem("password");
   function cancelSkill() {
     setClose(true);
-    console.log(link.current.value);
     setTimeout(() => {
       navigate("/User");
     }, 1000);

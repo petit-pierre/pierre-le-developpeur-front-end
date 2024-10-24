@@ -1,10 +1,6 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteLikesThunk,
-  deletePictureThunk,
-  deleteSkillThunk,
-} from "../../thunkActionsCreator";
+import { deleteLikesThunk, deleteSkillThunk } from "../../thunkActionsCreator";
 import { useState } from "react";
 
 function DeleteSkill() {
@@ -16,16 +12,13 @@ function DeleteSkill() {
   const skill = skills.find((skill) => skill._id === skillId);
   const token = useSelector((state) => state.data.token);
 
-  //const translationId = project.translation;
-
   const [close, setClose] = useState(false);
-
-  //const title = skill.picture_url.substring(48);
-  let password = localStorage.getItem("password");
 
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
   }
+
+  let password = localStorage.getItem("password");
 
   function goBack() {
     navigate("/User");

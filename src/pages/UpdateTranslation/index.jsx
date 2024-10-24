@@ -6,7 +6,6 @@ import {
   putTranslationThunk,
   setProjectPictureThunk,
 } from "../../thunkActionsCreator";
-import Header from "../../components/Header";
 
 function UpdateInfo() {
   const french_placeholder_mail = useRef();
@@ -33,7 +32,7 @@ function UpdateInfo() {
 
   const navigate = useNavigate();
 
-  function projectChange(evt) {
+  function undo(evt) {
     evt.preventDefault();
     navigate("/User");
   }
@@ -130,10 +129,6 @@ function UpdateInfo() {
       Submit();
     }
 
-    /*if (englishCv.files[0] && frenchCv.files[0] === undefined) {
-      console.log(frenchCv.files[0]);
-      Submit();
-    }*/
     navigate("/User");
   }
 
@@ -268,7 +263,7 @@ function UpdateInfo() {
           ></textarea>
         </fieldset>
         <p></p>
-        <button onClick={(evt) => projectChange(evt)}>Cancel</button>
+        <button onClick={(evt) => undo(evt)}>Cancel</button>
         <button onClick={(evt) => saveInfo(evt)}>Save</button>
       </div>
     </main>
