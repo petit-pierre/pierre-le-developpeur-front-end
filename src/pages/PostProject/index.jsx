@@ -112,8 +112,25 @@ function PostProject() {
   }
 
   function saveProject(evt) {
+    //ajouter validation de tout les champs!!!!
     evt.preventDefault();
-    if (frenchProjectTitle.current.value !== "") {
+    const projectCategories = document.querySelectorAll(".Categories");
+    let category = "";
+    for (let projectCategory of projectCategories) {
+      if (projectCategory.checked === true) {
+        category = projectCategory.value;
+      }
+    }
+    if (
+      frenchProjectTitle.current.value &&
+      englishProjectTitle.current.value &&
+      category &&
+      date.current.value &&
+      englishDescription.current.value &&
+      frenchDescription.current.value &&
+      frenchResum.current.value &&
+      englishResum.current.value !== ""
+    ) {
       const projectTool = document.querySelectorAll(".Tools");
       const projectTools = [];
       for (let tool of projectTool) {
@@ -128,11 +145,15 @@ function PostProject() {
           projectSkills.push({ id: skill.value, name: skill.name });
         }
       }
-      const projectCategories = document.querySelectorAll(".Categories");
-      let category = "";
-      for (let projectCategory of projectCategories) {
-        if (projectCategory.checked === true) {
-          category = projectCategory.value;
+
+      setPicToDelete(slideToDellette);
+      //console.log(picToDelete);
+      if (picsToDelete !== null) {
+        setClose(true);
+      }
+      for (let slid of sliders) {
+        if (slid.newPicture === true) {
+          delete slid._id;
         }
       }
 
@@ -195,79 +216,34 @@ function PostProject() {
         likeContentSubmit();
       }
 
-      for (let i = 0; i < sliders.length; i++) {
-        const formData = new FormData();
-        if (
-          newProject.sliders[i].newPicture === true ||
-          newProject.sliders[i].alt !== "Video"
-        ) {
-          formData.append("imageUrl", "");
-          formData.append("image", sliders[i].picture);
-        } //else{}
-
-        const sliderSubmit = async () => {
-          if (newProject.sliders[i].alt === "Video") {
-            //newProject.sliders[i].picture = sliderVideo.current.value;
-            delete newProject.sliders[i].temporaryUrl;
-            delete newProject.sliders[i].newPicture;
-            if (newProject.sliders[i].picture_id !== "none") {
-              newProject.sliders[i].picture_id = "none";
-            }
-          }
-          if (
-            newProject.sliders[i].newPicture === true &&
-            newProject.sliders[i].alt !== "Video"
-          ) {
-            const setProjectPictureResult = await dispatch(
-              setProjectPictureThunk(formData, token)
-            );
-            newProject.sliders[i].picture =
-              await setProjectPictureResult.imageUrl;
-            newProject.sliders[i].picture_id =
-              await setProjectPictureResult._id;
-            delete newProject.sliders[i].temporaryUrl;
-            delete newProject.sliders[i].newPicture;
-          }
-          const finalSubmit = async () => {
-            await setTimeout(() => {
-              if (project === "newOne") {
-                const setProjectResult = dispatch(
-                  setProjectThunk(newProject, token)
-                );
-              } else {
-                const id = projectId;
-                const putProjectResult = dispatch(
-                  putProjectThunk(newProject, token, id)
-                );
-              }
-            }, 1000);
-          };
-          if (i === links.length - 1) {
-            for (let picToD of slideToDellette) {
-              const id = picToD;
-              const deletePicture = async () => {
-                const deletePictureResult = await dispatch(
-                  deletePictureThunk(id, token)
-                );
-              };
-              deletePicture();
-            }
-            //console.log(newProject.sliders);
-            await finalSubmit();
-          }
-        };
-
+      const finalSubmit = async () => {
         setTimeout(() => {
-          sliderSubmit();
-        }, 500);
+          if (project === "newOne") {
+            const setProjectResult = dispatch(
+              setProjectThunk(newProject, token)
+            );
+          } else {
+            const id = projectId;
+            const putProjectResult = dispatch(
+              putProjectThunk(newProject, token, id)
+            );
+          }
+        }, 1000);
+      };
+
+      finalSubmit();
+      setTimeout(() => {
         navigate("/User");
-      }
+      }, 1000);
+    } else {
+      alert("champs incomplets");
     }
   }
   function RemoveSlide(evt, projectSlide) {
     evt.preventDefault();
     if (projectSlide.newPicture === true) {
-      slideToDellette.push(projectSlide.picture_id);
+      let tempObj = { name: "slide" + projectSlide.picture_id + ".webp" };
+      slideToDellette.push(tempObj);
       setSlideToDellette(slideToDellette);
     }
 
@@ -275,7 +251,6 @@ function PostProject() {
     const index = sliders.findIndex((slideIndex) => slideIndex === found);
     sliders.splice(index, 1);
     setSliders(sliders);
-    //console.log(links);
     set(evt);
   }
   function ProjectSliderUpdate(evt) {
@@ -316,13 +291,14 @@ function PostProject() {
         //const videoUrl = sliderVideo.current.value.substring(32);
         let slider = {
           picture: videoUrl,
+          picture_id: videoUrl,
           temporaryUrl: videoUrl,
           newPicture: false,
           //alt: sliderAlt.current.value,
           alt: SliderType,
           french_content: frenchSliderContent.current.value,
           english_content: englishSliderContent.current.value,
-          _id: title,
+          //_id: title,
         };
         sliders.push(slider);
         setSliders(sliders);
@@ -349,6 +325,7 @@ function PostProject() {
             title +
             ".webp",
           //temporaryUrl: URL.createObjectURL(photo.files[0]),
+          picture_id: title,
           newPicture: true,
           name: "slide" + title + ".webp",
           //alt: sliderAlt.current.value,
@@ -424,14 +401,14 @@ function PostProject() {
         picsToDelete.push(slide);
       }
     }
-    //console.log(picsToDelete[0].name);
+
     setPicToDelete(picsToDelete);
     if (picsToDelete !== null) {
       setClose(true);
-      setTimeout(() => {
-        navigate("/User");
-      }, 1000);
     }
+    setTimeout(() => {
+      navigate("/User");
+    }, 1000);
   }
 
   if (project === undefined) {
@@ -739,20 +716,13 @@ function PostProject() {
                 </div>
               ) : (
                 <div>
+                  <p>slider picture : </p>
                   <PicsUpload
                     props={{
                       name: "slide" + title + ".webp",
                       type: "image/webp",
                     }}
                   ></PicsUpload>
-
-                  <p>slider picture : </p>
-                  <input
-                    type="file"
-                    className="sliderPicture"
-                    name="sliderPicture"
-                    accept="image/png, image/jpeg,image/webp"
-                  />
                 </div>
               )}
 
