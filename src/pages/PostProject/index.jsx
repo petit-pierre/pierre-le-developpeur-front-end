@@ -12,6 +12,9 @@ import "./postProject.css";
 import PicsUpload from "../../components/PicsUpload";
 
 function PostProject() {
+  const [close, setClose] = useState(false);
+  const [picToDelete, setPicToDelete] = useState([]);
+  let picsToDelete = [];
   let project = "newOne";
   let { projectId } = useParams();
   //console.log(projectId);
@@ -27,7 +30,7 @@ function PostProject() {
     .toLowerCase();
 
   let password = localStorage.getItem("password");
-  console.log(title);
+  //console.log(title);
 
   if (projectId !== "newOne") {
     project = projects.find((projects) => projects._id === projectId);
@@ -277,7 +280,7 @@ function PostProject() {
   }
   function ProjectSliderUpdate(evt) {
     evt.preventDefault();
-    setNow(new Date());
+
     //console.log(now);
     if (frenchSliderContent.current.value === "") {
       frenchSliderContent.current.value = "nothing";
@@ -297,7 +300,7 @@ function PostProject() {
     if (TextPicture.checked === true) {
       SliderType = "TextPicture";
     }
-    let photo = document.querySelector(".sliderPicture");
+    //let photo = document.querySelector(".sliderPicture");
     if (Video.checked === true) {
       SliderType = "Video";
       if (
@@ -319,6 +322,7 @@ function PostProject() {
           alt: SliderType,
           french_content: frenchSliderContent.current.value,
           english_content: englishSliderContent.current.value,
+          _id: title,
         };
         sliders.push(slider);
         setSliders(sliders);
@@ -333,34 +337,39 @@ function PostProject() {
       }
     } else {
       if (
-        photo.files[0] &&
+        //photo.files[0] &&
         //frenchSliderContent.current.value &&
         //englishSliderContent.current.value &&
         SliderType !== null
         //sliderAlt.current.value !== ""
       ) {
         let slider = {
-          picture: photo.files[0],
-          temporaryUrl: URL.createObjectURL(photo.files[0]),
+          picture:
+            "https://pierre-le-developpeur.com/assets/images/slide" +
+            title +
+            ".webp",
+          //temporaryUrl: URL.createObjectURL(photo.files[0]),
           newPicture: true,
+          name: "slide" + title + ".webp",
           //alt: sliderAlt.current.value,
           alt: SliderType,
           french_content: frenchSliderContent.current.value,
-
+          _id: title,
           english_content: englishSliderContent.current.value,
         };
         sliders.push(slider);
         setSliders(sliders);
-        alert("slide ajouté : " + photo.files[0].name);
+        alert("slide ajouté : " + title);
         set(evt);
         SliderType = null;
         frenchSliderContent.current.value = "";
         englishSliderContent.current.value = "";
-        photo.value = "";
+        //photo.value = "";
       } else {
         alert("champs incomplets");
       }
     }
+    setNow(new Date());
   }
   function set(evt) {
     evt.preventDefault();
@@ -406,8 +415,23 @@ function PostProject() {
     set(evt);
   }
 
-  function cancelProject() {
-    navigate("/User");
+  function cancelProject(evt) {
+    evt.preventDefault();
+    //console.log(sliders);
+
+    for (let slide of sliders) {
+      if (slide.newPicture === true) {
+        picsToDelete.push(slide);
+      }
+    }
+    //console.log(picsToDelete[0].name);
+    setPicToDelete(picsToDelete);
+    if (picsToDelete !== null) {
+      setClose(true);
+      setTimeout(() => {
+        navigate("/User");
+      }, 1000);
+    }
   }
 
   if (project === undefined) {
@@ -637,11 +661,7 @@ function PostProject() {
                   ></iframe>
                 ) : (
                   <img
-                    src={
-                      projectSlide.newPicture === true
-                        ? projectSlide.temporaryUrl
-                        : projectSlide.picture
-                    }
+                    src={projectSlide.picture}
                     alt={projectSlide.alt}
                     className="sliderPictureShow"
                   ></img>
@@ -725,6 +745,7 @@ function PostProject() {
                       type: "image/webp",
                     }}
                   ></PicsUpload>
+
                   <p>slider picture : </p>
                   <input
                     type="file"
@@ -944,6 +965,25 @@ function PostProject() {
           <button onClick={(evt) => cancelProject(evt)}>Cancel</button>
         </form>
       </fieldset>
+      {picToDelete.map((pic) =>
+        close === true ? (
+          <iframe
+            style={{ display: "none" }}
+            width={0}
+            height={0}
+            frameBorder="0"
+            src={
+              "https://pierre-le-developpeur.com/justdelete.php?type=image/png&title=" +
+              pic.name +
+              "&password=" +
+              password
+            }
+            title="delete picture"
+          ></iframe>
+        ) : (
+          ""
+        )
+      )}
     </div>
   );
 }
