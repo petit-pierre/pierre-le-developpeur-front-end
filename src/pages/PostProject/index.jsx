@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deletePictureThunk,
   putProjectThunk,
   setLikeThunk,
-  setProjectPictureThunk,
   setProjectThunk,
 } from "../../thunkActionsCreator";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -36,12 +34,13 @@ function PostProject() {
     project = projects.find((projects) => projects._id === projectId);
   }
   const previousLikes = useSelector((state) => state.data.likes);
-  //let sliders = [];
-  //let links = [];
+
   const [sliders, setSliders] = useState([]);
+  const [details, setDetails] = useState([]);
   const [links, setLinks] = useState([]);
   const [truc, setTruc] = useState(0);
   const [video, setVideo] = useState(false);
+  const [videoDetails, setVideoDetails] = useState(false);
   //let slideToDellette = [];
   const [slideToDellette, setSlideToDellette] = useState([]);
   //let Sliders = [];
@@ -55,6 +54,7 @@ function PostProject() {
     if (projectId !== "newOne") {
       setLinks(links.concat(project.links));
       setSliders(sliders.concat(project.sliders));
+      setDetails(details.concat(project.details));
     }
   }, []);
 
@@ -99,9 +99,12 @@ function PostProject() {
   const linkUrl = useRef();
   const frenchSliderContent = useRef();
   const englishSliderContent = useRef();
+  const frenchDetailsContent = useRef();
+  const englishDetailsContent = useRef();
   const frenchResum = useRef();
   const englishResum = useRef();
   const sliderVideo = useRef();
+  const detailsVideo = useRef();
 
   const dispatch = useDispatch();
 
@@ -147,11 +150,15 @@ function PostProject() {
       }
 
       setPicToDelete(slideToDellette);
-      //console.log(picToDelete);
       if (picsToDelete !== null) {
         setClose(true);
       }
       for (let slid of sliders) {
+        if (slid.newPicture === true) {
+          delete slid._id;
+        }
+      }
+      for (let slid of details) {
         if (slid.newPicture === true) {
           delete slid._id;
         }
@@ -170,7 +177,7 @@ function PostProject() {
         english_resum: englishResum.current.value,
         links: links,
         sliders: sliders,
-        details: [],
+        details: details,
         skills: projectSkills,
       };
 
@@ -253,10 +260,24 @@ function PostProject() {
     setSliders(sliders);
     set(evt);
   }
+
+  function RemoveDetails(evt, projectSlide) {
+    evt.preventDefault();
+    if (projectSlide.newPicture === true) {
+      let tempObj = { name: "details" + projectSlide.picture_id + ".png" };
+      slideToDellette.push(tempObj);
+      setSlideToDellette(slideToDellette);
+    }
+
+    const found = details.find((sli) => sli === projectSlide);
+    const index = details.findIndex((slideIndex) => slideIndex === found);
+    details.splice(index, 1);
+    setDetails(details);
+    set(evt);
+  }
+
   function ProjectSliderUpdate(evt) {
     evt.preventDefault();
-
-    //console.log(now);
     if (frenchSliderContent.current.value === "") {
       frenchSliderContent.current.value = "nothing";
     }
@@ -302,7 +323,7 @@ function PostProject() {
         };
         sliders.push(slider);
         setSliders(sliders);
-        alert("slide ajouté : ");
+        alert("video ajouté");
         set(evt);
         SliderType = null;
         frenchSliderContent.current.value = "";
@@ -348,6 +369,90 @@ function PostProject() {
     }
     setNow(new Date());
   }
+
+  function ProjectDetailsUpdate(evt) {
+    evt.preventDefault();
+    if (frenchDetailsContent.current.value === "") {
+      frenchDetailsContent.current.value = "nothing";
+    }
+    if (englishDetailsContent.current.value === "") {
+      englishDetailsContent.current.value = "nothing";
+    }
+    //let Slider = document.querySelector(".Slider");
+    let TextPicture = document.querySelector(".detailsPicture");
+
+    let Video = document.querySelector(".detailsVideo");
+    let SliderType = null;
+
+    if (TextPicture.checked === true) {
+      SliderType = "detailsPicture";
+    }
+    //let photo = document.querySelector(".sliderPicture");
+    if (Video.checked === true) {
+      SliderType = "Video";
+      if (
+        detailsVideo.current.value &&
+        //frenchSliderContent.current.value &&
+        //englishSliderContent.current.value &&
+        SliderType !== null
+        //sliderAlt.current.value !== ""
+      ) {
+        const videoUrl = "https://www.youtube.com/embed/".concat(
+          detailsVideo.current.value.substring(32)
+        );
+        //const videoUrl = sliderVideo.current.value.substring(32);
+        let slider = {
+          picture: videoUrl,
+          picture_id: videoUrl,
+          temporaryUrl: videoUrl,
+          newPicture: false,
+          //alt: sliderAlt.current.value,
+          alt: SliderType,
+          french_content: frenchDetailsContent.current.value,
+          english_content: englishDetailsContent.current.value,
+          //_id: title,
+        };
+        details.push(slider);
+        setDetails(details);
+        alert("video ajouté ");
+        set(evt);
+        SliderType = null;
+        frenchDetailsContent.current.value = "";
+        englishDetailsContent.current.value = "";
+        detailsVideo.current.value = "";
+      } else {
+        alert("champs incomplets");
+      }
+    } else {
+      if (SliderType !== null) {
+        let slider = {
+          picture:
+            "https://pierre-le-developpeur.com/assets/images/details" +
+            title +
+            ".png",
+          picture_id: title,
+          newPicture: true,
+          name: "details" + title + ".png",
+          alt: SliderType,
+          french_content: frenchDetailsContent.current.value,
+          _id: title,
+          english_content: englishDetailsContent.current.value,
+        };
+        details.push(slider);
+        setDetails(details);
+        alert("slide ajouté : " + title);
+        set(evt);
+        SliderType = null;
+        frenchDetailsContent.current.value = "";
+        englishDetailsContent.current.value = "";
+        //photo.value = "";
+      } else {
+        alert("champs incomplets");
+      }
+    }
+    setNow(new Date());
+  }
+
   function set(evt) {
     evt.preventDefault();
     setTruc(truc + 1);
@@ -370,12 +475,7 @@ function PostProject() {
       links.push(linkContent);
       setLinks(links);
       set(evt);
-      //console.log(links);
-      //alert("lien ajouté : " + linkContent.url);
-
       linkUrl.current.value = "";
-      //return links.map((li) => <p>{li.url}</p>);
-      //<p>coucou</p>;
     } else {
       alert("champs incomplets");
     }
@@ -388,13 +488,11 @@ function PostProject() {
     const index = links.findIndex((la) => la === found);
     links.splice(index, 1);
     setLinks(links);
-    //console.log(links);
     set(evt);
   }
 
   function cancelProject(evt) {
     evt.preventDefault();
-    //console.log(sliders);
 
     for (let slide of sliders) {
       if (slide.newPicture === true) {
@@ -423,11 +521,18 @@ function PostProject() {
     }
   }
 
+  function detailsType(evt) {
+    if (evt.target.value === "Video") {
+      setVideoDetails(true);
+    } else {
+      setVideoDetails(false);
+    }
+  }
+
   function UpdateSlide(evt, projectSlide) {
     evt.preventDefault();
 
     let mySlide = sliders.find((slide) => slide._id === projectSlide._id);
-    //console.log(sliders.indexOf(mySlide));
     let slideCopy = structuredClone(mySlide);
     slideCopy.french_content = document.querySelector(
       ".updatefr" + projectSlide._id
@@ -441,9 +546,25 @@ function PostProject() {
     alert("slide modifié");
   }
 
+  function UpdateDetails(evt, projectSlide) {
+    evt.preventDefault();
+
+    let mySlide = details.find((slide) => slide._id === projectSlide._id);
+    let slideCopy = structuredClone(mySlide);
+    slideCopy.french_content = document.querySelector(
+      ".updatefr" + projectSlide._id
+    ).value;
+    slideCopy.english_content = document.querySelector(
+      ".updateeng" + projectSlide._id
+    ).value;
+    details[details.indexOf(mySlide)] = slideCopy;
+    //set(evt);
+
+    alert("slide modifié");
+  }
+
   function toTheLeftSlide(evt, projectSlide) {
     evt.preventDefault();
-    //console.log(sliders);
     let mySliders = structuredClone(sliders);
     let mySlide = mySliders.find((slide) => slide._id === projectSlide._id);
     let index = mySliders.indexOf(mySlide);
@@ -469,10 +590,35 @@ function PostProject() {
       setSliders(mySliders);
     }
   }
-  function defr(evt) {
-    //evt.preventDefault();
-    console.log(document.querySelector(".topProject").checked);
+
+  function toTheLeftDetails(evt, projectSlide) {
+    evt.preventDefault();
+    let mySliders = structuredClone(details);
+    let mySlide = mySliders.find((slide) => slide._id === projectSlide._id);
+    let index = mySliders.indexOf(mySlide);
+    if (mySliders.indexOf(mySlide) > 0) {
+      [mySliders[index - 1], mySliders[index]] = [
+        mySliders[index],
+        mySliders[index - 1],
+      ];
+      setDetails(mySliders);
+    }
   }
+
+  function toTheRightDetails(evt, projectSlide) {
+    evt.preventDefault();
+    let mySliders = structuredClone(details);
+    let mySlide = mySliders.find((slide) => slide._id === projectSlide._id);
+    let index = mySliders.indexOf(mySlide);
+    if (mySliders.indexOf(mySlide) < mySliders.length - 1) {
+      [mySliders[index], mySliders[index + 1]] = [
+        mySliders[index + 1],
+        mySliders[index],
+      ];
+      setSliders(mySliders);
+    }
+  }
+
   return (
     <div className="postProject">
       <fieldset>
@@ -480,7 +626,6 @@ function PostProject() {
           type="checkbox"
           name="topProject"
           className="topProject"
-          onChange={(evt) => defr(evt)}
           defaultChecked={project.best === true ? true : false}
         ></input>
         <label for="topProject">⭐Top project ?</label>
@@ -519,8 +664,6 @@ function PostProject() {
             <input
               ref={date}
               type="date"
-              //onfocus={(date.type = "date")}
-              //onblur="(this.type='text')"
               defaultValue={
                 project === null ||
                 project === undefined ||
@@ -735,6 +878,121 @@ function PostProject() {
                 <textarea ref={englishSliderContent} type="text" />
               </div>
               <button onClick={(evt) => ProjectSliderUpdate(evt)}>
+                {" "}
+                add this slide :{" "}
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset className="sliderField">
+            <legend>Details :</legend>
+            {details.map((projectSlide) => (
+              <fieldset className="sliderContainer" key={projectSlide._id}>
+                {projectSlide.alt === "Video" ? (
+                  <iframe
+                    class="video"
+                    width="560"
+                    height="315"
+                    src={projectSlide.picture}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                ) : (
+                  <img
+                    src={projectSlide.picture}
+                    alt={projectSlide.alt}
+                    className="sliderPictureShow"
+                  ></img>
+                )}
+                <h3>{projectSlide.alt} </h3>
+                <textarea
+                  defaultValue={projectSlide.french_content}
+                  className={"updatefr" + projectSlide._id}
+                ></textarea>
+                <textarea
+                  defaultValue={projectSlide.english_content}
+                  className={"updateeng" + projectSlide._id}
+                ></textarea>
+                {details.indexOf(projectSlide) > 0 ? (
+                  <button
+                    onClick={(evt) => toTheLeftDetails(evt, projectSlide)}
+                  >
+                    move left :
+                  </button>
+                ) : (
+                  ""
+                )}
+                {details.indexOf(projectSlide) < details.length - 1 ? (
+                  <button
+                    onClick={(evt) => toTheRightDetails(evt, projectSlide)}
+                  >
+                    move right :
+                  </button>
+                ) : (
+                  ""
+                )}
+                <button onClick={(evt) => UpdateDetails(evt, projectSlide)}>
+                  update this slide :
+                </button>
+                <button onClick={(evt) => RemoveDetails(evt, projectSlide)}>
+                  remove this slide :
+                </button>
+              </fieldset>
+            ))}
+            <div className="sliderAdd">
+              <div>
+                <p>Content or Video : </p>
+                <form className="sliderType">
+                  <input
+                    type="radio"
+                    id="TextPicture"
+                    name="SliderType"
+                    value="TextPicture"
+                    defaultChecked
+                    className="detailsPicture"
+                    onChange={(evt) => detailsType(evt)}
+                  ></input>
+                  <label for="TextPicture">Text&picture</label>
+
+                  <input
+                    type="radio"
+                    id="Video"
+                    name="SliderType"
+                    value="Video"
+                    className="detailsVideo"
+                    onChange={(evt) => detailsType(evt)}
+                  ></input>
+                  <label for="Video">Video</label>
+                </form>
+              </div>
+              {videoDetails === true ? (
+                <div>
+                  <p>Video URL :</p>
+                  <textarea ref={detailsVideo}></textarea>
+                </div>
+              ) : (
+                <div>
+                  <p>slider picture : </p>
+                  <PicsUpload
+                    props={{
+                      name: "details" + title + ".png",
+                      type: "image/png",
+                    }}
+                  ></PicsUpload>
+                </div>
+              )}
+
+              <div>
+                <p>content in french : </p>
+                <textarea ref={frenchDetailsContent} type="text" />
+              </div>
+              <div>
+                <p>content in english : </p>
+                <textarea ref={englishDetailsContent} type="text" />
+              </div>
+              <button onClick={(evt) => ProjectDetailsUpdate(evt)}>
                 {" "}
                 add this slide :{" "}
               </button>
