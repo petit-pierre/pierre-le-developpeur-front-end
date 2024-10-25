@@ -9,12 +9,25 @@ import {
 } from "../../thunkActionsCreator";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import "./postProject.css";
+import PicsUpload from "../../components/PicsUpload";
 
 function PostProject() {
   let project = "newOne";
   let { projectId } = useParams();
   //console.log(projectId);
   const projects = useSelector((state) => state.data.projects);
+  const [now, setNow] = useState(new Date());
+  const titl = now + "";
+  const title = titl
+    .split(" ")
+    .join("")
+    .substring(0, 20)
+    .split(":")
+    .join("")
+    .toLowerCase();
+
+  let password = localStorage.getItem("password");
+  console.log(title);
 
   if (projectId !== "newOne") {
     project = projects.find((projects) => projects._id === projectId);
@@ -121,6 +134,7 @@ function PostProject() {
       }
 
       const newProject = {
+        best: document.querySelector(".topProject").checked,
         french_title: frenchProjectTitle.current.value,
         english_title: englishProjectTitle.current.value,
         category: category,
@@ -132,7 +146,7 @@ function PostProject() {
         english_resum: englishResum.current.value,
         links: links,
         sliders: sliders,
-
+        details: [],
         skills: projectSkills,
       };
 
@@ -263,6 +277,8 @@ function PostProject() {
   }
   function ProjectSliderUpdate(evt) {
     evt.preventDefault();
+    setNow(new Date());
+    //console.log(now);
     if (frenchSliderContent.current.value === "") {
       frenchSliderContent.current.value = "nothing";
     }
@@ -367,6 +383,7 @@ function PostProject() {
 
       links.push(linkContent);
       setLinks(links);
+      set(evt);
       //console.log(links);
       //alert("lien ajouté : " + linkContent.url);
 
@@ -407,6 +424,7 @@ function PostProject() {
 
   function UpdateSlide(evt, projectSlide) {
     evt.preventDefault();
+
     let mySlide = sliders.find((slide) => slide._id === projectSlide._id);
     //console.log(sliders.indexOf(mySlide));
     let slideCopy = structuredClone(mySlide);
@@ -450,10 +468,21 @@ function PostProject() {
       setSliders(mySliders);
     }
   }
-
+  function defr(evt) {
+    //evt.preventDefault();
+    console.log(document.querySelector(".topProject").checked);
+  }
   return (
     <div className="postProject">
       <fieldset>
+        <input
+          type="checkbox"
+          name="topProject"
+          className="topProject"
+          onChange={(evt) => defr(evt)}
+          defaultChecked={project.best === true ? true : false}
+        ></input>
+        <label for="topProject">⭐Top project ?</label>
         <form>
           <h1>Post new project</h1>
           <div>
@@ -690,6 +719,12 @@ function PostProject() {
                 </div>
               ) : (
                 <div>
+                  <PicsUpload
+                    props={{
+                      name: "slide" + title + ".webp",
+                      type: "image/webp",
+                    }}
+                  ></PicsUpload>
                   <p>slider picture : </p>
                   <input
                     type="file"

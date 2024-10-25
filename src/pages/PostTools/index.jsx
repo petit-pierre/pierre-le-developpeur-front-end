@@ -27,7 +27,7 @@ function PostTools() {
   const titlee = titl
     .split(" ")
     .join("")
-    .substring(6, 20)
+    .substring(0, 20)
     .split(":")
     .join("")
     .toLowerCase();
