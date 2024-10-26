@@ -29,15 +29,15 @@ function User() {
         <DeleteProject />
       </fieldset>
       <fieldset>
-        <Link to="/PostSkills">Post new skill</Link>
-      </fieldset>
-      <fieldset>
+        <button>
+          <Link to="/PostSkills/newOne">Post new skill</Link>
+        </button>
         <DeleteSkill />
       </fieldset>
       <fieldset>
-        <Link to="/PostTools">Post new tool</Link>
-      </fieldset>
-      <fieldset>
+        <button>
+          <Link to="/PostTools/newOne">Post new tool</Link>
+        </button>
         <DeleteTool />
       </fieldset>
       <fieldset>

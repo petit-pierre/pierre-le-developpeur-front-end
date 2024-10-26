@@ -1,10 +1,21 @@
 import { useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import PicsUpload from "../../components/PicsUpload";
 import { useDispatch, useSelector } from "react-redux";
-import { setLikeThunk, setSkillThunk } from "../../thunkActionsCreator";
+import {
+  setLikeThunk,
+  setSkillThunk,
+  putSkillThunk,
+} from "../../thunkActionsCreator";
 
 function PostSkills() {
+  let skill = "newOne";
+  let { skillId } = useParams();
+  const skills = useSelector((state) => state.data.skills);
+  if (skillId !== "newOne") {
+    skill = skills.find((sk) => sk._id === skillId);
+  }
+  //console.log(skill);
   const frenchTitle = useRef();
   const englishTitle = useRef();
   const link = useRef();
@@ -21,13 +32,19 @@ function PostSkills() {
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
   }
-  function saveSkill(evt) {
+  function saveSkill(evt, skill) {
+    let pic;
+    if (skill === "newOne") {
+      pic = "https://pierre-le-developpeur.com/assets/images/" + title;
+    } else {
+      pic = skill.picture_url;
+    }
     evt.preventDefault();
     if (frenchTitle.current.value && englishTitle.current.value) {
       const skill = {
         french_title: frenchTitle.current.value,
         english_title: englishTitle.current.value,
-        picture_url: "https://pierre-le-developpeur.com/assets/images/" + title,
+        picture_url: pic,
         picture_id: title,
         link: link.current.value,
       };
@@ -42,9 +59,17 @@ function PostSkills() {
       likeSubmit();
 
       const finalSubmit = async () => {
-        await setTimeout(() => {
-          const setSkillResult = dispatch(setSkillThunk(skill, token));
-        }, 500);
+        if (skill === "newOne") {
+          await setTimeout(() => {
+            const setSkillResult = dispatch(setSkillThunk(skill, token));
+          }, 500);
+        } else {
+          await setTimeout(() => {
+            const setSkillResult = dispatch(
+              putSkillThunk(skill, token, skillId)
+            );
+          }, 500);
+        }
       };
 
       finalSubmit();
@@ -74,35 +99,65 @@ function PostSkills() {
   return (
     <div style={{ marginTop: "20dvh" }} className="postSkills">
       <p>title in french :</p>
-      <input type="text" ref={frenchTitle}></input>
+      <input
+        type="text"
+        ref={frenchTitle}
+        defaultValue={
+          skill === null || skill === undefined || skill === "newOne"
+            ? null
+            : skill.french_title
+        }
+      ></input>
       <p>title in english :</p>
-      <input type="text" ref={englishTitle}></input>
+      <input
+        type="text"
+        ref={englishTitle}
+        defaultValue={
+          skill === null || skill === undefined || skill === "newOne"
+            ? null
+            : skill.english_title
+        }
+      ></input>
       <p>link to certificate (optional) :</p>
-      <input type="text" ref={link} defaultValue={"none"}></input>
+      <input
+        type="text"
+        ref={link}
+        defaultValue={
+          skill === null || skill === undefined || skill === "newOne"
+            ? "none"
+            : skill.link
+        }
+      ></input>
       <p>picture :</p>
 
       <p></p>
-
-      <PicsUpload props={{ name: title, type: "image/png" }}></PicsUpload>
-      {close === true ? (
-        <iframe
-          style={{ display: "none" }}
-          width={0}
-          height={0}
-          frameBorder="0"
-          src={
-            "https://pierre-le-developpeur.com/justdelete.php?type=image/png&title=" +
-            title +
-            "&password=" +
-            password
-          }
-          title="delete picture"
-        ></iframe>
+      {skill === null || skill === undefined || skill === "newOne" ? (
+        <div>
+          <PicsUpload props={{ name: title, type: "image/png" }}></PicsUpload>
+          {close === true ? (
+            <iframe
+              style={{ display: "none" }}
+              width={0}
+              height={0}
+              frameBorder="0"
+              src={
+                "https://pierre-le-developpeur.com/justdelete.php?type=image/png&title=" +
+                title +
+                "&password=" +
+                password
+              }
+              title="delete picture"
+            ></iframe>
+          ) : (
+            ""
+          )}
+        </div>
       ) : (
-        ""
+        <img src={skill.picture_url} alt="logo"></img>
       )}
+
       <div>
-        <button onClick={(evt) => saveSkill(evt)}>Save</button>
+        <button onClick={(evt) => saveSkill(evt, skill)}>Save</button>
         <button onClick={(evt) => cancelSkill(evt)}>Cancel</button>
       </div>
     </div>

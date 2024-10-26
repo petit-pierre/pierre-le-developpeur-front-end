@@ -17,7 +17,7 @@ function DeleteSkill() {
       ) : (
         <div>
           <button className="edit-button" onClick={projectChange}>
-            Delete skill
+            Modifie skill
           </button>
         </div>
       )}
@@ -26,10 +26,23 @@ function DeleteSkill() {
         <div className="projects">
           {skills.map((skill) => (
             <div>
-              <Link to={"Skills/" + skill._id} key={`${skill.id}`}>
-                "Supprimez moi : {skill.french_title}
-              </Link>
-              <p> </p>
+              <span>{skill.french_title} : </span>
+              <button>
+                <Link to={"Skills/" + skill._id} key={`${skill.id}`}>
+                  Supprimez moi :
+                </Link>
+              </button>
+              <span> </span>
+              <button>
+                <Link
+                  to={"../PostSkills/" + skill._id}
+                  key={`project${skill.id}`}
+                >
+                  Modifiez moi :
+                </Link>
+              </button>
+              <br></br>
+              <br></br>
             </div>
           ))}
           <button onClick={projectChange}>Cancel</button>

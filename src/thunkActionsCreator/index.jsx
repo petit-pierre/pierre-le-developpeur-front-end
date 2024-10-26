@@ -300,7 +300,7 @@ export const setSkillThunk = (skill, token) => async (dispatch, getstate) => {
 export const putSkillThunk =
   (skill, token, skillId) => async (dispatch, getstate) => {
     const response = await fetch(
-      "https://api.pierre-le-developpeur.com/api/skills" + skillId,
+      "https://api.pierre-le-developpeur.com/api/skills/" + skillId,
       {
         method: "PUT",
 
@@ -392,7 +392,7 @@ export const setToolThunk = (tool, token) => async (dispatch, getstate) => {
 export const putToolThunk =
   (tool, token, toolId) => async (dispatch, getstate) => {
     const response = await fetch(
-      "https://api.pierre-le-developpeur.com/api/skills" + toolId,
+      "https://api.pierre-le-developpeur.com/api/tools/" + toolId,
       {
         method: "PUT",
 
