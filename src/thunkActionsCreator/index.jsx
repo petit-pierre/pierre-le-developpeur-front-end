@@ -297,6 +297,33 @@ export const setSkillThunk = (skill, token) => async (dispatch, getstate) => {
   return false;
 };
 
+export const putSkillThunk =
+  (skill, token, skillId) => async (dispatch, getstate) => {
+    const response = await fetch(
+      "https://api.pierre-le-developpeur.com/api/skills" + skillId,
+      {
+        method: "PUT",
+
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(skill),
+      }
+    );
+
+    let result = await response.json();
+    const setSkills = async () => {
+      const getSkillsResult = await dispatch(getSkillsThunk());
+    };
+    setSkills();
+    if (response.ok) {
+      return result;
+    }
+    return false;
+  };
+
 export const deleteSkillThunk =
   (skillId, token) => async (dispatch, getstate) => {
     const response = await fetch(
@@ -361,6 +388,33 @@ export const setToolThunk = (tool, token) => async (dispatch, getstate) => {
   }
   return false;
 };
+
+export const putToolThunk =
+  (tool, token, toolId) => async (dispatch, getstate) => {
+    const response = await fetch(
+      "https://api.pierre-le-developpeur.com/api/skills" + toolId,
+      {
+        method: "PUT",
+
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "application/json",
+          "Content-Type": "application/Toolsharset=utf-8",
+        },
+        body: JSON.stringify(tool),
+      }
+    );
+
+    let result = await response.json();
+    const setTools = async () => {
+      const getToolsResult = await dispatch(getToolsThunk());
+    };
+    setTools();
+    if (response.ok) {
+      return result;
+    }
+    return false;
+  };
 
 export const deleteToolThunk =
   (toolId, token) => async (dispatch, getstate) => {
