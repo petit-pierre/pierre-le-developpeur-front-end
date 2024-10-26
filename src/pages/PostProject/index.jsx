@@ -150,7 +150,7 @@ function PostProject() {
       }
 
       setPicToDelete(slideToDellette);
-      if (picsToDelete !== null) {
+      if (picToDelete !== null) {
         setClose(true);
       }
       for (let slid of sliders) {
@@ -248,12 +248,14 @@ function PostProject() {
   }
   function RemoveSlide(evt, projectSlide) {
     evt.preventDefault();
+    let tempObj = { name: projectSlide.picture.substring(48) };
+    slideToDellette.push(tempObj);
+    setSlideToDellette(slideToDellette);
     if (projectSlide.newPicture === true) {
-      let tempObj = { name: "slide" + projectSlide.picture_id + ".webp" };
-      slideToDellette.push(tempObj);
-      setSlideToDellette(slideToDellette);
+      picsToDelete.push(tempObj);
+      setPicToDelete(picsToDelete);
+    } else {
     }
-
     const found = sliders.find((sli) => sli === projectSlide);
     const index = sliders.findIndex((slideIndex) => slideIndex === found);
     sliders.splice(index, 1);
@@ -263,16 +265,20 @@ function PostProject() {
 
   function RemoveDetails(evt, projectSlide) {
     evt.preventDefault();
+    let tempObj = { name: projectSlide.picture.substring(48) };
+    slideToDellette.push(tempObj);
+    setSlideToDellette(slideToDellette);
     if (projectSlide.newPicture === true) {
-      let tempObj = { name: "details" + projectSlide.picture_id + ".png" };
-      slideToDellette.push(tempObj);
-      setSlideToDellette(slideToDellette);
+      picsToDelete.push(tempObj);
+      setPicToDelete(picsToDelete);
+    } else {
     }
 
     const found = details.find((sli) => sli === projectSlide);
     const index = details.findIndex((slideIndex) => slideIndex === found);
     details.splice(index, 1);
     setDetails(details);
+
     set(evt);
   }
 
@@ -493,7 +499,7 @@ function PostProject() {
 
   function cancelProject(evt) {
     evt.preventDefault();
-
+    //picsToDelete = picToDelete;
     for (let slide of sliders) {
       if (slide.newPicture === true) {
         picsToDelete.push(slide);
