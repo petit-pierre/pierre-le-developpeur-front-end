@@ -505,6 +505,12 @@ function PostProject() {
         picsToDelete.push(slide);
       }
     }
+    for (let slide of details) {
+      console.log(slide);
+      if (slide.newPicture === true) {
+        picsToDelete.push(slide);
+      }
+    }
 
     setPicToDelete(picsToDelete);
     if (picsToDelete !== null) {
