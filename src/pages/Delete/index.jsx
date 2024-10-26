@@ -34,6 +34,13 @@ function DeleteProject() {
       picsToDellette.push(slid);
     }
   }
+  for (let slid of project.details) {
+    if (
+      slid.picture.includes("https://pierre-le-developpeur.com/assets/images/")
+    ) {
+      picsToDellette.push(slid);
+    }
+  }
   function deleteProject() {
     setClose(true);
 
