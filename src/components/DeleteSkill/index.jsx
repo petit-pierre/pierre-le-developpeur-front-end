@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function DeleteSkill() {
   const skills = useSelector((state) => state.data.skills);
-  //const translations = useSelector((state) => state.data.translations);
   const [edit, setEdit] = useState(false);
   function projectChange() {
     setEdit(!edit);
@@ -23,7 +22,7 @@ function DeleteSkill() {
       )}
 
       {edit === true ? (
-        <div className="projects">
+        <div className="skills">
           {skills.map((skill) => (
             <div>
               <span>{skill.french_title} : </span>

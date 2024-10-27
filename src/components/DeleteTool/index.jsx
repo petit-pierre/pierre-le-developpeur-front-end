@@ -16,19 +16,32 @@ function DeleteTool() {
       ) : (
         <div>
           <button className="edit-button" onClick={projectChange}>
-            Delete tool
+            Modifie tool
           </button>
         </div>
       )}
 
       {edit === true ? (
-        <div className="projects">
+        <div className="tools">
           {tools.map((tool) => (
             <div>
-              <Link to={"Tools/" + tool._id} key={`${tool._id}`}>
-                "Supprimez moi : {tool.title}
-              </Link>
-              <p> </p>
+              <span>{tool.title} : </span>
+              <button>
+                <Link to={"Tools/" + tool._id} key={`${tool._id}`}>
+                  "Supprimez moi :
+                </Link>
+              </button>
+              <span> </span>
+              <button>
+                <Link
+                  to={"../PostTools/" + tool._id}
+                  key={`project${tool._id}`}
+                >
+                  Modifiez moi :
+                </Link>
+              </button>
+              <br></br>
+              <br></br>
             </div>
           ))}
           <button onClick={projectChange}>Cancel</button>

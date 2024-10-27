@@ -9,13 +9,12 @@ import {
 } from "../../thunkActionsCreator";
 
 function PostSkills() {
-  let skill = "newOne";
+  let currentSkill = "newOne";
   let { skillId } = useParams();
   const skills = useSelector((state) => state.data.skills);
   if (skillId !== "newOne") {
-    skill = skills.find((sk) => sk._id === skillId);
+    currentSkill = skills.find((sk) => sk._id === skillId);
   }
-  //console.log(skill);
   const frenchTitle = useRef();
   const englishTitle = useRef();
   const link = useRef();
@@ -34,10 +33,10 @@ function PostSkills() {
   }
   function saveSkill(evt, skill) {
     let pic;
-    if (skill === "newOne") {
+    if (currentSkill === "newOne") {
       pic = "https://pierre-le-developpeur.com/assets/images/" + title;
     } else {
-      pic = skill.picture_url;
+      pic = currentSkill.picture_url;
     }
     evt.preventDefault();
     if (frenchTitle.current.value && englishTitle.current.value) {
@@ -46,7 +45,7 @@ function PostSkills() {
         english_title: englishTitle.current.value,
         picture_url: pic,
         picture_id: title,
-        link: link.current.value,
+        links: link.current.value,
       };
       const likeSubmit = async () => {
         const likes = {
@@ -56,10 +55,10 @@ function PostSkills() {
         const setLikesResult = await dispatch(setLikeThunk(likes, token));
         skill.likes_id = setLikesResult._id;
       };
-      likeSubmit();
 
       const finalSubmit = async () => {
-        if (skill === "newOne") {
+        if (currentSkill === "newOne") {
+          likeSubmit();
           await setTimeout(() => {
             const setSkillResult = dispatch(setSkillThunk(skill, token));
           }, 500);
@@ -103,9 +102,11 @@ function PostSkills() {
         type="text"
         ref={frenchTitle}
         defaultValue={
-          skill === null || skill === undefined || skill === "newOne"
+          currentSkill === null ||
+          currentSkill === undefined ||
+          currentSkill === "newOne"
             ? null
-            : skill.french_title
+            : currentSkill.french_title
         }
       ></input>
       <p>title in english :</p>
@@ -113,9 +114,11 @@ function PostSkills() {
         type="text"
         ref={englishTitle}
         defaultValue={
-          skill === null || skill === undefined || skill === "newOne"
+          currentSkill === null ||
+          currentSkill === undefined ||
+          currentSkill === "newOne"
             ? null
-            : skill.english_title
+            : currentSkill.english_title
         }
       ></input>
       <p>link to certificate (optional) :</p>
@@ -123,15 +126,19 @@ function PostSkills() {
         type="text"
         ref={link}
         defaultValue={
-          skill === null || skill === undefined || skill === "newOne"
+          currentSkill === null ||
+          currentSkill === undefined ||
+          currentSkill === "newOne"
             ? "none"
-            : skill.link
+            : currentSkill.links
         }
       ></input>
       <p>picture :</p>
 
       <p></p>
-      {skill === null || skill === undefined || skill === "newOne" ? (
+      {currentSkill === null ||
+      currentSkill === undefined ||
+      currentSkill === "newOne" ? (
         <div>
           <PicsUpload props={{ name: title, type: "image/png" }}></PicsUpload>
           {close === true ? (
@@ -153,11 +160,11 @@ function PostSkills() {
           )}
         </div>
       ) : (
-        <img src={skill.picture_url} alt="logo"></img>
+        <img src={currentSkill.picture_url} alt="logo"></img>
       )}
 
       <div>
-        <button onClick={(evt) => saveSkill(evt, skill)}>Save</button>
+        <button onClick={(evt) => saveSkill(evt, currentSkill)}>Save</button>
         <button onClick={(evt) => cancelSkill(evt)}>Cancel</button>
       </div>
     </div>
