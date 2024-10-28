@@ -10,11 +10,13 @@ import PicsUpload from "../../components/PicsUpload";
 
 function PostTools() {
   let currentTool = "newOne";
-  let { toolId } = useParams();
+  let { ToolId } = useParams();
   const tools = useSelector((state) => state.data.tools);
-  if (toolId !== "newOne") {
-    currentTool = tools.find((sk) => sk._id === toolId);
+  if (ToolId !== "newOne") {
+    currentTool = tools.find((sk) => sk._id === ToolId);
   }
+  const token = useSelector((state) => state.data.token);
+  const dispatch = useDispatch();
 
   const Title = useRef();
   const link = useRef();
@@ -24,15 +26,11 @@ function PostTools() {
     { name: "Back-end" },
   ];
 
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const now = useRef(new Date());
 
   const [close, setClose] = useState(false);
-
-  const token = useSelector((state) => state.data.token);
 
   const titl = now.current + "";
   const titlee = titl
@@ -65,16 +63,16 @@ function PostTools() {
         selectedCategory = cat.value;
       }
     }
-    const tool = {
-      title: Title.current.value,
-      categorie: selectedCategory,
-      picture_url: pic,
-      picture_id: title,
-      links: link.current.value,
-    };
 
     if (Title.current.value && selectedCategory !== "") {
-      const likeSubmit = async (tool) => {
+      const tool = {
+        title: Title.current.value,
+        categorie: selectedCategory,
+        picture_url: pic,
+        picture_id: title,
+        links: link.current.value,
+      };
+      const likeSubmit = async () => {
         const likes = {
           title: tool.title,
           likes: 0,
@@ -83,7 +81,7 @@ function PostTools() {
         tool.likes_id = setLikesResult._id;
       };
 
-      const finalSubmit = async (tool) => {
+      const finalSubmit = async () => {
         if (currentTool === "newOne") {
           likeSubmit(tool);
           await setTimeout(() => {
@@ -91,12 +89,12 @@ function PostTools() {
           }, 500);
         } else {
           await setTimeout(() => {
-            const setSkillResult = dispatch(putToolThunk(tool, token, toolId));
+            const setToolResult = dispatch(putToolThunk(tool, token, ToolId));
           }, 500);
         }
       };
-      console.log(tool);
-      finalSubmit(tool);
+      //console.log(currentTool);
+      finalSubmit();
 
       navigate("/User");
     } else {
@@ -169,7 +167,7 @@ function PostTools() {
         <img src={currentTool.picture_url} alt="logo"></img>
       )}
       <div>
-        <button onClick={(evt) => saveTool(evt)}>Save</button>
+        <button onClick={(evt) => saveTool(evt, currentTool)}>Save</button>
         <button onClick={(evt) => cancelTool(evt)}>Cancel</button>
       </div>
     </div>

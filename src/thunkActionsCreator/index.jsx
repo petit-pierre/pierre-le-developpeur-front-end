@@ -390,16 +390,16 @@ export const setToolThunk = (tool, token) => async (dispatch, getstate) => {
 };
 
 export const putToolThunk =
-  (tool, token, toolId) => async (dispatch, getstate) => {
+  (tool, token, ToolId) => async (dispatch, getstate) => {
     const response = await fetch(
-      "https://api.pierre-le-developpeur.com/api/tools/" + toolId,
+      "https://api.pierre-le-developpeur.com/api/tools/" + ToolId,
       {
         method: "PUT",
 
         headers: {
           Authorization: "Bearer " + token,
           Accept: "application/json",
-          "Content-Type": "application/Toolsharset=utf-8",
+          "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(tool),
       }

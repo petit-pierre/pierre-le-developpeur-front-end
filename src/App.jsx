@@ -79,7 +79,7 @@ function App() {
         <Route path="/PostProject/:projectId" element={<PostProject />} />
         <Route path="/PostSkills/:skillId" element={<PostSkills />} />
         <Route path="/PostSliders" element={<PostSliders />} />
-        <Route path="/PostTools/:toolId" element={<PostTools />} />
+        <Route path="/PostTools/:ToolId" element={<PostTools />} />
         <Route path="/User" element={<User />} />
         <Route path="/User/Project/:id" element={<Delete />} />
         <Route path="/User/Skills/:skillId" element={<DeleteSkill />} />

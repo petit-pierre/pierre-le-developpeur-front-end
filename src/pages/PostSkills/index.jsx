@@ -31,7 +31,7 @@ function PostSkills() {
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
   }
-  function saveSkill(evt, skill) {
+  function saveSkill(evt) {
     let pic;
     if (currentSkill === "newOne") {
       pic = "https://pierre-le-developpeur.com/assets/images/" + title;
