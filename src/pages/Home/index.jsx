@@ -130,12 +130,10 @@ function Home() {
                   }}
                 ></AreaForText>
               </div>
-              <div className="like">
-                <LikeButton
-                  propsLike={{ id: likes[4]._id, color: "black" }}
-                  className="like"
-                ></LikeButton>
-              </div>
+
+              <LikeButton
+                propsLike={{ id: likes[4]._id, color: "black" }}
+              ></LikeButton>
             </div>
 
             <div className="contact"></div>
@@ -224,7 +222,7 @@ function Home() {
                             ></img>
                             <p className="toolTitle">{tool.title}</p>
                           </div>
-                          <div className="like">
+                          <div className="likeCollapse">
                             <LikeButton
                               propsLike={{ id: tool.likes_id, color: "black" }}
                             ></LikeButton>

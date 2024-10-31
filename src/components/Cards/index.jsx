@@ -39,12 +39,12 @@ function Cards({ project }) {
           </div>
           <div className="cardResum">
             {language === "FR" ? (
-              <p> {project.french_resum} </p>
+              <p className="texte"> {project.french_resum} </p>
             ) : (
-              <p> {project.english_resum} </p>
+              <p className="texte"> {project.english_resum} </p>
             )}
 
-            <div className="like">
+            <div className="likeCard">
               <LikeButton
                 propsLike={{ id: project.content_likes_id, color: "black" }}
               ></LikeButton>

@@ -125,6 +125,20 @@
     margin: auto;
   }
 }
+@media (min-width: 650px) {
+  .projectPage .collapse .collapseContent:hover .likeContainer {
+    right: -20px;
+    transition: 1000ms;
+  }
+}
+@media (max-width: 649px) {
+  .projectPage .collapse .collapseContent .likeContainer {
+    transition: 1000ms;
+  }
+}
+.projectPage .collapse .collapseContent .toolTitle {
+  margin: auto;
+}
 .projectPage .skills {
   margin: auto;
 }

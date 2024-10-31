@@ -162,14 +162,14 @@
     }
 }
 .sliderField:hover {
-    .like{
-      right: -10px;
+    .likeContainer{
+      right: -20px;
       transition: 1000ms;
-      bottom: 10px;
+      bottom: 30px;
     }
 }
 .sliderField{
-    .like{
-      bottom: 10px;
+    .likeContainer{
+      bottom: 30px;
     }
 }

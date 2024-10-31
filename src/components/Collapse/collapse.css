@@ -37,20 +37,11 @@
 .collapseField .content .logoAndTitle {
   margin-bottom: 15px;
 }
-.collapseField .content p {
-  margin: auto;
-}
 .collapseField .content .logo {
   margin: auto;
   width: 20px;
   height: 20px;
   padding-right: 10px;
-}
-.collapseField .content .like {
-  color: white;
-}
-.collapseField .content .like img {
-  filter: invert(1);
 }
 .collapseField .headerCollapse {
   border: 0px;
@@ -97,18 +88,6 @@
 .collapseField .closedArrow {
   transform: rotate(0deg);
   transition: all ease 0.9s;
-}
-@media (min-width: 650px) {
-  .collapseField .collapseContent:hover .like {
-    right: -10px;
-    transition: 1000ms;
-  }
-}
-@media (max-width: 649px) {
-  .collapseField .collapseContent .like {
-    right: -10px;
-    transition: 1000ms;
-  }
 }
 
 .collapseField:hover .content {

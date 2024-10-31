@@ -110,6 +110,25 @@
             width: 90%;
             margin: auto;
         }
+        .collapseContent:hover{
+            @media (min-width:650px) {
+                .likeContainer{
+                    right: -20px;
+                    transition: 1000ms;
+                }
+            }
+        }
+        .collapseContent{
+            @media  (max-width: 649px){
+                .likeContainer{
+                    //right: -10px;
+                    transition: 1000ms;
+                }
+            }
+            .toolTitle{
+                margin: auto;
+            }
+        }
     }
     .skills{
         margin: auto;

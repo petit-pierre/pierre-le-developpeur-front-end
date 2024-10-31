@@ -25,6 +25,7 @@
   }
 }
 .cardField .likeSlide {
+  position: relative;
   top: 114px;
 }
 .cardField .cardSlide {
@@ -44,19 +45,20 @@
   width: 100%;
   display: flex;
 }
-.cardField .cardResum p {
+.cardField .cardResum .texte {
   padding: 10px;
   margin: auto;
 }
-.cardField .cardResum .like {
-  top: 50px;
+.cardField .cardResum .likeCard {
+  position: relative;
+  top: 150px;
 }
 
 .cardField:hover .cardResum {
   opacity: 1;
   transition: all ease-in-out 4s;
 }
-.cardField:hover .like {
-  right: -10px;
+.cardField:hover .likeContainer {
+  right: -20px;
   transition: 1000ms;
 }/*# sourceMappingURL=cards.css.map */

@@ -20,6 +20,7 @@
     border: solid white;
     text-align: center;
     .likeSlide{
+        position: relative;
         top: 114px;
     }
     .cardSlide{
@@ -38,12 +39,13 @@
         min-width: 230px;
         width: 100% ;
         display: flex;
-        p{
+        .texte{
             padding: 10px;
             margin: auto;
         }
-        .like{
-            top: 50px;
+        .likeCard{
+            position: relative;
+            top: 150px;
         }
     }
 }
@@ -52,8 +54,8 @@
         opacity: 1;
         transition: all ease-in-out 4s; 
     }
-    .like{
-        right: -10px;
+    .likeContainer{
+        right: -20px;
         transition: 1000ms;
     }
 }

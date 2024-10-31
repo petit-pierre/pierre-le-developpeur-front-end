@@ -37,20 +37,11 @@
         .logoAndTitle{
             margin-bottom: 15px;
         }
-        p{
-            margin: auto;
-        }
         .logo{
             margin: auto;
             width: 20px;
             height: 20px;
             padding-right: 10px;
-        }
-        .like{
-            color: white;
-            img{
-                filter: invert(1);
-            }
         }
     }
     .headerCollapse {
@@ -97,22 +88,7 @@
         transform: rotate(0deg);
         transition: all ease 0.9s;  
     }
-    .collapseContent:hover{
-        @media (min-width:650px) {
-            .like{
-                right: -10px;
-                transition: 1000ms;
-            }
-        }
-    }
-    .collapseContent{
-        @media  (max-width: 649px){
-            .like{
-                right: -10px;
-                transition: 1000ms;
-            }
-        }
-    }
+
 }
 .collapseField:hover{
     .content{

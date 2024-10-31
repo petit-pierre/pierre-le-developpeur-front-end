@@ -18,10 +18,12 @@
         background: linear-gradient(rgb(255, 255, 255), rgba(157, 59, 143, 0.0));
     }
     .reco:hover {
-        .like{
-            right: -5px;
-            transition: 1000ms;
-        }
+
+            .likeContainer{
+                right: -20px;
+                transition: 1000ms;
+            }
+        
     }
     .recoAnchor{
         position: absolute;
@@ -58,18 +60,9 @@
             width: 90%;
             margin: auto;
         }
-        .like{
-            transition: 1000ms;
-            position: absolute;
-            bottom: 20px;
+        .likeContainer{
+            bottom: 25px;
             opacity: 0.6;
-            z-index: 6;
-            right: -350px;
-            border-radius: 20px;
-            padding-left: 20px;
-            @media (max-width: 650px) {
-                right: -5px;
-              }
         }
     }
     .tools{
@@ -91,6 +84,25 @@
         @media (max-width: 650px){
             width: 90%;
             margin: auto;
+        }
+        .collapseContent:hover{
+            @media (min-width:650px) {
+                .likeContainer{
+                    right: -20px;
+                    transition: 1000ms;
+                }
+            }
+        }
+        .collapseContent{
+            @media  (max-width: 649px){
+                .likeContainer{
+                    //right: -10px;
+                    transition: 1000ms;
+                }
+            }
+            .toolTitle{
+                margin: auto;
+            }
         }
     }
     .competences{

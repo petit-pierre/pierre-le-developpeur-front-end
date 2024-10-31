@@ -11,6 +11,7 @@ function LikeButton({ propsLike }) {
     let message = propsLike.id;
     socket.emit("send_message", { message });
     getOldLikes(propsLike);
+    //console.log(evt);
     let target = evt.currentTarget;
     target.classList.add("checked");
     setTimeout(() => {
@@ -54,7 +55,7 @@ function LikeButton({ propsLike }) {
   const found = likes.find((like) => like._id === propsLike.id);
 
   return (
-    <div className="like">
+    <div className="likeContainer">
       <div className={"like likeColor" + propsLike.color}>
         <p id={propsLike.id}>
           {" "}
@@ -65,12 +66,12 @@ function LikeButton({ propsLike }) {
         </p>
         <button
           name={propsLike.id}
-          onClick={(evt) => sendLike(evt, propsLike)}
           className={
             propsLike.color === "withe"
               ? "buttonLike button withLike " + propsLike.id
               : "buttonLike button " + propsLike.id
           }
+          onClick={(evt) => sendLike(evt, propsLike)}
           tabIndex={-1}
         >
           <div className="pocContain">

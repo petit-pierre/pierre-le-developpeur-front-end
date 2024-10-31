@@ -1,70 +1,80 @@
-.like {
-  display: flex;
-  flex-direction: row;
-  min-width: 100px;
+.likeContainer {
   transition: 1000ms;
   position: absolute;
   right: -350px;
   opacity: 0.8;
   z-index: 6;
+}
+.likeContainer .like {
+  display: flex;
+  flex-direction: row;
+  min-width: 100px;
   border-radius: 20px;
   padding-left: 20px;
   height: 36px;
   justify-content: flex-end;
   text-align: right;
 }
-.like p {
+.likeContainer .like p {
   margin: auto;
+  padding-top: 5px;
+  margin-right: 55px;
 }
 @media (max-width: 650px) {
-  .like {
-    right: -10px;
+  .likeContainer {
+    right: -20px;
   }
 }
-.like .poc {
+.likeContainer .poc {
   position: absolute;
   display: none;
   margin-top: -5px;
 }
-.like .pocContain {
+.likeContainer .pocContain {
   position: relative;
   margin-right: 35px;
 }
-.like .poc1 {
+.likeContainer .poc1 {
   left: 0px;
   top: -4px;
 }
-.like .poc2 {
+.likeContainer .poc2 {
   left: 3px;
   top: -9px;
 }
-.like .poc3 {
+.likeContainer .poc3 {
   left: 10px;
   top: -11px;
 }
-.like .poc4 {
+.likeContainer .poc4 {
   left: 17px;
   top: -9px;
 }
-.like .poc5 {
+.likeContainer .poc5 {
   left: 20px;
   top: -4px;
 }
-.like .checked {
+.likeContainer .checked {
   animation-name: like;
   animation-duration: 2000ms;
 }
-.like .checked .poc {
+.likeContainer .checked .poc {
   display: block;
   animation-name: poc;
   animation-duration: 2000ms;
 }
-.like .buttonLike {
+.likeContainer .buttonLike {
   background: none;
   border: none;
-}
-.like .buttonLike .logoLike {
   width: 20px;
+  position: absolute;
+  right: 30px;
+  top: 6px;
+}
+.likeContainer .buttonLike .logoLike {
+  margin-left: -5px;
+  width: 20px;
+  margin-bottom: -6px;
   cursor: pointer;
 }
 

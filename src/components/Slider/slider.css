@@ -172,12 +172,12 @@
   opacity: 0;
 }
 
-.sliderField:hover .like {
-  right: -10px;
+.sliderField:hover .likeContainer {
+  right: -20px;
   transition: 1000ms;
-  bottom: 10px;
+  bottom: 30px;
 }
 
-.sliderField .like {
-  bottom: 10px;
+.sliderField .likeContainer {
+  bottom: 30px;
 }/*# sourceMappingURL=slider.css.map */
