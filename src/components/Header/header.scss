@@ -173,7 +173,15 @@
         cursor: pointer;
         display: none;
     }
+    .marge{
+        display: none;
+    }
     @media (max-width: 900px) {
+        .marge{
+            height: 20vh;
+            display: block;
+            //height: 80%;
+        }
         .logPlace:hover{
             background-color: #6d477a;
             transition: 0s;
@@ -239,7 +247,7 @@
           left: -550dvh;
           top: 150px;
           z-index: -1;
-          height: calc(100dvh - 150px);
+          height: calc(100vh - 150px);
           flex-direction: column;
           background:#b674cc ;
           width: 100%;

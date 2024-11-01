@@ -211,6 +211,7 @@ function Header() {
                   </Link>
                 </div>
               )}
+              <div className="marge"></div>
             </div>
             <div id="icons" onClick={changeBurger}>
               <img

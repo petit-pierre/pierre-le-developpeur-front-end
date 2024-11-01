@@ -7,7 +7,7 @@
 }
 @media (max-width: 650px) {
   .projectContentAndBackground {
-    height: 85dvh;
+    height: 85vh;
   }
 }
 .projectContentAndBackground .projectContent {
@@ -33,7 +33,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding-top: calc(103dvh - 59px);
+  padding-top: calc(103vh - 59px);
 }
 .projectPage .textAndLinks:hover .likeContainer {
   right: -20px;
@@ -122,7 +122,7 @@
 }
 @media (max-width: 650px) {
   .projectPage .slider {
-    height: calc(100dvh - 130px);
+    height: calc(100vh - 130px);
     top: 130px;
   }
 }

@@ -2,7 +2,7 @@
     position: relative;
     height: 55dvh;
     @media (max-width: 650px) {
-        height: 85dvh;
+        height: 85vh;
     }
     width: 80%;
     margin: auto;
@@ -31,7 +31,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding-top: calc(103dvh - 59px);
+    padding-top: calc(103vh - 59px);
     .textAndLinks:hover{
         .likeContainer{
             right: -20px;
@@ -117,7 +117,7 @@
         right: 0;
         width: 100%;  
         @media (max-width: 650px){
-            height: calc(100dvh - 130px);
+            height: calc(100vh - 130px);
             top: 130px;
         }
     }
