@@ -37,13 +37,14 @@
         }
     }
     .reco{
-        margin-top: 0;
+        margin-top: -20px;
         position: relative;
         display: flex;
         flex-direction: column;
         width: 100dvw;
         overflow: hidden;
         background-color: white;
+        height: 98vh;
         @media (max-width: 900px) {
             padding-top: 30px;
         }
@@ -113,6 +114,9 @@
             margin: auto;
             position: relative;
             z-index: 4;
+            .fullResum{
+                min-height: 25vh;
+            }
         }
         @media (max-width: 650px){
             width: 100%;

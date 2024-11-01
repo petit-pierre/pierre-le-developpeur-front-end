@@ -35,6 +35,51 @@
   overflow: hidden;
   padding-top: calc(103dvh - 59px);
 }
+.projectPage .textAndLinks:hover .likeContainer {
+  right: -20px;
+}
+.projectPage .scrollDown {
+  position: absolute;
+  border: solid 3px black;
+  height: 60px;
+  width: 30px;
+  top: 2vh;
+  z-index: 1;
+  right: 2vh;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.873);
+}
+@media (max-width: 900px) {
+  .projectPage .scrollDown {
+    top: 1vh;
+  }
+}
+.projectPage .scrollDown .scrollDot {
+  position: relative;
+  border-radius: 20px;
+  background-color: black;
+  border: solid 3px black;
+  height: 12px;
+  width: 12px;
+  left: 6.5px;
+  top: 6.5px;
+  animation-name: scrolling;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+}
+@keyframes scrolling {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translate(0, 10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0px);
+  }
+}
 .projectPage .videoField {
   width: 100%;
   position: relative;
@@ -65,16 +110,6 @@
 @media (max-width: 650px) {
   .projectPage #project {
     top: -250px;
-  }
-}
-.projectPage .buttonLikeProjectContent {
-  position: absolute;
-  left: 92dvw;
-  z-index: 6;
-}
-@media (max-width: 650px) {
-  .projectPage .buttonLikeProjectContent {
-    left: 70dvw;
   }
 }
 .projectPage .slider {

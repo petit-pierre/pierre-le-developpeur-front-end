@@ -43,6 +43,11 @@ function Cards({ project }) {
             ) : (
               <p className="texte"> {project.english_resum} </p>
             )}
+            {language === "FR" ? (
+              <p className="more">en savoir plus ...</p>
+            ) : (
+              <p className="more">click to see more ...</p>
+            )}
 
             <div className="likeCard">
               <LikeButton

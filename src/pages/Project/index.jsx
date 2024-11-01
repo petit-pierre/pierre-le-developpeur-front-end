@@ -120,6 +120,14 @@ function Project() {
 
     return project !== undefined ? (
       <div className="projectPage">
+        <div
+          className="scrollDown"
+          style={{
+            opacity: 1 - scrollTop / 40,
+          }}
+        >
+          <div className="scrollDot"></div>
+        </div>
         <span id="project"></span>
 
         <div

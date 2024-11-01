@@ -12,6 +12,16 @@
   border: solid white;
   text-align: center;
 }
+.cardField p {
+  font-size: 1rem;
+}
+.cardField .more {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  font-size: 10px;
+  opacity: 0.5;
+}
 @media (max-width: 650px) {
   .cardField {
     width: 80%;
@@ -61,4 +71,7 @@
 .cardField:hover .likeContainer {
   right: -20px;
   transition: 1000ms;
+}
+.cardField:hover .more {
+  opacity: 1;
 }/*# sourceMappingURL=cards.css.map */

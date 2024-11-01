@@ -14,9 +14,11 @@ function Accueil() {
   return language === "FR" ? (
     <div
       className="accueilField"
-      style={{
-        height: Hscreen,
-      }}
+      style={
+        {
+          //height: Hscreen,
+        }
+      }
     >
       <div className="placeForMaGanache"></div>
       <h2>Bienvenue sur mon portfolio !</h2>
@@ -58,9 +60,11 @@ function Accueil() {
   ) : (
     <div
       className="accueilField"
-      style={{
-        height: Hscreen,
-      }}
+      style={
+        {
+          //height: Hscreen,
+        }
+      }
     >
       <div className="placeForMaGanache"></div>
       <h2>Welcome to my portfolio!</h2>

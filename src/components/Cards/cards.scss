@@ -9,6 +9,16 @@
     cursor: pointer;
     margin: 20px;
     z-index: 5;
+    p{
+        font-size: 1rem;
+    }
+    .more{
+        position: absolute;
+        bottom: -10px;
+        right: 10px;
+        font-size: 10px;
+        opacity: 0.5;
+    }
     @media (max-width: 650px) {
         width: 80%;
     }
@@ -57,6 +67,9 @@
     .likeContainer{
         right: -20px;
         transition: 1000ms;
+    }
+    .more{
+        opacity: 1;
     }
 }
 

@@ -7,6 +7,7 @@
     width: 80%;
     margin: auto;
     margin-top: 12dvh;
+
     .projectContent{
         position: absolute;
         padding: 10px;
@@ -31,6 +32,52 @@
     width: 100%;
     overflow: hidden;
     padding-top: calc(103dvh - 59px);
+    .textAndLinks:hover{
+        .likeContainer{
+            right: -20px;
+        }
+    }
+    .scrollDown{
+        position: absolute;
+        border: solid 3px black;
+        height: 60px;
+        width: 30px;
+        top: 2vh;
+        z-index: 1;
+        right: 2vh;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.873);
+        @media (max-width: 900px){
+            top: 1vh;
+        }
+        //opacity: 0.5;
+        .scrollDot{
+            position: relative;
+            border-radius: 20px;
+            background-color: black;  
+            border: solid 3px black;
+            height: 12px;
+            width: 12px;
+            left: 6.5px;
+            top: 6.5px;
+            animation-name: scrolling;
+            animation-duration: 4000ms;
+            animation-iteration-count: infinite;
+        }
+        @keyframes scrolling{
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+                transform:  translate(0,10px) ;
+            }
+            100% {
+              opacity: 0 ;
+              transform:  translate(0,0px)
+            }  
+          }
+    }
     .videoField{
         width: 100%;
         position: relative;
@@ -61,14 +108,7 @@
             top: -250px;
         }
     }
-    .buttonLikeProjectContent{
-        position: absolute;
-        left: 92dvw;
-        z-index: 6;
-        @media (max-width: 650px){
-            left: 70dvw;
-        }
-    }
+
     .slider{
         margin-top: 0px;
         height: calc(103dvh - 59px);
