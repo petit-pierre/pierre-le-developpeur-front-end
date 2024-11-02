@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./slider.css";
 import LikeButton from "../LikeButton";
 import { useSelector } from "react-redux";
+import { useSwipeable } from "react-swipeable";
 
 function Slider({ sliders, mini, likeId }) {
   const language = useSelector((state) => state.data.language);
@@ -29,7 +30,7 @@ function Slider({ sliders, mini, likeId }) {
 
   //swipe tactile//
 
-  let touchstartX = 0;
+  /*let touchstartX = 0;
   let touchendX = 0;
 
   if (mini === false) {
@@ -52,7 +53,7 @@ function Slider({ sliders, mini, likeId }) {
           checkDirection();
         });
     }, 500);
-  }
+  }*/
 
   // fonction useintervall adapté pour react
 
@@ -83,6 +84,18 @@ function Slider({ sliders, mini, likeId }) {
       nextPicture();
     }
   }, 6000);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => (mini !== true ? nextPicture() : ""),
+    onSwipedRight: () => (mini !== true ? previousPicture() : ""),
+    swipeDuration: Infinity,
+    preventScrollOnSwipe: true,
+    //trackMouse: true,
+    //onSwiped: (eventData) => console.log("User Swiped!", eventData),
+    //onSwiping: () => console.log("swiping"),
+    //onSwipedUp: () => console.log("up"),
+    touchEventOptions: { passive: true },
+  });
 
   //changement d'index//
 
@@ -234,7 +247,7 @@ function Slider({ sliders, mini, likeId }) {
           ></LikeButton>
         </div>
       )}
-      <div className="inner">
+      <div className="inner" {...handlers}>
         {sortedSlider.map((slide) => {
           return (
             <div
