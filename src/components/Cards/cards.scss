@@ -20,7 +20,8 @@
         opacity: 0.5;
     }
     @media (max-width: 650px) {
-        width: 80%;
+        //width: 80%;
+        max-width: 300px;
     }
     @media (max-width: 900px) {
         margin: auto;

@@ -24,7 +24,7 @@
 }
 @media (max-width: 650px) {
   .cardField {
-    width: 80%;
+    max-width: 300px;
   }
 }
 @media (max-width: 900px) {

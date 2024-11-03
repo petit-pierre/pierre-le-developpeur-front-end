@@ -6,7 +6,8 @@ import { useSwipeable } from "react-swipeable";
 
 function Slider({ sliders, mini, likeId }) {
   const language = useSelector((state) => state.data.language);
-
+  //const [, updateState] = useState();
+  //const forceUpdate = useCallback(() => updateState({}), []);
   //au cas ou il n'y ai que deux items dans le slider
   //(pour que le slider puisse tourner de maniere fluide dans les 2 sens)
 
@@ -23,10 +24,28 @@ function Slider({ sliders, mini, likeId }) {
 
   // declaration des variables
 
-  let selected = 0;
-  let previous = sortedSlider.length - 1;
-  let next = 1;
+  const [stselected, setSelected] = useState(0);
+  const [stprevious, setPrevious] = useState(sortedSlider.length - 1);
+  const [stnext, setNext] = useState(1);
+  let selected = stselected;
+  let previous = stprevious;
+  let next = stnext;
+  console.log(previous);
+  console.log(next);
+  console.log(selected);
+  //let nextway = true;
+  //const [truc, setTruc] = useState(0);
+
   let cooldown = false;
+  //const [count, setCount] = useState(0);
+  /*useEffect(() => {
+    setTruc(truc + 1);
+  }, [selected]);*/
+  //console.log(selected);
+  function forceUpdate() {
+    //setTruc(truc + 1);
+    //console.log(selected.current.value);
+  }
 
   //swipe tactile//
 
@@ -88,13 +107,14 @@ function Slider({ sliders, mini, likeId }) {
   const handlers = useSwipeable({
     onSwipedLeft: () => (mini !== true ? nextPicture() : ""),
     onSwipedRight: () => (mini !== true ? previousPicture() : ""),
+    onSwipedDown: () => console.log("coucou"),
     swipeDuration: Infinity,
     preventScrollOnSwipe: true,
     //trackMouse: true,
     //onSwiped: (eventData) => console.log("User Swiped!", eventData),
     //onSwiping: () => console.log("swiping"),
     //onSwipedUp: () => console.log("up"),
-    touchEventOptions: { passive: true },
+    //touchEventOptions: { passive: true },
   });
 
   //changement d'index//
@@ -105,9 +125,21 @@ function Slider({ sliders, mini, likeId }) {
 
       document.querySelector(".arrowLeft").classList.add("cooldown");
 
+      setSelected(stselected - 1);
+      setPrevious(stprevious - 1);
+      setNext(stnext - 1);
       selected--;
       previous--;
       next--;
+      if (stselected < 1) {
+        setSelected(sortedSlider.length - 1);
+      }
+      if (stprevious < 1) {
+        setPrevious(sortedSlider.length - 1);
+      }
+      if (stnext < 1) {
+        setNext(sortedSlider.length - 1);
+      }
       if (selected < 0) {
         selected = sortedSlider.length - 1;
       }
@@ -117,6 +149,7 @@ function Slider({ sliders, mini, likeId }) {
       if (next < 0) {
         next = sortedSlider.length - 1;
       }
+      forceUpdate();
       document.querySelector(".dotSelected").classList.remove("dotSelected");
       if (sortedSlider.length === 2) {
         if (selected < 2) {
@@ -169,9 +202,22 @@ function Slider({ sliders, mini, likeId }) {
       if (document.querySelector(".arrowRight") !== null) {
         document.querySelector(".arrowRight").classList.add("cooldown");
       }
+      setSelected(stselected + 1);
+      setPrevious(stprevious + 1);
+      setNext(stnext + 1);
       selected++;
       previous++;
       next++;
+      if (stselected > sortedSlider.length - 2) {
+        setSelected(0);
+      }
+      if (stprevious > sortedSlider.length - 2) {
+        setPrevious(0);
+      }
+      if (stnext > sortedSlider.length - 2) {
+        setNext(0);
+      }
+
       if (selected > sortedSlider.length - 1) {
         selected = 0;
       }
@@ -181,6 +227,7 @@ function Slider({ sliders, mini, likeId }) {
       if (next > sortedSlider.length - 1) {
         next = 0;
       }
+      forceUpdate();
       if (document.querySelector(".dotSelected") !== null) {
         document.querySelector(".dotSelected").classList.remove("dotSelected");
         if (sortedSlider.length === 2) {
