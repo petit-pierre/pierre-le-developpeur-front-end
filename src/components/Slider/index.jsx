@@ -30,9 +30,7 @@ function Slider({ sliders, mini, likeId }) {
   let selected = stselected;
   let previous = stprevious;
   let next = stnext;
-  console.log(previous);
-  console.log(next);
-  console.log(selected);
+
   //let nextway = true;
   //const [truc, setTruc] = useState(0);
 
@@ -41,7 +39,7 @@ function Slider({ sliders, mini, likeId }) {
   /*useEffect(() => {
     setTruc(truc + 1);
   }, [selected]);*/
-  //console.log(selected);
+
   function forceUpdate() {
     //setTruc(truc + 1);
     //console.log(selected.current.value);
@@ -107,7 +105,7 @@ function Slider({ sliders, mini, likeId }) {
   const handlers = useSwipeable({
     onSwipedLeft: () => (mini !== true ? nextPicture() : ""),
     onSwipedRight: () => (mini !== true ? previousPicture() : ""),
-    onSwipedDown: () => console.log("coucou"),
+    //onSwipedDown: () => console.log("coucou"),
     swipeDuration: Infinity,
     preventScrollOnSwipe: true,
     //trackMouse: true,

@@ -83,14 +83,15 @@
 .projectPage .videoField {
   width: 100%;
   position: relative;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 .projectPage .videoField p {
   text-align: center;
 }
 .projectPage .video {
   display: block;
-  width: 80%;
+  width: 94%;
   margin: auto;
   z-index: 8;
   position: relative;

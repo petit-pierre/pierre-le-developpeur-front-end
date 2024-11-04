@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./project.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Slider from "../../components/Slider";
 import LikeButton from "../../components/LikeButton";
 import Collapse from "../../components/Collapse";
 import { useEffect, useState } from "react";
-//import { getLikesThunk } from "../../thunkActionsCreator";
 import AreaForText from "../../components/AreaForText";
 import Contact from "../../components/Contact";
 import AOS from "aos";
@@ -88,14 +87,6 @@ function Project() {
   ) {
     /*on creer un tableau pour tier les slides*/
 
-    let sortedSlider = [];
-    let sliders = project.sliders;
-    for (let slide of sliders) {
-      if (slide.alt !== "Video" && slide.alt !== "TextPicture") {
-        sortedSlider.push(slide);
-      }
-    }
-
     /*on creer un tableau pour les tools du projet*/
 
     const tadaTools = [];
@@ -144,7 +135,7 @@ function Project() {
             }}
           ></div>
           <Slider
-            sliders={sortedSlider}
+            sliders={project.sliders}
             mini={false}
             likeId={project.slider_likes_id}
           ></Slider>{" "}
@@ -168,8 +159,37 @@ function Project() {
           ></AreaForText>
         </div>
         <div className="description">
-          {project.sliders.map((slide) =>
-            slide.alt === "TextPicture" ? (
+          {project.details.map((slide) =>
+            slide.alt === "Video" ? (
+              <div
+                className="videoField"
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+              >
+                <div key={"video" + slide._id}>
+                  {language === "FR" ? (
+                    slide.french_content === "nothing" ? (
+                      ""
+                    ) : (
+                      <p>{slide.french_content} </p>
+                    )
+                  ) : slide.english_content === "nothing" ? (
+                    ""
+                  ) : (
+                    <p>{slide.english_content} </p>
+                  )}
+                  <iframe
+                    className="video"
+                    height={window.innerWidth * 0.45}
+                    src={slide.picture.concat("?rel=0")}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            ) : (
               <div
                 key={slide._id}
                 className={
@@ -205,8 +225,6 @@ function Project() {
                   {(divCounter = !divCounter)}
                 </div>
               </div>
-            ) : (
-              ""
             )
           )}
         </div>
@@ -257,31 +275,7 @@ function Project() {
             ></Collapse>
           </div>
         </div>
-        <div className="videoField" data-aos="zoom-in" data-aos-duration="2000">
-          {project.sliders.map((slide) =>
-            slide.alt === "Video" ? (
-              <div key={"video" + slide._id}>
-                {language === "FR" ? (
-                  <p>{slide.french_content} </p>
-                ) : (
-                  <p>{slide.english_content} </p>
-                )}
 
-                <iframe
-                  className="video"
-                  height={window.innerWidth * 0.45}
-                  src={slide.picture.concat("?rel=0")}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              ""
-            )
-          )}
-        </div>
         <Contact props={{ likeId: "65dc9d6a700bae9e300a79aa" }} />
       </div>
     ) : (
