@@ -1,0 +1,16 @@
+.putContent{
+    margin-top: 20vh;
+    .cv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .reco{
+        width: 25%;
+    }
+    .recoPlace{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

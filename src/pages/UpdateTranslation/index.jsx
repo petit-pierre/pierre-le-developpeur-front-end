@@ -1,11 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import {
-  deletePictureThunk,
-  putTranslationThunk,
-  setProjectPictureThunk,
-} from "../../thunkActionsCreator";
+import { useEffect, useRef, useState } from "react";
+import { putTranslationThunk } from "../../thunkActionsCreator";
+import "./updateTranslation.css";
 
 function UpdateInfo() {
   const french_placeholder_mail = useRef();
@@ -34,6 +31,17 @@ function UpdateInfo() {
 
   const navigate = useNavigate();
 
+  const [reco, setReco] = useState([]);
+  const [truc, setTruc] = useState(0);
+
+  useEffect(() => {
+    setReco(reco.concat(reduxTranslation.recommendation));
+  }, []);
+
+  const title = "cv_aubree_pierre_fr.pdf";
+  const titleEng = "cv_aubree_pierre_eng.pdf";
+  const password = localStorage.getItem("password");
+
   function undo(evt) {
     evt.preventDefault();
     navigate("/User");
@@ -42,6 +50,35 @@ function UpdateInfo() {
 
   if (token === null) {
     return <Navigate to="../404/" replace={true} />;
+  }
+
+  //let reco = reduxTranslation.recommendation;
+
+  function addReco(evt) {
+    evt.preventDefault();
+    let rec = {
+      contentfr: french_recommendation.current.value,
+      contenteng: english_recommendation.current.value,
+      author: french_author.current.value,
+      link: french_link.current.value,
+    };
+    reco.push(rec);
+    setReco(reco);
+    set(evt);
+  }
+
+  function deleteReco(evt, thisReco) {
+    evt.preventDefault();
+    const found = reco.find((sli) => sli === thisReco);
+    const index = reco.findIndex((slideIndex) => slideIndex === found);
+    reco.splice(index, 1);
+    setReco(reco);
+    set(evt);
+  }
+
+  function set(evt) {
+    evt.preventDefault();
+    setTruc(truc + 1);
   }
 
   function saveInfo(evt) {
@@ -53,9 +90,6 @@ function UpdateInfo() {
       );
     };
 
-    let englishCv = document.querySelector(".englishCv");
-    let frenchCv = document.querySelector(".frenchCv");
-
     const translation = {
       english: {
         placeholder_mail: english_placeholder_mail.current.value,
@@ -65,15 +99,7 @@ function UpdateInfo() {
         error_mail: english_error_mail.current.value,
         error_content: english_error_content.current.value,
         succes: english_succes.current.value,
-        recommendation: [
-          {
-            content: english_recommendation.current.value,
-            author: french_author.current.value,
-            link: french_link.current.value,
-          },
-        ],
-        cv: translations.english.cv,
-        cv_id: translations.english.cv_id,
+        cv: "https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_eng.pdf",
       },
       french: {
         placeholder_mail: french_placeholder_mail.current.value,
@@ -83,71 +109,18 @@ function UpdateInfo() {
         error_mail: french_error_mail.current.value,
         error_content: french_error_content.current.value,
         succes: french_succes.current.value,
-        recommendation: [
-          {
-            content: french_recommendation.current.value,
-            author: french_author.current.value,
-            link: french_link.current.value,
-          },
-        ],
-        cv: translations.french.cv,
-        cv_id: translations.french.cv_id,
+        cv: "https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_fr.pdf",
       },
+      recommendation: reco,
     };
 
-    const englishCvSubmit = async () => {
-      const formData = new FormData();
-      formData.append("imageUrl", "");
-      formData.append("image", englishCv.files[0]);
-      const setProjectPictureResult = await dispatch(
-        setProjectPictureThunk(formData, token)
-      );
-      translation.english.cv = await setProjectPictureResult.imageUrl;
-      translation.english.cv_id = await setProjectPictureResult._id;
-      await Submit();
-    };
-
-    const frenchCvSubmit = async () => {
-      const formData = new FormData();
-      formData.append("imageUrl", "");
-      formData.append("image", frenchCv.files[0]);
-      const setProjectPictureResult = await dispatch(
-        setProjectPictureThunk(formData, token)
-      );
-      translation.french.cv = await setProjectPictureResult.imageUrl;
-      translation.french.cv_id = await setProjectPictureResult._id;
-      await Submit();
-    };
-    if (frenchCv.files[0] != null) {
-      const deletePicture = async () => {
-        const id = translations.french.cv_id;
-        const deletePictureResult = await dispatch(
-          deletePictureThunk(id, token)
-        );
-      };
-      frenchCvSubmit();
-      deletePicture();
-    } else {
-      Submit();
-    }
-    if (englishCv.files[0] != null) {
-      const deletePicture = async () => {
-        const id = translations.english.cv_id;
-        const deletePictureResult = await dispatch(
-          deletePictureThunk(id, token)
-        );
-      };
-      englishCvSubmit();
-      deletePicture();
-    } else {
-      Submit();
-    }
+    Submit();
 
     navigate("/User");
   }
 
   return (
-    <main style={{ "margin-top": "20dvh" }}>
+    <main className="putContent">
       <div>
         <h1>Info</h1>
         <fieldset>
@@ -164,32 +137,43 @@ function UpdateInfo() {
             ref={english_skills}
           ></textarea>
         </fieldset>
-        <fieldset>
-          <p>CV in french :</p>
-          <embed
-            src={translations.french.cv}
-            width="30%"
-            height="550"
-            type="application/pdf"
-          />
-          <input
-            type="file"
-            accept="application/pdf"
-            className="frenchCv"
-          ></input>
-
-          <p>CV in english :</p>
-          <embed
-            src={translations.english.cv}
-            width="30%"
-            height="550"
-            type="application/pdf"
-          />
-          <input
-            type="file"
-            accept="application/pdf"
-            className="englishCv"
-          ></input>
+        <fieldset className="cv">
+          <div>
+            <p>CV in french :</p>
+            <iframe
+              src={
+                "https://pierre-le-developpeur.com/displaypic.html?type=application/pdf&title=" +
+                title +
+                "&picture=https://pierre-le-developpeur.com/assets/images/" +
+                title +
+                "&password=" +
+                password
+              }
+              width="600px"
+              height="700px"
+              frameBorder="0"
+              title="Upload"
+              className="iframe"
+            ></iframe>
+          </div>
+          <div>
+            <p>CV in english :</p>
+            <iframe
+              src={
+                "https://pierre-le-developpeur.com/displaypic.html?type=application/pdf&title=" +
+                titleEng +
+                "&picture=https://pierre-le-developpeur.com/assets/images/" +
+                titleEng +
+                "&password=" +
+                password
+              }
+              width="600px"
+              height="700px"
+              frameBorder="0"
+              title="Upload"
+              className="iframe"
+            ></iframe>
+          </div>
         </fieldset>
         <fieldset>
           <p>Contact in french :</p>
@@ -265,31 +249,35 @@ function UpdateInfo() {
             ref={english_succes}
           ></textarea>
         </fieldset>
-        <fieldset>
-          <p>Recommendation in french :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.french.recommendation[0].content}
-            ref={french_recommendation}
-          ></textarea>
-          <p>Recommendation in english :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.english.recommendation[0].content}
-            ref={english_recommendation}
-          ></textarea>
-          <p>Author :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.french.recommendation[0].author}
-            ref={french_author}
-          ></textarea>
-          <p>Link :</p>
-          <textarea
-            type="text"
-            defaultValue={translations.french.recommendation[0].link}
-            ref={french_link}
-          ></textarea>
+        <fieldset className="recoPlace">
+          {reco.map((thisReco) => (
+            <fieldset className="reco">
+              <p>Recommendation in french :</p>
+              <p>{thisReco.contentfr}</p>
+              <p>Recommendation in english :</p>
+              <p>{thisReco.contenteng}</p>
+              <p>Author :</p>
+              <p>{thisReco.author}</p>
+              <p>Link :</p>
+              <p>{thisReco.link}</p>
+              <br></br>
+              <button onClick={(evt) => deleteReco(evt, thisReco)}>
+                Delete
+              </button>
+            </fieldset>
+          ))}
+          <fieldset className="reco">
+            <p>Recommendation in french :</p>
+            <textarea type="text" ref={french_recommendation}></textarea>
+            <p>Recommendation in english :</p>
+            <textarea type="text" ref={english_recommendation}></textarea>
+            <p>Author :</p>
+            <textarea type="text" ref={french_author}></textarea>
+            <p>Link :</p>
+            <textarea type="text" ref={french_link}></textarea>
+            <br></br>
+            <button onClick={(evt) => addReco(evt)}>Add</button>
+          </fieldset>
         </fieldset>
         <p></p>
         <button onClick={(evt) => undo(evt)}>Cancel</button>

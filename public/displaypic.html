@@ -41,10 +41,23 @@
             display: flex;
             margin: auto;
         }
+        .hidden{
+          display: none;
+        }
+        .pdffr{
+          width: 100%;
+          height: 650px;
+        }
+        .pdfeng{
+          width: 100%;
+          height: 650px;
+        }
     </style>
   </head>
   <body>
     <img class="picture">
+    <embed src="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_fr.pdf" class="pdffr">
+    <embed src="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_eng.pdf" class="pdfeng">
     <button class="undo">Change</button>
   </body>
   <script>
@@ -61,6 +74,16 @@
         window.location.href ="https://www.pierre-le-developpeur.com/deletepic.php?title="+title+"&password="+password+"&type="+type
     }
     //console.log(document.location.href)
+    if(title==="cv_aubree_pierre_fr.pdf"){
+      document.querySelector(".picture").classList.add("hidden")
+      document.querySelector(".pdfeng").classList.add("hidden")
+    }else if(title==="cv_aubree_pierre_eng.pdf"){
+      document.querySelector(".picture").classList.add("hidden")
+      document.querySelector(".pdffr").classList.add("hidden")
+    } else{
+      document.querySelector(".pdffr").classList.add("hidden")
+      document.querySelector(".pdfeng").classList.add("hidden")
+    }
 
 
 </script>

@@ -1,0 +1,16 @@
+.putContent {
+  margin-top: 20vh;
+}
+.putContent .cv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.putContent .reco {
+  width: 25%;
+}
+.putContent .recoPlace {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}/*# sourceMappingURL=updateTranslation.css.map */
