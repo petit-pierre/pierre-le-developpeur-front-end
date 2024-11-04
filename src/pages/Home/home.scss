@@ -153,8 +153,8 @@
         position: relative;
     }
     .projets{
-        margin-top: 100px;
-        padding-top: 100px;
+        margin-top: 50px;
+        padding-top: 150px;
         margin-bottom: 150px;
         display: flex;
         flex-direction: row;
@@ -164,10 +164,93 @@
         @media (max-width: 650px){
             flex-direction: column;
             flex-wrap: nowrap;
+            //justify-content: center;
         }
         @media (max-width: 900px){
             margin-top: 50px;
             padding-top: 150px;
+        }
+        .projectChoice{
+            left: 50%;
+            transform: translate(-50%,-50%);
+            //max-width: 90%;
+            position: absolute;
+            z-index: 6;
+            top: 100px;
+            background-color: rgba(255, 255, 255, 0.747);
+            //border: 2px solid black;
+            border-radius: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            @media (max-width: 650px){
+                width: 80%;
+            }
+            .choice{
+                cursor: pointer;
+                
+            }
+            input[type="radio"] {
+                -webkit-appearance: none;
+                appearance: none;
+                margin: auto;
+                font: inherit;
+                color: black;
+                width: fit-content;
+                height: fit-content;
+                padding: 4px;
+                margin: 3px;
+                border-radius: 20px;
+                place-content: center;
+                transition: all 1s;
+                margin-top: 8px;
+                margin-bottom: 8px;
+              }
+              input[type="radio"]::before {
+                padding: 6px;
+                margin: 3px;
+
+
+                border-radius: 20px;
+                transition: all 1s;
+              }
+              input[type="radio"]:checked::before {
+                padding: 6px;
+                padding-left: 12px;
+                padding-right: 12px;
+
+                margin: 3px;
+                border-radius: 20px;
+                background-color: #99477a;
+                color: white;
+                transition: all 1s;
+              }
+              input[type="radio"]:focus {
+
+              }
+              
+              .Tous::before{
+                content: "Tous";
+              }
+              .cms::before{
+                content: "C.M.S";
+              }
+              .frontEnd::before{
+                content: "Front-end";
+              }
+              .fullStack::before{
+                content: "Full-stack";
+              }
+              .topProject::before{
+                content: "Top projects";
+              }
+              .design::before{
+                content: "Design";
+              }
+              
         }
     }
 }

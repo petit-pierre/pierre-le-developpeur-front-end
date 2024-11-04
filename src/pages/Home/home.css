@@ -157,8 +157,8 @@
   position: relative;
 }
 .home .projets {
-  margin-top: 100px;
-  padding-top: 100px;
+  margin-top: 50px;
+  padding-top: 150px;
   margin-bottom: 150px;
   display: flex;
   flex-direction: row;
@@ -177,4 +177,80 @@
     margin-top: 50px;
     padding-top: 150px;
   }
+}
+.home .projets .projectChoice {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 6;
+  top: 100px;
+  background-color: rgba(255, 255, 255, 0.747);
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 650px) {
+  .home .projets .projectChoice {
+    width: 80%;
+  }
+}
+.home .projets .projectChoice .choice {
+  cursor: pointer;
+}
+.home .projets .projectChoice input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  margin: auto;
+  font: inherit;
+  color: black;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 4px;
+  margin: 3px;
+  border-radius: 20px;
+  place-content: center;
+  transition: all 1s;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.home .projets .projectChoice input[type=radio]::before {
+  padding: 6px;
+  margin: 3px;
+  border-radius: 20px;
+  transition: all 1s;
+}
+.home .projets .projectChoice input[type=radio]:checked::before {
+  padding: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 3px;
+  border-radius: 20px;
+  background-color: #99477a;
+  color: white;
+  transition: all 1s;
+}
+.home .projets .projectChoice .Tous::before {
+  content: "Tous";
+}
+.home .projets .projectChoice .cms::before {
+  content: "C.M.S";
+}
+.home .projets .projectChoice .frontEnd::before {
+  content: "Front-end";
+}
+.home .projets .projectChoice .fullStack::before {
+  content: "Full-stack";
+}
+.home .projets .projectChoice .topProject::before {
+  content: "Top projects";
+}
+.home .projets .projectChoice .design::before {
+  content: "Design";
 }/*# sourceMappingURL=home.css.map */

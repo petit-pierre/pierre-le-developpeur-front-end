@@ -11,7 +11,7 @@ import Cards from "../../components/Cards";
 import AreaForText from "../../components/AreaForText";
 import Accueil from "../../components/Accueil";
 import Snow from "../../components/Snow";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Home() {
   /*on recupere les valeurs du store redux pour le header*/
@@ -31,6 +31,8 @@ function Home() {
     if (a.date < b.date) return 1;
     return 0;
   });
+  const [sortedProjects, setSortedProjects] = useState([]);
+  const [truc, setTruc] = useState(0);
 
   /*on demare l'ecoute du server websocket pour pouvoire receptionner les likes des autres utilisateurs en temps reel*/
 
@@ -38,14 +40,56 @@ function Home() {
 
   /* ce code est inutile mais je le conserve encore un peu pour en etre sur
   
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();*/
+  function projectChoice() {
+    setSortedProjects([]);
+    let newTab = [];
+    for (let proj of projects) {
+      if (
+        proj.best === true &&
+        document.querySelector(".topProject").checked === true
+      ) {
+        newTab.push(proj);
+      }
+
+      if (
+        proj.category === "Front-end" &&
+        document.querySelector(".frontEnd").checked === true
+      ) {
+        newTab.push(proj);
+      }
+
+      if (
+        proj.category === "Full stack" &&
+        document.querySelector(".fullStack").checked === true
+      ) {
+        newTab.push(proj);
+      }
+
+      if (
+        proj.category === "Design" &&
+        document.querySelector(".design").checked === true
+      ) {
+        newTab.push(proj);
+      }
+
+      if (
+        proj.category === "C.M.S" &&
+        document.querySelector(".cms").checked === true
+      ) {
+        newTab.push(proj);
+      }
+
+      if (document.querySelector(".Tous").checked === true) {
+        newTab.push(proj);
+      }
+    }
+    setSortedProjects(newTab);
+  }
 
   useEffect(() => {
-    const getLikes = async () => {
-      const getLikesResult = await dispatch(getLikesThunk());
-    };
-    getLikes();
-  }, []);*/
+    projectChoice();
+  }, []);
 
   /* debut de code pour loading (fonctionalité a venire)
   
@@ -264,7 +308,63 @@ function Home() {
             </div>
           </div>
           <div className="projets" id="projets">
-            {projects.map((project) => (
+            <form className="projectChoice">
+              <input
+                type="radio"
+                id="topProject"
+                name="projectChoice"
+                value="topProject"
+                defaultChecked
+                className="topProject choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+
+              <input
+                type="radio"
+                id="frontEnd"
+                name="projectChoice"
+                value="frontEnd"
+                className="frontEnd choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+
+              <input
+                type="radio"
+                id="design"
+                name="projectChoice"
+                value="design"
+                className="design choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+
+              <input
+                type="radio"
+                id="fullStack"
+                name="projectChoice"
+                value="fullStack"
+                className="fullStack choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+
+              <input
+                type="radio"
+                id="cms"
+                name="projectChoice"
+                value="cms"
+                className="cms choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+
+              <input
+                type="radio"
+                id="Tous"
+                name="projectChoice"
+                value="Tous"
+                className="Tous choice"
+                onChange={(evt) => projectChoice(evt)}
+              ></input>
+            </form>
+            {sortedProjects.map((project) => (
               <div key={project._id}>
                 <Cards project={project}></Cards>
               </div>
