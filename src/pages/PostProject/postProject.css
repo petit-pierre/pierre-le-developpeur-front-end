@@ -1,6 +1,9 @@
 .postProject {
   margin-top: 120px;
 }
+.postProject .hidden {
+  display: none;
+}
 .postProject .sliderField {
   display: flex;
   flex-direction: row;

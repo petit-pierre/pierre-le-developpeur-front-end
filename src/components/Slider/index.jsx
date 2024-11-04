@@ -312,7 +312,7 @@ function Slider({ sliders, mini, likeId }) {
               <img
                 className={mini === true ? "carousel-img-mini" : "carousel-img"}
                 src={slide.picture}
-                alt="slider"
+                alt={slide.alt}
                 style={{
                   zIndex: 2,
                 }}

@@ -201,7 +201,7 @@ function Project() {
                 <div className="pics">
                   <img
                     src={slide.picture}
-                    alt="illustration projet"
+                    alt={slide.alt}
                     data-aos="flip-left"
                     data-aos-duration="1000"
                   ></img>

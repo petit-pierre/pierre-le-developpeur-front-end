@@ -28,7 +28,6 @@ function PostProject() {
     .toLowerCase();
 
   let password = localStorage.getItem("password");
-  //console.log(title);
 
   if (projectId !== "newOne") {
     project = projects.find((projects) => projects._id === projectId);
@@ -41,15 +40,8 @@ function PostProject() {
   const [truc, setTruc] = useState(0);
   const [video, setVideo] = useState(false);
   const [videoDetails, setVideoDetails] = useState(false);
-  //let slideToDellette = [];
   const [slideToDellette, setSlideToDellette] = useState([]);
-  //let Sliders = [];
 
-  /*useEffect(() => {
-    console.log("coucou");
-  }, [links]);*/
-
-  //console.log(project);
   useEffect(() => {
     if (projectId !== "newOne") {
       setLinks(links.concat(project.links));
@@ -105,6 +97,8 @@ function PostProject() {
   const englishResum = useRef();
   const sliderVideo = useRef();
   const detailsVideo = useRef();
+  const sliderAlt = useRef();
+  const detailsAlt = useRef();
 
   const dispatch = useDispatch();
 
@@ -273,12 +267,10 @@ function PostProject() {
       setPicToDelete(picsToDelete);
     } else {
     }
-
     const found = details.find((sli) => sli === projectSlide);
     const index = details.findIndex((slideIndex) => slideIndex === found);
     details.splice(index, 1);
     setDetails(details);
-
     set(evt);
   }
 
@@ -290,42 +282,28 @@ function PostProject() {
     if (englishSliderContent.current.value === "") {
       englishSliderContent.current.value = "nothing";
     }
-    //console.log(frenchSliderContent.current.value);
     let Slider = document.querySelector(".Slider");
-    let TextPicture = document.querySelector(".TextPicture");
-
     let Video = document.querySelector(".Video");
     let SliderType = null;
     if (Slider.checked === true) {
       SliderType = "Slider";
     }
-    if (TextPicture.checked === true) {
-      SliderType = "TextPicture";
-    }
-    //let photo = document.querySelector(".sliderPicture");
     if (Video.checked === true) {
       SliderType = "Video";
-      if (
-        sliderVideo.current.value &&
-        //frenchSliderContent.current.value &&
-        //englishSliderContent.current.value &&
-        SliderType !== null
-        //sliderAlt.current.value !== ""
-      ) {
+      if (sliderVideo.current.value && SliderType !== null) {
         const videoUrl = "https://www.youtube.com/embed/".concat(
           sliderVideo.current.value.substring(32)
         );
-        //const videoUrl = sliderVideo.current.value.substring(32);
         let slider = {
           picture: videoUrl,
           picture_id: videoUrl,
           temporaryUrl: videoUrl,
           newPicture: false,
+          //alt: "video",
           //alt: sliderAlt.current.value,
           alt: SliderType,
           french_content: frenchSliderContent.current.value,
           english_content: englishSliderContent.current.value,
-          //_id: title,
         };
         sliders.push(slider);
         setSliders(sliders);
@@ -335,28 +313,22 @@ function PostProject() {
         frenchSliderContent.current.value = "";
         englishSliderContent.current.value = "";
         sliderVideo.current.value = "";
+        //sliderAlt.current.value = ";";
       } else {
         alert("champs incomplets");
       }
     } else {
-      if (
-        //photo.files[0] &&
-        //frenchSliderContent.current.value &&
-        //englishSliderContent.current.value &&
-        SliderType !== null
-        //sliderAlt.current.value !== ""
-      ) {
+      if (SliderType !== null && sliderAlt.current.value !== "") {
         let slider = {
           picture:
             "https://pierre-le-developpeur.com/assets/images/slide" +
             title +
             ".webp",
-          //temporaryUrl: URL.createObjectURL(photo.files[0]),
           picture_id: title,
           newPicture: true,
           name: "slide" + title + ".webp",
-          //alt: sliderAlt.current.value,
-          alt: SliderType,
+          alt: sliderAlt.current.value,
+          //alt: SliderType,
           french_content: frenchSliderContent.current.value,
           _id: title,
           english_content: englishSliderContent.current.value,
@@ -368,7 +340,7 @@ function PostProject() {
         SliderType = null;
         frenchSliderContent.current.value = "";
         englishSliderContent.current.value = "";
-        //photo.value = "";
+        sliderAlt.current.value = "";
       } else {
         alert("champs incomplets");
       }
@@ -384,39 +356,31 @@ function PostProject() {
     if (englishDetailsContent.current.value === "") {
       englishDetailsContent.current.value = "nothing";
     }
-    //let Slider = document.querySelector(".Slider");
     let TextPicture = document.querySelector(".detailsPicture");
-
     let Video = document.querySelector(".detailsVideo");
     let SliderType = null;
 
     if (TextPicture.checked === true) {
       SliderType = "detailsPicture";
     }
-    //let photo = document.querySelector(".sliderPicture");
     if (Video.checked === true) {
       SliderType = "Video";
       if (
         detailsVideo.current.value &&
-        //frenchSliderContent.current.value &&
-        //englishSliderContent.current.value &&
-        SliderType !== null
-        //sliderAlt.current.value !== ""
+        SliderType !== null &&
+        detailsAlt !== ""
       ) {
         const videoUrl = "https://www.youtube.com/embed/".concat(
           detailsVideo.current.value.substring(32)
         );
-        //const videoUrl = sliderVideo.current.value.substring(32);
         let slider = {
           picture: videoUrl,
           picture_id: videoUrl,
           temporaryUrl: videoUrl,
           newPicture: false,
-          //alt: sliderAlt.current.value,
           alt: SliderType,
           french_content: frenchDetailsContent.current.value,
           english_content: englishDetailsContent.current.value,
-          //_id: title,
         };
         details.push(slider);
         setDetails(details);
@@ -430,7 +394,7 @@ function PostProject() {
         alert("champs incomplets");
       }
     } else {
-      if (SliderType !== null) {
+      if (SliderType !== null && detailsAlt.current.value !== "") {
         let slider = {
           picture:
             "https://pierre-le-developpeur.com/assets/images/details" +
@@ -439,7 +403,8 @@ function PostProject() {
           picture_id: title,
           newPicture: true,
           name: "details" + title + ".png",
-          alt: SliderType,
+          //alt: SliderType,
+          alt: detailsAlt.current.value,
           french_content: frenchDetailsContent.current.value,
           _id: title,
           english_content: englishDetailsContent.current.value,
@@ -451,7 +416,7 @@ function PostProject() {
         SliderType = null;
         frenchDetailsContent.current.value = "";
         englishDetailsContent.current.value = "";
-        //photo.value = "";
+        detailsAlt.current.value = "";
       } else {
         alert("champs incomplets");
       }
@@ -552,8 +517,8 @@ function PostProject() {
     slideCopy.english_content = document.querySelector(
       ".updateeng" + projectSlide._id
     ).value;
+    slideCopy.alt = document.querySelector(".alt" + projectSlide._id).value;
     sliders[sliders.indexOf(mySlide)] = slideCopy;
-    //set(evt);
 
     alert("slide modifié");
   }
@@ -569,6 +534,7 @@ function PostProject() {
     slideCopy.english_content = document.querySelector(
       ".updateeng" + projectSlide._id
     ).value;
+    slideCopy.alt = document.querySelector(".alt" + projectSlide._id).value;
     details[details.indexOf(mySlide)] = slideCopy;
     //set(evt);
 
@@ -781,24 +747,34 @@ function PostProject() {
             {sliders.map((projectSlide) => (
               <fieldset className="sliderContainer" key={projectSlide._id}>
                 {projectSlide.alt === "Video" ? (
-                  <iframe
-                    class="video"
-                    width="560"
-                    height="315"
-                    src={projectSlide.picture}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                  <div>
+                    <iframe
+                      class="video"
+                      width="560"
+                      height="315"
+                      src={projectSlide.picture}
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                    <h3>{projectSlide.alt} </h3>
+                  </div>
                 ) : (
-                  <img
-                    src={projectSlide.picture}
-                    alt={projectSlide.alt}
-                    className="sliderPictureShow"
-                  ></img>
+                  <div>
+                    <img
+                      src={projectSlide.picture}
+                      alt={projectSlide.alt}
+                      className="sliderPictureShow"
+                    ></img>
+                    <br></br>
+                    <textarea
+                      defaultValue={projectSlide.alt}
+                      className={"alt" + projectSlide._id}
+                    ></textarea>
+                  </div>
                 )}
-                <h3>{projectSlide.alt} </h3>
+
                 <textarea
                   defaultValue={projectSlide.french_content}
                   className={"updatefr" + projectSlide._id}
@@ -843,27 +819,21 @@ function PostProject() {
                     onChange={(evt) => SliderType(evt)}
                   ></input>
                   <label for="Slider">Slider</label>
-                  <input
-                    type="radio"
-                    id="TextPicture"
-                    name="SliderType"
-                    value="TextPicture"
-                    className="TextPicture"
-                    onChange={(evt) => SliderType(evt)}
-                  ></input>
-                  <label for="TextPicture">Text&picture</label>
 
                   <input
                     type="radio"
                     id="Video"
                     name="SliderType"
                     value="Video"
-                    className="Video"
+                    className="Video hidden"
                     onChange={(evt) => SliderType(evt)}
                   ></input>
-                  <label for="Video">Video</label>
+                  <label for="Video" className="hidden">
+                    Video
+                  </label>
                 </form>
               </div>
+
               {video === true ? (
                 <div>
                   <p>Video URL :</p>
@@ -878,6 +848,10 @@ function PostProject() {
                       type: "image/webp",
                     }}
                   ></PicsUpload>
+                  <div>
+                    <p>Alt :</p>
+                    <textarea ref={sliderAlt} type="text"></textarea>
+                  </div>
                 </div>
               )}
 
@@ -901,24 +875,34 @@ function PostProject() {
             {details.map((projectSlide) => (
               <fieldset className="sliderContainer" key={projectSlide._id}>
                 {projectSlide.alt === "Video" ? (
-                  <iframe
-                    class="video"
-                    width="560"
-                    height="315"
-                    src={projectSlide.picture}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                  <div>
+                    <iframe
+                      class="video"
+                      width="560"
+                      height="315"
+                      src={projectSlide.picture}
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                    <h3>{projectSlide.alt} </h3>
+                  </div>
                 ) : (
-                  <img
-                    src={projectSlide.picture}
-                    alt={projectSlide.alt}
-                    className="sliderPictureShow"
-                  ></img>
+                  <div>
+                    <img
+                      src={projectSlide.picture}
+                      alt={projectSlide.alt}
+                      className="sliderPictureShow"
+                    ></img>
+                    <br></br>
+                    <textarea
+                      defaultValue={projectSlide.alt}
+                      className={"alt" + projectSlide._id}
+                    ></textarea>
+                  </div>
                 )}
-                <h3>{projectSlide.alt} </h3>
+
                 <textarea
                   defaultValue={projectSlide.french_content}
                   className={"updatefr" + projectSlide._id}
@@ -993,6 +977,10 @@ function PostProject() {
                       type: "image/png",
                     }}
                   ></PicsUpload>
+                  <div>
+                    <p>Alt :</p>
+                    <textarea ref={detailsAlt} type="text"></textarea>
+                  </div>
                 </div>
               )}
 
