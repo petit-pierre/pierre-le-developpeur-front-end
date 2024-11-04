@@ -166,16 +166,17 @@
   flex-wrap: wrap;
   position: relative;
 }
-@media (max-width: 650px) {
-  .home .projets {
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-}
 @media (max-width: 900px) {
   .home .projets {
     margin-top: 50px;
     padding-top: 150px;
+  }
+}
+@media (max-width: 650px) {
+  .home .projets {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-top: 200px;
   }
 }
 .home .projets .projectChoice {
@@ -236,8 +237,11 @@
   color: white;
   transition: all 1s;
 }
-.home .projets .projectChoice .Tous::before {
+.home .projets .projectChoice .Tousfr::before {
   content: "Tous";
+}
+.home .projets .projectChoice .Touseng::before {
+  content: "All";
 }
 .home .projets .projectChoice .cms::before {
   content: "C.M.S";
@@ -248,7 +252,10 @@
 .home .projets .projectChoice .fullStack::before {
   content: "Full-stack";
 }
-.home .projets .projectChoice .topProject::before {
+.home .projets .projectChoice .topProjectfr::before {
+  content: "Top projets";
+}
+.home .projets .projectChoice .topProjecteng::before {
   content: "Top projects";
 }
 .home .projets .projectChoice .design::before {

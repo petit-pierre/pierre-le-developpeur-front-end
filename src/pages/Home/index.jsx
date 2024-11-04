@@ -32,11 +32,16 @@ function Home() {
     return 0;
   });
   const [sortedProjects, setSortedProjects] = useState([]);
-  const [truc, setTruc] = useState(0);
 
   /*on demare l'ecoute du server websocket pour pouvoire receptionner les likes des autres utilisateurs en temps reel*/
 
   const socket = io.connect("https://api.petitpierre.net");
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelector(".topProject").click();
+    }, 3000);
+  }, []);
 
   /* ce code est inutile mais je le conserve encore un peu pour en etre sur
   
@@ -87,10 +92,6 @@ function Home() {
     setSortedProjects(newTab);
   }
 
-  useEffect(() => {
-    projectChoice();
-  }, []);
-
   /* debut de code pour loading (fonctionalité a venire)
   
   let loaded = false;
@@ -111,6 +112,8 @@ function Home() {
     translations &&
     projects != null
   ) {
+    //setSortedProjects([]);
+
     /*mise a jour des like a la reception d'un signal socket i/o*/
 
     async function getOldLikes(response) {
@@ -314,14 +317,18 @@ function Home() {
                 id="topProject"
                 name="projectChoice"
                 value="topProject"
-                defaultChecked
-                className="topProject choice"
+                className={
+                  language === "FR"
+                    ? "topProject topProjectfr choice"
+                    : "topProject topProjecteng choice"
+                }
                 onChange={(evt) => projectChoice(evt)}
               ></input>
 
               <input
                 type="radio"
                 id="frontEnd"
+                defaultChecked
                 name="projectChoice"
                 value="frontEnd"
                 className="frontEnd choice"
@@ -360,7 +367,11 @@ function Home() {
                 id="Tous"
                 name="projectChoice"
                 value="Tous"
-                className="Tous choice"
+                className={
+                  language === "FR"
+                    ? "Tous Tousfr choice"
+                    : "Tous Touseng choice"
+                }
                 onChange={(evt) => projectChoice(evt)}
               ></input>
             </form>

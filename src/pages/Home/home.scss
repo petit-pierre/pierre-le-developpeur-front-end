@@ -161,14 +161,16 @@
         justify-content: space-around;
         flex-wrap: wrap;
         position: relative;
-        @media (max-width: 650px){
-            flex-direction: column;
-            flex-wrap: nowrap;
-            //justify-content: center;
-        }
         @media (max-width: 900px){
             margin-top: 50px;
             padding-top: 150px;
+        }
+        @media (max-width: 650px){
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding-top: 200px;
+            //justify-content: center;
+            //padding-top: 250px;
         }
         .projectChoice{
             left: 50%;
@@ -232,8 +234,11 @@
 
               }
               
-              .Tous::before{
+              .Tousfr::before{
                 content: "Tous";
+              }
+              .Touseng::before{
+                content: "All";
               }
               .cms::before{
                 content: "C.M.S";
@@ -244,7 +249,10 @@
               .fullStack::before{
                 content: "Full-stack";
               }
-              .topProject::before{
+              .topProjectfr::before{
+                content: "Top projets";
+              }
+              .topProjecteng::before{
                 content: "Top projects";
               }
               .design::before{
