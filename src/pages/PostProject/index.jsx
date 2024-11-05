@@ -160,6 +160,7 @@ function PostProject() {
 
       const newProject = {
         best: document.querySelector(".topProject").checked,
+        studie: document.querySelector(".studie").checked,
         french_title: frenchProjectTitle.current.value,
         english_title: englishProjectTitle.current.value,
         category: category,
@@ -607,6 +608,13 @@ function PostProject() {
           defaultChecked={project.best === true ? true : false}
         ></input>
         <label for="topProject">⭐Top project ?</label>
+        <input
+          type="checkbox"
+          name="studie"
+          className="studie"
+          defaultChecked={project.studie === true ? true : false}
+        ></input>
+        <label for="topProject">studie project ?</label>
         <form>
           <h1>Post new project</h1>
           <div>

@@ -26,6 +26,7 @@ import UpdateInfo from "./pages/UpdateTranslation";
 import PostSliders from "./pages/PostSliders";
 import DeleteSlide from "./pages/DeleteSlide";
 import Flyers from "./pages/Flyers";
+import Loader from "./pages/Loader";
 import Header from "./components/Header";
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
         <Route path="/User/Tools/:toolId" element={<DeleteTool />} />
         <Route path="/User/Slide/:slideId" element={<DeleteSlide />} />
         <Route path="/Project/:title" element={<Project />} />
+        <Route path="/Loader/:ref" element={<Loader />} />
         <Route path="/Sign-in" element={<SignIn />} />
         <Route path="/Flyers" element={<Flyers />} />
 

@@ -9,6 +9,25 @@
     cursor: pointer;
     margin: 20px;
     z-index: 5;
+    .logoCards{
+        position: absolute;
+        z-index: 6;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        flex-direction: row;
+        .topProj{
+            height: 33px;
+            width: 35px;
+        }
+        .studies{
+            margin-top: -3px;
+            margin-left: 5px;
+            width: 45px;
+        }
+    }
+
+
     p{
         font-size: 1rem;
     }

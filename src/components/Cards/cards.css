@@ -12,6 +12,23 @@
   border: solid white;
   text-align: center;
 }
+.cardField .logoCards {
+  position: absolute;
+  z-index: 6;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.cardField .logoCards .topProj {
+  height: 33px;
+  width: 35px;
+}
+.cardField .logoCards .studies {
+  margin-top: -3px;
+  margin-left: 5px;
+  width: 45px;
+}
 .cardField p {
   font-size: 1rem;
 }

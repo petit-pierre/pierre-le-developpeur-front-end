@@ -34,7 +34,7 @@ function Slider({ sliders, mini, likeId }) {
   //let nextway = true;
   //const [truc, setTruc] = useState(0);
 
-  let cooldown = false;
+  const [cooldown, setCooldown] = useState(false);
   //const [count, setCount] = useState(0);
   /*useEffect(() => {
     setTruc(truc + 1);
@@ -119,7 +119,7 @@ function Slider({ sliders, mini, likeId }) {
 
   const previousPicture = () => {
     if (cooldown === false) {
-      cooldown = true;
+      setCooldown(true);
 
       document.querySelector(".arrowLeft").classList.add("cooldown");
 
@@ -188,7 +188,7 @@ function Slider({ sliders, mini, likeId }) {
       document.querySelector(".b" + selected + likeId).style.zIndex = "2";
       document.querySelector(".b" + selected + likeId).style.opacity = "1";
       setTimeout(() => {
-        cooldown = false;
+        setCooldown(false);
         document.querySelector(".arrowLeft").classList.remove("cooldown");
       }, 1000);
     }
@@ -196,7 +196,7 @@ function Slider({ sliders, mini, likeId }) {
 
   const nextPicture = () => {
     if (cooldown === false) {
-      cooldown = true;
+      setCooldown(true);
       if (document.querySelector(".arrowRight") !== null) {
         document.querySelector(".arrowRight").classList.add("cooldown");
       }
@@ -271,7 +271,7 @@ function Slider({ sliders, mini, likeId }) {
       document.querySelector(".b" + selected + likeId).style.zIndex = "2";
       document.querySelector(".b" + selected + likeId).style.opacity = "1";
       setTimeout(() => {
-        cooldown = false;
+        setCooldown(false);
         if (document.querySelector(".arrowRight") !== null) {
           document.querySelector(".arrowRight").classList.remove("cooldown");
         }

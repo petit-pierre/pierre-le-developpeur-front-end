@@ -11,6 +11,24 @@ function Cards({ project }) {
   return (
     <div className="cardField">
       <HashLink to={"/Project/" + project.french_title + "#project"}>
+        <div className="logoCards">
+          {project.best === true && (
+            <img
+              src="https://pierre-le-developpeur.com/assets/star.png"
+              className="topProj"
+              alt="star icon"
+              title={language === "FR" ? "top projet" : "top project"}
+            ></img>
+          )}
+          {project.studie === true && (
+            <img
+              src="https://pierre-le-developpeur.com/assets/studies.png"
+              className="studies"
+              alt="studies icon"
+              title={language === "FR" ? "projet d'etude" : "studies project"}
+            ></img>
+          )}
+        </div>
         <div>
           <div className="like miniLike likeSlide">
             <LikeButton

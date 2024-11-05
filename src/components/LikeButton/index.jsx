@@ -7,11 +7,15 @@ function LikeButton({ propsLike }) {
 
   const sendLike = (evt, propsLike) => {
     evt.preventDefault();
-    const socket = io.connect("https://api.petitpierre.net");
+    const socket = io.connect("https://api.pierre-le-developpeur.com");
     let message = propsLike.id;
     socket.emit("send_message", { message });
-    getOldLikes(propsLike);
-    //console.log(evt);
+
+    let counter = document.getElementById(propsLike.id).innerText;
+    const like = {
+      likes: parseInt(counter) + 1,
+    };
+    putOldLikes(propsLike, like);
     let target = evt.currentTarget;
     target.classList.add("checked");
     setTimeout(() => {
@@ -25,31 +29,18 @@ function LikeButton({ propsLike }) {
     }, 1000);
   };
 
-  async function getOldLikes(propsLike) {
-    const get = await fetch("https://api.petitpierre.net/api/likes", {
-      method: "GET",
-    });
-    const newlikes = await get.json();
-    const found = newlikes.find((like) => like._id === propsLike.id);
-    const newValue = found.likes + 1;
-    const like = {
-      likes: newValue,
-    };
-
-    async function putOldLikes(propsLike, like) {
-      const put = await fetch(
-        "https://api.petitpierre.net/api/likes/" + propsLike.id,
-        {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=utf-8",
-          },
-          body: JSON.stringify(like),
-        }
-      );
-    }
-    putOldLikes(propsLike, like);
+  async function putOldLikes(propsLike, like) {
+    const put = await fetch(
+      "https://api.pierre-le-developpeur.com/api/likes/" + propsLike.id,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(like),
+      }
+    );
   }
 
   const found = likes.find((like) => like._id === propsLike.id);
