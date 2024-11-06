@@ -15,19 +15,15 @@
         top: 10px;
         left: 10px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         .topProj{
             height: 33px;
             width: 35px;
         }
         .studies{
-            margin-top: -3px;
-            margin-left: 5px;
-            width: 45px;
+            width: 35px;
         }
     }
-
-
     p{
         font-size: 1rem;
     }

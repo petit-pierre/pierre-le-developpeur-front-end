@@ -25,7 +25,7 @@ function Cards({ project }) {
               src="https://pierre-le-developpeur.com/assets/studies.png"
               className="studies"
               alt="studies icon"
-              title={language === "FR" ? "projet d'etude" : "studies project"}
+              title={language === "FR" ? "projet d'étude" : "study project"}
             ></img>
           )}
         </div>
