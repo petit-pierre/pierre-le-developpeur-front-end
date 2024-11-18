@@ -21,8 +21,8 @@ function Loader() {
   useEffect(() => {
     if (
       projects.length > 0 &&
-      translations !== null &&
       contact !== null &&
+      translations !== null &&
       discuss !== null &&
       likes !== null
     ) {
@@ -31,7 +31,26 @@ function Loader() {
     }
   }, [projects, translations, contact, likes, discuss]);
 
-  return <div className="loader">Loading ...</div>;
+  return (
+    <div className="loader">
+      <span>Loading </span>
+      {contact !== null && <span>.</span>}
+      {translations !== null && <span>.</span>}
+      {likes !== null && <span>.</span>}
+      <div className="content__loader">
+        <div className="loaderPlace">
+          <div className="loader__1"></div>
+          <div className="loader__2"></div>
+          <div className="loader__3"></div>
+          <div className="loader__4"></div>
+          <div className="loader__5"></div>
+          <div className="loader__6"></div>
+          <div className="loader__7"></div>
+          <div className="loader__8"></div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Loader;

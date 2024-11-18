@@ -3,4 +3,159 @@
     margin: auto;
     width: fit-content;
     margin-top: 200px;
+    @keyframes loader{
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    @keyframes fondloader{
+        0% {
+            opacity: 1;
+            pointer-events: visible;
+        }
+        50% {
+            opacity: 1;
+            pointer-events: visible;
+        }
+        99% {
+            opacity: 0;
+            pointer-events: visible;
+        }
+        100% {
+            pointer-events: none;
+        }
+    }
+    
+    .content__loader {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        //background-color: white;
+        //animation-name: fondloader;
+        //animation-duration: 4000ms;
+        //animation: 0.5s ease 0.5s infinite alternate fondloader;
+        opacity: 1;
+        pointer-events: none;
+        .loaderPlace{
+            z-index: 10;
+            position: absolute;
+            left: 30px;
+            top: 50px;
+        }
+        .loader__1 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            position: absolute;
+            opacity: 0;
+            left: 9px;
+            top: 3px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 0ms;
+        }
+        .loader__2 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 125ms;
+        }
+        .loader__3 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            left: 9px;
+            top: 21px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 250ms;
+        }
+        .loader__4 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            top: 24px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 375ms;
+        }
+        .loader__5 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            left: -9px;
+            top: 21px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 500ms;
+        }
+        .loader__6 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            left: -12px;
+            top: 12px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 625ms;
+        }
+        .loader__7 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            left: -9px;
+            top: 3px;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 750ms;
+        }
+        .loader__8 {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background-color: black;
+            opacity: 0;
+            position: absolute;
+            animation:  infinite ;
+            animation-name: loader;
+            animation-duration: 1000ms;
+            animation-delay: 875ms;
+        }
+    }
 }
