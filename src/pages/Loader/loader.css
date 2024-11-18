@@ -5,6 +5,19 @@
   width: fit-content;
   margin-top: 200px;
 }
+.loader .fadeOut {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  transition: all 1s;
+  z-index: 2;
+}
+.loader .faded {
+  opacity: 1;
+  transition: all 1s;
+}
 @keyframes loader {
   0% {
     opacity: 0;
@@ -41,7 +54,6 @@
   pointer-events: none;
 }
 .loader .content__loader .loaderPlace {
-  z-index: 10;
   position: absolute;
   left: 30px;
   top: 50px;

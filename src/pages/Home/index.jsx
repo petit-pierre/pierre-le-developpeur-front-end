@@ -162,6 +162,7 @@ function Home() {
           ) : (
             ""
           )}
+          <div className="fadeIn"></div>
           <div className="without">
             <span id="accueil"></span>
             <Accueil></Accueil>

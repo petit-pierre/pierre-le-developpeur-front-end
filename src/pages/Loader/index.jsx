@@ -26,13 +26,17 @@ function Loader() {
       discuss !== null &&
       likes !== null
     ) {
-      navigate("/");
+      document.querySelector(".fadeOut").classList.add("faded");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } else {
     }
   }, [projects, translations, contact, likes, discuss]);
 
   return (
     <div className="loader">
+      <div className="fadeOut"></div>
       <span>Loading </span>
       {contact !== null && <span>.</span>}
       {translations !== null && <span>.</span>}
