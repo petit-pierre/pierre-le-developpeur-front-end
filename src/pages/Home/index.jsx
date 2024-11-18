@@ -162,10 +162,10 @@ function Home() {
           ) : (
             ""
           )}
+          <div className="without">
+            <span id="accueil"></span>
+            <Accueil></Accueil>
 
-          <span id="accueil"></span>
-          <Accueil></Accueil>
-          <div className="accueil">
             <div className="reco">
               <span id="reco" className="recoAnchor"></span>
               <div className="recoTxt">
@@ -189,134 +189,134 @@ function Home() {
                 propsLike={{ id: likes[4]._id, color: "black" }}
               ></LikeButton>
             </div>
-
-            <div className="contact"></div>
-            <div className="gradient"></div>
-            <div className="competences">
-              <span id="competences"></span>
-              <div className="contentSkills">
-                <AreaForText
-                  props={{
-                    french: translations.french.skills,
-                    english: translations.english.skills,
-                    likes: null,
-                    links: null,
-                    edit: false,
-                    style: "purpleAndWitheTextarea",
-                    title: "Competences",
-                    id: "home03",
-                  }}
-                  content={skills.map((skill) => (
-                    <div key={skill._id} className="collapseContent">
-                      <div className="logoAndTitle">
-                        <img
-                          src={skill.picture_url}
-                          alt="logo"
-                          className="logo"
-                        ></img>
-                        <p className="toolTitle">
-                          {language === "FR"
-                            ? skill.french_title
-                            : skill.english_title}
-                        </p>
-                      </div>
+          </div>
+          <div className="contact"></div>
+          <div className="gradient"></div>
+          <div className="competences">
+            <span id="competences"></span>
+            <div className="contentSkills">
+              <AreaForText
+                props={{
+                  french: translations.french.skills,
+                  english: translations.english.skills,
+                  likes: null,
+                  links: null,
+                  edit: false,
+                  style: "purpleAndWitheTextarea",
+                  title: "Competences",
+                  id: "home03",
+                }}
+                content={skills.map((skill) => (
+                  <div key={skill._id} className="collapseContent">
+                    <div className="logoAndTitle">
+                      <img
+                        src={skill.picture_url}
+                        alt="logo"
+                        className="logo"
+                      ></img>
+                      <p className="toolTitle">
+                        {language === "FR"
+                          ? skill.french_title
+                          : skill.english_title}
+                      </p>
                     </div>
-                  ))}
-                ></AreaForText>
-              </div>
-              <div className="pictureJap">
-                <img
-                  src="https://pierre-le-developpeur.com/assets/background.png"
-                  className="background"
-                  alt="cerisier du japon (background)"
-                ></img>
-              </div>
+                  </div>
+                ))}
+              ></AreaForText>
+            </div>
+            <div className="pictureJap">
+              <img
+                src="https://pierre-le-developpeur.com/assets/background.png"
+                className="background"
+                alt="cerisier du japon (background)"
+              ></img>
+            </div>
 
-              <div className="tools">
-                <div className="collapse">
-                  <Collapse
-                    name={"Design/Mao"}
-                    content={tools.map((tool) =>
-                      tool.categorie === "Design" ? (
-                        <div key={tool._id} className="collapseContent">
-                          <div className="logoAndTitle">
-                            <img
-                              src={tool.picture_url}
-                              alt="logo"
-                              className="logo"
-                            ></img>
-                            <p className="toolTitle">{tool.title} </p>
-                          </div>
-                          <div className="like">
-                            <LikeButton
-                              propsLike={{
-                                id: tool.likes_id,
-                                color: "black",
-                              }}
-                            ></LikeButton>
-                          </div>
+            <div className="tools">
+              <div className="collapse">
+                <Collapse
+                  name={"Design/Mao"}
+                  content={tools.map((tool) =>
+                    tool.categorie === "Design" ? (
+                      <div key={tool._id} className="collapseContent">
+                        <div className="logoAndTitle">
+                          <img
+                            src={tool.picture_url}
+                            alt="logo"
+                            className="logo"
+                          ></img>
+                          <p className="toolTitle">{tool.title} </p>
                         </div>
-                      ) : (
-                        ""
-                      )
-                    )}
-                  ></Collapse>
-                </div>
-                <div className="collapse">
-                  <Collapse
-                    name={"Front-end"}
-                    content={tools.map((tool) =>
-                      tool.categorie === "Front-end" ? (
-                        <div key={tool._id} className="collapseContent">
-                          <div className="logoAndTitle">
-                            <img
-                              src={tool.picture_url}
-                              alt="logo"
-                              className="logo"
-                            ></img>
-                            <p className="toolTitle">{tool.title}</p>
-                          </div>
-                          <div className="likeCollapse">
-                            <LikeButton
-                              propsLike={{ id: tool.likes_id, color: "black" }}
-                            ></LikeButton>
-                          </div>
+                        <div className="like">
+                          <LikeButton
+                            propsLike={{
+                              id: tool.likes_id,
+                              color: "black",
+                            }}
+                          ></LikeButton>
                         </div>
-                      ) : (
-                        ""
-                      )
-                    )}
-                  ></Collapse>
-                </div>
-                <div className="collapse">
-                  <Collapse
-                    name={"Back-end"}
-                    content={tools.map((tool) =>
-                      tool.categorie === "Back-end" ? (
-                        <div key={tool._id} className="collapseContent">
-                          <div className="logoAndTitle">
-                            <img
-                              src={tool.picture_url}
-                              alt="logo"
-                              className="logo"
-                            ></img>
-                            <p className="toolTitle">{tool.title}</p>
-                          </div>
-                          <div className="like">
-                            <LikeButton
-                              propsLike={{ id: tool.likes_id, color: "black" }}
-                            ></LikeButton>
-                          </div>
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  )}
+                ></Collapse>
+              </div>
+              <div className="collapse">
+                <Collapse
+                  name={"Front-end"}
+                  content={tools.map((tool) =>
+                    tool.categorie === "Front-end" ? (
+                      <div key={tool._id} className="collapseContent">
+                        <div className="logoAndTitle">
+                          <img
+                            src={tool.picture_url}
+                            alt="logo"
+                            className="logo"
+                          ></img>
+                          <p className="toolTitle">{tool.title}</p>
                         </div>
-                      ) : (
-                        ""
-                      )
-                    )}
-                  ></Collapse>
-                </div>
+                        <div className="likeCollapse">
+                          <LikeButton
+                            propsLike={{ id: tool.likes_id, color: "black" }}
+                          ></LikeButton>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  )}
+                ></Collapse>
+              </div>
+              <div className="collapse">
+                <Collapse
+                  name={"Back-end"}
+                  content={tools.map((tool) =>
+                    tool.categorie === "Back-end" ? (
+                      <div key={tool._id} className="collapseContent">
+                        <div className="logoAndTitle">
+                          <img
+                            src={tool.picture_url}
+                            alt="logo"
+                            className="logo"
+                          ></img>
+                          <p className="toolTitle">{tool.title}</p>
+                        </div>
+                        <div className="like">
+                          <LikeButton
+                            propsLike={{ id: tool.likes_id, color: "black" }}
+                          ></LikeButton>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  )}
+                ></Collapse>
               </div>
             </div>
           </div>
+
           <div className="projets" id="projets">
             <form className="projectChoice">
               <input

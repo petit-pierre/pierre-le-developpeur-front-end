@@ -2,6 +2,9 @@
   position: relative;
   overflow: hidden;
 }
+.home .without {
+  background-color: white;
+}
 .home .background {
   position: absolute;
   top: 0;
