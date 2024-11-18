@@ -12,20 +12,21 @@ function Typewrite({ props }) {
     }
     setStarted(true);
     let i = -1;
-    timer = setInterval(() => {
-      i++;
-      if (i === props.text.length - 1) clearInterval(timer);
-      setText((prev) => prev + props.text[i]);
-    }, 80);
+
+    (function loop() {
+      setTimeout(() => {
+        i++;
+        setText((prev) => prev + props.text[i]);
+        if (i !== props.text.length - 1) {
+          loop();
+        }
+      }, randomSpeed(10, 100));
+    })();
   };
 
-  /*
-  const handleReset = () => {
-    setText("");
-    clearInterval(timer);
-    setStarted(false);
+  const randomSpeed = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
   };
-  */
 
   useEffect(() => {
     return () => {
