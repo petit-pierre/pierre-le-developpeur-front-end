@@ -146,11 +146,16 @@
   height: 6vh;
   resize: none;
   border-bottom-left-radius: 20px 20px;
+  transition: 0.1s;
 }
 @media (max-width: 650px) {
   .contactField .discuss textarea {
     height: 8vh;
   }
+}
+.contactField .discuss textarea:focus {
+  outline: 2px solid rgba(153, 71, 122, 0.7176470588);
+  transition: 0.1s;
 }
 @media (max-width: 650px) {
   .contactField .bdMaxi {

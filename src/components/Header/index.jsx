@@ -211,6 +211,12 @@ function Header() {
             </div>
           </nav>
         </div>
+        <a href="tel:+33672094328" className="logotel">
+          <img
+            src="https://pierre-le-developpeur.com/assets/logo_tel.png"
+            alt="logo telephone"
+          ></img>
+        </a>
       </div>
 
       <div className="shape"></div>

@@ -30,6 +30,22 @@
   top: 0px;
   z-index: 10;
 }
+.headerfield .logotel {
+  display: none;
+}
+@media (max-width: 900px) {
+  .headerfield .logotel {
+    display: block;
+    position: absolute;
+    top: 37px;
+    left: 15px;
+    height: 70px;
+  }
+  .headerfield .logotel img {
+    height: 100%;
+    filter: invert(1);
+  }
+}
 .headerfield .logIn {
   filter: invert(1);
   height: 35px;
