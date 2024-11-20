@@ -1,9 +1,10 @@
 .loader {
   display: flex;
   margin: auto;
-  width: -moz-fit-content;
-  width: fit-content;
   margin-top: 200px;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 .loader .fadeOut {
   position: absolute;
@@ -46,16 +47,23 @@
     pointer-events: none;
   }
 }
+.loader .loading {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
 .loader .content__loader {
   width: 100%;
   height: 100%;
   position: absolute;
+  left: 50%;
   opacity: 1;
   pointer-events: none;
 }
 .loader .content__loader .loaderPlace {
   position: absolute;
-  left: 30px;
+  left: -3px;
   top: 50px;
 }
 .loader .content__loader .loader__1 {

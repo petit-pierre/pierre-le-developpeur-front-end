@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./contact.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Typewrite from "../Typewrite";
 import Button from "../Button";
 import { Typewriter } from "react-simple-typewriter";
@@ -10,6 +10,7 @@ let mailToken = require(`../../code.json`);
 
 function Contact({ props }) {
   const dispatch = useDispatch();
+  const content = useRef();
 
   /*on recupere les valeurs du store redux*/
 
@@ -24,11 +25,39 @@ function Contact({ props }) {
   const [errorContent, setErrorContent] = useState(true);
   const [wichError, setWichError] = useState("nothing");
   const [sended, setSended] = useState(false);
+  const [discus, setDiscus] = useState(false);
+  const [histo, setHisto] = useState([
+    {
+      content: "Bonjour, quel est votre message ?",
+      contentEng: "Hello, what is your message ?",
+      sender: "pierre",
+    },
+  ]);
+  const [contenu, setContenu] = useState({});
 
   /*on recupere les valeurs des champs de formulaires*/
 
-  const content = useRef();
   const mail = useRef();
+
+  document.addEventListener("click", function (evt) {
+    //console.log(evt.target.className);
+    if (
+      evt.target.className !== "bdMaxi" &&
+      discus === true &&
+      evt.target.className !== "headerLogos" &&
+      evt.target.className !== "maGanache" &&
+      evt.target.className !== "discuss" &&
+      evt.target.classList.contains("discussContent") === false
+    ) {
+      //console.log(evt.target);
+      setDiscus(false);
+    }
+  });
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      setDiscus(false);
+    }
+  });
 
   /*on gere les erreurs sur le mail avec la methode du formulaire controlé*/
 
@@ -76,21 +105,28 @@ function Contact({ props }) {
 
   /*fonction pour l'envoi du mail, en cas d'erreur un mailto est utilisé en remplacement*/
 
-  const sendMail = (content, mail, e) => {
-    e.preventDefault();
+  const sendMail = (contenu, content, newHistor) => {
+    //e.preventDefault();
     const elastic = {
       SecureToken: mailToken.code,
       To: "contact@pierre-le-developpeur.com",
       From: "contact@pierre-le-developpeur.com",
       Subject: "Site pierre le developpeur",
       Body:
-        "email : " + mail.current.value + " message : " + content.current.value,
+        "email : " + content.current.value + " message : " + contenu.content,
     };
     window.Email.send(elastic).then((message) => {
       if (message === "OK") {
+        newHistor.push({
+          content: "Message envoyé, je vous repondrai bientot. Autre chose ?",
+          contentEng: "Message sent. What else ?",
+          sender: "thanks",
+        });
         setErrorContent(true);
-        content.current.value = "";
-        setSended(true);
+        setTimeout(() => {
+          document.querySelector(".discuss").scrollTop +=
+            document.querySelector(".discuss").scrollHeight + 50;
+        }, 100);
       } else {
         window.open(
           "mailto:contact@pierre-le-developpeur.com?subject=Contact pierre le développeur&body=" +
@@ -124,201 +160,157 @@ function Contact({ props }) {
     }
   };
 
+  function openDialByKey(evt) {
+    if (evt.code === "Enter") {
+      openDial();
+    }
+  }
+
+  function send(evt) {
+    evt.preventDefault();
+    if (content.current.value === "") {
+      content.current.value = "...";
+    }
+    const emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+
+    let newHistor = structuredClone(histo);
+    newHistor.push({
+      content: content.current.value,
+      contentEng: content.current.value,
+      sender: "user",
+    });
+    setHisto(newHistor);
+    if (errorContent === false) {
+      if (emailRegExp.test(content.current.value)) {
+        sendMail(contenu, content, newHistor);
+      } else {
+        newHistor.push({
+          content: "Cet e-mail n'est pas valide.",
+          contentEng: "Invalid e-mail.",
+          sender: "pierre",
+        });
+      }
+    } else {
+      if (content.current.value.length < 4) {
+        newHistor.push({
+          content: "Ce message est trop court.",
+          contentEng: "This message is too short.",
+
+          sender: "pierre",
+        });
+      } else {
+        setErrorContent(false);
+        newHistor.push({
+          content: "Laissez-moi votre e-mail afin que je puisse vous repondre.",
+          contentEng: "Give me your e-mail and i will answer.",
+
+          sender: "pierre",
+        });
+        setContenu({ content: content.current.value });
+      }
+    }
+    //console.log(contenu);
+    content.current.value = "";
+    setTimeout(() => {
+      document.querySelector(".discuss").scrollTop +=
+        document.querySelector(".discuss").scrollHeight + 50;
+    }, 100);
+  }
+
+  /*ouverture de la modale (et fermeture du burger menu)*/
+
+  function openDial() {
+    setDiscus(true);
+    setTimeout(() => {
+      document.querySelector(".discuss").scrollTop +=
+        document.querySelector(".discuss").scrollHeight + 50;
+    }, 100);
+    //dispatch(userSlice.actions.setContactMenu(!discuss));
+    //burgerOff();
+  }
+
   return (
     <div className="contactField">
-      <div className={discuss === true ? "witheBack" : "noBack"}></div>
-      <img
-        src="https://pierre-le-developpeur.com/assets/bd.png"
-        className="triangle"
-        alt="BD"
-      ></img>
-      <img
-        src="https://pierre-le-developpeur.com/assets/bd.png"
-        className="triangleMini"
-        alt="BD"
-      ></img>
-      <div className={discuss === true ? "bd discuss" : "bd noDiscuss"}>
-        {discuss === true ? (
-          <div className="helloContainer">
-            {sended === true ? (
-              language === "FR" ? (
-                <div className="p">
-                  <div className="p">
-                    <Typewrite
-                      props={{ text: contact.french.succes }}
-                    ></Typewrite>
-                  </div>
-                </div>
-              ) : (
-                <div className="p">
-                  <div className="p">
-                    <div>
-                      <Typewrite
-                        props={{ text: contact.english.succes }}
-                      ></Typewrite>
-                    </div>
-                  </div>
-                </div>
-              )
-            ) : wichError === "nothing" ? (
-              language === "FR" ? (
-                <div className="p">
-                  <Typewrite
-                    props={{ text: contact.french.contact }}
-                  ></Typewrite>
-                </div>
-              ) : (
-                <div className="p">
-                  <div>
-                    <Typewrite
-                      props={{ text: contact.english.contact }}
-                    ></Typewrite>
-                  </div>
-                </div>
-              )
-            ) : wichError === "mail" ? (
-              language === "FR" ? (
-                <div className="p">
-                  <div>
-                    <div>
-                      <Typewrite
-                        props={{ text: contact.french.error_mail }}
-                      ></Typewrite>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="p">
-                  <div>
-                    <div>
-                      <div>
-                        <Typewrite
-                          props={{ text: contact.english.error_mail }}
-                        ></Typewrite>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            ) : language === "FR" ? (
-              <div className="p">
-                <div>
-                  <Typewrite
-                    props={{ text: contact.french.error_content }}
-                  ></Typewrite>
-                </div>
-              </div>
-            ) : (
-              <div className="p">
-                <div>
-                  <div>
-                    <Typewrite
-                      props={{ text: contact.english.error_content }}
-                    ></Typewrite>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <img
-              src="https://pierre-le-developpeur.com/assets/cross.png"
-              className="cross"
-              alt="close cross"
-              onClick={(evt) => closeDial(evt)}
-              onKeyDown={(evt) => closeDialByKey(evt)}
-              tabIndex={discuss === true ? 10 : -1}
-            ></img>
-          </div>
-        ) : (
-          <div className="bdContent" onClick={(evt) => dial(evt)}>
-            {" "}
-            {language === "FR" ? (
-              <div className="bonjour one">
-                <Typewrite props={{ text: "Bonjour " }}></Typewrite>
-                <div className="dots">
-                  <Typewriter
-                    words={["..."]}
-                    loop={0}
-                    deleteSpeed={1}
-                    typeSpeed={200}
-                  ></Typewriter>
-                </div>
-              </div>
-            ) : (
-              <div className="bonjour one">
-                <div>
-                  <Typewrite props={{ text: "Hello " }}></Typewrite>
-                </div>
-                <div className="dots">
-                  <Typewriter
-                    words={["..."]}
-                    loop={0}
-                    deleteSpeed={1}
-                    typeSpeed={280}
-                  ></Typewriter>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
       <div
-        className={
-          discuss === true
-            ? "reponse visibleResponse"
-            : "reponse hiddenResponse"
-        }
+        className="headerLogos"
+        onClick={openDial}
+        onKeyDown={(evt) => openDialByKey(evt)}
+        tabIndex={1}
       >
-        <div className="messageAndButton">
-          <input
-            type="mail"
-            className="textareaForMail contact00"
-            ref={mail}
-            onChange={formMailError}
-            placeholder={contact.french.placeholder_mail}
-            tabIndex={discuss === true ? 11 : -1}
-          ></input>
-          <textarea
-            className="textareaForContact contact01"
-            ref={content}
-            onChange={formContentError}
-            tabIndex={discuss === true ? 11 : -1}
-          ></textarea>
-          <div className="like">
-            <LikeButton
-              propsLike={{ id: "65dc9d6a700bae9e300a79aa", color: "black" }}
-              className="like"
-            ></LikeButton>
-          </div>
-
-          <div className="divForButton">
-            {errorContent === false && errorMail === false ? (
-              <button
-                className="elements buttonSend"
-                onClick={(e) => sendMail(content, mail, e)}
-                tabIndex={discuss === true ? 11 : -1}
-              >
-                <span>{language === "FR" ? "Envoyer :" : "Send :"} </span>
-                <Button
-                  props={{
-                    style: "purpleAndWitheTextarea",
-                    send: true,
-                    title:
-                      "https://pierre-le-developpeur.com/assets/send_mail.png",
-                    picture: true,
-                  }}
-                ></Button>
-              </button>
-            ) : (
-              ""
-            )}
-          </div>
-        </div>
         <img
-          src="https://pierre-le-developpeur.com/assets/bd.png"
-          className="triangleResponse"
-          alt="BD"
+          src="https://pierre-le-developpeur.com/assets/pierre.png"
+          className="maGanache"
+          alt="thank you"
+          //onClick={openDial}
         ></img>
+        <div className={discus === true ? "bdMaxi" : "bdMini"}>
+          {discus === false ? (
+            <span className="noDiscuss">?</span>
+          ) : (
+            <div className="discuss discussContent">
+              <div
+                className={
+                  histo.length > 1
+                    ? "gradient discussContent"
+                    : "gradient hidden discussContent"
+                }
+              ></div>
+              {histo.map((message, id) => (
+                <div
+                  className={"oneMessage discussContent"}
+                  key={"historique " + id}
+                >
+                  <img
+                    src={
+                      message.sender === "pierre"
+                        ? "https://pierre-le-developpeur.com/assets/pierre.png"
+                        : message.sender === "user"
+                        ? "https://pierre-le-developpeur.com/assets/avatar.png"
+                        : "https://pierre-le-developpeur.com/assets/thanks.png"
+                    }
+                    className="avatar discussContent"
+                    alt="avatar"
+                  ></img>
+                  <div className="txt discussContent">
+                    {id === histo.length - 1 ? (
+                      language === "FR" ? (
+                        <Typewrite
+                          props={{ text: message.content }}
+                        ></Typewrite>
+                      ) : (
+                        <div className="discussContent">
+                          <Typewrite
+                            props={{ text: message.contentEng }}
+                          ></Typewrite>
+                        </div>
+                      )
+                    ) : (
+                      <p>
+                        {language === "FR"
+                          ? message.content
+                          : message.contentEng}{" "}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+              <textarea
+                className="discussContent chatArea"
+                ref={content}
+              ></textarea>
+              <button
+                className="sendButton discussContent"
+                onClick={(evt) => send(evt)}
+              >
+                <img
+                  src="https://pierre-le-developpeur.com/assets/send_mail.png"
+                  alt="send message"
+                  className="discussContent"
+                ></img>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

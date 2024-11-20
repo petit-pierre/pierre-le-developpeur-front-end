@@ -1,8 +1,12 @@
 .loader{
     display: flex;
     margin: auto;
-    width: fit-content;
+    //width: fit-content;
     margin-top: 200px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    //left: 50wh;
     .fadeOut{
         position: absolute;
         width: 100%;
@@ -44,11 +48,19 @@
             pointer-events: none;
         }
     }
-    
+    .loading{
+        width: 100%;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+    }
     .content__loader {
         width: 100%;
         height: 100%;
         position: absolute;
+        left: 50%;
+	    //transform: translateX(-50%);
+        //margin: auto;
         //background-color: white;
         //animation-name: fondloader;
         //animation-duration: 4000ms;
@@ -58,7 +70,7 @@
         .loaderPlace{
             //z-index: 10;
             position: absolute;
-            left: 30px;
+            left: -3px;
             top: 50px;
         }
         .loader__1 {

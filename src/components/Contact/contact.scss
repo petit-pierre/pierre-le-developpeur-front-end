@@ -5,258 +5,118 @@
     }
 }
 .contactField{
+    .bdMini{
+        background-color: white;
+        width: 0px;
+        height: 0px;
+        border: solid 2px black;
+        position: absolute;
+        bottom: 34px;
+        right: 60px;
+        border-radius: 30px;
+        border-top-right-radius: 0px 80px;
+        transition: 0.25s;
+        opacity: 0;
+        //transform-origin: top right;
+        display: flex;
+        margin: auto;
+    }
+    .headerLogos{
+        z-index: 11;
+        cursor: pointer;
+
+
+        transform-origin: center;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        transition: 1s;
+    }
+    .maGanache{
+        width: 100px;
+        //z-index: 10;
+        border-radius: 100px;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+
+    }
+    .headerLogos:hover{
+        //bottom: 22px;
+        //right: 21px;
+        .bdMini{
+            transition: 0.25s;
+            width: 80px;
+            height: 30px;
+            bottom: 4px;
+            opacity: 1;
+        }
+    }
+    .bdMaxi{
+        transition: 0.25s;
+        width: 35vw;
+        right: 0;
+        height: 60vh;
+        bottom: 4px;
+        opacity: 1;
+        border-radius: 30px;
+        border-bottom-right-radius: 0px 80px;
+        background-color: white;
+        border: solid 2px black;
+        position: absolute;
+
+        //z-index: 11;
+        transition: 0.25s;
+    }
     position: relative;
     display: flex;
     flex-direction: column;
-    .like{
-        right: -10px;
-        bottom: 2dvh;
-        @media (max-height: 270px) {
-            display: none;
-        }
-    }
-    .p{
-        padding-right: 5px;
-    }
-    .messageAndButton{
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-       justify-content: space-between;
-        overflow: hidden;
-    }
-    .dots{
-        padding-left: 4px;
-        width: 20px;
-    }
-    .one{
-        display: flex;
-        flex-direction: row;
-        margin: auto;
-    }
-    .bd{
-        background-color: white;
-        height: 40px;
-        position: fixed;
-        border: 2px solid black;
-        top: 130px;
-        left: 25px;
-        z-index: 12;
-        border-radius: 10px;
-        display: flex;
-        transition: 1s;
-        overflow: hidden;
-        .p{
-            margin: auto;
-        }
-    }
-    .textareaForContact{
-        margin: auto;
-        width: 95%;
-        height: 80%;
-        resize: none;
-        border: none;
-        box-shadow: 0px 2px 5px black;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-    .textareaForContact:focus{
-        outline:2px solid #99477a;
-    }
-    .textareaForMail{
-        margin: auto;
-        text-align: center;
-        width: 250px;
-        height: 20px;
-        min-height: 20px;
-        margin-top: 20px;
-        margin-bottom: 22px;
-        resize: none;
-        border: none;
-        box-shadow: 0px 2px 5px black;
-        border-radius: 5px;
-        display: flex;
-        @media  (max-width: 649px){
-            margin-left: 10px;
-            width: 50%;
-        }
-    }
-    .textareaForMail:focus{
-        outline:2px solid #99477a;
-    }
-    .witheBack{
-        width: 100%;
-        height: 100dvh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 8;
-        background-color: white;
-        transition: 1s;
-    }
-    .noBack{
-        width: 100%;
-        height: 100dvh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: 4s;
-        background-color: none;
-    }
-    .reponse{
-        width: calc(100% - 50px);
-        height: calc(100dvh - 210px);
-        background-color: white;
-        position: fixed;
-        z-index: 13;
-        left: 25px;
-        border: 2px solid black;
-        border-radius: 10px;
-        display: flex;
-        @media (max-width: 650px) {
-            height: calc(100dvh - 155px);
-        }
-    }
-    .triangleResponse {
-        z-index: 13;
-        position: absolute;
-        bottom: -15px;
-        transform: rotate(180deg);
-        right: 80px;
-        width: 22px;
-      }
-    .visibleResponse{
-        top: 180px;
-        transition: 1s;
-        @media (max-width: 650px) {
-            top: 140px;
-        }
-    }
-    .hiddenResponse{
-        top: 200dvh;
-        transition: 1s;
-    }
     .noDiscuss{
-        width: 100px;
-        cursor: pointer;
-        @media (max-width: 650px) {
-            top: 90px;
-            left: 150px;
-        }
+        margin: auto;
     }
-    .noDiscuss:hover{
-        width: 140px;
-        transition: 1s;
-        @media (max-width: 650px) {
-            width: 100px;
-        }
-    }
+
     .discuss{
-        width: calc(100% - 50px);
-        @media (max-width: 650px) {
-            top: 10px;
-            left: 150px;
-            width: calc(100% - 245px);
-            height: 120px;
-        }
-        @media (max-width: 450px) {
-            line-height: 0.6rem;
-            span{
-                font-size: 0.6rem;
-            }
-        }
-    }  
-    .triangle {
-        z-index: 13;
-        position: fixed;
-        top: 117px;
-        left: 80px;
-        width: 22px;
-        transition: 1s;
-        transition-delay: 1s;
-        opacity: 1;
-        @media (max-width: 650px) {
+        .hidden{
             opacity: 0;
-            transition: 0s;
-        }
-      }
-    .triangleMini{
-        z-index: 13;
-        position: fixed;
-        top: 100px;
-        transform: rotate(-90deg);
-        left: 134px;
-        width: 22px;
-        opacity: 0;
-        transition: 0s;
-        @media (max-width: 650px) {
-            opacity: 1;
             transition: 1s;
-            transition-delay: 1s;
         }
-    }
-    .cross{
-        width: 30px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        width: 30px;
-        cursor: pointer;
-    }
-    .hello{
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-    .helloContainer{
-        position: relative;
-        width: 100%;
-        display: flex;
-        padding-left: 15px;
-        padding-right: 30px;
-        @media (max-width: 450px) {
-            padding-left: 5px;
+        .gradient{
+            position: absolute;
+            width: 93%;
+            height: 40%;
+            top: 2px;
+            //margin-left: 5px;
+            border-radius: 10px;
+            background: linear-gradient(#ffffff, #ffffff00);
+            transition: 1s;
         }
-    }
-    .bdContent{
-        display: flex;
-        width: 100%;
-        margin: auto;
-    }
-    @media (max-width: 650px) {
-        .messagePlace{
-            .textArea{
-                textarea{
-                    min-height: 200px;
-                }
+        width: 93%;
+        height: 100%;
+        padding: 10px;
+        height: calc(60vh - 100px);
+        overflow: hidden;
+        margin-top: 10px;
+        cursor: default;
+        flex-direction: column;
+        .txt{
+            margin-left: 5px;
+            margin-top: -10px;
+            //margin-right: 15px;
+            @media (max-width: 650px) {
+                margin-top: 0;
             }
         }
-      }
-    .divForButton{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        z-index: 12;
-    }
-    .buttonSend{
-        border: 0px;
-        background-color: transparent;
-        position: absolute;
-        top: 6px;
-        right: 6px;
-        animation-name: clignote;
-        animation-duration: 1000ms;
-        animation-iteration-count: infinite;
-        display: flex;
-        flex-direction: row;
-        span{
-            padding-top: 19px;
-            padding-right: 5px;
-            @media  (max-width: 460px){
-                display: none;
-            }
+        .oneMessage{
+            //position: relative;
+            display: flex;
+            flex-direction: row;
+            //
+
+            //flex-direction: row;
+
+        }
+        .avatar{
+            width: 30px;
+            height: 30px;
         }
         @keyframes clignote{
             0% {
@@ -269,20 +129,50 @@
               opacity: 1 ;
             }  
           }
-        .purpleAndWitheTextarea{
-            height: 40px ;
-            width: 40px;
+        .sendButton{
+            width: calc(18% - 30px);
+            min-width: 30px;
+            height: 6vh;
+            display: flex;
+            cursor: pointer;
+            img{
+                width: 100%;
+                margin: auto;
+            }
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            animation:  infinite clignote ;
+            animation-duration: 2000ms;
+            opacity: 1;
+            @media (max-width: 650px) {
+                height: 8vh
+            }
         }
-        .purpleAndWitheTextarea:hover{
-            box-shadow: none;
-            height: 40px ;
-            width: 40px;
-        } 
-        .send{
-            .purpleAndWitheTextarea:hover{
-                box-shadow: 0px 5px 5px black;
-            } 
+
+        textarea{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: calc(85% - 30px);
+            height: 6vh;
+            resize: none;
+            border-bottom-left-radius: 20px 20px;
+            @media (max-width: 650px) {
+                height: 8vh;
+            }
         }
+    }
+    @media (max-width: 650px) {
+        
+.bdMaxi{
+    width: 90vw;
+    height: calc(100vh - 190px);
+}
+
+        
     }
 }
 

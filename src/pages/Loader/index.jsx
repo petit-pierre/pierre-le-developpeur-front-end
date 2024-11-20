@@ -37,10 +37,12 @@ function Loader() {
   return (
     <div className="loader">
       <div className="fadeOut"></div>
-      <span>Loading </span>
-      {contact !== null && <span>.</span>}
-      {translations !== null && <span>.</span>}
-      {likes !== null && <span>.</span>}
+      <div className="loading">
+        <span>Loading </span>
+        {contact !== null && <span>.</span>}
+        {translations !== null && <span>.</span>}
+        {likes !== null && <span>.</span>}
+      </div>
       <div className="content__loader">
         <div className="loaderPlace">
           <div className="loader__1"></div>

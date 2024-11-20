@@ -117,6 +117,9 @@
         top: 60px;
         right: 0;
         width: 100%;  
+        .likeContainer{
+            bottom: 160px;
+        }
         @media (max-width: 650px){
             height: calc(100vh - 130px);
             top: 130px;

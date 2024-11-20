@@ -72,23 +72,11 @@
     }
 }
 .header {
-    .headerLogos{
-        img{
-            cursor: pointer;
-        }
-    }
+    
     width: 100%;
     z-index:11;
     top: 0px;
-    .maGanache{
-        width: 150px;
-        transform-origin: center;
-        position: absolute;
-        left: 20px;
-        top: 20px;
-        z-index: 10;
-        border-radius: 100px;
-    }
+    
     .topHeader{
         display: flex;
         flex-direction: row;

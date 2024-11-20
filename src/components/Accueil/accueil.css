@@ -20,6 +20,8 @@
   height: 200px;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 4;
 }
 @media (max-width: 900px) {
   .accueilField .button {

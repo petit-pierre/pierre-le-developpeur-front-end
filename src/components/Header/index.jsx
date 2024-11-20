@@ -51,19 +51,6 @@ function Header() {
 
   /*ouverture de la modale (et fermeture du burger menu) avec le clavier (pour l'accessibilité)*/
 
-  function openDialByKey(evt) {
-    if (evt.code === "Enter") {
-      openDial();
-    }
-  }
-
-  /*ouverture de la modale (et fermeture du burger menu)*/
-
-  function openDial() {
-    dispatch(userSlice.actions.setContactMenu(!discuss));
-    burgerOff();
-  }
-
   /*fermeture de la modale (et fermeture du burger menu)*/
 
   function closeDial() {
@@ -142,35 +129,36 @@ function Header() {
               </div>
 
               <HashLink onClick={closeDial} to="/#accueil" tabIndex={4}>
-                <div className="li links txtLinks">
+                <div className="discussContent li links txtLinks">
                   {language === "FR" ? "Accueil" : "Welcome"}
                 </div>
               </HashLink>
               <HashLink onClick={closeDial} to="/#reco" tabIndex={5}>
-                <div className="li links txtLinks">
+                <div className="discussContent li links txtLinks">
                   {language === "FR" ? "Recommandation" : "Advice"}
                 </div>
               </HashLink>
               <HashLink onClick={closeDial} to="/#competences" tabIndex={6}>
-                <div className="li links txtLinks">
+                <div className="discussContent li links txtLinks">
                   {" "}
                   {language === "FR" ? "Compétences" : "Skills"}
                 </div>
               </HashLink>
               <HashLink onClick={closeDial} to="/#projets" tabIndex={7}>
-                <div className="li links txtLinks">
+                <div className="discussContent li links txtLinks">
                   {language === "FR" ? "Projets" : "Projects"}
                 </div>
               </HashLink>
-              <div className=" language links">
+              <div className="discussContent language links">
                 {language}
                 <input
                   type="checkbox"
-                  className="demo5"
+                  className="demo5 discussContent"
                   id="demo5"
                   onClick={changeLanguage}
                 />
                 <label
+                  className="discussContent"
                   htmlFor="demo5"
                   tabIndex={8}
                   onKeyDown={(evt) => changeLanguageByKey(evt)}
@@ -222,16 +210,6 @@ function Header() {
               ></img>
             </div>
           </nav>
-          <div className="headerLogos">
-            <img
-              src="https://pierre-le-developpeur.com/assets/pierre.png"
-              className="maGanache"
-              alt="thank you"
-              tabIndex={1}
-              onClick={openDial}
-              onKeyDown={(evt) => openDialByKey(evt)}
-            ></img>
-          </div>
         </div>
       </div>
 

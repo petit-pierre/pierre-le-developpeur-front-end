@@ -121,6 +121,9 @@
   right: 0;
   width: 100%;
 }
+.projectPage .slider .likeContainer {
+  bottom: 160px;
+}
 @media (max-width: 650px) {
   .projectPage .slider {
     height: calc(100vh - 130px);
