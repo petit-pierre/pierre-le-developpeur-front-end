@@ -30,6 +30,21 @@
   top: 0px;
   z-index: 10;
 }
+.headerfield .animReact {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  filter: invert(1);
+  display: none;
+}
+@media (max-width: 900px) {
+  .headerfield .animReact {
+    display: block;
+  }
+}
 .headerfield .logotel {
   display: none;
 }
@@ -37,8 +52,8 @@
   .headerfield .logotel {
     display: block;
     position: absolute;
-    top: 37px;
-    left: 15px;
+    top: 40px;
+    left: 40px;
     height: 70px;
   }
   .headerfield .logotel img {
@@ -239,8 +254,8 @@
   .header #icons {
     display: block;
     position: fixed;
-    right: 15px;
-    top: 30px;
+    right: 35px;
+    top: 35px;
   }
   .header #icons .icons {
     width: 80px;

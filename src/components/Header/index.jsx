@@ -5,6 +5,7 @@ import { userSlice } from "../../Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
+import React from "../../components/React";
 
 function Header() {
   const dispatch = useDispatch();
@@ -217,6 +218,9 @@ function Header() {
             alt="logo telephone"
           ></img>
         </a>
+        <div className="animReact">
+          <React></React>
+        </div>
       </div>
 
       <div className="shape"></div>
