@@ -3,6 +3,23 @@
   flex-direction: row;
   background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.6));
 }
+.signPage .fadeIn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 1000ms;
+}
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @media (max-width: 650px) {
   .signPage {
     flex-direction: column-reverse;
@@ -25,6 +42,7 @@
   margin-left: 25dvw;
   margin-top: 12dvh;
   width: 25%;
+  z-index: 1;
 }
 @media (max-width: 650px) {
   .signPage .signin {

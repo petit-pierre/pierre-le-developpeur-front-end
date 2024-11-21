@@ -30,14 +30,12 @@ function Loader() {
     ) {
       document.querySelector(".fadeOut").classList.add("faded");
       setTimeout(() => {
-        if (ref === "Home") {
+        if (ref === "Sign-in") {
+          navigate("/" + ref);
+        } else if (ref === "Home") {
           navigate("/");
         } else {
-          if (ref === "Sign-in") {
-            navigate("/" + ref);
-          } else {
-            navigate("/Project/" + ref);
-          }
+          navigate("/Project/" + ref);
         }
       }, 1000);
     } else {

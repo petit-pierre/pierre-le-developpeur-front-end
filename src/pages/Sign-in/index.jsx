@@ -150,6 +150,7 @@ function SignIn() {
       <div>
         <Contact props={{ likeId: "65dc9d6a700bae9e300a79aa" }} />
         <main className="signPage">
+          <div className="fadeIn"></div>
           <section className="signin">
             <h1>{language === "FR" ? "Connexion" : "Sign In"} </h1>
 

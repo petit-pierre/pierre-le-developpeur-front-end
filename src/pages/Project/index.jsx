@@ -168,6 +168,7 @@ function Project() {
 
     return project !== undefined ? (
       <div className="projectPage">
+        <div className="fadeIn"></div>
         <div
           className="scrollDown"
           style={{
