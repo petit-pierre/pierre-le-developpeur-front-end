@@ -25,6 +25,50 @@
   display: flex;
   margin: auto;
 }
+@media (max-width: 650px) {
+  .contactField .bdMini {
+    animation: openBd 8s linear infinite;
+  }
+}
+.contactField .bdLike {
+  background-color: white;
+  border: solid 2px black;
+  position: absolute;
+  right: 60px;
+  border-radius: 30px;
+  border-top-right-radius: 0px 80px;
+  display: flex;
+  margin: auto;
+  transition: 0.25s;
+  width: 160px;
+  height: 30px;
+  bottom: 4px;
+  opacity: 1;
+  animation: none;
+}
+@keyframes openBd {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  89% {
+    width: 0px;
+    height: 0px;
+    bottom: 4px;
+    opacity: 0;
+  }
+  90% {
+    width: 80px;
+    height: 30px;
+    bottom: 4px;
+    opacity: 1;
+  }
+  100% {
+    width: 80px;
+    height: 30px;
+    bottom: 4px;
+    opacity: 1;
+  }
+}
 .contactField .headerLogos {
   z-index: 11;
   cursor: pointer;
@@ -39,12 +83,14 @@
   border-radius: 100px;
   transform: scaleX(-1);
 }
-.contactField .headerLogos:hover .bdMini {
-  transition: 0.25s;
-  width: 80px;
-  height: 30px;
-  bottom: 4px;
-  opacity: 1;
+@media (min-width: 650px) {
+  .contactField .headerLogos:hover .bdMini {
+    transition: 0.25s;
+    width: 80px;
+    height: 30px;
+    bottom: 4px;
+    opacity: 1;
+  }
 }
 .contactField .bdMaxi {
   transition: 0.25s;
@@ -80,7 +126,7 @@
 .contactField .discuss .gradient {
   position: absolute;
   width: 93%;
-  height: 40%;
+  height: 150px;
   top: 2px;
   border-radius: 10px;
   background: linear-gradient(#ffffff, rgba(255, 255, 255, 0));
@@ -160,6 +206,6 @@
 @media (max-width: 650px) {
   .contactField .bdMaxi {
     width: 90vw;
-    height: calc(100vh - 190px);
+    height: calc(100dvh - 190px);
   }
 }/*# sourceMappingURL=contact.css.map */

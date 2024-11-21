@@ -91,7 +91,7 @@ function Header() {
                 <a
                   href="https://www.malt.fr/profile/pierreaubree"
                   target="_blank"
-                  className="logoLink "
+                  className="logoLink link1"
                   rel="noopener noreferrer"
                   tabIndex={2}
                 >
@@ -104,7 +104,7 @@ function Header() {
                 <a
                   href="https://github.com/petit-pierre"
                   target="_blank"
-                  className="logoLink "
+                  className="logoLink link2"
                   rel="noopener noreferrer"
                   tabIndex={2}
                 >
@@ -117,7 +117,7 @@ function Header() {
                 <a
                   href="https://www.linkedin.com/in/pierre-aubrée/"
                   target="_blank"
-                  className="logoLink"
+                  className="logoLink link3"
                   rel="noopener noreferrer"
                   tabIndex={3}
                 >
@@ -195,7 +195,7 @@ function Header() {
                     <img
                       src="https://www.pierre-le-developpeur.com/assets/logout.png"
                       alt="log out logo"
-                      className="logIn"
+                      className="logIn out"
                     ></img>
                   </Link>
                 </div>

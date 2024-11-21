@@ -9,7 +9,6 @@ function LikeButton({ propsLike }) {
     evt.preventDefault();
     const socket = io.connect("https://api.pierre-le-developpeur.com");
     let message = propsLike.id;
-    socket.emit("send_message", { message });
 
     let counter = document.getElementById(propsLike.id).innerText;
     const like = {
@@ -17,6 +16,9 @@ function LikeButton({ propsLike }) {
     };
     putOldLikes(propsLike, like);
     let target = evt.currentTarget;
+    setTimeout(() => {
+      socket.emit("send_message", { message });
+    }, 1200);
     target.classList.add("checked");
     setTimeout(() => {
       target.classList.remove("checked");

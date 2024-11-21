@@ -142,8 +142,30 @@ function Home() {
   }
 
   socket.on("receive_message", (response) => {
+    let bd = document.querySelector(".bd");
+    if (bd !== null) {
+      bd.classList.add("bdLike");
+      //console.log(response.message);
+
+      if (bd.className.includes("bdMini") === true) {
+        bd.classList.remove("bdMini");
+
+        bd.childNodes[0].innerText = "Oh un like !";
+
+        setTimeout(() => {
+          if (bd.className.includes("bdMaxi")) {
+          } else {
+            bd.classList.add("bdMini");
+            bd.childNodes[0].innerText = "?";
+          }
+          bd.classList.remove("bdLike");
+        }, 1500);
+      }
+    }
+
     setTimeout(() => {
       getOldLikes(response);
+      //bd.className = "bdMini";
     }, 150);
   });
 

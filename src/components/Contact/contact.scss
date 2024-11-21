@@ -20,6 +20,50 @@
         //transform-origin: top right;
         display: flex;
         margin: auto;
+        @media (max-width: 650px) {
+            animation: openBd 8s linear infinite ;
+        }
+
+    }
+    .bdLike{
+        background-color: white;
+        border: solid 2px black;
+        position: absolute;
+        right: 60px;
+        border-radius: 30px;
+        border-top-right-radius: 0px 80px;
+        display: flex;
+        margin: auto;
+        transition: 0.25s;
+        width: 160px;
+        height: 30px;
+        bottom: 4px;
+        opacity: 1;
+        animation: none;
+    }
+    @keyframes openBd{
+        0% {
+            transform: rotateZ(0deg) ;
+
+        }
+        89%{
+            width: 0px;
+            height: 0px;
+            bottom: 4px;
+            opacity: 0;          
+        }
+        90%{
+            width: 80px;
+            height: 30px;
+            bottom: 4px;
+            opacity: 1;
+        }
+        100%{
+            width: 80px;
+            height: 30px;
+            bottom: 4px;
+            opacity: 1;
+        }
     }
     .headerLogos{
         z-index: 11;
@@ -44,11 +88,14 @@
         //bottom: 22px;
         //right: 21px;
         .bdMini{
-            transition: 0.25s;
-            width: 80px;
-            height: 30px;
-            bottom: 4px;
-            opacity: 1;
+            @media (min-width: 650px) {
+                transition: 0.25s;
+                width: 80px;
+                height: 30px;
+                bottom: 4px;
+                opacity: 1;
+            }
+
         }
     }
     .bdMaxi{
@@ -66,6 +113,7 @@
 
         //z-index: 11;
         transition: 0.25s;
+
     }
     position: relative;
     display: flex;
@@ -82,7 +130,7 @@
         .gradient{
             position: absolute;
             width: 93%;
-            height: 40%;
+            height: 150px;
             top: 2px;
             //margin-left: 5px;
             border-radius: 10px;
@@ -177,7 +225,7 @@
         
 .bdMaxi{
     width: 90vw;
-    height: calc(100vh - 190px);
+    height: calc(100dvh - 190px);
 }
 
         

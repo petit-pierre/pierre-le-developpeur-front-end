@@ -18,6 +18,101 @@
     }
 }
 .headerfield{
+    .out{
+        margin-left: 15px;
+    }
+    .link3{
+        animation: logoLink-1 1.5s linear ;
+        .logo{
+            animation: logo-1 1.5s linear ;
+        }
+    }
+    .link2{
+        animation: logoLink-1 1.75s linear ;
+        .logo{
+            animation: logo-1 1.75s linear ;
+        }
+    }
+    .link1{
+        animation: logoLink-1 2s linear ;
+        .logo{
+            animation: logo-1 2s linear ;
+        }
+    }
+    .logPlace{
+        animation: logoLinkReverse 1.5s linear ;
+        padding-left: 15px;
+        .logIn{
+            animation: logoRevers 1.5s linear ;
+        }
+    }
+    @keyframes logo-1{
+        0% {
+            transform: rotateZ(0deg) ;
+
+        }
+        80%{
+            transform: rotateZ(390deg) translateX(0px);
+        }
+        100%{
+            transform: rotateZ(360deg) translateX(0px);
+        }
+    }
+    @keyframes logoLinkReverse{
+       0%{
+            transform: translateX(300px) translateY(0);
+
+        }
+        80%{
+            transform:  translateX(-20px);
+        }
+        90%{
+            transform: translateY(-6px) translateX(-15px); 
+        }
+        93%{
+            transform:  translateX(0px) translateY(0px);
+        }
+        98%{
+            transform:   translateY(5px);
+        }        
+        100%{
+            transform:  translateX(0px) translateY(0px);
+        }
+    }
+    @keyframes logoRevers{
+        0% {
+            transform: rotateZ(0deg) ;
+
+        }
+        80%{
+            transform: rotateZ(-390deg) translateX(0px);
+        }
+        100%{
+            transform: rotateZ(-360deg) translateX(0px);
+        }
+    }
+    @keyframes logoLink-1{
+       0%{
+            transform: translateX(-300px) ;
+
+        }
+        80%{
+            transform:  translateX(20px);
+        }
+        90%{
+            transform: translateY(-6px) translateX(15px); 
+        }
+        93%{
+            transform:  translateX(0px) translateY(0px);
+        }
+        98%{
+            transform:   translateY(-5px);
+        }        
+        100%{
+            transform:  translateX(0px) translateY(0px);
+        }
+    }
+
     .animReact{
         display: block;
         position: absolute;
@@ -53,7 +148,7 @@
         filter: invert(1);
         height: 35px;
         width: 35px;
-        padding-left: 15px;
+        //padding-left: 15px;
     }
     nav{
         background-color: #99477a;
@@ -223,7 +318,7 @@
         .logIn{
             padding-left: 0;
             padding-top: 2dvh;
-            margin-left: 10px;
+            //margin-left: 10px;
             margin-right: 10px;
             margin-bottom: 10px;
         }

@@ -221,6 +221,12 @@ function Contact({ props }) {
 
   function openDial() {
     setDiscus(true);
+    if (document.querySelector(".bdLike") !== null) {
+      document.querySelector(".bdLike").classList.remove("bdLike");
+    }
+    if (document.querySelector(".bdMini") !== null) {
+      document.querySelector(".bdMini").classList.remove("bdMini");
+    }
     setTimeout(() => {
       document.querySelector(".discuss").scrollTop +=
         document.querySelector(".discuss").scrollHeight + 50;
@@ -243,7 +249,9 @@ function Contact({ props }) {
           alt="thank you"
           //onClick={openDial}
         ></img>
-        <div className={discus === true ? "bdMaxi" : "bdMini"}>
+        <div
+          className={discus === true ? "bdMaxi bd discussContent" : "bdMini bd"}
+        >
           {discus === false ? (
             <span className="noDiscuss">?</span>
           ) : (
