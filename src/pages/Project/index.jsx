@@ -9,10 +9,11 @@ import AreaForText from "../../components/AreaForText";
 import Contact from "../../components/Contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import io from "socket.io-client";
 
 function Project() {
   const navigate = useNavigate();
-
+  const socket = io.connect("https://api.pierre-le-developpeur.com");
   /*on recupere les valeurs du store redux pour le header*/
 
   const language = useSelector((state) => state.data.language);
@@ -25,6 +26,23 @@ function Project() {
   /*on recupere le titre du projet*/
 
   let { title } = useParams();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (
+      likes !== null &&
+      skills !== null &&
+      tools !== null &&
+      translations !== null &&
+      projects.length > 0
+    ) {
+      setLoading(false);
+    } else {
+      navigate("/Loader/" + title);
+      //window.location.href = "http://localhost:3001/Loader/Home";
+    }
+  }, []);
 
   //const dispatch = useDispatch();
   let divCounter = true;
@@ -75,16 +93,55 @@ function Project() {
 
   const project = projects.find((project) => project.french_title === title);
 
+  async function getOldLikes(response) {
+    const get = await fetch("https://api.pierre-le-developpeur.com/api/likes", {
+      method: "GET",
+    });
+    const newlikes = await get.json();
+    const found = newlikes.find((like) => like._id === response.message);
+
+    if (document.getElementById(response.message) != null) {
+      document.getElementById(response.message).innerText = Intl.NumberFormat(
+        "en-US",
+        {
+          notation: "compact",
+          maximumFractionDigits: 2,
+        }
+      ).format(found.likes);
+    }
+  }
+
+  socket.on("receive_message", (response) => {
+    let bd = document.querySelector(".bd");
+    if (bd !== null) {
+      bd.classList.add("bdLike");
+      //console.log(response.message);
+
+      if (bd.className.includes("bdMini") === true) {
+        bd.classList.remove("bdMini");
+
+        bd.childNodes[0].innerText = "Oh un like !";
+
+        setTimeout(() => {
+          if (bd.className.includes("bdMaxi")) {
+          } else {
+            bd.classList.add("bdMini");
+            bd.childNodes[0].innerText = "?";
+          }
+          bd.classList.remove("bdLike");
+        }, 1500);
+      }
+    }
+
+    setTimeout(() => {
+      getOldLikes(response);
+      //bd.className = "bdMini";
+    }, 150);
+  });
+
   /*on verifie que les valeurs sont bien dans le store, dans le cas contraire on fait un refresh*/
 
-  if (
-    likes != null &&
-    skills != null &&
-    tools &&
-    projects &&
-    project &&
-    translations != null
-  ) {
+  if (loading === false) {
     /*on creer un tableau pour tier les slides*/
 
     /*on creer un tableau pour les tools du projet*/

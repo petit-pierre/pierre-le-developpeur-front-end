@@ -18,6 +18,8 @@ function Loader() {
   //const { ref } = useParams();
   //console.log(projects.length);
   /*on verifie que les valeurs sont bien dans le store, dans le cas contraire on fait un refresh*/
+  let { ref } = useParams();
+  console.log(ref);
   useEffect(() => {
     if (
       projects.length > 0 &&
@@ -28,7 +30,15 @@ function Loader() {
     ) {
       document.querySelector(".fadeOut").classList.add("faded");
       setTimeout(() => {
-        navigate("/");
+        if (ref === "Home") {
+          navigate("/");
+        } else {
+          if (ref === "Sign-in") {
+            navigate("/" + ref);
+          } else {
+            navigate("/Project/" + ref);
+          }
+        }
       }, 1000);
     } else {
     }
