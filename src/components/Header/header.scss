@@ -122,6 +122,7 @@
         height: 100px;
         filter: invert(1);
         display: none;
+        z-index: 10;
         @media (max-width: 900px) {
             display: block;}
     }

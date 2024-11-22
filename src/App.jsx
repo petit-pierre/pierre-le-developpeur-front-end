@@ -40,6 +40,8 @@ function App() {
   };
   lookAtLocalStorage();
 
+  dispatch(userSlice.actions.setContactMenu(false));
+
   const getSkills = async () => {
     const getSkillsResult = await dispatch(getSkillsThunk());
   };

@@ -12,7 +12,7 @@ function Button({ props }) {
             {props.picture === true ? (
               <img src={props.title} alt="button"></img>
             ) : (
-              props.title
+              <span> {props.title}</span>
             )}
           </button>
         </div>

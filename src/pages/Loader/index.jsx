@@ -19,7 +19,7 @@ function Loader() {
   //console.log(projects.length);
   /*on verifie que les valeurs sont bien dans le store, dans le cas contraire on fait un refresh*/
   let { ref } = useParams();
-  console.log(ref);
+  //console.log(ref);
   useEffect(() => {
     if (
       projects.length > 0 &&

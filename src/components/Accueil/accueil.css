@@ -1,32 +1,230 @@
 .accueilField {
   margin-bottom: 0;
-  background-color: white;
-  padding: 50px 50px 0px 50px;
-  min-height: 90vh;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.accueilField .placeForMaGanache {
-  width: 200px;
-  height: 150px;
-  float: left;
+.accueilField .contactIndication {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+.accueilField .contactMe {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-top: 30px;
+  cursor: pointer;
+  animation: contact 1s ease infinite;
+  color: black;
+}
+@keyframes contact {
+  0% {
+    color: black;
+  }
+  50% {
+    color: #99477a;
+  }
+  100% {
+    color: black;
+  }
+}
+@keyframes comming {
+  0% {
+    margin-top: 70px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+.accueilField .intro {
+  position: relative;
+  height: 2.5rem;
+  overflow: hidden;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  /*position: relative; 
+  //margin-top: 60px;
+  width: 100%;
+  height: calc(100vh - 60px);
+  //background-color: rgba(0, 0, 0, 0.421);
+  div:nth-child(1){
+      position: relative;
+      height : 0;
+      width : 0;
+      border-top : calc(100vh - 60px) solid red;
+      border-right : 100vw solid transparent;
+      //z-index: 4;
+      //background-color: rgb(60, 143, 143);
+  }
+  div:nth-child(2){
+      position: absolute;
+      top: 0;
+      height : 0;
+      width : 0;
+      border-bottom : calc(100vh - 60px) solid black;
+      border-left : 100vw solid transparent;
+      //z-index: 4;
+      //background-color: rgb(60, 143, 143);
+  }*/
+}
+.accueilField .intro h1 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  animation: comming 0.5s ease;
+}
+.accueilField .videoInReact {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
 }
 @media (max-width: 900px) {
-  .accueilField .placeForMaGanache {
+  .accueilField .videoInReact {
+    flex-direction: column;
+  }
+}
+.accueilField .videoInReact .hardSkills {
+  margin-top: 24vh;
+  position: relative;
+  width: 35%;
+  min-height: 200px;
+}
+.accueilField .videoInReact .hardSkills .oneSkill {
+  height: 40px;
+  overflow: hidden;
+}
+.accueilField .videoInReact .hardSkills .oneSkill p {
+  text-align: center;
+  margin-top: 0;
+  animation: comming 2.5s ease;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .hardSkills {
+    width: 100%;
+    height: 200px;
+  }
+}
+.accueilField .videoInReact .hardSkills .negatif {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #99477a;
+  opacity: 0.5;
+  border-radius: 30% 70% 70% 30%/30% 31% 69% 70%;
+  transform: rotate(-12deg);
+  top: -60px;
+  left: 40px;
+  z-index: 2;
+  animation: commingRight 0.5s ease;
+}
+@keyframes commingRight {
+  0% {
+    left: 130%;
+  }
+  100% {
+    left: 40px;
+  }
+}
+.accueilField .videoInReact .softSkills {
+  margin-top: 24vh;
+  position: relative;
+  width: 35%;
+  min-height: 200px;
+}
+.accueilField .videoInReact .softSkills .oneSkill {
+  height: 40px;
+  overflow: hidden;
+}
+.accueilField .videoInReact .softSkills .oneSkill p {
+  text-align: center;
+  margin-top: 0;
+  animation: comming 2.5s ease;
+}
+.accueilField .videoInReact .softSkills .negatif {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #99477a;
+  opacity: 0.5;
+  border-radius: 42% 58% 70% 30%/61% 31% 69% 39%;
+  transform: rotate(20deg);
+  top: -60px;
+  right: 30px;
+  z-index: 2;
+  animation: commingLeft 0.8s ease;
+}
+@keyframes commingLeft {
+  0% {
+    right: 130%;
+  }
+  100% {
+    right: 40px;
+  }
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .softSkills {
+    width: 100%;
+    height: 200px;
+  }
+}
+.accueilField .videoInReact .react {
+  width: 30%;
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+}
+.accueilField .videoInReact .react span {
+  opacity: 0;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .react {
     display: none;
   }
 }
-.accueilField .button {
-  float: right;
-  width: 300px;
-  height: 200px;
+.accueilField .videoInReact .video {
+  position: absolute;
+  top: 30%;
+  left: 30%;
   display: flex;
-  justify-content: center;
-  position: relative;
+  width: 40%;
+  margin: auto;
+  margin-bottom: 100px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.accueilField .videoInReact .video video {
+  display: none;
+  width: 180%;
+  position: absolute;
+  top: 0;
+  left: -50%;
+}
+.accueilField .buttonPlace {
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  position: absolute;
   z-index: 4;
 }
 @media (max-width: 900px) {
-  .accueilField .button {
-    float: bottom;
-    width: 100%;
+  .accueilField .buttonPlace {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 30%;
+    height: 30%;
+    left: 0;
+    top: 0;
+    margin: auto;
+    position: relative;
   }
 }
 .accueilField p {

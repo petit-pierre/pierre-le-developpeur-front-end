@@ -1,107 +1,143 @@
+import React from "../React";
 import Button from "../Button";
 import "./accueil.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userSlice } from "../../Slices/userSlice";
 
 function Accueil() {
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.data.language);
   const translations = useSelector((state) => state.data.translations);
+  const discuss = useSelector((state) => state.data.contactMenu);
 
   let Hscreen = window.innerHeight;
   if (Hscreen < 650) {
     Hscreen = 650;
   }
 
-  return language === "FR" ? (
-    <div
-      className="accueilField"
-      style={
-        {
-          //height: Hscreen,
-        }
+  function play(evt) {
+    evt.preventDefault();
+    if (document.querySelector(".theVideo").paused === true) {
+      document.querySelector(".theVideo").play();
+    } else {
+      document.querySelector(".theVideo").pause();
+    }
+  }
+
+  function openDial(evt) {
+    evt.preventDefault();
+    dispatch(userSlice.actions.setContactMenu(!discuss));
+    //bd.classList.add("bdMini");
+    /*if (bd !== null) {
+      if (bd.classList.contains("bdMini") === true) {
+        dispatch(userSlice.actions.setContactMenu(true));
+        //bd.classList.remove("bdMini");
+        //bd.classList.add("bdMaxi");
+      } else {
+        dispatch(userSlice.actions.setContactMenu(false));
       }
-    >
-      <div className="placeForMaGanache"></div>
-      <h2>Bienvenue sur mon portfolio !</h2>
-      <br></br>
-      <p>Je suis un developpeur Web specialise en front-end.</p>
-      <p>
-        Permettez-moi de profiter de votre visite ici pour vous presenter mes
-        competences et valeurs, en m’appuyant sur mes travaux.
-      </p>
-      <br></br>
-      <div className="button">
-        <a
-          href={translations.french.cv}
-          download="CV-aubree-pierre.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          tabIndex={language === "FR" ? 12 : -1}
-        >
-          <Button
-            props={{
-              style: "purpleAndWitheTextarea",
-              send: true,
-              title: "Telechargez mon C.V",
-            }}
-          ></Button>
-        </a>
+    }*/
+  }
+  return (
+    <div className="accueilField">
+      <div className="intro">
+        {language === "FR" ? <h1> Développeur web</h1> : <h1>Web developer</h1>}
       </div>
-      <p>
-        Il est courant de trouver des likes sur de nombreux sites internet.
-        Cette fonctionnalite peut sembler banale, mais en realite, elle n’est
-        pas si simple a mettre en place. Sur les pages de ce site, vous pourrez
-        decouvrir cette feature fonctionnelle developpee grace a Socket I/O.
-      </p>
-      <p>
-        Je vous souhaite une bonne lecture et n’hesitez pas a me laisser un
-        message en passant ! 🚀
-      </p>
-    </div>
-  ) : (
-    <div
-      className="accueilField"
-      style={
-        {
-          //height: Hscreen,
-        }
-      }
-    >
-      <div className="placeForMaGanache"></div>
-      <h2>Welcome to my portfolio!</h2>
-      <br></br>
-      <p>I am a front-end web developer. </p>
-      <p>
-        Allow me to take advantage of your visit here to present my skills and
-        values, supported by my work.
-      </p>
-      <br></br>
-      <div className="button">
-        <a
-          href={translations.english.cv}
-          download="CV-aubree-pierre.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          tabIndex={language === "FR" ? -1 : 12}
-        >
-          <Button
-            props={{
-              style: "purpleAndWitheTextarea",
-              send: true,
-              title: "Download my C.V",
-            }}
-          ></Button>
-        </a>
+      <div className="videoInReact">
+        <div className="softSkills">
+          <div className="oneSkill">
+            {language === "FR" ? (
+              <p>Passionne, Integre,</p>
+            ) : (
+              <p>Passionate, impartial,</p>
+            )}
+          </div>
+
+          <div className="oneSkill">
+            {language === "FR" ? (
+              <p>Creatif, Curieux</p>
+            ) : (
+              <p>Creative, Curious</p>
+            )}
+          </div>
+
+          <div className="oneSkill">
+            {language === "FR" ? <p>et Determine.</p> : <p>and Determined.</p>}
+          </div>
+          <div className="negatif"></div>
+        </div>
+        <div className="react">
+          <React></React>
+        </div>
+        <div className="buttonPlace">
+          {language === "FR" ? (
+            <a
+              href={translations.french.cv}
+              download="CV-aubree-pierre.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={language === "FR" ? 12 : -1}
+            >
+              <Button
+                props={{
+                  style: "purpleAndWitheTextarea",
+                  send: true,
+                  title: "Telechargez mon C.V",
+                }}
+              ></Button>
+            </a>
+          ) : (
+            <a
+              href={translations.english.cv}
+              download="CV-aubree-pierre.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={language === "ENG" ? 12 : -1}
+            >
+              <Button
+                props={{
+                  style: "purpleAndWitheTextarea",
+                  send: true,
+                  title: "Download my C.V",
+                }}
+              ></Button>
+            </a>
+          )}
+        </div>
+        <div className="hardSkills">
+          <div className="oneSkill">
+            <p>React.js,</p>
+          </div>
+          <div className="oneSkill">
+            <p>Node.js</p>
+          </div>
+          <div className="oneSkill">
+            {language === "FR" ? (
+              <p>et autres quenouilles quantiques</p>
+            ) : (
+              <p>and other quantum distaffs</p>
+            )}
+          </div>
+          <div className="negatif"></div>
+        </div>
       </div>
-      <p>
-        It is common to find likes on many websites. This functionality may seem
-        ordinary, but in reality, it is not so straightforward to implement. On
-        the pages of this site, you will discover this functional feature
-        developed using Socket I/O.
-      </p>
-      <p>
-        I wish you an enjoyable reading experience, and feel free to leave me a
-        message while you’re here! 🚀
-      </p>
+      <div className="contactIndication">
+        {language === "FR" ? (
+          <p
+            className="contactMe discussContent"
+            onClick={(evt) => openDial(evt)}
+          >
+            contactez-moi ➡️
+          </p>
+        ) : (
+          <p
+            className="contactMe discussContent"
+            onClick={(evt) => openDial(evt)}
+          >
+            contact me ➡️
+          </p>
+        )}
+      </div>
     </div>
   );
 }

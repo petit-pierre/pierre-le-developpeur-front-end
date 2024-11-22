@@ -1,21 +1,35 @@
 
  .buttonDiv{
+    position: relative;
     .purpleAndWitheTextarea:hover{
-        max-width: 105px;
-        height: 105px;
+        max-width: 105%;
+        height: 105%;
         transition: 1s;
         box-shadow: 0px 10px 10px black;
     }
     .purpleAndWitheTextarea{
+        position: relative;
+        display: flex;
         border: 6px solid #99477a;
-        max-width: 100px;
-        height: 100px;
-        border-radius: 100px;
+        width: calc(100% - 12px);
+        //height: 100%;
+        border-radius: 100%;
         transition: 1s;
         background-color: white;
+        aspect-ratio: 1;
         img{
             padding-top: 4px;
             width: 30px;
+        }
+        button{
+            margin: auto;
+            display: flex;
+            position: relative;
+        }
+        span{
+            margin: auto;
+            position: relative;
+            font-size: 12px;
         }
         .button{
             font-family: "hayanbaram", sans-serif;

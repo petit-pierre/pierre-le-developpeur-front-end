@@ -7,7 +7,6 @@
   position: relative;
   perspective: 50000px;
   color: black;
-  z-index: 10;
 }
 .ReactContainer span {
   position: absolute;

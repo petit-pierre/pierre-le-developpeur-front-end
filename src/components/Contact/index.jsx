@@ -19,6 +19,11 @@ function Contact({ props }) {
   const translations = useSelector((state) => state.data.translations);
   const discuss = useSelector((state) => state.data.contactMenu);
 
+  useEffect(() => {
+    discuss === true ? openDial() : closeDial();
+    setDiscus(discuss);
+  }, [discuss]);
+
   /*on declare les differentes erreurs*/
 
   const [errorMail, setErrorMail] = useState(true);
@@ -51,6 +56,7 @@ function Contact({ props }) {
     ) {
       //console.log(evt.target);
       setDiscus(false);
+      dispatch(userSlice.actions.setContactMenu(false));
     }
   });
   document.addEventListener("keydown", (evt) => {
@@ -147,8 +153,9 @@ function Contact({ props }) {
   /*fermeture de la modale au clique*/
 
   const closeDial = (evt) => {
-    evt.preventDefault();
-    setSended(false);
+    //evt.preventDefault();
+    //setSended(false);
+
     dispatch(userSlice.actions.setContactMenu(false));
   };
 
@@ -162,6 +169,7 @@ function Contact({ props }) {
 
   function openDialByKey(evt) {
     if (evt.code === "Enter") {
+      setDiscus(false);
       openDial();
     }
   }
@@ -221,6 +229,7 @@ function Contact({ props }) {
 
   function openDial() {
     setDiscus(true);
+    dispatch(userSlice.actions.setContactMenu(true));
     if (document.querySelector(".bdLike") !== null) {
       document.querySelector(".bdLike").classList.remove("bdLike");
     }
