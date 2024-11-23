@@ -113,9 +113,9 @@ function Accueil() {
           </div>
           <div className="oneSkill">
             {language === "FR" ? (
-              <p>et autres quenouilles quantiques</p>
+              <p>quenouilles quantiques</p>
             ) : (
-              <p>and other quantum distaffs</p>
+              <p>quantum distaffs</p>
             )}
           </div>
           <div className="negatif"></div>
@@ -127,14 +127,14 @@ function Accueil() {
             className="contactMe discussContent"
             onClick={(evt) => openDial(evt)}
           >
-            contactez-moi ➡️
+            contactez-moi
           </p>
         ) : (
           <p
             className="contactMe discussContent"
             onClick={(evt) => openDial(evt)}
           >
-            contact me ➡️
+            contact me
           </p>
         )}
       </div>
