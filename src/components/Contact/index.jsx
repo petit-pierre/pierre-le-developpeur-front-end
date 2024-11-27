@@ -24,6 +24,19 @@ function Contact({ props }) {
     setDiscus(discuss);
   }, [discuss]);
 
+  const [scrollTop, setScrollTop] = useState(0);
+  const [oldScrollTop, setOldScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+      //setScrolling(e.target.documentElement.scrollTop > scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
+
   /*on declare les differentes erreurs*/
 
   const [errorMail, setErrorMail] = useState(true);
@@ -61,6 +74,11 @@ function Contact({ props }) {
   });
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
+      if (discus === true) {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        window.scrollTo(0, oldScrollTop);
+      }
       setDiscus(false);
     }
   });
@@ -154,8 +172,9 @@ function Contact({ props }) {
 
   const closeDial = (evt) => {
     //evt.preventDefault();
-    //setSended(false);
-
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, oldScrollTop);
     dispatch(userSlice.actions.setContactMenu(false));
   };
 
@@ -229,7 +248,12 @@ function Contact({ props }) {
 
   function openDial() {
     setDiscus(true);
+    //console.log(scrollTop);
+    setOldScrollTop(scrollTop);
     dispatch(userSlice.actions.setContactMenu(true));
+    document.body.style.position = "fixed";
+    document.body.style.top = "-" + scrollTop + "px";
+
     if (document.querySelector(".bdLike") !== null) {
       document.querySelector(".bdLike").classList.remove("bdLike");
     }

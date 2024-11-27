@@ -22,21 +22,33 @@
         font: inherit;
         cursor: pointer;
         outline: inherit;
+        animation: clignote 1s infinite  ;
         img{
             width: 100%;
-            animation: contact 1s ease  ;
+            margin-left: -35px;
+            animation: contact 0.7s ease  ;
         }
     }
     @keyframes contact{
         0% {
-            margin-left: -10000px;
-
+            margin-left: -100vw;
         }
-
         100%{
-            margin-left: 0;
-        }}
-    margin-bottom: 0;
+            margin-left: -35px;
+        }
+    }
+    @keyframes clignote{
+        0% {
+            opacity: 1;
+        }
+        50%{
+            opacity: 0.3;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    //margin-bottom: 0;
     margin-top: 0px;
     //min-height: 90vh;
     margin-bottom: 20px;
@@ -58,7 +70,7 @@
         height: 2.5rem;
         overflow: hidden;
         margin-top: 30px;
-        margin-bottom: 30px;
+        //margin-bottom: 30px;
         h1{
             position: absolute;
             width: 100%;
@@ -112,6 +124,9 @@
         position: relative;
         .hardSkills{
             margin-top: 24vh;
+            @media (max-width: 900px){
+                margin-top: 80px;
+              }
             position: relative;
             .oneSkill{
                 //padding-right: 40px;
@@ -161,6 +176,9 @@
         }
         .softSkills{
             margin-top: 24vh;
+            @media (max-width: 900px){
+                margin-top: 80px;
+              }
             position: relative;
             .oneSkill{
                 //padding-right: 40px;
@@ -220,7 +238,7 @@
                 display: none;
               }
         }
-        .video{
+        /*.video{
 
             position: absolute;
             top: 30%;
@@ -243,7 +261,7 @@
                 left: -50%;
                 //height: 200%;
             }
-        }
+        }*/
 
     }
 

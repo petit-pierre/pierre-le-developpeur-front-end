@@ -1,5 +1,4 @@
 .accueilField {
-  margin-bottom: 0;
   margin-top: 0px;
   margin-bottom: 20px;
   width: 100%;
@@ -24,17 +23,30 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  animation: clignote 1s infinite;
 }
 .accueilField .contactMe img {
   width: 100%;
-  animation: contact 1s ease;
+  margin-left: -35px;
+  animation: contact 0.7s ease;
 }
 @keyframes contact {
   0% {
-    margin-left: -10000px;
+    margin-left: -100vw;
   }
   100% {
-    margin-left: 0;
+    margin-left: -35px;
+  }
+}
+@keyframes clignote {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
   }
 }
 @keyframes comming {
@@ -50,7 +62,6 @@
   height: 2.5rem;
   overflow: hidden;
   margin-top: 30px;
-  margin-bottom: 30px;
   /*position: relative; 
   //margin-top: 60px;
   width: 100%;
@@ -89,6 +100,30 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+  /*.video{
+
+      position: absolute;
+      top: 30%;
+      left: 30%;
+      display: flex;
+      width: 40%;
+      //margin-left: 25%;
+      margin: auto;
+      margin-bottom: 100px;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      overflow: hidden;
+      //margin-top: -10%;
+      //z-index: 5;
+      video{
+          display: none;
+          width: 180%;
+          position: absolute;
+          top: 0;
+          left: -50%;
+          //height: 200%;
+      }
+  }*/
 }
 @media (max-width: 900px) {
   .accueilField .videoInReact {
@@ -100,6 +135,11 @@
   position: relative;
   width: 35%;
   min-height: 200px;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .hardSkills {
+    margin-top: 80px;
+  }
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
   height: 40px;
@@ -147,6 +187,11 @@
   position: relative;
   width: 35%;
   min-height: 200px;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .softSkills {
+    margin-top: 80px;
+  }
 }
 .accueilField .videoInReact .softSkills .oneSkill {
   height: 40px;
@@ -202,25 +247,6 @@
   .accueilField .videoInReact .react {
     display: none;
   }
-}
-.accueilField .videoInReact .video {
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  display: flex;
-  width: 40%;
-  margin: auto;
-  margin-bottom: 100px;
-  aspect-ratio: 1;
-  border-radius: 100%;
-  overflow: hidden;
-}
-.accueilField .videoInReact .video video {
-  display: none;
-  width: 180%;
-  position: absolute;
-  top: 0;
-  left: -50%;
 }
 .accueilField .buttonPlace {
   width: 100px;

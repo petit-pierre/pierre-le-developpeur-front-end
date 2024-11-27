@@ -61,7 +61,11 @@
   width: 100dvw;
   overflow: hidden;
   background-color: white;
-  height: 98vh;
+}
+@media (min-width: 900px) {
+  .home .reco {
+    height: 98vh;
+  }
 }
 @media (max-width: 900px) {
   .home .reco {
