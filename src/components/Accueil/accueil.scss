@@ -7,26 +7,34 @@
 
     }
     .contactMe{
-        width: fit-content;
+        width: 100px;
+        //padding-right: 20px;
         margin: auto;
-        margin-top: 30px;
+        //margin-top: 30px;
         //align-items: end;
         cursor: pointer;
-        animation: contact 1s ease infinite ;
+
         color: black;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        img{
+            width: 100%;
+            animation: contact 1s ease  ;
+        }
     }
     @keyframes contact{
         0% {
-            color: black;
-
-        }
-        50% {
-            color: #99477a;
+            margin-left: -10000px;
 
         }
 
         100%{
-            color: black;
+            margin-left: 0;
         }}
     margin-bottom: 0;
     margin-top: 0px;
@@ -118,11 +126,15 @@
             }
             width: 35%;
             min-height: 200px;
+
             @media (max-width: 900px){
                 width: 100%;
                 height: 200px;
               }
             .negatif{
+                @media (min-width: 900px){
+                    display: none;
+                  }
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -162,6 +174,9 @@
                 }
             }
             .negatif{
+                @media (min-width: 900px){
+                    display: none;
+                  }             
                 position: absolute;
                 width: 100%;
                 height: 100%;

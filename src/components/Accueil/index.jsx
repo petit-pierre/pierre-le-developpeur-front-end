@@ -122,21 +122,16 @@ function Accueil() {
         </div>
       </div>
       <div className="contactIndication">
-        {language === "FR" ? (
-          <p
-            className="contactMe discussContent"
-            onClick={(evt) => openDial(evt)}
-          >
-            contactez-moi
-          </p>
-        ) : (
-          <p
-            className="contactMe discussContent"
-            onClick={(evt) => openDial(evt)}
-          >
-            contact me
-          </p>
-        )}
+        <button
+          className="contactMe discussContent"
+          onClick={(evt) => openDial(evt)}
+        >
+          <img
+            className="discussContent"
+            src="https://pierre-le-developpeur.com/assets/send_mail.png"
+            alt="logo mail"
+          ></img>
+        </button>
       </div>
     </div>
   );

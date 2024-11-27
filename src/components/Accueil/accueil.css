@@ -13,23 +13,28 @@
   flex-direction: row;
 }
 .accueilField .contactMe {
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100px;
   margin: auto;
-  margin-top: 30px;
   cursor: pointer;
-  animation: contact 1s ease infinite;
   color: black;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.accueilField .contactMe img {
+  width: 100%;
+  animation: contact 1s ease;
 }
 @keyframes contact {
   0% {
-    color: black;
-  }
-  50% {
-    color: #99477a;
+    margin-left: -10000px;
   }
   100% {
-    color: black;
+    margin-left: 0;
   }
 }
 @keyframes comming {
@@ -124,6 +129,11 @@
   z-index: 2;
   animation: commingRight 0.5s ease;
 }
+@media (min-width: 900px) {
+  .accueilField .videoInReact .hardSkills .negatif {
+    display: none;
+  }
+}
 @keyframes commingRight {
   0% {
     left: 130%;
@@ -159,6 +169,11 @@
   right: 30px;
   z-index: 2;
   animation: commingLeft 0.8s ease;
+}
+@media (min-width: 900px) {
+  .accueilField .videoInReact .softSkills .negatif {
+    display: none;
+  }
 }
 @keyframes commingLeft {
   0% {
