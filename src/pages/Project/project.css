@@ -45,7 +45,7 @@
   width: 30px;
   top: 2vh;
   z-index: 1;
-  right: 2vh;
+  left: 2vh;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.873);
 }
@@ -122,7 +122,7 @@
   width: 100%;
 }
 .projectPage .slider .likeContainer {
-  bottom: 160px;
+  top: 12px;
 }
 @media (max-width: 650px) {
   .projectPage .slider {

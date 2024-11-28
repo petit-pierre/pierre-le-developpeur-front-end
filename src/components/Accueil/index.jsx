@@ -47,22 +47,26 @@ function Accueil() {
         <div className="softSkills">
           <div className="oneSkill">
             {language === "FR" ? (
-              <p>Passionne, Integre,</p>
+              <h3>Passionné, Intégre,</h3>
             ) : (
-              <p>Passionate, impartial,</p>
+              <h3>Passionate, impartial,</h3>
             )}
           </div>
 
           <div className="oneSkill">
             {language === "FR" ? (
-              <p>Creatif, Curieux</p>
+              <h3>Créatif, Curieux</h3>
             ) : (
-              <p>Creative, Curious</p>
+              <h3>Creative, Curious</h3>
             )}
           </div>
 
           <div className="oneSkill">
-            {language === "FR" ? <p>et Determine.</p> : <p>and Determined.</p>}
+            {language === "FR" ? (
+              <h3>et Détérminé.</h3>
+            ) : (
+              <h3>and Determined.</h3>
+            )}
           </div>
           <div className="negatif"></div>
         </div>
@@ -104,18 +108,19 @@ function Accueil() {
             </a>
           )}
         </div>
+
         <div className="hardSkills">
           <div className="oneSkill">
-            <p>React.js,</p>
+            <h3>React.js,</h3>
           </div>
           <div className="oneSkill">
-            <p>Node.js</p>
+            <h3>Node.js</h3>
           </div>
           <div className="oneSkill">
             {language === "FR" ? (
-              <p>quenouilles quantiques</p>
+              <h3>quenouilles quantiques</h3>
             ) : (
-              <p>quantum distaffs</p>
+              <h3>quantum distaffs</h3>
             )}
           </div>
           <div className="negatif"></div>
@@ -125,6 +130,7 @@ function Accueil() {
         <button
           className="contactMe discussContent"
           onClick={(evt) => openDial(evt)}
+          tabIndex={12}
         >
           <img
             className="discussContent"
@@ -132,6 +138,7 @@ function Accueil() {
             alt="logo mail"
           ></img>
         </button>
+        <p>contact@pierre-le-developpeur.com</p>
       </div>
     </div>
   );

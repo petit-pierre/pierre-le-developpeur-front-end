@@ -3,8 +3,16 @@
     .contactIndication{
         display: flex;
         width: 100%;
-        flex-direction: row;
-
+        flex-direction: column;
+        p{
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 0;
+        }
+        @media (max-width: 900px){
+            margin-top: 60px;
+            //min-height: 180vh;
+          }
     }
     .contactMe{
         width: 100px;
@@ -13,7 +21,7 @@
         //margin-top: 30px;
         //align-items: end;
         cursor: pointer;
-
+        z-index: 2;
         color: black;
         background: none;
         color: inherit;
@@ -21,7 +29,7 @@
         padding: 0;
         font: inherit;
         cursor: pointer;
-        outline: inherit;
+        //outline: inherit;
         animation: clignote 1s infinite  ;
         img{
             width: 100%;
@@ -71,6 +79,10 @@
         overflow: hidden;
         margin-top: 30px;
         //margin-bottom: 30px;
+        @media (max-width: 900px){
+            margin-bottom: 60px;
+            //min-height: 180vh;
+          }
         h1{
             position: absolute;
             width: 100%;
@@ -116,6 +128,10 @@
         @media (max-width: 900px){
             flex-direction: column;
           }
+        /*p{
+            font-family: "abacaxi-devanagari", sans-serif !important;
+            font-weight: 500;
+        }*/
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -132,7 +148,7 @@
                 //padding-right: 40px;
                 height: 40px;
                 overflow: hidden;
-                p{
+                h3{
                     text-align: center;
                     margin-top: 0;
                     animation: comming 2.5s ease ;
@@ -184,7 +200,7 @@
                 //padding-right: 40px;
                 height: 40px;
                 overflow: hidden;
-                p{
+                h3{
                     text-align: center;
                     margin-top: 0;
                     animation: comming 2.5s ease ;
@@ -278,6 +294,7 @@
         position: absolute;
         z-index: 4;
         //display: none;
+        //width: 10px;
         @media (max-width: 900px){
             //float: bottom;
             padding-top: 30px;
@@ -288,6 +305,27 @@
             top: 0;
             margin: auto;
             position: relative;
+        }
+        @media (min-width: 900px){
+            //float: bottom;
+            //filter: invert(1);
+            .buttonDiv{
+                .send
+                {
+                    .purpleAndWitheTextarea{
+                        box-shadow: 0px 0px 10px black ;
+                        border: 6px solid black ;
+                    }
+                    .purpleAndWitheTextarea:hover{
+                        width: 80%;
+                        margin-left: 4%;
+                        margin-top: 4%;
+                        box-shadow: 0px 0px 0px black ;
+                    }
+                }
+
+            }
+
         }
     }
     p{

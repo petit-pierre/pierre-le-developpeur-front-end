@@ -110,10 +110,8 @@
         background-color: white;
         border: solid 2px black;
         position: absolute;
-
         //z-index: 11;
         transition: 0.25s;
-
     }
     position: relative;
     display: flex;
@@ -121,7 +119,6 @@
     .noDiscuss{
         margin: auto;
     }
-
     .discuss{
         .hidden{
             opacity: 0;
@@ -145,6 +142,7 @@
         margin-top: 10px;
         cursor: default;
         flex-direction: column;
+
         .txt{
             margin-left: 5px;
             margin-top: -10px;

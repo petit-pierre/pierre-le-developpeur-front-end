@@ -74,12 +74,14 @@ function Contact({ props }) {
   });
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
-      if (discus === true) {
-        document.body.style.position = "";
+      //discus !== false && closeDial();
+      /*document.body.style.position = "";
         document.body.style.top = "";
-        window.scrollTo(0, oldScrollTop);
-      }
+        window.scrollTo(0, oldScrollTop);*/
+
+      //setOldScrollTop(scrollTop);
       setDiscus(false);
+      document.body.click();
     }
   });
 
@@ -171,6 +173,7 @@ function Contact({ props }) {
   /*fermeture de la modale au clique*/
 
   const closeDial = (evt) => {
+    setDiscus(false);
     //evt.preventDefault();
     document.body.style.position = "";
     document.body.style.top = "";
@@ -247,12 +250,13 @@ function Contact({ props }) {
   /*ouverture de la modale (et fermeture du burger menu)*/
 
   function openDial() {
+    if (discus !== true) {
+      setOldScrollTop(scrollTop);
+    }
     setDiscus(true);
-    //console.log(scrollTop);
-    setOldScrollTop(scrollTop);
     dispatch(userSlice.actions.setContactMenu(true));
     document.body.style.position = "fixed";
-    document.body.style.top = "-" + scrollTop + "px";
+    document.body.style.top = "-" + oldScrollTop + "px";
 
     if (document.querySelector(".bdLike") !== null) {
       document.querySelector(".bdLike").classList.remove("bdLike");
@@ -274,7 +278,7 @@ function Contact({ props }) {
         className="headerLogos"
         onClick={openDial}
         onKeyDown={(evt) => openDialByKey(evt)}
-        tabIndex={1}
+        tabIndex={13}
       >
         <img
           src="https://pierre-le-developpeur.com/assets/pierre.png"
@@ -300,6 +304,7 @@ function Contact({ props }) {
                 <div
                   className={"oneMessage discussContent"}
                   key={"historique " + id}
+                  tabIndex={discus === true ? 12 : -1}
                 >
                   <img
                     src={
@@ -338,10 +343,12 @@ function Contact({ props }) {
               <textarea
                 className="discussContent chatArea"
                 ref={content}
+                tabIndex={discus === true ? 12 : -1}
               ></textarea>
               <button
                 className="sendButton discussContent"
                 onClick={(evt) => send(evt)}
+                tabIndex={discus === true ? 12 : -1}
               >
                 <img
                   src="https://pierre-le-developpeur.com/assets/send_mail.png"

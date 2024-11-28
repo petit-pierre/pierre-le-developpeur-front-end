@@ -44,7 +44,7 @@
         width: 30px;
         top: 2vh;
         z-index: 1;
-        right: 2vh;
+        left: 2vh;
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.873);
         @media (max-width: 900px){
@@ -118,7 +118,7 @@
         right: 0;
         width: 100%;  
         .likeContainer{
-            bottom: 160px;
+            top: 12px;
         }
         @media (max-width: 650px){
             height: calc(100vh - 130px);
