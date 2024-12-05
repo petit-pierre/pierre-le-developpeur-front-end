@@ -22,6 +22,7 @@ function Project() {
   const tools = useSelector((state) => state.data.tools);
   const projects = useSelector((state) => state.data.projects);
   const translations = useSelector((state) => state.data.translations);
+  const discuss = useSelector((state) => state.data.contactMenu);
 
   /*on recupere le titre du projet*/
 
@@ -57,19 +58,19 @@ function Project() {
     (et de les remmettre dans le cas contraire*/
 
   const [scrolling, setScrolling] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
+  const [scrollToTop, setScrollToTop] = useState(0);
 
   useEffect(() => {
     const onScroll = (e) => {
-      setScrollTop(e.target.documentElement.scrollTop);
-      setScrolling(e.target.documentElement.scrollTop > scrollTop);
+      setScrollToTop(e.target.documentElement.scrollTop);
+      setScrolling(e.target.documentElement.scrollTop > scrollToTop);
     };
     window.addEventListener("scroll", onScroll);
     if (
       document.querySelector(".arrowRight") !== null &&
       document.querySelector(".arrowLeft") !== null
     ) {
-      if (scrollTop > 100) {
+      if (scrollToTop > 100) {
         document.querySelector(".arrowRight").classList.add("blinded");
         document.querySelector(".arrowLeft").classList.add("blinded");
       } else {
@@ -78,7 +79,7 @@ function Project() {
       }
     }
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop]);
+  }, [scrollToTop]);
 
   /* ce code est inutile mais je le conserve encore un peu pour en etre sur
   useEffect(() => {
@@ -168,12 +169,24 @@ function Project() {
 
     return project !== undefined ? (
       <div className="projectPage">
+        <div className={discuss === false ? "blabla" : "blablabla"}>
+          <img
+            src="https://pierre-le-developpeur.com/assets/blabla.jpg"
+            alt="ceriser du japon"
+          ></img>
+        </div>
         <div className="fadeIn"></div>
         <div
           className="scrollDown"
-          style={{
-            opacity: 1 - scrollTop / 40,
-          }}
+          style={
+            discuss === true
+              ? {
+                  opacity: 0,
+                }
+              : {
+                  opacity: 1 - scrollToTop / 40,
+                }
+          }
         >
           <div className="scrollDot"></div>
         </div>
@@ -181,16 +194,28 @@ function Project() {
 
         <div
           className="slider"
-          style={{
-            opacity: 1 - scrollTop / 350,
-          }}
+          style={
+            discuss === true
+              ? {
+                  opacity: 0,
+                }
+              : {
+                  opacity: 1 - scrollToTop / 350,
+                }
+          }
         >
           <div
             className="transition"
-            style={{
-              bottom: "0",
-              height: scrollTop * 4,
-            }}
+            style={
+              discuss === true
+                ? {
+                    height: 2000,
+                  }
+                : {
+                    bottom: "0",
+                    height: scrollToTop * 4,
+                  }
+            }
           ></div>
           <Slider
             sliders={project.sliders}

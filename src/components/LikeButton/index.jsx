@@ -24,10 +24,10 @@ function LikeButton({ propsLike }) {
       target.classList.remove("checked");
     }, 1200);
     document.querySelector(".maGanache").src =
-      "https://pierre-le-developpeur.com/assets/thanks.png";
+      "https://pierre-le-developpeur.com/assets/chatbot_thx.svg";
     setTimeout(() => {
       document.querySelector(".maGanache").src =
-        "https://pierre-le-developpeur.com/assets/pierre.png";
+        "https://pierre-le-developpeur.com/assets/chatbot.svg";
     }, 1000);
   };
 

@@ -151,6 +151,12 @@ function Home() {
         bd.classList.remove("bdMini");
 
         bd.childNodes[0].innerText = "Oh un like !";
+        document.querySelector(".maGanache").src =
+          "https://pierre-le-developpeur.com/assets/chatbot_bla.svg";
+        setTimeout(() => {
+          document.querySelector(".maGanache").src =
+            "https://pierre-le-developpeur.com/assets/chatbot.svg";
+        }, 1000);
 
         setTimeout(() => {
           if (bd.className.includes("bdMaxi")) {

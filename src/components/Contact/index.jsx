@@ -281,7 +281,7 @@ function Contact({ props }) {
         tabIndex={13}
       >
         <img
-          src="https://pierre-le-developpeur.com/assets/pierre.png"
+          src="https://pierre-le-developpeur.com/assets/chatbot.svg"
           className="maGanache"
           alt="thank you"
           //onClick={openDial}
