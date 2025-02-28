@@ -9,6 +9,8 @@ import LikeButton from "../LikeButton";
 let mailToken = require(`../../code.json`);
 
 function Contact({ props }) {
+  const [firstRender, setFirstRender] = useState(true);
+
   const dispatch = useDispatch();
   const content = useRef();
 
@@ -22,6 +24,22 @@ function Contact({ props }) {
   useEffect(() => {
     discuss === true ? openDial() : closeDial();
     setDiscus(discuss);
+    if (firstRender === true) {
+      if (window.location.hash === "#competences") {
+        document
+          .getElementById("competences")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+      if (window.location.hash === "#reco") {
+        document.getElementById("reco").scrollIntoView({ behavior: "smooth" });
+      }
+      if (window.location.hash === "#projets") {
+        document
+          .getElementById("projets")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+      setFirstRender(false);
+    }
   }, [discuss]);
 
   const [scrollTop, setScrollTop] = useState(0);
