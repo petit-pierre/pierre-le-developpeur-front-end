@@ -302,6 +302,14 @@ function Contact({ props }) {
           src="https://pierre-le-developpeur.com/assets/chatbot.svg"
           className="maGanache"
           alt="thank you"
+          onMouseOver={(e) => {
+            e.target.src =
+              "https://pierre-le-developpeur.com/assets/chatbot_bla.svg";
+          }}
+          onMouseOut={(e) => {
+            e.target.src =
+              "https://pierre-le-developpeur.com/assets/chatbot.svg";
+          }}
           //onClick={openDial}
         ></img>
         <div

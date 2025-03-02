@@ -26,7 +26,8 @@ function Accueil() {
 
   function openDial(evt) {
     evt.preventDefault();
-    dispatch(userSlice.actions.setContactMenu(!discuss));
+    document.querySelector(".headerLogos").click();
+    //dispatch(userSlice.actions.setContactMenu(!discuss));
     //bd.classList.add("bdMini");
     /*if (bd !== null) {
       if (bd.classList.contains("bdMini") === true) {
