@@ -366,14 +366,27 @@ function PostProject() {
     }
     if (Video.checked === true) {
       SliderType = "Video";
+
       if (
         detailsVideo.current.value &&
         SliderType !== null &&
         detailsAlt !== ""
       ) {
-        const videoUrl = "https://www.youtube.com/embed/".concat(
-          detailsVideo.current.value.substring(32)
-        );
+        let videoUrl;
+        if (
+          detailsVideo.current.value.includes(
+            "https://youtube.com/playlist?list="
+          )
+        ) {
+          videoUrl =
+            "https://www.youtube.com/embed/videoseries?wmode=transparent&rel=0&list=".concat(
+              detailsVideo.current.value.substring(34)
+            );
+        } else {
+          videoUrl = "https://www.youtube.com/embed/".concat(
+            detailsVideo.current.value.substring(32)
+          );
+        }
         let slider = {
           picture: videoUrl,
           picture_id: videoUrl,
