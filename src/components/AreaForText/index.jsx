@@ -1,11 +1,18 @@
 import { useSelector } from "react-redux";
+import ReactMarkdown from "react-markdown";
 import "./textArea.css";
 import LikeButton from "../LikeButton";
 import Cofee from "../Cofee/index.jsx";
 
 function AreaForText({ props, content }) {
   const language = useSelector((state) => state.data.language);
+  /*const linkRegExp = new RegExp(
+    "\\[+[a-z0A-Z-9\\/ :._-]+\\]+\\(+[a-zA-Z0-9\\/ :._-]+\\)"
+  );*/
+  //const strongRegExp = new RegExp("\\*+\\*+[a-z0A-Z-9\\/:._-]+\\*+\\*");
+  //const strongRegExp = new RegExp("\\*+\\*");
   let french = props.french.split(`\n`);
+
   let english = props.english.split(`\n`);
 
   return (
@@ -17,20 +24,12 @@ function AreaForText({ props, content }) {
         <form id={props.id + "myForm"} className="mise-en-page textArea">
           <div className="fullResum">
             {language === "FR"
-              ? french.map((content, index) =>
-                  content !== "" ? (
-                    <p key={"french content" + index}>{content}</p>
-                  ) : (
-                    ""
-                  )
-                )
-              : english.map((content, index) =>
-                  content !== "" ? (
-                    <p key={"english content" + index}>{content}</p>
-                  ) : (
-                    ""
-                  )
-                )}{" "}
+              ? french.map((content, index) => (
+                  <ReactMarkdown children={content}>{content}</ReactMarkdown>
+                ))
+              : english.map((content, index) => (
+                  <ReactMarkdown children={content}>{content}</ReactMarkdown>
+                ))}{" "}
           </div>
           <br></br>
 

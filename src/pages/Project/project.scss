@@ -250,6 +250,10 @@
         }
         .text{
             width: 60dvw;
+            min-height: 100%;
+            display: flex;
+            margin-top: auto;
+            margin-bottom: auto;
             @media (max-width: 650px){
                 width: 100dvw;
             }

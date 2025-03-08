@@ -257,6 +257,10 @@
 }
 .projectPage .descriptionUnit .text {
   width: 60dvw;
+  min-height: 100%;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 @media (max-width: 650px) {
   .projectPage .descriptionUnit .text {

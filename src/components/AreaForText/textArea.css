@@ -1,11 +1,31 @@
 .textareafield p {
-  margin: 10px 0px 0px 0px;
+  margin: 1rem 0px 1rem 0px;
+}
+.textareafield li {
+  font-family: "abacaxi-devanagari", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.2dvw;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (max-width: 650px) {
+  .textareafield li {
+    font-size: 0.7rem;
+  }
+}
+.textareafield ul {
+  margin: 0;
 }
 .textareafield .windows {
   background-image: url("../../../public/assets/snow.gif");
   border: solid 3px black;
   border-radius: 20px;
   overflow: hidden;
+}
+.textareafield .windows ul {
+  color: white;
 }
 .textareafield .windows textarea {
   color: white;
@@ -39,10 +59,7 @@
   bottom: 20px;
 }
 .textareafield .empty .fullResum {
-  display: flex;
-  flex-direction: column;
   margin: 20px;
-  justify-content: space-around;
 }
 .textareafield .empty .fullResum p {
   font-family: "abacaxi-devanagari", sans-serif;
