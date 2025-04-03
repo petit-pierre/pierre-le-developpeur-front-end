@@ -28,73 +28,23 @@
   padding-top: 5px;
   margin-right: 55px;
 }
-@media (min-width: 1600px) {
-  .likeContainer .like p {
-    margin-right: 3.5vw;
-  }
-}
 @media (max-width: 900px) {
   .likeContainer {
     right: -20px;
   }
 }
-.likeContainer .poc {
-  position: absolute;
-  display: none;
-  margin-top: -5px;
-}
 .likeContainer .pocContain {
   position: relative;
 }
-.likeContainer .poc1 {
-  left: -3px;
-  top: -4px;
-}
-.likeContainer .poc2 {
-  left: 0px;
-  top: -9px;
-}
-.likeContainer .poc3 {
-  left: 7px;
-  top: -11px;
-}
-.likeContainer .poc4 {
-  left: 14px;
-  top: -9px;
-}
-.likeContainer .poc5 {
-  left: 17px;
-  top: -4px;
-}
 @media (min-width: 1600px) {
-  .likeContainer .poc1 {
-    left: calc(-6px - 0.75vw);
-    top: -4px;
-  }
-  .likeContainer .poc2 {
-    left: calc(1px - 0.75vw);
-    top: -9px;
-  }
-  .likeContainer .poc3 {
-    left: calc(14px - 0.75vw);
-    top: -11px;
-  }
-  .likeContainer .poc4 {
-    left: calc(28px - 0.75vw);
-    top: -9px;
-  }
-  .likeContainer .poc5 {
-    left: calc(34px - 0.75vw);
-    top: -4px;
+  .likeContainer .pocContain {
+    position: relative;
+    width: 100%;
+    padding-bottom: 0.5vw;
   }
 }
 .likeContainer .checked {
   animation-name: like;
-  animation-duration: 2000ms;
-}
-.likeContainer .checked .poc {
-  display: block;
-  animation-name: poc;
   animation-duration: 2000ms;
 }
 .likeContainer .buttonLike {
@@ -105,6 +55,13 @@
   right: 30px;
   top: 6px;
 }
+@media (min-width: 1600px) {
+  .likeContainer .buttonLike {
+    position: relative;
+    width: 2vw;
+    top: auto;
+  }
+}
 .likeContainer .buttonLike .logoLike {
   margin-left: -5px;
   width: 20px;
@@ -114,51 +71,22 @@
 @media (min-width: 1600px) {
   .likeContainer .buttonLike .logoLike {
     width: 1.4vw;
-    margin-left: -1.2vw;
+    margin-bottom: -0.5vw;
   }
 }
 
 @keyframes like {
   0% {
-    transform: translateX(-1px);
+    transform: scale(0.7);
   }
-  6% {
-    transform: translateX(1px);
+  20% {
+    transform: scale(1);
   }
-  12% {
-    transform: translateX(-1px);
-  }
-  18% {
-    transform: translateX(1px);
-  }
-  24% {
-    transform: translateX(-1px);
-  }
-  32% {
-    transform: translateX(1px);
-  }
-  40% {
-    transform: translateX(0px);
+  50% {
+    transform: scale(0.8);
   }
   100% {
-    transform: translateX(0px);
-  }
-}
-@keyframes poc {
-  0% {
-    opacity: 0;
-  }
-  35% {
-    opacity: 0;
-  }
-  37% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
+    transform: scale(1);
   }
 }
 .likeColorwithe {

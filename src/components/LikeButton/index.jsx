@@ -68,11 +68,6 @@ function LikeButton({ propsLike }) {
           tabIndex={-1}
         >
           <div className="pocContain">
-            <div className="poc poc1">.</div>
-            <div className="poc poc2">.</div>
-            <div className="poc poc3">.</div>
-            <div className="poc poc4">.</div>
-            <div className="poc poc5">.</div>
             <img
               src="https://pierre-le-developpeur.com/assets/logo like.png"
               alt="logo like"
