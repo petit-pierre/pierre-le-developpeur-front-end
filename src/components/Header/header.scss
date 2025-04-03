@@ -147,8 +147,9 @@
     z-index: 10;
     .logIn{
         filter: invert(1);
-        height: 35px;
-        width: 35px;
+        min-height: 35px;
+        min-width: 35px;
+        margin: auto;
         //padding-left: 15px;
     }
     nav{
@@ -165,17 +166,17 @@
         flex-direction: row;
         justify-content: center;
         .logoLink{
-        width: 50px;
+        min-width: 50px;
         }
         .logo{
-            height: 35px;
-            width: 35px;
+            min-height: 35px;
+            min-width: 35px;
             filter: invert(1);
         }
     }
     .links{
         padding-top: 8px;
-        @media (min-width: 900px) and (max-width: 2000px) {
+        @media (min-width: 900px)  {
             font-size: 1.4dvw;
         }
     }
@@ -225,7 +226,18 @@
         transition: all 0.5s ;
         cursor: pointer;
         margin-top: -3px;
+        //margin: auto;
         margin-left: 8px;
+        //outline: 1px solid red;
+        @media (min-width: 2000px){
+            width: 3vw;
+            height: 1.5vw;
+            border-radius: 1.5vw;
+          }
+          @media (min-width: 1600px){
+            margin-top: 0;
+            margin-left: 1vw;
+          }
     }
     input[type="checkbox"].demo5 + label::before {
         box-sizing: border-box;
@@ -236,6 +248,10 @@
         border-radius: 50%;
         background-color: white;
         transition: all 0.5s ;
+        @media (min-width: 2000px){
+            height: calc(1.5vw - 4px);
+            width: calc(1.5vw - 4px);
+          }
     }
     input[type="checkbox"].demo5:checked + label {
         background-color: white ;
@@ -245,9 +261,12 @@
         margin-left: 1.5rem ;
         background-color: black;
         transition: 0.5s;
+        @media (min-width: 2000px){
+            margin-left: 1.5vw ;
+          }
     }
     img {
-        width: 5dvh;
+        width: 2dvw;
         color: white;
     }
     h1 {

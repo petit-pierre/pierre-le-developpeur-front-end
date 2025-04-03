@@ -11,9 +11,9 @@ code {
     monospace;
 }*/
 
-/** {
+* {
     outline: 1px solid red;
-}*/
+}
 *{
   overflow-anchor: none ;
 
@@ -47,11 +47,20 @@ h1 h2 h3 h4 h5 {
 }
 h1 {
   font-size: 2.2rem;
+  @media (min-width: 1600px)  {
+    font-size: 2.2vw;
+}
   //font-size: 1dvh;
 }
 h2 {
   font-size: 1.3rem;
   //font-size: 2dvh;
+}
+h3{
+  font-size: 1.5vw;
+  @media (max-width: 900px){
+    font-size: 3vh;
+  }
 }
 p{
   font-family: "abacaxi-devanagari", sans-serif;

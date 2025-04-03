@@ -79,6 +79,10 @@
         overflow: hidden;
         margin-top: 30px;
         //margin-bottom: 30px;
+        @media (min-width: 1600px)  {
+            height: 2.6vw;
+            padding-top: 1vw;
+        }
         @media (max-width: 900px){
             margin-bottom: 60px;
             //min-height: 180vh;
@@ -146,7 +150,10 @@
             position: relative;
             .oneSkill{
                 //padding-right: 40px;
-                height: 40px;
+                height: 2vw;
+                @media (max-width: 900px){
+                    height: 4vh;
+                  }
                 overflow: hidden;
                 h3{
                     text-align: center;
@@ -198,7 +205,10 @@
             position: relative;
             .oneSkill{
                 //padding-right: 40px;
-                height: 40px;
+                height: 2vw;
+                @media (max-width: 900px){
+                    height: 4vh;
+                  }
                 overflow: hidden;
                 h3{
                     text-align: center;

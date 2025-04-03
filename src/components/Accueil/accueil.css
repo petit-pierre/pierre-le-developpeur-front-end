@@ -97,6 +97,12 @@
       //background-color: rgb(60, 143, 143);
   }*/
 }
+@media (min-width: 1600px) {
+  .accueilField .intro {
+    height: 2.6vw;
+    padding-top: 1vw;
+  }
+}
 @media (max-width: 900px) {
   .accueilField .intro {
     margin-bottom: 60px;
@@ -161,8 +167,13 @@
   }
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
-  height: 40px;
+  height: 2vw;
   overflow: hidden;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .hardSkills .oneSkill {
+    height: 4vh;
+  }
 }
 .accueilField .videoInReact .hardSkills .oneSkill h3 {
   text-align: center;
@@ -213,8 +224,13 @@
   }
 }
 .accueilField .videoInReact .softSkills .oneSkill {
-  height: 40px;
+  height: 2vw;
   overflow: hidden;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .softSkills .oneSkill {
+    height: 4vh;
+  }
 }
 .accueilField .videoInReact .softSkills .oneSkill h3 {
   text-align: center;
