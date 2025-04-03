@@ -118,6 +118,9 @@
             transition: 1s;
             color: #99477a;
             margin-bottom: 4px;
+            @media (min-width: 1600px){
+                font-size: 1vw;
+              }
         }
         .sign:hover{
             transition: 1s;

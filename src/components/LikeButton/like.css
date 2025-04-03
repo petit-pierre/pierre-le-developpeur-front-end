@@ -15,10 +15,23 @@
   justify-content: flex-end;
   text-align: right;
 }
+@media (min-width: 1600px) {
+  .likeContainer .like {
+    height: 2vw;
+    border-radius: 2vw;
+    min-width: 4vw;
+    margin-right: -0.5vw;
+  }
+}
 .likeContainer .like p {
   margin: auto;
   padding-top: 5px;
   margin-right: 55px;
+}
+@media (min-width: 1600px) {
+  .likeContainer .like p {
+    margin-right: 3.5vw;
+  }
 }
 @media (max-width: 900px) {
   .likeContainer {
@@ -53,6 +66,28 @@
   left: 17px;
   top: -4px;
 }
+@media (min-width: 1600px) {
+  .likeContainer .poc1 {
+    left: calc(-6px - 0.75vw);
+    top: -4px;
+  }
+  .likeContainer .poc2 {
+    left: calc(1px - 0.75vw);
+    top: -9px;
+  }
+  .likeContainer .poc3 {
+    left: calc(14px - 0.75vw);
+    top: -11px;
+  }
+  .likeContainer .poc4 {
+    left: calc(28px - 0.75vw);
+    top: -9px;
+  }
+  .likeContainer .poc5 {
+    left: calc(34px - 0.75vw);
+    top: -4px;
+  }
+}
 .likeContainer .checked {
   animation-name: like;
   animation-duration: 2000ms;
@@ -75,6 +110,12 @@
   width: 20px;
   margin-bottom: -6px;
   cursor: pointer;
+}
+@media (min-width: 1600px) {
+  .likeContainer .buttonLike .logoLike {
+    width: 1.4vw;
+    margin-left: -1.2vw;
+  }
 }
 
 @keyframes like {

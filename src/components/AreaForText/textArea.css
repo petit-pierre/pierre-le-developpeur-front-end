@@ -119,6 +119,11 @@
   color: #99477a;
   margin-bottom: 4px;
 }
+@media (min-width: 1600px) {
+  .textareafield .textArea .sign {
+    font-size: 1vw;
+  }
+}
 .textareafield .textArea .sign:hover {
   transition: 1s;
   text-shadow: 5px 5px 5px;
