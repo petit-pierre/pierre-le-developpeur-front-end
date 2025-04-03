@@ -31,6 +31,11 @@
   position: relative;
   font-size: 12px;
 }
+@media (min-width: 1600px) {
+  .buttonDiv .purpleAndWitheTextarea span {
+    font-size: 1.3vw;
+  }
+}
 .buttonDiv .purpleAndWitheTextarea .button {
   font-family: "hayanbaram", sans-serif;
   font-weight: 100;

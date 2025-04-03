@@ -16,6 +16,11 @@
   font-size: 0.8rem;
   margin-top: 0;
 }
+@media (min-width: 1600px) {
+  .accueilField .contactIndication p {
+    font-size: 1vw;
+  }
+}
 @media (max-width: 900px) {
   .accueilField .contactIndication {
     margin-top: 60px;
@@ -34,6 +39,11 @@
   font: inherit;
   cursor: pointer;
   animation: clignote 1s infinite;
+}
+@media (min-width: 1600px) {
+  .accueilField .contactMe {
+    width: 10vw;
+  }
 }
 .accueilField .contactMe img {
   width: 100%;
@@ -285,11 +295,17 @@
 }
 .accueilField .buttonPlace {
   width: 100px;
-  height: 100px;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
   position: absolute;
   z-index: 4;
+}
+@media (min-width: 1600px) {
+  .accueilField .buttonPlace {
+    width: 9vw;
+    top: calc(50% - 4.5vw);
+    left: calc(50% - 4.5vw);
+  }
 }
 @media (max-width: 900px) {
   .accueilField .buttonPlace {
@@ -308,6 +324,13 @@
     box-shadow: 0px 0px 10px black;
     border: 6px solid black;
   }
+}
+@media (min-width: 900px) and (min-width: 1600px) {
+  .accueilField .buttonPlace .buttonDiv .send .purpleAndWitheTextarea {
+    border: 0.4vw solid black;
+  }
+}
+@media (min-width: 900px) {
   .accueilField .buttonPlace .buttonDiv .send .purpleAndWitheTextarea:hover {
     width: 80%;
     margin-left: 4%;
