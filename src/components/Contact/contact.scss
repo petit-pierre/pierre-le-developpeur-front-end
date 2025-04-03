@@ -23,6 +23,9 @@
         @media (max-width: 650px) {
             animation: openBd 8s linear infinite ;
         }
+        @media (min-width: 1600px){
+            right: 6vw;
+          }
 
     }
     .bdLike{
@@ -38,6 +41,13 @@
         width: 160px;
         height: 30px;
         bottom: 4px;
+        @media (min-width: 1600px){
+            width: 8vw;
+            height: 2vw;
+            bottom: 4px;
+            right: 6vw;
+            font-size: 1vw;
+          }
         opacity: 1;
         animation: none;
     }
@@ -68,8 +78,6 @@
     .headerLogos{
         z-index: 11;
         cursor: pointer;
-
-
         transform-origin: center;
         position: fixed;
         right: 20px;
@@ -78,15 +86,16 @@
     }
     .maGanache{
         width: 100px;
-        //z-index: 10;
+        @media (min-width: 1600px){
+            width: 8vw;
+            border-radius: 8vw;
+          }
         border-radius: 100px;
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
 
     }
     .headerLogos:hover{
-        //bottom: 22px;
-        //right: 21px;
         .bdMini{
             @media (min-width: 650px) {
                 transition: 0.25s;
@@ -94,6 +103,11 @@
                 height: 30px;
                 bottom: 4px;
                 opacity: 1;
+                @media (min-width: 1600px){
+                    width: 8vw;
+                    height: 2vw;
+                    font-size: 1vw;
+                  }
             }
 
         }
@@ -163,6 +177,10 @@
         .avatar{
             width: 30px;
             height: 30px;
+            @media (min-width: 1600px){
+                width: 2.4vw;
+                height: 2.4vw;
+              }
         }
         @keyframes clignote{
             0% {

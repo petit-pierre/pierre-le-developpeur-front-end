@@ -28,6 +28,13 @@
   border-top: 13.32 solid transparent;
   border-radius: 100%;
 }
+@media (min-width: 1600px) {
+  .ReactContainer div {
+    border-left: 26.64px solid;
+    border-right: 10.246152px solid;
+    border-top: 26.64 solid transparent;
+  }
+}
 .ReactContainer div:nth-child(1) {
   animation: anim-1 1s linear infinite;
 }

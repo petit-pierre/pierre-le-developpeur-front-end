@@ -26,6 +26,11 @@
         border-left: 13.32px solid;
         border-right: 5.123076px solid;
         border-top: 13.32 solid transparent;
+        @media (min-width: 1600px){
+            border-left: 26.64px solid;
+            border-right: 10.246152px solid;
+            border-top: 26.64 solid transparent;
+          }
         border-radius: 100%;
     }
     div:nth-child(1){

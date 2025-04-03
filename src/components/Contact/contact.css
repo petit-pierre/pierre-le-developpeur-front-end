@@ -30,6 +30,11 @@
     animation: openBd 8s linear infinite;
   }
 }
+@media (min-width: 1600px) {
+  .contactField .bdMini {
+    right: 6vw;
+  }
+}
 .contactField .bdLike {
   background-color: white;
   border: solid 2px black;
@@ -45,6 +50,15 @@
   bottom: 4px;
   opacity: 1;
   animation: none;
+}
+@media (min-width: 1600px) {
+  .contactField .bdLike {
+    width: 8vw;
+    height: 2vw;
+    bottom: 4px;
+    right: 6vw;
+    font-size: 1vw;
+  }
 }
 @keyframes openBd {
   0% {
@@ -83,6 +97,12 @@
   border-radius: 100px;
   transform: scaleX(-1);
 }
+@media (min-width: 1600px) {
+  .contactField .maGanache {
+    width: 8vw;
+    border-radius: 8vw;
+  }
+}
 @media (min-width: 650px) {
   .contactField .headerLogos:hover .bdMini {
     transition: 0.25s;
@@ -90,6 +110,13 @@
     height: 30px;
     bottom: 4px;
     opacity: 1;
+  }
+}
+@media (min-width: 650px) and (min-width: 1600px) {
+  .contactField .headerLogos:hover .bdMini {
+    width: 8vw;
+    height: 2vw;
+    font-size: 1vw;
   }
 }
 .contactField .bdMaxi {
@@ -148,6 +175,12 @@
 .contactField .discuss .avatar {
   width: 30px;
   height: 30px;
+}
+@media (min-width: 1600px) {
+  .contactField .discuss .avatar {
+    width: 2.4vw;
+    height: 2.4vw;
+  }
 }
 @keyframes clignote {
   0% {
