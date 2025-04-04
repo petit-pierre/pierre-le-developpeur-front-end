@@ -25,6 +25,10 @@
         border: solid 3px black;
         border-radius: 20px;
         overflow: hidden;
+        @media (min-width: 1600px){
+            border: solid 9px black;
+            border-radius: 2vw;
+          }
         ul{
             color: white;
         }
@@ -36,6 +40,10 @@
             @media  (max-width: 650px){
             bottom: -40px;
             }
+            @media (min-width: 1600px){
+                bottom: 2vw;
+                border-radius: 2vw;
+              }
         }
         .padding{
             padding-right: 100px;
@@ -50,7 +58,11 @@
             line-height:1rem;
             margin: 20px;
             margin-top: 40px;
-
+            @media (min-width: 1600px){
+                line-height:1vw;
+                margin: 2vw;
+                margin-top: 4vw;
+              }
         }
     }
     .empty{
@@ -172,6 +184,9 @@
             z-index: 6;
             right: -350px;
             border-radius: 20px;
+            @media (min-width: 1600px){
+                border-radius: 2vw;
+              }
             //padding-left: 20px;
             @media (max-width: 900px) {
                 right: 0px;

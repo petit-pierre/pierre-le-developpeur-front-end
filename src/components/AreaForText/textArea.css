@@ -24,6 +24,12 @@
   border-radius: 20px;
   overflow: hidden;
 }
+@media (min-width: 1600px) {
+  .textareafield .windows {
+    border: solid 9px black;
+    border-radius: 2vw;
+  }
+}
 .textareafield .windows ul {
   color: white;
 }
@@ -36,6 +42,12 @@
 @media (max-width: 650px) {
   .textareafield .windows .like {
     bottom: -40px;
+  }
+}
+@media (min-width: 1600px) {
+  .textareafield .windows .like {
+    bottom: 2vw;
+    border-radius: 2vw;
   }
 }
 .textareafield .windows .padding {
@@ -51,6 +63,13 @@
   font-weight: 400;
   font-style: normal;
   color: white;
+}
+@media (min-width: 1600px) {
+  .textareafield .windows .fullResum {
+    line-height: 1vw;
+    margin: 2vw;
+    margin-top: 4vw;
+  }
 }
 .textareafield .empty {
   border-radius: 20px;
@@ -178,6 +197,11 @@
   z-index: 6;
   right: -350px;
   border-radius: 20px;
+}
+@media (min-width: 1600px) {
+  .textareafield .textArea .like {
+    border-radius: 2vw;
+  }
 }
 @media (max-width: 900px) {
   .textareafield .textArea .like {
