@@ -84,7 +84,11 @@ span {
   font-family: "hayanbaram", sans-serif;
   font-weight: 100;
   font-style: normal;
-  font-size: 1.2vw;
+}
+@media (min-width: 1600px) {
+  span {
+    font-size: 1.2vw;
+  }
 }
 
 textarea, button {
