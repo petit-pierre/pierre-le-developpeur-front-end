@@ -24,7 +24,8 @@
             padding-top: 5px;
             margin-right: 55px;
             @media (min-width: 1600px){
-                //margin-right: 3.5vw;
+                margin-right: 2.5vw;
+                margin-left: 1vw;
               }
         }
     }
@@ -40,7 +41,7 @@
             position: relative;
             width: 100%;
             padding-bottom: 0.5vw;
-
+            //padding-right: 1vw;
         }
       }
     .checked{
@@ -57,7 +58,9 @@
         @media (min-width: 1600px){
             position: relative;
             width: 2vw;
-            top:auto
+            top:auto;
+            //top: -2px;
+            right: 2vw;
           }
         .logoLike{
             margin-left: -5px;

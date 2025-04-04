@@ -43,6 +43,12 @@
   height: 20px;
   padding-right: 10px;
 }
+@media (min-width: 1600px) {
+  .collapseField .content .logo {
+    width: 1.7vw;
+    height: 1.7vw;
+  }
+}
 .collapseField .headerCollapse {
   border: 0px;
   height: 5dvh;
@@ -54,6 +60,11 @@
   z-index: 3;
   cursor: pointer;
   min-height: 30px;
+}
+@media (min-width: 1600px) {
+  .collapseField .headerCollapse {
+    min-height: 2.1vw;
+  }
 }
 @media (max-width: 650px) {
   .collapseField .headerCollapse {
@@ -69,6 +80,12 @@
   margin: auto;
   cursor: pointer;
 }
+@media (min-width: 1600px) {
+  .collapseField .headerCollapse img {
+    width: 2vw;
+    height: 1vw;
+  }
+}
 .collapseField .headerCollapse .hiddenArrow {
   opacity: 0;
 }
@@ -76,10 +93,20 @@
   border-radius: 20px 20px 0px 0px;
   transition: 1s;
 }
+@media (min-width: 1600px) {
+  .collapseField .open {
+    border-radius: 2vw 2vw 0px 0px;
+  }
+}
 .collapseField .close {
   border-radius: 20px 20px 20px 20px;
   transition: all 3s;
   transition-delay: 1.8s;
+}
+@media (min-width: 1600px) {
+  .collapseField .close {
+    border-radius: 2vw 2vw 2vw 2vw;
+  }
 }
 .collapseField .openArrow {
   transform: rotate(180deg);

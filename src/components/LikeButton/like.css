@@ -28,6 +28,12 @@
   padding-top: 5px;
   margin-right: 55px;
 }
+@media (min-width: 1600px) {
+  .likeContainer .like p {
+    margin-right: 2.5vw;
+    margin-left: 1vw;
+  }
+}
 @media (max-width: 900px) {
   .likeContainer {
     right: -20px;
@@ -60,6 +66,7 @@
     position: relative;
     width: 2vw;
     top: auto;
+    right: 2vw;
   }
 }
 .likeContainer .buttonLike .logoLike {

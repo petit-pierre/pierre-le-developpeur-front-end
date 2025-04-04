@@ -189,6 +189,19 @@
   justify-content: space-around;
   flex-wrap: wrap;
   position: relative;
+  width: 100%;
+}
+@media (min-width: 1600px) {
+  .home .projets {
+    margin-top: 5vw;
+    padding-top: 10vw;
+  }
+  .home .projets input {
+    font-family: "abacaxi-devanagari", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2vw;
+  }
 }
 @media (max-width: 900px) {
   .home .projets {
@@ -231,7 +244,6 @@
   -moz-appearance: none;
        appearance: none;
   margin: auto;
-  font: inherit;
   color: black;
   width: -moz-fit-content;
   width: fit-content;
@@ -244,6 +256,12 @@
   transition: all 1s;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+@media (min-width: 1600px) {
+  .home .projets .projectChoice input[type=radio] {
+    border-radius: 5vw;
+    padding: 0.5vw;
+  }
 }
 .home .projets .projectChoice input[type=radio]::before {
   padding: 6px;
@@ -260,6 +278,14 @@
   background-color: #99477a;
   color: white;
   transition: all 1s;
+}
+@media (min-width: 1600px) {
+  .home .projets .projectChoice input[type=radio]:checked::before {
+    border-radius: 5vw;
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
 }
 .home .projets .projectChoice .Tousfr::before {
   content: "Tous";

@@ -9,6 +9,12 @@
     cursor: pointer;
     margin: 20px;
     z-index: 5;
+    @media (min-width: 1600px){
+        width: 20vw;
+        max-width: 20vw;
+        height: 25vw;
+        border-radius: 1.2vw;
+      }
     .logoCards{
         position: absolute;
         z-index: 6;
@@ -23,9 +29,21 @@
         .studies{
             width: 35px;
         }
+        @media (min-width: 1600px){
+            .topProj{
+                height: 3.3vw;
+                width: 3.5vw;
+            }
+            .studies{
+                width: 3.5vw;
+            }
+          }
     }
     p{
         font-size: 1rem;
+        @media (min-width: 1600px){
+            font-size: 1.2vw;
+          }
     }
     .more{
         position: absolute;
@@ -33,6 +51,9 @@
         right: 10px;
         font-size: 10px;
         opacity: 0.5;
+        @media (min-width: 1600px){
+            font-size: 0.8vw;
+          }
     }
     @media (max-width: 650px) {
         //width: 80%;
@@ -52,6 +73,9 @@
     .cardSlide{
         opacity: 1;
         height: 162px;
+        @media (min-width: 1600px){
+            height: 13vw;
+          }
     }
     .cardResum{
         position: absolute;
@@ -65,13 +89,23 @@
         min-width: 230px;
         width: 100% ;
         display: flex;
+        @media (min-width: 1600px){
+            top: 0;
+            height: 25vw;
+          }
         .texte{
             padding: 10px;
             margin: auto;
+            @media (min-width: 1600px){
+                margin-top: 14vw;
+              }
         }
         .likeCard{
             position: relative;
             top: 150px;
+            @media (min-width: 1600px){
+                top: 21vw;
+              }
         }
     }
 }

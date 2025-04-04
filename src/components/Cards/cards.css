@@ -12,6 +12,14 @@
   border: solid white;
   text-align: center;
 }
+@media (min-width: 1600px) {
+  .cardField {
+    width: 20vw;
+    max-width: 20vw;
+    height: 25vw;
+    border-radius: 1.2vw;
+  }
+}
 .cardField .logoCards {
   position: absolute;
   z-index: 6;
@@ -27,8 +35,22 @@
 .cardField .logoCards .studies {
   width: 35px;
 }
+@media (min-width: 1600px) {
+  .cardField .logoCards .topProj {
+    height: 3.3vw;
+    width: 3.5vw;
+  }
+  .cardField .logoCards .studies {
+    width: 3.5vw;
+  }
+}
 .cardField p {
   font-size: 1rem;
+}
+@media (min-width: 1600px) {
+  .cardField p {
+    font-size: 1.2vw;
+  }
 }
 .cardField .more {
   position: absolute;
@@ -36,6 +58,11 @@
   right: 10px;
   font-size: 10px;
   opacity: 0.5;
+}
+@media (min-width: 1600px) {
+  .cardField .more {
+    font-size: 0.8vw;
+  }
 }
 @media (max-width: 650px) {
   .cardField {
@@ -57,6 +84,11 @@
   opacity: 1;
   height: 162px;
 }
+@media (min-width: 1600px) {
+  .cardField .cardSlide {
+    height: 13vw;
+  }
+}
 .cardField .cardResum {
   position: absolute;
   top: 150px;
@@ -70,13 +102,29 @@
   width: 100%;
   display: flex;
 }
+@media (min-width: 1600px) {
+  .cardField .cardResum {
+    top: 0;
+    height: 25vw;
+  }
+}
 .cardField .cardResum .texte {
   padding: 10px;
   margin: auto;
 }
+@media (min-width: 1600px) {
+  .cardField .cardResum .texte {
+    margin-top: 14vw;
+  }
+}
 .cardField .cardResum .likeCard {
   position: relative;
   top: 150px;
+}
+@media (min-width: 1600px) {
+  .cardField .cardResum .likeCard {
+    top: 21vw;
+  }
 }
 
 .cardField:hover .cardResum {

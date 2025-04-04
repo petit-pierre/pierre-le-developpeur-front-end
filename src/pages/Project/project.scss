@@ -83,6 +83,14 @@
             top: 1vh;
         }
         //opacity: 0.5;
+        @media (min-width: 1600px){
+            border: solid 8px black;
+            height: 6vw;
+            width: calc( 2vw + 16px );
+            top: 5vw;
+            left: 3vw;
+            border-radius: 2vw;
+          }
         .scrollDot{
             position: relative;
             border-radius: 20px;
@@ -95,6 +103,14 @@
             animation-name: scrolling;
             animation-duration: 4000ms;
             animation-iteration-count: infinite;
+            @media (min-width: 1600px){
+                border-radius: 2vw;  
+                border: solid 8px black;
+                height: 1vw;
+                width: 1vw;
+                left: 0.5vw;
+                top: calc(1vw - 10px);
+              }
         }
         @keyframes scrolling{
             0% {
@@ -151,6 +167,9 @@
         width: 100%;  
         .likeContainer{
             top: 12px;
+            @media (min-width: 1600px){
+                top: 5vw;
+              }
         }
         @media (max-width: 650px){
             height: calc(100vh - 130px);

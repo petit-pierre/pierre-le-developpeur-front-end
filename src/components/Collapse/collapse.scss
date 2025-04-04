@@ -41,6 +41,10 @@
             margin: auto;
             width: 20px;
             height: 20px;
+            @media (min-width: 1600px){
+                width: 1.7vw;
+                height: 1.7vw;
+              }
             padding-right: 10px;
         }
     }
@@ -55,6 +59,9 @@
         z-index: 3;
         cursor: pointer;
         min-height: 30px;
+        @media (min-width: 1600px){
+            min-height: 2.1vw;
+          }
         @media (max-width: 650px) {
             height: 5dvh;
         }
@@ -66,6 +73,10 @@
             height: 14px;
             margin: auto;
             cursor: pointer; 
+            @media (min-width: 1600px){
+                width: 2vw;
+                height: 1vw;
+              }
         }
         .hiddenArrow{
             opacity: 0;
@@ -73,10 +84,16 @@
     }
     .open{
         border-radius:  20px 20px 0px 0px;
+        @media (min-width: 1600px){
+            border-radius:  2vw 2vw 0px 0px;
+          }
         transition: 1s;
     }
     .close{
         border-radius:  20px 20px 20px 20px;
+        @media (min-width: 1600px){
+            border-radius:  2vw 2vw 2vw 2vw;
+          }
         transition: all 3s;
         transition-delay: 1.8s;
     }
