@@ -180,6 +180,11 @@
   }
 }
 @media (max-width: 650px) {
+  .projectPage .slider .likeContainer {
+    top: 130px;
+  }
+}
+@media (max-width: 650px) {
   .projectPage .slider {
     height: calc(100vh - 130px);
     top: 130px;

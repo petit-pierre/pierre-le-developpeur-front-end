@@ -170,6 +170,9 @@
             @media (min-width: 1600px){
                 top: 5vw;
               }
+              @media (max-width: 650px){
+                top: 130px;
+            }
         }
         @media (max-width: 650px){
             height: calc(100vh - 130px);
