@@ -82,6 +82,9 @@
     .purpleAndWitheTextarea{
         border-radius: 20px;
         overflow: hidden;
+        @media (min-width: 1600px){
+            border-radius: 1.5vw;
+          }
         .title{
             width: 100%;
             background-color: #99477a;
@@ -113,6 +116,9 @@
                 font-style: normal;
             }
             margin: 20px;
+            @media (min-width: 1600px){
+                padding: 1vw;
+              }
         }
     }
     .textArea{
