@@ -1,6 +1,9 @@
 .accueilField{
     position: relative;
     height: calc(100vh - 59px);
+    @media (max-width: 900px){
+height: 80vh;
+      }
     .picturePlace{
         background-color: black;
         position: absolute;
@@ -14,6 +17,16 @@
             left: 2.5%;
             bottom: 0;
             position: absolute;
+            opacity: 0;
+            animation: fadeIn 2s ease 2s forwards ;
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                }
+            }
         }
         .oblique{
             position: absolute;
@@ -23,6 +36,12 @@
             background-color: white;
             transform: skewX(-15deg);
             animation: rideau 2s ease-in-out ;
+            @media (max-width: 900px){
+                left: 50%;
+                width: 100%;
+                animation: none;
+                transform: skewX(-30deg);
+              }
             @keyframes rideau {
                 0% {
                     left: 50%;
@@ -127,6 +146,7 @@
         }
         @media (max-width: 900px){
             margin-bottom: 60px;
+            height: 10vh;
           }
         h1{
             position: absolute;
@@ -135,6 +155,10 @@
             margin-top: 100px;
             margin-left: 4%;
             animation: comming 0.5s ease 2s forwards;
+            @media (max-width: 900px){
+                color: white;
+                margin-left: 0;
+              }
          }
     }
     .videoInReact{
@@ -184,22 +208,7 @@
                 width: 100%;
                 height: 200px;
               }
-            .negatif{
-                @media (min-width: 900px){
-                    display: none;
-                  }
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background-color: #99477a;
-                opacity: 0.5;
-                border-radius:30% 70% 70% 30% / 30% 31% 69% 70% ;
-                transform: rotate(-12deg);
-                top: -60px;
-                left: 40px;
-                z-index: 2;
-                animation: commingRight 0.5s ease ;
-            }
+
             @keyframes commingRight{
                 0% {
                     left: 130%;
@@ -209,52 +218,8 @@
                 }}
         }
         .softSkills{
-            margin-top: 24vh;
-            @media (max-width: 900px){
-                margin-top: 80px;
-              }
-            position: relative;
-            .oneSkill{
-                height: 2vw;
-                @media (max-width: 900px){
-                    height: 4vh;
-                  }
-                overflow: hidden;
-                h3{
-                    text-align: center;
-                    margin-top: 0;
-                    animation: comming 2.5s ease ;
-                }
-            }
-            .negatif{
-                @media (min-width: 900px){
-                    display: none;
-                  }             
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background-color: #99477a;
-                opacity: 0.5;
-                border-radius:42% 58% 70% 30% / 61% 31% 69% 39%  ;
-                transform: rotate(20deg);
-                top: -60px;
-                right: 30px;
-                z-index: 2;
-                animation: commingLeft 0.8s ease ;
-            }
-            @keyframes commingLeft{
-                0% {
-                    right: 130%;
-                }
-                100%{
-                    right: 40px;
-                }}
             width: 35%;
             min-height: 200px;
-            @media (max-width: 900px){
-                width: 100%;
-                height: 200px;
-              }
         }
         .react{
             width: 22vw;

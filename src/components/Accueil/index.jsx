@@ -20,15 +20,17 @@ function Accueil() {
       setScrolling(e.target.documentElement.scrollTop > scrollToTop);
     };
     window.addEventListener("scroll", onScroll);
-    document.querySelector(".oblique").style.width = `calc( 33% + ${
-      scrollToTop / 5
-    }%)`;
-    document.querySelector(".oblique").style.left = `calc( 33% - ${
-      scrollToTop / 10
-    }%)`;
-    document.querySelector(".portrait").style.left = `calc( 2.5% - ${
-      scrollToTop / 20
-    }%)`;
+    if (window.innerWidth > 900) {
+      document.querySelector(".oblique").style.width = `calc( 33% + ${
+        scrollToTop / 5
+      }%)`;
+      document.querySelector(".oblique").style.left = `calc( 33% - ${
+        scrollToTop / 10
+      }%)`;
+      document.querySelector(".portrait").style.left = `calc( 2.5% - ${
+        scrollToTop / 20
+      }%)`;
+    }
     /*document.querySelector(".hardSkills").style.margin = `calc( 2.5% - ${
       scrollToTop / 20
     }%)`;*/
@@ -59,29 +61,6 @@ function Accueil() {
       </div>
       <div className="videoInReact">
         <div className="softSkills">
-          <div className="oneSkill">
-            {language === "FR" ? (
-              <h3>Passionné, Intégre,</h3>
-            ) : (
-              <h3>Passionate, impartial,</h3>
-            )}
-          </div>
-
-          <div className="oneSkill">
-            {language === "FR" ? (
-              <h3>Créatif, Curieux</h3>
-            ) : (
-              <h3>Creative, Curious</h3>
-            )}
-          </div>
-
-          <div className="oneSkill">
-            {language === "FR" ? (
-              <h3>et Détérminé.</h3>
-            ) : (
-              <h3>and Determined.</h3>
-            )}
-          </div>
           <div className="negatif"></div>
         </div>
         <div className="react">
