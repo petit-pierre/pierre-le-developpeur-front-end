@@ -15,34 +15,14 @@ function Accueil() {
     Hscreen = 650;
   }
 
-  function play(evt) {
-    evt.preventDefault();
-    if (document.querySelector(".theVideo").paused === true) {
-      document.querySelector(".theVideo").play();
-    } else {
-      document.querySelector(".theVideo").pause();
-    }
-  }
-
   function openDial(evt) {
     evt.preventDefault();
     document.querySelector(".headerLogos").click();
-    //dispatch(userSlice.actions.setContactMenu(!discuss));
-    //bd.classList.add("bdMini");
-    /*if (bd !== null) {
-      if (bd.classList.contains("bdMini") === true) {
-        dispatch(userSlice.actions.setContactMenu(true));
-        //bd.classList.remove("bdMini");
-        //bd.classList.add("bdMaxi");
-      } else {
-        dispatch(userSlice.actions.setContactMenu(false));
-      }
-    }*/
   }
   return (
     <div className="accueilField">
       <div className="intro">
-        {language === "FR" ? <h1> Développeur web</h1> : <h1>Web developer</h1>}
+        {language === "FR" ? <h1>Développeur web</h1> : <h1>Web developer</h1>}
       </div>
       <div className="videoInReact">
         <div className="softSkills">
