@@ -54,6 +54,8 @@
 .headerfield .logPlace {
   animation: logoLinkReverse 1.5s linear;
   padding-left: 15px;
+  gap: 20px;
+  display: flex;
 }
 .headerfield .logPlace .logIn {
   animation: logoRevers 1.5s linear;

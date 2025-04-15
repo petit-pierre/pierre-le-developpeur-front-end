@@ -20,7 +20,7 @@
 }
 .textareafield .windows {
   background-image: url("../../../public/assets/snow.gif");
-  border: solid 3px black;
+  border: solid 4px #99477a;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -32,6 +32,10 @@
 }
 .textareafield .windows ul {
   color: white;
+}
+.textareafield .windows .fullResum a {
+  color: rgb(199, 255, 192);
+  text-decoration: underline;
 }
 .textareafield .windows textarea {
   color: white;
@@ -79,6 +83,10 @@
 }
 .textareafield .empty .fullResum {
   margin: 20px;
+}
+.textareafield .empty .fullResum a {
+  color: #99477a;
+  text-decoration: underline;
 }
 .textareafield .empty .fullResum p {
   font-family: "abacaxi-devanagari", sans-serif;

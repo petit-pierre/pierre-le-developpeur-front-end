@@ -22,7 +22,7 @@
     }
     .windows{
         background-image:   url("../../../public/assets/snow.gif");
-        border: solid 3px black;
+        border: solid 4px #99477a;
         border-radius: 20px;
         overflow: hidden;
         @media (min-width: 1600px){
@@ -31,6 +31,13 @@
           }
         ul{
             color: white;
+        }
+        .fullResum{
+            a{
+                color: rgb(199, 255, 192);
+                text-decoration: underline;
+    
+            }
         }
         textarea{
             color: white;
@@ -72,6 +79,11 @@
         }
         .fullResum{
             margin: 20px;
+            a{
+                color: #99477a;
+                text-decoration: underline;
+    
+            }
             p{
                 font-family: "abacaxi-devanagari", sans-serif;
                 font-weight: 400;
