@@ -1,8 +1,47 @@
 .accueilField{
+    position: relative;
+    height: calc(100vh - 59px);
+    .picturePlace{
+        background-color: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        img{
+            width: 25%;
+            left: 2.5%;
+            bottom: 0;
+            position: absolute;
+        }
+        .oblique{
+            position: absolute;
+            left: 33%;
+            width: 33%;
+            height: 100%;
+            background-color: white;
+            transform: skewX(-15deg);
+            animation: rideau 2s ease-in-out ;
+            @keyframes rideau {
+                0% {
+                    left: 50%;
+                    width: 0%;
+                }
+                100%{
+                    left: 33%;
+                    width: 33%;
+                }
+            }
+        }
+    }
     .contactIndication{
         display: flex;
-        width: 100%;
+        width: 90%;
         flex-direction: column;
+        z-index: 2;
+        margin-bottom: 5vh;
+        
         p{
             text-align: center;
             font-size: 0.8rem;
@@ -31,10 +70,12 @@
         font: inherit;
         cursor: pointer;
         animation: clignote 1s infinite  ;
+
         img{
             width: 100%;
-            margin-left: -35px;
-            animation: contact 0.7s ease  ;
+            margin-left: -120vw;
+            //margin-left: -35px;
+            animation: contact 0.7s ease 1s forwards ; 
         }
     }
     @keyframes contact{
@@ -70,10 +111,16 @@
             margin-top: 0;
         }}
     .intro{
-        position: relative;
-        height: 2.5rem;
+        z-index: 2;
+        position: absolute;
+        top: 1vw;
+        left: 0%;
+        height: 6vw;
+        width: 100%;
         overflow: hidden;
         margin-top: 30px;
+        //border: 1px solid red;
+        margin: 0;
         @media (min-width: 1600px)  {
             height: 2.6vw;
             padding-top: 1vw;
@@ -85,8 +132,9 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            margin-top: 0;
-            animation: comming 0.5s ease ;
+            margin-top: 100px;
+            margin-left: 4%;
+            animation: comming 0.5s ease 2s forwards;
          }
     }
     .videoInReact{
@@ -94,16 +142,30 @@
             flex-direction: column;
           }
         width: 100%;
+        height: calc(100vh - 59px);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         position: relative;
         .hardSkills{
-            margin-top: 24vh;
+            color: white;
+            z-index: 2;
+            margin-top: 10vh;
+            position: relative;
+
             @media (max-width: 900px){
                 margin-top: 80px;
               }
             position: relative;
+            p{
+                font-size: 1vw;
+            }
+            .texte_intro{
+                padding: 0vw 2vw 0vw 0%;
+                position: absolute;
+                top: 20%;
+                left: 20%;
+            }
             .oneSkill{
                 height: 2vw;
                 @media (max-width: 900px){
@@ -195,10 +257,14 @@
               }
         }
         .react{
-            width: 30%;
+            width: 22vw;
+            height: 22vw;
+            margin: auto;
             display: block;
             position: relative;
             aspect-ratio: 1;
+            z-index: 2;
+            //border: 1px solid red;
             span{
                 opacity: 0;
             }

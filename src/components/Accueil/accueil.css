@@ -1,4 +1,6 @@
 .accueilField {
+  position: relative;
+  height: calc(100vh - 59px);
   margin-top: 0px;
   margin-bottom: 20px;
   width: 100%;
@@ -6,10 +8,46 @@
   display: flex;
   flex-direction: column;
 }
+.accueilField .picturePlace {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.accueilField .picturePlace img {
+  width: 25%;
+  left: 2.5%;
+  bottom: 0;
+  position: absolute;
+}
+.accueilField .picturePlace .oblique {
+  position: absolute;
+  left: 33%;
+  width: 33%;
+  height: 100%;
+  background-color: white;
+  transform: skewX(-15deg);
+  animation: rideau 2s ease-in-out;
+}
+@keyframes rideau {
+  0% {
+    left: 50%;
+    width: 0%;
+  }
+  100% {
+    left: 33%;
+    width: 33%;
+  }
+}
 .accueilField .contactIndication {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: column;
+  z-index: 2;
+  margin-bottom: 5vh;
 }
 .accueilField .contactIndication p {
   text-align: center;
@@ -47,8 +85,8 @@
 }
 .accueilField .contactMe img {
   width: 100%;
-  margin-left: -35px;
-  animation: contact 0.7s ease;
+  margin-left: -120vw;
+  animation: contact 0.7s ease 1s forwards;
 }
 @keyframes contact {
   0% {
@@ -78,10 +116,15 @@
   }
 }
 .accueilField .intro {
-  position: relative;
-  height: 2.5rem;
+  z-index: 2;
+  position: absolute;
+  top: 1vw;
+  left: 0%;
+  height: 6vw;
+  width: 100%;
   overflow: hidden;
   margin-top: 30px;
+  margin: 0;
 }
 @media (min-width: 1600px) {
   .accueilField .intro {
@@ -98,11 +141,13 @@
   position: absolute;
   width: 100%;
   text-align: center;
-  margin-top: 0;
-  animation: comming 0.5s ease;
+  margin-top: 100px;
+  margin-left: 4%;
+  animation: comming 0.5s ease 2s forwards;
 }
 .accueilField .videoInReact {
   width: 100%;
+  height: calc(100vh - 59px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -114,7 +159,10 @@
   }
 }
 .accueilField .videoInReact .hardSkills {
-  margin-top: 24vh;
+  color: white;
+  z-index: 2;
+  margin-top: 10vh;
+  position: relative;
   position: relative;
   width: 35%;
   min-height: 200px;
@@ -123,6 +171,15 @@
   .accueilField .videoInReact .hardSkills {
     margin-top: 80px;
   }
+}
+.accueilField .videoInReact .hardSkills p {
+  font-size: 1vw;
+}
+.accueilField .videoInReact .hardSkills .texte_intro {
+  padding: 0vw 2vw 0vw 0%;
+  position: absolute;
+  top: 20%;
+  left: 20%;
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
   height: 2vw;
@@ -228,10 +285,13 @@
   }
 }
 .accueilField .videoInReact .react {
-  width: 30%;
+  width: 22vw;
+  height: 22vw;
+  margin: auto;
   display: block;
   position: relative;
   aspect-ratio: 1;
+  z-index: 2;
 }
 .accueilField .videoInReact .react span {
   opacity: 0;
