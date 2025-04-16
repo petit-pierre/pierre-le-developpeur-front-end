@@ -2,10 +2,13 @@
     position: relative;
     height: calc(100vh - 59px);
     @media (max-width: 900px){
-height: 80vh;
+        height: calc(200vh - 150px);
       }
     .picturePlace{
         background-color: black;
+        @media (max-width: 900px){
+            background-color: white;
+          }
         position: absolute;
         top: 0;
         left: 0;
@@ -18,13 +21,53 @@ height: 80vh;
             bottom: 0;
             position: absolute;
             opacity: 0;
-            animation: fadeIn 2s ease 2s forwards ;
-            @keyframes fadeIn {
+            animation: fadeInPortrait 2s ease 2s forwards ;
+            @media (max-width: 900px){
+                position: fixed;
+                transform-origin: bottom left;
+                //bottom: 100vh;
+                width: 50%;
+                left: 50%;
+                z-index: 3;
+                animation: fadeInPortrait 2s ease 2s;
+                @media (aspect-ratio > 12/16){
+                    width: 30%;
+                    left: 70%;
+                }
+              }
+            @keyframes fadeInPortrait {
                 0% {
                     opacity: 0;
                 }
                 100%{
                     opacity: 1;
+                }
+            }
+        }
+        .mobileOblique{
+            @media (min-width: 900px){
+                display: none;
+            }
+            @media (max-width: 900px){
+                position: absolute;
+                top: calc(100vh - 155px);
+                left: -160vw;
+                width: 200%;
+                height: 100vh;
+                background-color: black;
+                transform: skewX(-35deg);
+                transition: transform 0.5s ease-in-out;
+                @media (aspect-ratio > 9/16){
+                    transform: skewX(-40deg);
+                }
+                @media (aspect-ratio > 11/16){
+                    transform: skewX(-45deg);
+                }
+                @media (aspect-ratio > 12/16){
+                    transform: skewX(-50deg);
+                }
+                @media (aspect-ratio > 13/16){
+                    transform: skewX(-55deg);
                 }
             }
         }
@@ -38,9 +81,24 @@ height: 80vh;
             animation: rideau 2s ease-in-out ;
             @media (max-width: 900px){
                 left: 50%;
-                width: 100%;
+                width: 200%;
+                height: calc(100vh - 150px);
                 animation: none;
-                transform: skewX(-30deg);
+                transform: skewX(-35deg);
+                background-color: black;
+                transition: transform 0.5s ease-in-out;
+                @media (aspect-ratio > 9/16){
+                    transform: skewX(-40deg);
+                }
+                @media (aspect-ratio > 11/16){
+                    transform: skewX(-45deg);
+                }
+                @media (aspect-ratio > 12/16){
+                    transform: skewX(-50deg);
+                }
+                @media (aspect-ratio > 13/16){
+                    transform: skewX(-55deg);
+                }
               }
             @keyframes rideau {
                 0% {
@@ -60,7 +118,6 @@ height: 80vh;
         flex-direction: column;
         z-index: 2;
         margin-bottom: 5vh;
-        
         p{
             text-align: center;
             font-size: 0.8rem;
@@ -89,11 +146,9 @@ height: 80vh;
         font: inherit;
         cursor: pointer;
         animation: clignote 1s infinite  ;
-
         img{
             width: 100%;
             margin-left: -120vw;
-            //margin-left: -35px;
             animation: contact 0.7s ease 1s forwards ; 
         }
     }
@@ -128,7 +183,8 @@ height: 80vh;
         }
         100%{
             margin-top: 0;
-        }}
+        }
+    }
     .intro{
         z-index: 2;
         position: absolute;
@@ -138,7 +194,6 @@ height: 80vh;
         width: 100%;
         overflow: hidden;
         margin-top: 30px;
-        //border: 1px solid red;
         margin: 0;
         @media (min-width: 1600px)  {
             height: 2.6vw;
@@ -156,7 +211,7 @@ height: 80vh;
             margin-left: 4%;
             animation: comming 0.5s ease 2s forwards;
             @media (max-width: 900px){
-                color: white;
+                //color: white;
                 margin-left: 0;
               }
          }
@@ -164,6 +219,7 @@ height: 80vh;
     .videoInReact{
         @media (max-width: 900px){
             flex-direction: column;
+            height: calc(100vh - 150px);
           }
         width: 100%;
         height: calc(100vh - 59px);
@@ -176,8 +232,9 @@ height: 80vh;
             z-index: 2;
             margin-top: 10vh;
             position: relative;
-
             @media (max-width: 900px){
+                position: absolute;
+                color: black;
                 margin-top: 80px;
               }
             position: relative;
@@ -185,7 +242,7 @@ height: 80vh;
                 font-size: 1vw;
             }
             .texte_intro{
-                padding: 0vw 2vw 0vw 0%;
+                padding: 2vw 2vw 0vw 0%;
                 position: absolute;
                 top: 20%;
                 left: 20%;
@@ -197,6 +254,7 @@ height: 80vh;
                   }
                 overflow: hidden;
                 h3{
+                    margin-left: 2vw;
                     text-align: center;
                     margin-top: 0;
                     animation: comming 2.5s ease ;
@@ -250,14 +308,14 @@ height: 80vh;
         position: absolute;
         z-index: 4;
         @media (max-width: 900px){
-            padding-top: 30px;
-            padding-bottom: 30px;
+            //padding-top: 30px;
+            //padding-bottom: 30px;
             width: 30%;
-            height: 30%;
-            left: 0;
-            top: 0;
+            //height: 30%;
+            top: calc(40vh - 15vw);
+            left: 35%;
             margin: auto;
-            position: relative;
+            position: absolute;
         }
         @media (min-width: 900px){
             .buttonDiv{

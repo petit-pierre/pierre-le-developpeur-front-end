@@ -10,7 +10,7 @@
 }
 @media (max-width: 900px) {
   .accueilField {
-    height: 80vh;
+    height: calc(200vh - 150px);
   }
 }
 .accueilField .picturePlace {
@@ -22,20 +22,78 @@
   height: 100%;
   z-index: 2;
 }
+@media (max-width: 900px) {
+  .accueilField .picturePlace {
+    background-color: white;
+  }
+}
 .accueilField .picturePlace img {
   width: 25%;
   left: 2.5%;
   bottom: 0;
   position: absolute;
   opacity: 0;
-  animation: fadeIn 2s ease 2s forwards;
+  animation: fadeInPortrait 2s ease 2s forwards;
 }
-@keyframes fadeIn {
+@media (max-width: 900px) {
+  .accueilField .picturePlace img {
+    position: fixed;
+    transform-origin: bottom left;
+    width: 50%;
+    left: 50%;
+    z-index: 3;
+    animation: fadeInPortrait 2s ease 2s;
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 12/16) {
+  .accueilField .picturePlace img {
+    width: 30%;
+    left: 70%;
+  }
+}
+@keyframes fadeInPortrait {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+@media (min-width: 900px) {
+  .accueilField .picturePlace .mobileOblique {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .accueilField .picturePlace .mobileOblique {
+    position: absolute;
+    top: calc(100vh - 155px);
+    left: -160vw;
+    width: 200%;
+    height: 100vh;
+    background-color: black;
+    transform: skewX(-35deg);
+    transition: transform 0.5s ease-in-out;
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 9/16) {
+  .accueilField .picturePlace .mobileOblique {
+    transform: skewX(-40deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 11/16) {
+  .accueilField .picturePlace .mobileOblique {
+    transform: skewX(-45deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 12/16) {
+  .accueilField .picturePlace .mobileOblique {
+    transform: skewX(-50deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 13/16) {
+  .accueilField .picturePlace .mobileOblique {
+    transform: skewX(-55deg);
   }
 }
 .accueilField .picturePlace .oblique {
@@ -50,9 +108,32 @@
 @media (max-width: 900px) {
   .accueilField .picturePlace .oblique {
     left: 50%;
-    width: 100%;
+    width: 200%;
+    height: calc(100vh - 150px);
     animation: none;
-    transform: skewX(-30deg);
+    transform: skewX(-35deg);
+    background-color: black;
+    transition: transform 0.5s ease-in-out;
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 9/16) {
+  .accueilField .picturePlace .oblique {
+    transform: skewX(-40deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 11/16) {
+  .accueilField .picturePlace .oblique {
+    transform: skewX(-45deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 12/16) {
+  .accueilField .picturePlace .oblique {
+    transform: skewX(-50deg);
+  }
+}
+@media (max-width: 900px) and (aspect-ratio > 13/16) {
+  .accueilField .picturePlace .oblique {
+    transform: skewX(-55deg);
   }
 }
 @keyframes rideau {
@@ -171,7 +252,6 @@
 }
 @media (max-width: 900px) {
   .accueilField .intro h1 {
-    color: white;
     margin-left: 0;
   }
 }
@@ -186,6 +266,7 @@
 @media (max-width: 900px) {
   .accueilField .videoInReact {
     flex-direction: column;
+    height: calc(100vh - 150px);
   }
 }
 .accueilField .videoInReact .hardSkills {
@@ -199,6 +280,9 @@
 }
 @media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills {
+    position: absolute;
+    color: black;
+    margin-left: 0;
     margin-top: 80px;
   }
 }
@@ -206,7 +290,7 @@
   font-size: 1vw;
 }
 .accueilField .videoInReact .hardSkills .texte_intro {
-  padding: 0vw 2vw 0vw 0%;
+  padding: 2vw 2vw 0vw 0%;
   position: absolute;
   top: 20%;
   left: 20%;
@@ -221,6 +305,7 @@
   }
 }
 .accueilField .videoInReact .hardSkills .oneSkill h3 {
+  margin-left: 2vw;
   text-align: center;
   margin-top: 0;
   animation: comming 2.5s ease;
@@ -276,14 +361,11 @@
 }
 @media (max-width: 900px) {
   .accueilField .buttonPlace {
-    padding-top: 30px;
-    padding-bottom: 30px;
     width: 30%;
-    height: 30%;
-    left: 0;
-    top: 0;
+    top: calc(40vh - 15vw);
+    left: 35%;
     margin: auto;
-    position: relative;
+    position: absolute;
   }
 }
 @media (min-width: 900px) {

@@ -30,6 +30,12 @@ function Accueil() {
       document.querySelector(".portrait").style.left = `calc( 2.5% - ${
         scrollToTop / 20
       }%)`;
+    } else {
+      document.querySelector(".oblique").style.width = `200%`;
+      document.querySelector(".oblique").style.left = `50%`;
+      document.querySelector(".portrait").style.opacity = `calc( 1 - ${
+        scrollToTop / 200
+      })`;
     }
     /*document.querySelector(".hardSkills").style.margin = `calc( 2.5% - ${
       scrollToTop / 20
@@ -55,6 +61,7 @@ function Accueil() {
           className="portrait"
         ></img>
         <div className="oblique"></div>
+        <div className="mobileOblique"></div>
       </div>
       <div className="intro">
         {language === "FR" ? <h1>Développeur web</h1> : <h1>Web developer</h1>}
@@ -107,40 +114,63 @@ function Accueil() {
             <h3>React.js,</h3>
           </div>
           <div className="oneSkill">
-            <h3>Node.js et</h3>
+            {language === "FR" ? <h3>Node.js et</h3> : <h3>Node.js and</h3>}
           </div>
           <div className="oneSkill">
             {language === "FR" ? (
               <h3>autres quenouilles quantiques</h3>
             ) : (
-              <h3>quantum distaffs</h3>
+              <h3>few quantum distaffs</h3>
             )}
           </div>
-          <div className="texte_intro">
-            <p>
-              Je suis développeur web front-end, passionné par la création de
-              solutions digitales innovantes et sur mesure.
-            </p>
-            <p>
-              Mon expertise en React, combinée à mes compétences en design et
-              développement back-end, me permet de concevoir des expériences
-              utilisateur performantes et originales.
-            </p>
-            <p>
-              Mon approche est axée sur les bonnes pratiques du web, telles que
-              l’accessibilité, le green IT et le SEO, garantissant ainsi des
-              projets durables et optimisés.
-            </p>
-            <p>
-              Je suis convaincu que ma créativité et ma rigueur, enrichies par
-              ma passion pour la musique et le design, sont des atouts précieux
-              pour donner vie à vos projets web.
-            </p>
-            <p>
-              Confiez-moi votre projet web, et ensemble, tissons la toile du
-              succès{" "}
-            </p>
-          </div>
+          {language === "FR" ? (
+            <div className="texte_intro">
+              <p>
+                Je suis développeur web front-end, passionné par la création de
+                solutions digitales innovantes et sur mesure.
+              </p>
+              <p>
+                Mon expertise dans l’écosystème React.js, combinée à mes
+                compétences en design et développement back-end, me permet de
+                concevoir des expériences utilisateur performantes et
+                originales.
+              </p>
+              <p>
+                Mon approche est axée sur les bonnes pratiques du web, telles
+                que l’accessibilité, le green IT et le SEO, garantissant ainsi
+                des projets durables et optimisés.
+              </p>
+              <p>
+                Ma créativité, ma rigueur et ma passion pour la musique et le
+                design, sont des atouts précieux pour donner vie à vos projets
+                web
+              </p>
+              <p>Ensemble, tissons la toile de votre succès !</p>
+            </div>
+          ) : (
+            <div className="texte_intro">
+              <p>
+                I am a front-end web developer passionate about creating
+                innovative and tailor-made digital solutions.
+              </p>
+              <p>
+                My expertise in the React.js ecosystem, combined with my skills
+                in design and back-end development, allows me to design
+                high-performing and original user experiences.
+              </p>
+              <p>
+                My approach is focused on web best practices, such as
+                accessibility, green IT, and SEO, thus ensuring sustainable and
+                optimized projects.
+              </p>
+              <p>
+                My creativity, rigor, and passion for music and design are
+                valuable assets in bringing your web projects to life.
+              </p>
+              <p>Together, let's weave the web of your success!</p>
+            </div>
+          )}
+
           <div className="negatif"></div>
         </div>
       </div>
