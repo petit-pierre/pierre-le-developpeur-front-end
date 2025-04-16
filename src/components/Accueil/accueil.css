@@ -165,7 +165,8 @@
 }
 @media (max-width: 900px) {
   .accueilField .contactIndication {
-    margin-top: 60px;
+    margin-top: 70vh;
+    width: 100%;
   }
 }
 .accueilField .contactMe {
@@ -282,7 +283,6 @@
   .accueilField .videoInReact .hardSkills {
     position: absolute;
     color: black;
-    margin-left: 0;
     margin-top: 80px;
   }
 }
@@ -294,6 +294,27 @@
   position: absolute;
   top: 20%;
   left: 20%;
+}
+@media (max-width: 900px) {
+  .accueilField .videoInReact .hardSkills .texte_intro {
+    position: absolute;
+    color: white;
+    top: calc(100vh - 230px);
+    left: 0;
+    padding: 1vw;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro :nth-child(3) {
+    width: 60%;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro :nth-child(4) {
+    width: 40%;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro :nth-child(5) {
+    width: 30%;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro p {
+    font-size: 1.6vh;
+  }
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
   height: 2vw;
@@ -311,9 +332,17 @@
   animation: comming 2.5s ease;
 }
 @media (max-width: 900px) {
+  .accueilField .videoInReact .hardSkills .oneSkill h3 {
+    text-align: left;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+  }
+}
+@media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills {
     width: 100%;
     height: 200px;
+    top: 8vh;
   }
 }
 @keyframes commingRight {
