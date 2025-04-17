@@ -42,7 +42,7 @@
     width: 50%;
     left: 50%;
     z-index: 3;
-    animation: fadeInPortrait 2s ease 2s;
+    animation: fadeInPortrait 2s ease;
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 12/16) {
@@ -110,7 +110,7 @@
     left: 50%;
     width: 200%;
     height: calc(100vh - 150px);
-    animation: none;
+    animation: mobileRideau 1s ease-in-out;
     transform: skewX(-35deg);
     background-color: black;
     transition: transform 0.5s ease-in-out;
@@ -144,6 +144,33 @@
   100% {
     left: 33%;
     width: 33%;
+  }
+}
+@keyframes mobileRideau {
+  0% {
+    transform: skewX(40deg);
+  }
+  100% {
+    @media (aspect-ratio > 9/16) {
+      .accueilField .picturePlace .oblique {
+        transform: skewX(-40deg);
+      }
+    }
+    @media (aspect-ratio > 11/16) {
+      .accueilField .picturePlace .oblique {
+        transform: skewX(-45deg);
+      }
+    }
+    @media (aspect-ratio > 12/16) {
+      .accueilField .picturePlace .oblique {
+        transform: skewX(-50deg);
+      }
+    }
+    @media (aspect-ratio > 13/16) {
+      .accueilField .picturePlace .oblique {
+        transform: skewX(-55deg);
+      }
+    }
   }
 }
 .accueilField .contactIndication {
@@ -285,6 +312,9 @@
     color: black;
     margin-top: 80px;
   }
+  .accueilField .videoInReact .hardSkills :nth-child(3) h3 {
+    font-size: 2.2vh;
+  }
 }
 .accueilField .videoInReact .hardSkills p {
   font-size: 1vw;
@@ -302,6 +332,12 @@
     top: calc(100vh - 230px);
     left: 0;
     padding: 1vw;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro :nth-child(1) {
+    width: 90%;
+  }
+  .accueilField .videoInReact .hardSkills .texte_intro :nth-child(2) {
+    width: 80%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(3) {
     width: 60%;
@@ -334,8 +370,6 @@
 @media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills .oneSkill h3 {
     text-align: left;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
   }
 }
 @media (max-width: 900px) {

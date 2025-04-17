@@ -36,12 +36,38 @@ function Accueil() {
       document.querySelector(".portrait").style.opacity = `calc( 1 - ${
         scrollToTop / 200
       })`;
+      document.querySelector(".portrait").style.left = `50%`;
     }
     /*document.querySelector(".hardSkills").style.margin = `calc( 2.5% - ${
       scrollToTop / 20
     }%)`;*/
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollToTop]);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        document.querySelector(".oblique").style.width = `calc( 33% + ${
+          scrollToTop / 5
+        }%)`;
+        document.querySelector(".oblique").style.left = `calc( 33% - ${
+          scrollToTop / 10
+        }%)`;
+        document.querySelector(".portrait").style.left = `calc( 2.5% - ${
+          scrollToTop / 20
+        }%)`;
+      } else {
+        document.querySelector(".oblique").style.width = `200%`;
+        document.querySelector(".oblique").style.left = `50%`;
+        document.querySelector(".portrait").style.opacity = `calc( 1 - ${
+          scrollToTop / 200
+        })`;
+        document.querySelector(".portrait").style.left = `50%`;
+      }
+
+      setScrollToTop(window.scrollY + 1);
+    });
+  }, []);
 
   let Hscreen = window.innerHeight;
   if (Hscreen < 650) {

@@ -56,6 +56,7 @@
   padding-left: 15px;
   gap: 20px;
   display: flex;
+  justify-content: center;
 }
 .headerfield .logPlace .logIn {
   animation: logoRevers 1.5s linear;
