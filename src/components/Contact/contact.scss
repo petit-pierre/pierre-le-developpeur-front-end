@@ -82,11 +82,11 @@
         position: fixed;
         right: 20px;
         bottom: 20px;
-        transition: 1s;
+        transition: 0.4s;
         &.inactive{
             @media (max-width: 900px){
-                right: -30vw;
-                transition: all 0.1s;
+                right: -50vw;
+                //transition: all 0.1s;
             }
         }
     }

@@ -15,14 +15,29 @@ function Accueil() {
   const [scrollToTop, setScrollToTop] = useState(0);
 
   const contact = useRef();
+  const portrait = useRef();
 
   useEffect(() => {
     document.querySelector(".headerLogos").classList.add("inactive");
     const observerContact = new IntersectionObserver((entries) => {
-      console.log(entries[0].intersectionRect.top);
+      console.log(entries);
       if (entries[0].isIntersecting) {
         document.querySelector(".headerLogos").classList.remove("inactive");
         document.querySelector(".logoHurryMail").classList.add("contactActive");
+      } else {
+        document
+          .querySelector(".logoHurryMail")
+          .classList.remove("contactActive");
+        const observerPortrait = new IntersectionObserver((entriesTwoo) => {
+          if (entriesTwoo[0].isIntersecting) {
+            document.querySelector(".headerLogos").classList.add("inactive");
+          }
+        });
+        observerPortrait.observe(portrait.current);
+        //document.querySelector(".headerLogos").classList.add("inactive");
+        if (scrollToTop < 100) {
+          //document.querySelector(".headerLogos").classList.add("inactive");
+        }
       }
     });
     observerContact.observe(contact.current);
@@ -50,15 +65,18 @@ function Accueil() {
       document.querySelector(".portrait").style.opacity = `calc( 1 - ${
         scrollToTop / 200
       })`;
-      document.querySelector(".portrait").style.left = `50%`;
-      if (scrollToTop < window.innerHeight * 0.34) {
+      document.querySelector(".portrait").style.left = `calc( 50% + ${
+        scrollToTop / 10
+      }%)`;
+      //document.querySelector(".portrait").style.left = `50%`;
+      if (scrollToTop < window.innerHeight * 0.32) {
         document.querySelector(".oblique").style.transform = `skewX(-${
-          scrollToTop / 10.8 + 33.333
+          scrollToTop / 12 + 33.333
         }deg)`;
       }
       if (scrollToTop < window.innerHeight * 0.45) {
         document.querySelector(".mobileOblique").style.transform = `skewX(-${
-          scrollToTop / 5
+          (scrollToTop - 100) / 12 + 33.333
         }deg)`;
       }
     }
@@ -107,6 +125,7 @@ function Accueil() {
       <div className="picturePlace">
         <img
           src="https://pierre-le-developpeur.com/assets/photo.png"
+          ref={portrait}
           alt="portrait"
           className="portrait"
         ></img>

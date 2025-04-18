@@ -90,12 +90,11 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
-  transition: 1s;
+  transition: 0.4s;
 }
 @media (max-width: 900px) {
   .contactField .headerLogos.inactive {
-    right: -30vw;
-    transition: all 0.1s;
+    right: -50vw;
   }
 }
 .contactField .maGanache {

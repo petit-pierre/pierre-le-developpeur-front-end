@@ -13,6 +13,11 @@
     height: calc(200vh - 150px);
   }
 }
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField {
+    height: calc(400vh - 150px);
+  }
+}
 .accueilField .picturePlace {
   background-color: black;
   position: absolute;
@@ -35,10 +40,18 @@
   opacity: 0;
   animation: fadeInPortrait 2s ease 2s forwards;
 }
+@media (orientation: landscape) {
+  .accueilField .picturePlace img {
+    left: 0%;
+    opacity: 1 !important;
+    top: 100vh;
+  }
+}
 @media (max-width: 900px) {
   .accueilField .picturePlace img {
-    position: fixed;
+    position: absolute;
     transform-origin: bottom left;
+    bottom: 100vh;
     width: 50%;
     left: 50%;
     z-index: 3;
@@ -73,7 +86,6 @@
     height: 100vh;
     background-color: black;
     transform: skewX(-35deg);
-    transition: transform 0.5s ease-in-out;
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 9/16) {
@@ -96,7 +108,13 @@
     transform: skewX(-55deg);
   }
 }
-.accueilField .picturePlace .oblique {
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .picturePlace .mobileOblique {
+    height: 200vh;
+    top: calc(200vh - 151px);
+  }
+}
+.accueilField .oblique {
   position: absolute;
   left: 33%;
   width: 33%;
@@ -106,69 +124,76 @@
   animation: rideau 2s ease-in-out;
 }
 @media (max-width: 900px) {
-  .accueilField .picturePlace .oblique {
+  .accueilField .oblique {
     left: 50%;
     width: 20000%;
     height: calc(100vh - 150px);
     animation: mobileRideau 1s ease-in-out;
     transform: skewX(-35deg);
     background-color: black;
-    transition: transform 0.1s ease-in-out;
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 9/16) {
-  .accueilField .picturePlace .oblique {
+  .accueilField .oblique {
     transform: skewX(-40deg);
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 11/16) {
-  .accueilField .picturePlace .oblique {
+  .accueilField .oblique {
     transform: skewX(-45deg);
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 12/16) {
-  .accueilField .picturePlace .oblique {
+  .accueilField .oblique {
     transform: skewX(-50deg);
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 13/16) {
-  .accueilField .picturePlace .oblique {
+  .accueilField .oblique {
     transform: skewX(-55deg);
   }
 }
-@keyframes rideau {
-  0% {
-    left: 50%;
-    width: 0%;
-  }
-  100% {
-    left: 33%;
-    width: 33%;
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .oblique {
+    height: calc(200vh - 150px);
+    top: 0;
   }
 }
-@keyframes mobileRideau {
-  0% {
-    transform: skewX(40deg);
+@media (max-width: 900px) {
+  @keyframes rideau {
+    0% {
+      left: 50%;
+      width: 0%;
+    }
+    100% {
+      left: 33%;
+      width: 33%;
+    }
   }
-  100% {
-    @media (aspect-ratio > 9/16) {
-      .accueilField .picturePlace .oblique {
-        transform: skewX(-40deg);
-      }
+  @keyframes mobileRideau {
+    0% {
+      transform: skewX(40deg);
     }
-    @media (aspect-ratio > 11/16) {
-      .accueilField .picturePlace .oblique {
-        transform: skewX(-45deg);
+    100% {
+      @media (max-width: 900px) and (aspect-ratio > 9/16) {
+        .accueilField .oblique {
+          transform: skewX(-40deg);
+        }
       }
-    }
-    @media (aspect-ratio > 12/16) {
-      .accueilField .picturePlace .oblique {
-        transform: skewX(-50deg);
+      @media (max-width: 900px) and (aspect-ratio > 11/16) {
+        .accueilField .oblique {
+          transform: skewX(-45deg);
+        }
       }
-    }
-    @media (aspect-ratio > 13/16) {
-      .accueilField .picturePlace .oblique {
-        transform: skewX(-55deg);
+      @media (max-width: 900px) and (aspect-ratio > 12/16) {
+        .accueilField .oblique {
+          transform: skewX(-50deg);
+        }
+      }
+      @media (max-width: 900px) and (aspect-ratio > 13/16) {
+        .accueilField .oblique {
+          transform: skewX(-55deg);
+        }
       }
     }
   }
@@ -194,6 +219,11 @@
   .accueilField .contactIndication {
     margin-top: 70vh;
     width: 100%;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .contactIndication {
+    margin-top: 270vh;
   }
 }
 .accueilField .contactMe {
@@ -290,6 +320,8 @@
 @media (max-width: 900px) {
   .accueilField .intro h1 {
     animation: comming 0s forwards;
+    text-align: left;
+    padding-left: 2vw;
   }
 }
 @media (max-width: 900px) {
@@ -311,6 +343,11 @@
     height: calc(100vh - 150px);
   }
 }
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .videoInReact {
+    height: calc(200vh - 150px);
+  }
+}
 .accueilField .videoInReact .hardSkills {
   color: white;
   z-index: 2;
@@ -323,11 +360,14 @@
   .accueilField .videoInReact .hardSkills {
     position: absolute;
     color: black;
-    margin-top: 10vh;
+    margin-top: 4vh;
   }
 }
 .accueilField .videoInReact .hardSkills p {
   font-size: 1vw;
+  font-family: "abacaxi-devanagari", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .accueilField .videoInReact .hardSkills .texte_intro {
   padding: 2vw 2vw 0vw 0%;
@@ -343,23 +383,35 @@
     left: 0;
     padding: 1vw;
   }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .videoInReact .hardSkills .texte_intro {
+    top: calc(200vh - 230px);
+  }
+}
+@media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(1) {
-    width: 90%;
+    width: 100%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(2) {
-    width: 80%;
+    width: 100%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(3) {
-    width: 60%;
+    width: 70%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(4) {
-    width: 40%;
+    width: 60%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(5) {
-    width: 30%;
+    width: 50%;
   }
   .accueilField .videoInReact .hardSkills .texte_intro p {
     font-size: 1.6vh;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .videoInReact .hardSkills .texte_intro p {
+    font-size: 3.2vh;
   }
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
@@ -387,6 +439,14 @@
     width: 100%;
     height: 200px;
     top: 8vh;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .videoInReact .hardSkills {
+    top: 16vh;
+  }
+  .accueilField .videoInReact .hardSkills h3 {
+    font-size: 4vh;
   }
 }
 @keyframes commingRight {
@@ -440,6 +500,13 @@
     margin: auto;
     position: absolute;
   }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .buttonPlace {
+    top: calc(90vh - 15vw);
+  }
+}
+@media (max-width: 900px) {
   .accueilField .buttonPlace .send .purpleAndWitheTextarea {
     box-shadow: 0px 0px 10px black;
     border: 6px solid black;
