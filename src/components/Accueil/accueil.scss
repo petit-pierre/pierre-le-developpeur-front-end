@@ -51,8 +51,8 @@
             @media (max-width: 900px){
                 position: absolute;
                 top: calc(100vh - 155px);
-                left: -160vw;
-                width: 200%;
+                right: 50%;
+                width: 2000%;
                 height: 100vh;
                 background-color: black;
                 transform: skewX(-35deg);
@@ -81,12 +81,12 @@
             animation: rideau 2s ease-in-out ;
             @media (max-width: 900px){
                 left: 50%;
-                width: 200%;
+                width: 20000%;
                 height: calc(100vh - 150px);
                 animation: mobileRideau 1s ease-in-out ;
                 transform: skewX(-35deg);
                 background-color: black;
-                transition: transform 0.5s ease-in-out;
+                transition: transform 0.1s ease-in-out;
                 @media (aspect-ratio > 9/16){
                     transform: skewX(-40deg);
                 }
@@ -171,6 +171,12 @@
             width: 100%;
             margin-left: -120vw;
             animation: contact 0.7s ease 1s forwards ; 
+            @media (max-width: 900px){
+                animation: none ;
+                &.contactActive{
+                    animation: contact 0.7s ease forwards ; 
+                } 
+              }
         }
     }
     @keyframes contact{
@@ -223,6 +229,7 @@
         @media (max-width: 900px){
             margin-bottom: 60px;
             height: 10vh;
+            margin-top: 3vh;
           }
         h1{
             position: absolute;
@@ -231,6 +238,9 @@
             margin-top: 100px;
             margin-left: 4%;
             animation: comming 0.5s ease 2s forwards;
+            @media (max-width: 900px){
+                animation: comming 0s  forwards;
+            }
             @media (max-width: 900px){
                 //color: white;
                 margin-left: 0;
@@ -249,7 +259,6 @@
         justify-content: space-between;
         position: relative;
         .hardSkills{
-
             color: white;
             z-index: 2;
             margin-top: 10vh;
@@ -257,14 +266,16 @@
             @media (max-width: 900px){
                 position: absolute;
                 color: black;
-                margin-top: 80px;
+                margin-top: 10vh;
                 :nth-child(3){
                     h3{
-                        font-size: 2.2vh;
+                        //font-size: 2.2vh;
                     }
+
                 }
+                
               }
-            position: relative;
+            //position: relative;
             p{
                 font-size: 1vw;
             }
@@ -313,6 +324,7 @@
 
                     @media (max-width: 900px){
                         text-align: left;
+                        //color: white;
                         //-webkit-text-stroke-width: 1px;
                         //-webkit-text-stroke-color: white;
 
@@ -376,6 +388,22 @@
             left: 35%;
             margin: auto;
             position: absolute;
+            .send
+                {
+                    .purpleAndWitheTextarea{
+                        box-shadow: 0px 0px 10px black ;
+                        border: 6px solid black ;
+                        span{
+                            font-size: 3.5vw;
+                        }
+                    }
+                    .purpleAndWitheTextarea:hover{
+                        width: 80%;
+                        margin-left: 4%;
+                        margin-top: 4%;
+                        box-shadow: 0px 0px 0px black ;
+                    }
+                }
         }
         @media (min-width: 900px){
             .buttonDiv{

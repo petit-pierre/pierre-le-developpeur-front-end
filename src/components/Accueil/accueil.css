@@ -68,8 +68,8 @@
   .accueilField .picturePlace .mobileOblique {
     position: absolute;
     top: calc(100vh - 155px);
-    left: -160vw;
-    width: 200%;
+    right: 50%;
+    width: 2000%;
     height: 100vh;
     background-color: black;
     transform: skewX(-35deg);
@@ -108,12 +108,12 @@
 @media (max-width: 900px) {
   .accueilField .picturePlace .oblique {
     left: 50%;
-    width: 200%;
+    width: 20000%;
     height: calc(100vh - 150px);
     animation: mobileRideau 1s ease-in-out;
     transform: skewX(-35deg);
     background-color: black;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.1s ease-in-out;
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 9/16) {
@@ -220,6 +220,14 @@
   margin-left: -120vw;
   animation: contact 0.7s ease 1s forwards;
 }
+@media (max-width: 900px) {
+  .accueilField .contactMe img {
+    animation: none;
+  }
+  .accueilField .contactMe img.contactActive {
+    animation: contact 0.7s ease forwards;
+  }
+}
 @keyframes contact {
   0% {
     margin-left: -100vw;
@@ -268,6 +276,7 @@
   .accueilField .intro {
     margin-bottom: 60px;
     height: 10vh;
+    margin-top: 3vh;
   }
 }
 .accueilField .intro h1 {
@@ -277,6 +286,11 @@
   margin-top: 100px;
   margin-left: 4%;
   animation: comming 0.5s ease 2s forwards;
+}
+@media (max-width: 900px) {
+  .accueilField .intro h1 {
+    animation: comming 0s forwards;
+  }
 }
 @media (max-width: 900px) {
   .accueilField .intro h1 {
@@ -302,7 +316,6 @@
   z-index: 2;
   margin-top: 10vh;
   position: relative;
-  position: relative;
   width: 35%;
   min-height: 200px;
 }
@@ -310,10 +323,7 @@
   .accueilField .videoInReact .hardSkills {
     position: absolute;
     color: black;
-    margin-top: 80px;
-  }
-  .accueilField .videoInReact .hardSkills :nth-child(3) h3 {
-    font-size: 2.2vh;
+    margin-top: 10vh;
   }
 }
 .accueilField .videoInReact .hardSkills p {
@@ -429,6 +439,19 @@
     left: 35%;
     margin: auto;
     position: absolute;
+  }
+  .accueilField .buttonPlace .send .purpleAndWitheTextarea {
+    box-shadow: 0px 0px 10px black;
+    border: 6px solid black;
+  }
+  .accueilField .buttonPlace .send .purpleAndWitheTextarea span {
+    font-size: 3.5vw;
+  }
+  .accueilField .buttonPlace .send .purpleAndWitheTextarea:hover {
+    width: 80%;
+    margin-left: 4%;
+    margin-top: 4%;
+    box-shadow: 0px 0px 0px black;
   }
 }
 @media (min-width: 900px) {

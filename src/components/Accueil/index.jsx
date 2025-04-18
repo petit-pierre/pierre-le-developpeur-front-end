@@ -3,7 +3,7 @@ import Button from "../Button";
 import "./accueil.css";
 import { useDispatch, useSelector } from "react-redux";
 import { userSlice } from "../../Slices/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Accueil() {
   //const dispatch = useDispatch();
@@ -13,6 +13,20 @@ function Accueil() {
 
   const [scrolling, setScrolling] = useState(false);
   const [scrollToTop, setScrollToTop] = useState(0);
+
+  const contact = useRef();
+
+  useEffect(() => {
+    document.querySelector(".headerLogos").classList.add("inactive");
+    const observerContact = new IntersectionObserver((entries) => {
+      console.log(entries[0].intersectionRect.top);
+      if (entries[0].isIntersecting) {
+        document.querySelector(".headerLogos").classList.remove("inactive");
+        document.querySelector(".logoHurryMail").classList.add("contactActive");
+      }
+    });
+    observerContact.observe(contact.current);
+  }, []);
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -37,6 +51,16 @@ function Accueil() {
         scrollToTop / 200
       })`;
       document.querySelector(".portrait").style.left = `50%`;
+      if (scrollToTop < window.innerHeight * 0.34) {
+        document.querySelector(".oblique").style.transform = `skewX(-${
+          scrollToTop / 10.8 + 33.333
+        }deg)`;
+      }
+      if (scrollToTop < window.innerHeight * 0.45) {
+        document.querySelector(".mobileOblique").style.transform = `skewX(-${
+          scrollToTop / 5
+        }deg)`;
+      }
     }
     /*document.querySelector(".hardSkills").style.margin = `calc( 2.5% - ${
       scrollToTop / 20
@@ -82,7 +106,7 @@ function Accueil() {
     <div className="accueilField">
       <div className="picturePlace">
         <img
-          src="https://pierre-le-developpeur.com/assets/photo.jpg"
+          src="https://pierre-le-developpeur.com/assets/photo.png"
           alt="portrait"
           className="portrait"
         ></img>
@@ -137,17 +161,21 @@ function Accueil() {
 
         <div className="hardSkills">
           <div className="oneSkill">
-            <h3>React.js,</h3>
-          </div>
-          <div className="oneSkill">
-            {language === "FR" ? <h3>Node.js et</h3> : <h3>Node.js and</h3>}
+            {language === "FR" ? (
+              <h3>React.js, Node.js et</h3>
+            ) : (
+              <h3>React.js, Node.js and</h3>
+            )}
           </div>
           <div className="oneSkill">
             {language === "FR" ? (
-              <h3>autres quenouilles quantiques</h3>
+              <h3>autres quenouilles</h3>
             ) : (
-              <h3>few quantum distaffs</h3>
+              <h3>few quantum</h3>
             )}
+          </div>
+          <div className="oneSkill">
+            {language === "FR" ? <h3>quantiques</h3> : <h3>distaffs</h3>}
           </div>
           {language === "FR" ? (
             <div className="texte_intro">
@@ -207,12 +235,12 @@ function Accueil() {
           tabIndex={12}
         >
           <img
-            className="discussContent"
+            className="logoHurryMail"
             src="https://pierre-le-developpeur.com/assets/send_mail.png"
             alt="logo mail"
           ></img>
         </button>
-        <p>contact@pierre-le-developpeur.com</p>
+        <p ref={contact}>contact@pierre-le-developpeur.com</p>
       </div>
     </div>
   );
