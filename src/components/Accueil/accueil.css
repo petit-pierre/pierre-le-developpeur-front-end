@@ -40,13 +40,6 @@
   opacity: 0;
   animation: fadeInPortrait 2s ease 2s forwards;
 }
-@media (orientation: landscape) {
-  .accueilField .picturePlace img {
-    left: 0%;
-    opacity: 1 !important;
-    top: 100vh;
-  }
-}
 @media (max-width: 900px) {
   .accueilField .picturePlace img {
     position: absolute;
@@ -56,6 +49,13 @@
     left: 50%;
     z-index: 3;
     animation: fadeInPortrait 2s ease;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .accueilField .picturePlace img {
+    left: 0%;
+    opacity: 1 !important;
+    top: 100vh;
   }
 }
 @media (max-width: 900px) and (aspect-ratio > 12/16) {
@@ -121,7 +121,21 @@
   height: 100%;
   background-color: white;
   transform: skewX(-15deg);
-  animation: rideau 2s ease-in-out;
+}
+@media (min-width: 901px) {
+  .accueilField .oblique {
+    animation: rideau 2s ease-in-out;
+  }
+  @keyframes rideau {
+    0% {
+      left: 50%;
+      width: 0%;
+    }
+    100% {
+      left: 33%;
+      width: 33%;
+    }
+  }
 }
 @media (max-width: 900px) {
   .accueilField .oblique {
@@ -160,16 +174,6 @@
   }
 }
 @media (max-width: 900px) {
-  @keyframes rideau {
-    0% {
-      left: 50%;
-      width: 0%;
-    }
-    100% {
-      left: 33%;
-      width: 33%;
-    }
-  }
   @keyframes mobileRideau {
     0% {
       transform: skewX(40deg);
@@ -228,6 +232,8 @@
 }
 .accueilField .contactMe {
   width: 100px;
+  display: flex;
+  justify-content: center;
   margin: auto;
   cursor: pointer;
   z-index: 2;

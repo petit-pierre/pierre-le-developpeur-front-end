@@ -280,18 +280,6 @@ function Slider({ sliders, mini, likeId }) {
   };
   return (
     <div className="sliderField sliderContainer">
-      {mini === true ? (
-        ""
-      ) : (
-        <div className="like">
-          <LikeButton
-            propsLike={{
-              id: likeId,
-              color: "black",
-            }}
-          ></LikeButton>
-        </div>
-      )}
       <div className="inner" {...handlers}>
         {sortedSlider.map((slide) => {
           return (

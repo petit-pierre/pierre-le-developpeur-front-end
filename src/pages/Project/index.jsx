@@ -325,9 +325,6 @@ function Project() {
                     ></img>
                     <p className="toolTitle">{tool.title} </p>
                   </div>
-                  <LikeButton
-                    propsLike={{ id: tool.likes_id, color: "black" }}
-                  ></LikeButton>
                 </div>
               ))}
             ></Collapse>
@@ -350,9 +347,6 @@ function Project() {
                         : skill.english_title}{" "}
                     </p>
                   </div>
-                  <LikeButton
-                    propsLike={{ id: skill.likes_id, color: "black" }}
-                  ></LikeButton>
                 </div>
               ))}
             ></Collapse>

@@ -235,22 +235,34 @@ function Home() {
                   title: "Competences",
                   id: "home03",
                 }}
-                content={skills.map((skill) => (
-                  <div key={skill._id} className="collapseContent">
+                content={
+                  <div className="collapseContent">
                     <div className="logoAndTitle">
                       <img
-                        src={skill.picture_url}
+                        src={skills[1].picture_url}
                         alt="logo"
                         className="logo"
                       ></img>
                       <p className="toolTitle">
                         {language === "FR"
-                          ? skill.french_title
-                          : skill.english_title}
+                          ? skills[1].french_title
+                          : skills[1].english_title}
+                      </p>
+                    </div>
+                    <div className="logoAndTitle">
+                      <img
+                        src={skills[2].picture_url}
+                        alt="logo"
+                        className="logo"
+                      ></img>
+                      <p className="toolTitle">
+                        {language === "FR"
+                          ? skills[2].french_title
+                          : skills[2].english_title}
                       </p>
                     </div>
                   </div>
-                ))}
+                }
               ></AreaForText>
             </div>
             <div className="pictureJap">
@@ -276,14 +288,6 @@ function Home() {
                           ></img>
                           <p className="toolTitle">{tool.title} </p>
                         </div>
-                        <div className="like">
-                          <LikeButton
-                            propsLike={{
-                              id: tool.likes_id,
-                              color: "black",
-                            }}
-                          ></LikeButton>
-                        </div>
                       </div>
                     ) : (
                       ""
@@ -305,11 +309,6 @@ function Home() {
                           ></img>
                           <p className="toolTitle">{tool.title}</p>
                         </div>
-                        <div className="likeCollapse">
-                          <LikeButton
-                            propsLike={{ id: tool.likes_id, color: "black" }}
-                          ></LikeButton>
-                        </div>
                       </div>
                     ) : (
                       ""
@@ -330,11 +329,6 @@ function Home() {
                             className="logo"
                           ></img>
                           <p className="toolTitle">{tool.title}</p>
-                        </div>
-                        <div className="like">
-                          <LikeButton
-                            propsLike={{ id: tool.likes_id, color: "black" }}
-                          ></LikeButton>
                         </div>
                       </div>
                     ) : (

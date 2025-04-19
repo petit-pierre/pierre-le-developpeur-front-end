@@ -26,11 +26,7 @@
             position: absolute;
             opacity: 0;
             animation: fadeInPortrait 2s ease 2s forwards ;
-            @media (orientation: landscape){
-                left: 0% ;
-                opacity: 1 !important;
-                top: 100vh
-            }
+
             @media (max-width: 900px){
                 position: absolute;
                 transform-origin: bottom left;
@@ -39,6 +35,11 @@
                 left: 50%;
                 z-index: 3;
                 animation: fadeInPortrait 2s ease;
+                @media (orientation: landscape){
+                    left: 0% ;
+                    opacity: 1 !important;
+                    top: 100vh
+                }
                 @media (aspect-ratio > 12/16){
                     width: 30%;
                     left: 70%;
@@ -93,7 +94,19 @@
             height: 100%;
             background-color: white;
             transform: skewX(-15deg);
-            animation: rideau 2s ease-in-out ;
+            @media (min-width: 901px){
+                animation: rideau 2s ease-in-out ;
+                @keyframes rideau {
+                    0% {
+                        left: 50%;
+                        width: 0%;
+                    }
+                    100%{
+                        left: 33%;
+                        width: 33%;
+                    }
+                }
+            }
             @media (max-width: 900px){
                 left: 50%;
                 width: 20000%;
@@ -118,17 +131,6 @@
                     height: calc(200vh - 150px);
                     top: 0;
                 }
-              
-            @keyframes rideau {
-                0% {
-                    left: 50%;
-                    width: 0%;
-                }
-                100%{
-                    left: 33%;
-                    width: 33%;
-                }
-            }
             @keyframes mobileRideau {
                 0% {
                     transform: skewX(40deg);
@@ -175,6 +177,8 @@
     }
     .contactMe{
         width: 100px;
+        display: flex;
+        justify-content: center;
         @media (min-width: 1600px){
             width: 10vw;
           }

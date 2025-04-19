@@ -30,14 +30,6 @@ function Cards({ project }) {
           )}
         </div>
         <div>
-          <div className="like miniLike likeSlide">
-            <LikeButton
-              propsLike={{
-                id: project.slider_likes_id,
-                color: "withe",
-              }}
-            ></LikeButton>
-          </div>
           <div className="cardSlide">
             <Slider
               sliders={project.sliders}

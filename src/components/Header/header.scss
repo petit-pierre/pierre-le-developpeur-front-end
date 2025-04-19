@@ -42,7 +42,7 @@
     .logPlace{
         animation: logoLinkReverse 1.5s linear ;
         padding-left: 15px;
-        gap: 20px;
+        //gap: 20px;
         display: flex;
         justify-content: center;
         .logIn{
@@ -152,7 +152,7 @@
         filter: invert(1);
         min-height: 35px;
         min-width: 35px;
-        margin: auto;
+        //margin: auto;
         //padding-left: 15px;
     }
     nav{

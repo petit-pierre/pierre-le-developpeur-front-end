@@ -56,6 +56,7 @@ function Accueil() {
       document.querySelector(".oblique").style.left = `calc( 33% - ${
         scrollToTop / 10
       }%)`;
+      document.querySelector(".oblique").style.transform = `skewX(-15deg)`;
       document.querySelector(".portrait").style.left = `calc( 2.5% - ${
         scrollToTop / 20
       }%)`;
@@ -95,9 +96,11 @@ function Accueil() {
         document.querySelector(".oblique").style.left = `calc( 33% - ${
           scrollToTop / 10
         }%)`;
-        document.querySelector(".portrait").style.left = `calc( 2.5% - ${
-          scrollToTop / 20
+        document.querySelector(".oblique").style.left = `calc( 33% - ${
+          scrollToTop / 10
         }%)`;
+        document.querySelector(".oblique").style.transform = `skewX(-15deg)`;
+        document.querySelector(".portrait").style.left = `0%`;
       } else {
         document.querySelector(".oblique").style.width = `200%`;
         document.querySelector(".oblique").style.left = `50%`;
@@ -118,7 +121,8 @@ function Accueil() {
 
   function openDial(evt) {
     evt.preventDefault();
-    document.querySelector(".headerLogos").click();
+    //console.log(document.querySelector(".headerLogos"));
+    //document.querySelector(".headerLogos").click();
   }
   return (
     <div className="accueilField">
@@ -248,17 +252,18 @@ function Accueil() {
         </div>
       </div>
       <div className="contactIndication">
-        <button
+        <a
           className="contactMe discussContent"
-          onClick={(evt) => openDial(evt)}
+          //onClick={(evt) => openDial(evt)}
           tabIndex={12}
+          href="mailto:contact@pierre-le-developpeur.com"
         >
           <img
             className="logoHurryMail"
             src="https://pierre-le-developpeur.com/assets/send_mail.png"
             alt="logo mail"
           ></img>
-        </button>
+        </a>
         <p ref={contact}>contact@pierre-le-developpeur.com</p>
       </div>
     </div>
