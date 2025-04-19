@@ -81,8 +81,11 @@
             }
           }
         .recoTxt{
-            width: 90%;
+            width: 60%;
             margin: auto;
+            @media (max-width: 900px) {
+                width: 90%;
+            }
         }
         .likeContainer{
             bottom: 25px;
@@ -94,10 +97,11 @@
         flex-direction: row;
         width: 100%;
         justify-content: center;
+        margin-top: 80px;
         @media (max-width: 650px){
             flex-direction: column;
+            margin-top: 0;
         }
-        margin-top: 80px;
         height: fit-content;
     }
     .collapse{
@@ -133,10 +137,50 @@
         width: 100dvw;
         margin-top: 100px;
         .contentSkills{
-            width: 90%;
+            width: 100%;
             margin: auto;
             position: relative;
             z-index: 4;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            @media  (max-width: 649px){
+                flex-direction: column;
+                }
+            .textareafield{
+                width: calc(60% + 1dvw);
+                padding-left: 1dvw;
+                @media  (max-width: 649px){
+                    margin: auto;
+                    width: 90%;
+                    }
+                .title{
+                    height: 5dvh;
+                    min-height: 30px;
+                    height: 5dvh;
+                    margin:auto;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding: 0;
+                }
+            }
+            .collapseField{
+                width: 30%;
+                padding-left: 1dvw;
+                @media  (max-width: 649px){
+                    margin: auto;
+                    width: 90%;
+                    margin-top: 80px;
+                    }
+                .logo{
+                margin: 0;
+                }
+                .toolTitle{
+                    margin: 0;
+                    margin-top: 0.5vh;
+                }
+            }
             .fullResum{
                 min-height: 25vh;
             }

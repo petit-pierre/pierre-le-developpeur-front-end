@@ -264,6 +264,21 @@ function Home() {
                   </div>
                 }
               ></AreaForText>
+              <Collapse
+                name={"Soft skills"}
+                content={skills.map((skill) => (
+                  <div key={skill._id} className="collapseContent">
+                    <div className="logoAndTitle">
+                      <img
+                        src={skill.picture_url}
+                        alt="logo"
+                        className="logo"
+                      ></img>
+                      <p className="toolTitle">{skill.french_title} </p>
+                    </div>
+                  </div>
+                ))}
+              ></Collapse>
             </div>
             <div className="pictureJap">
               <img
