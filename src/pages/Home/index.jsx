@@ -261,24 +261,33 @@ function Home() {
                           : skills[2].english_title}
                       </p>
                     </div>
-                  </div>
-                }
-              ></AreaForText>
-              <Collapse
-                name={"Soft skills"}
-                content={skills.map((skill) => (
-                  <div key={skill._id} className="collapseContent">
                     <div className="logoAndTitle">
                       <img
-                        src={skill.picture_url}
+                        src={skills[2].picture_url}
                         alt="logo"
                         className="logo"
                       ></img>
-                      <p className="toolTitle">{skill.french_title} </p>
+                      <p className="toolTitle">
+                        {language === "FR"
+                          ? skills[2].french_title
+                          : skills[2].english_title}
+                      </p>
+                    </div>
+                    <div className="logoAndTitle">
+                      <img
+                        src={skills[2].picture_url}
+                        alt="logo"
+                        className="logo"
+                      ></img>
+                      <p className="toolTitle">
+                        {language === "FR"
+                          ? skills[2].french_title
+                          : skills[2].english_title}
+                      </p>
                     </div>
                   </div>
-                ))}
-              ></Collapse>
+                }
+              ></AreaForText>
             </div>
             <div className="pictureJap">
               <img

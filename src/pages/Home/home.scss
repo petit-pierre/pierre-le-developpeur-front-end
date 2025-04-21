@@ -100,7 +100,7 @@
         margin-top: 80px;
         @media (max-width: 650px){
             flex-direction: column;
-            margin-top: 0;
+            //margin-top: 0;
         }
         height: fit-content;
     }
@@ -142,14 +142,19 @@
             position: relative;
             z-index: 4;
             display: flex;
-            flex-direction: row;
+            //flex-direction: column;
             justify-content: center;
             @media  (max-width: 649px){
                 flex-direction: column;
                 }
+            .mise-en-page{
+                display: flex;
+                flex-direction: row-reverse;
+            }
             .textareafield{
-                width: calc(60% + 1dvw);
-                padding-left: 1dvw;
+                //width: calc(60% + 1dvw);
+                //padding-left: 1dvw;
+                width: 90%;
                 @media  (max-width: 649px){
                     margin: auto;
                     width: 90%;
@@ -165,24 +170,20 @@
                     padding: 0;
                 }
             }
-            .collapseField{
-                width: 30%;
-                padding-left: 1dvw;
-                @media  (max-width: 649px){
-                    margin: auto;
-                    width: 90%;
-                    margin-top: 80px;
-                    }
-                .logo{
-                margin: 0;
-                }
-                .toolTitle{
-                    margin: 0;
-                    margin-top: 0.5vh;
-                }
-            }
             .fullResum{
                 min-height: 25vh;
+            }
+            .softSkills{
+                display: flex;
+                flex-direction: column;
+
+            }
+            .collapseContent{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin: 20px;
             }
         }
         @media (max-width: 650px){
