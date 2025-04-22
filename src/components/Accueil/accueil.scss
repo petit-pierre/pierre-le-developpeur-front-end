@@ -155,6 +155,7 @@
     .contactIndication{
         display: flex;
         width: 90%;
+        max-width: 100%;
         flex-direction: column;
         z-index: 2;
         margin-bottom: 5vh;

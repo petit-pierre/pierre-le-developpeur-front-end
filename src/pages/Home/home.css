@@ -259,27 +259,43 @@
   .home .projets {
     flex-direction: column;
     flex-wrap: nowrap;
-    padding-top: 200px;
   }
 }
 .home .projets .projectChoice {
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  width: 100%;
+  margin-bottom: 160px;
+  position: relative;
   z-index: 6;
   top: 100px;
-  background-color: rgba(255, 255, 255, 0.747);
-  border-radius: 30px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 33%, rgb(255, 255, 255) 67%, rgba(255, 255, 255, 0) 100%);
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 0.8;
+  transition: 2s;
+}
+.home .projets .projectChoice:hover {
+  opacity: 1;
+  transition: 2s;
+}
+@media (min-width: 1600px) {
+  .home .projets .projectChoice {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+  .home .projets .projectChoice input {
+    font-family: "abacaxi-devanagari", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2vw;
+  }
 }
 @media (max-width: 650px) {
   .home .projets .projectChoice {
-    width: 80%;
+    padding: 0;
   }
 }
 .home .projets .projectChoice .choice {

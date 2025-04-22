@@ -60,6 +60,9 @@ function Accueil() {
       document.querySelector(".portrait").style.left = `calc( 2.5% - ${
         scrollToTop / 20
       }%)`;
+      document.querySelector(".contactIndication").style.width = `calc( 90% + ${
+        scrollToTop / 40
+      }%)`;
     } else {
       document.querySelector(".oblique").style.width = `200%`;
       document.querySelector(".oblique").style.left = `50%`;

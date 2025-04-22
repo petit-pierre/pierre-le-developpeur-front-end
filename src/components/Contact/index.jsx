@@ -214,6 +214,17 @@ function Contact({ props }) {
     }
   }
 
+  function sendWithKey(evt) {
+    //evt.preventDefault();
+    console.log(evt);
+    if (evt.code === "Enter") {
+      if (evt.shiftKey) {
+      } else {
+        send(evt);
+      }
+    }
+  }
+
   function send(evt) {
     evt.preventDefault();
     if (content.current.value === "") {
@@ -370,6 +381,7 @@ function Contact({ props }) {
                 className="discussContent chatArea"
                 ref={content}
                 tabIndex={discus === true ? 12 : -1}
+                onKeyDown={(evt) => sendWithKey(evt)}
               ></textarea>
               <button
                 className="sendButton discussContent"
