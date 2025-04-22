@@ -119,7 +119,7 @@
 }
 .cardField .cardResum .likeCard {
   position: relative;
-  top: 150px;
+  top: 135px;
 }
 @media (min-width: 1600px) {
   .cardField .cardResum .likeCard {
