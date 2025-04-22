@@ -263,26 +263,26 @@ function Home() {
                     </div>
                     <div className="logoAndTitle">
                       <img
-                        src={skills[2].picture_url}
+                        src={skills[13].picture_url}
                         alt="logo"
                         className="logo"
                       ></img>
                       <p className="toolTitle">
                         {language === "FR"
-                          ? skills[2].french_title
-                          : skills[2].english_title}
+                          ? skills[13].french_title
+                          : skills[13].english_title}
                       </p>
                     </div>
                     <div className="logoAndTitle">
                       <img
-                        src={skills[2].picture_url}
+                        src={skills[14].picture_url}
                         alt="logo"
                         className="logo"
                       ></img>
                       <p className="toolTitle">
                         {language === "FR"
-                          ? skills[2].french_title
-                          : skills[2].english_title}
+                          ? skills[14].french_title
+                          : skills[14].english_title}
                       </p>
                     </div>
                   </div>
