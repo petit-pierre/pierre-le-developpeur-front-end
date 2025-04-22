@@ -152,6 +152,10 @@
         filter: invert(1);
         min-height: 35px;
         min-width: 35px;
+        aspect-ratio: 1/1;
+        @media (min-width: 901px) {
+            margin: auto;
+        }
         //margin: auto;
         //padding-left: 15px;
     }

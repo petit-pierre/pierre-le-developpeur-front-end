@@ -158,6 +158,12 @@
   filter: invert(1);
   min-height: 35px;
   min-width: 35px;
+  aspect-ratio: 1/1;
+}
+@media (min-width: 901px) {
+  .headerfield .logIn {
+    margin: auto;
+  }
 }
 .headerfield nav {
   background-color: #99477a;
