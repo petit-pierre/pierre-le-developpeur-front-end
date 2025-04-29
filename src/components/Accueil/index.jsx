@@ -12,7 +12,7 @@ function Accueil() {
   //const discuss = useSelector((state) => state.data.contactMenu);
 
   const [scrolling, setScrolling] = useState(false);
-  const [scrollToTop, setScrollToTop] = useState(0);
+  const [scrollToTopAccueil, setScrollToTopAccueil] = useState(0);
 
   const contact = useRef();
   const portrait = useRef();
@@ -20,7 +20,6 @@ function Accueil() {
   useEffect(() => {
     document.querySelector(".headerLogos").classList.add("inactive");
     const observerContact = new IntersectionObserver((entries) => {
-      console.log(entries);
       if (entries[0].isIntersecting) {
         document.querySelector(".headerLogos").classList.remove("inactive");
         document.querySelector(".logoHurryMail").classList.add("contactActive");
@@ -35,7 +34,7 @@ function Accueil() {
         });
         observerPortrait.observe(portrait.current);
         //document.querySelector(".headerLogos").classList.add("inactive");
-        if (scrollToTop < 100) {
+        if (scrollToTopAccueil < 100) {
           //document.querySelector(".headerLogos").classList.add("inactive");
         }
       }
@@ -44,63 +43,67 @@ function Accueil() {
   }, []);
 
   useEffect(() => {
+    console.log("scrollToTopAccueil", scrollToTopAccueil);
+
     const onScroll = (e) => {
-      setScrollToTop(e.target.documentElement.scrollTop);
-      setScrolling(e.target.documentElement.scrollTop > scrollToTop);
+      setScrollToTopAccueil(e.target.documentElement.scrollTop);
+      setScrolling(e.target.documentElement.scrollTop > scrollToTopAccueil);
     };
     window.addEventListener("scroll", onScroll);
-    if (window.innerWidth > 900) {
-      document.querySelector(".oblique").style.width = `calc( 33% + ${
-        scrollToTop / 5
-      }%)`;
-      document.querySelector(".oblique").style.left = `calc( 33% - ${
-        scrollToTop / 10
-      }%)`;
-      document.querySelector(".oblique").style.transform = `skewX(-15deg)`;
-      document.querySelector(".portrait").style.left = `calc( 2.5% - ${
-        scrollToTop / 20
-      }%)`;
-      document.querySelector(".contactIndication").style.width = `calc( 90% + ${
-        scrollToTop / 40
-      }%)`;
-    } else {
-      document.querySelector(".oblique").style.width = `200%`;
-      document.querySelector(".oblique").style.left = `50%`;
-      document.querySelector(".portrait").style.opacity = `calc( 1 - ${
-        scrollToTop / 200
-      })`;
-      document.querySelector(".portrait").style.left = `calc( 50% + ${
-        scrollToTop / 10
-      }%)`;
-      //document.querySelector(".portrait").style.left = `50%`;
-      if (scrollToTop < window.innerHeight * 0.32) {
-        document.querySelector(".oblique").style.transform = `skewX(-${
-          scrollToTop / 12 + 33.333
-        }deg)`;
-      }
-      if (scrollToTop < window.innerHeight * 0.45) {
-        document.querySelector(".mobileOblique").style.transform = `skewX(-${
-          (scrollToTop - 100) / 12 + 33.333
-        }deg)`;
+    if (scrollToTopAccueil > 0) {
+      if (window.innerWidth > 900) {
+        document.querySelector(".oblique").style.width = `calc( 33% + ${
+          scrollToTopAccueil / 5
+        }%)`;
+        document.querySelector(".oblique").style.left = `calc( 33% - ${
+          scrollToTopAccueil / 10
+        }%)`;
+        document.querySelector(".oblique").style.transform = `skewX(-15deg)`;
+        document.querySelector(".portrait").style.left = `calc( 2.5% - ${
+          scrollToTopAccueil / 20
+        }%)`;
+        document.querySelector(
+          ".contactIndication"
+        ).style.width = `calc( 90% + ${scrollToTopAccueil / 40}%)`;
+      } else {
+        document.querySelector(".oblique").style.width = `200%`;
+        document.querySelector(".oblique").style.left = `50%`;
+        document.querySelector(".portrait").style.opacity = `calc( 1 - ${
+          scrollToTopAccueil / 200
+        })`;
+        document.querySelector(".portrait").style.left = `calc( 50% + ${
+          scrollToTopAccueil / 10
+        }%)`;
+        //document.querySelector(".portrait").style.left = `50%`;
+        if (scrollToTopAccueil < window.innerHeight * 0.32) {
+          document.querySelector(".oblique").style.transform = `skewX(-${
+            scrollToTopAccueil / 12 + 33.333
+          }deg)`;
+        }
+        if (scrollToTopAccueil < window.innerHeight * 0.45) {
+          document.querySelector(".mobileOblique").style.transform = `skewX(-${
+            (scrollToTopAccueil - 100) / 12 + 33.333
+          }deg)`;
+        }
       }
     }
     /*document.querySelector(".hardSkills").style.margin = `calc( 2.5% - ${
       scrollToTop / 20
     }%)`;*/
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollToTop]);
+  }, [scrollToTopAccueil]);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
       if (window.innerWidth > 900) {
         document.querySelector(".oblique").style.width = `calc( 33% + ${
-          scrollToTop / 5
+          scrollToTopAccueil / 5
         }%)`;
         document.querySelector(".oblique").style.left = `calc( 33% - ${
-          scrollToTop / 10
+          scrollToTopAccueil / 10
         }%)`;
         document.querySelector(".oblique").style.left = `calc( 33% - ${
-          scrollToTop / 10
+          scrollToTopAccueil / 10
         }%)`;
         document.querySelector(".oblique").style.transform = `skewX(-15deg)`;
         document.querySelector(".portrait").style.left = `0%`;
@@ -108,12 +111,12 @@ function Accueil() {
         document.querySelector(".oblique").style.width = `200%`;
         document.querySelector(".oblique").style.left = `50%`;
         document.querySelector(".portrait").style.opacity = `calc( 1 - ${
-          scrollToTop / 200
+          scrollToTopAccueil / 200
         })`;
         document.querySelector(".portrait").style.left = `50%`;
       }
 
-      setScrollToTop(window.scrollY + 1);
+      setScrollToTopAccueil(window.scrollY + 1);
     });
   }, []);
 

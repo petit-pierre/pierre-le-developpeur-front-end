@@ -293,10 +293,14 @@ function Contact({ props }) {
     if (document.querySelector(".bdMini") !== null) {
       document.querySelector(".bdMini").classList.remove("bdMini");
     }
+
     setTimeout(() => {
-      document.querySelector(".discuss").scrollTop +=
-        document.querySelector(".discuss").scrollHeight + 50;
+      if (document.querySelector(".discuss") !== null) {
+        document.querySelector(".discuss").scrollTop +=
+          document.querySelector(".discuss").scrollHeight + 50;
+      }
     }, 100);
+
     //dispatch(userSlice.actions.setContactMenu(!discuss));
     //burgerOff();
   }
@@ -392,6 +396,17 @@ function Contact({ props }) {
                   src="https://pierre-le-developpeur.com/assets/send_mail.png"
                   alt="send message"
                   className="discussContent"
+                ></img>
+              </button>
+              <button
+                className="closeContact"
+                onClick={(evt) => closeDial(evt)}
+                tabIndex={discus === true ? 12 : -1}
+              >
+                <img
+                  src="https://pierre-le-developpeur.com/assets/cross.png"
+                  alt="cross"
+                  className="cross"
                 ></img>
               </button>
             </div>
