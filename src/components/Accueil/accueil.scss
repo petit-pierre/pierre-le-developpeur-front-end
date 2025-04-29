@@ -309,7 +309,7 @@
               }
             //position: relative;
             p{
-                font-size: 1vw;
+                //font-size: 1vw;
                 font-family: "abacaxi-devanagari", sans-serif;
                 font-weight: 400;
                 font-style: normal;
@@ -344,9 +344,9 @@
                         width: 50%;
                     }
                     p{
-                        font-size: 1.6vh;
+                        //font-size: 1.6vh;
                         @media (orientation: landscape){
-                            font-size: 3.2vh;
+                            //font-size: 3.2vh;
                         }
                     }
                   }
@@ -481,8 +481,8 @@
     p{
         font-family: "hayanbaram", sans-serif;
         font-weight: lighter;
-        font-size: 1.2rem;
-        line-height: 1;
+        //font-size: 1.2rem;
+        //line-height: 1;
     }
     h2{
         font-family: "hayanbaram", sans-serif;

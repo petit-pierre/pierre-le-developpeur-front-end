@@ -371,7 +371,6 @@
   }
 }
 .accueilField .videoInReact .hardSkills p {
-  font-size: 1vw;
   font-family: "abacaxi-devanagari", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -411,14 +410,6 @@
   }
   .accueilField .videoInReact .hardSkills .texte_intro :nth-child(5) {
     width: 50%;
-  }
-  .accueilField .videoInReact .hardSkills .texte_intro p {
-    font-size: 1.6vh;
-  }
-}
-@media (max-width: 900px) and (orientation: landscape) {
-  .accueilField .videoInReact .hardSkills .texte_intro p {
-    font-size: 3.2vh;
   }
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
@@ -550,8 +541,6 @@
 .accueilField p {
   font-family: "hayanbaram", sans-serif;
   font-weight: lighter;
-  font-size: 1.2rem;
-  line-height: 1;
 }
 .accueilField h2 {
   font-family: "hayanbaram", sans-serif;
