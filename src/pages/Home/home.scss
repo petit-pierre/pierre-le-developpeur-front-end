@@ -219,6 +219,28 @@
     }
     .competences{
         position: relative;
+        .finalText{
+            font-weight: 400;
+            text-align: center;
+            padding: 2% 10% 2% 10% ;
+        }
+        .logoAndTitle{
+            width: 10%;
+            margin: auto;
+            font-weight: 700;
+            //margin-bottom: 2%;
+            @media (max-width: 900px){
+                width: 30%;
+            }
+        }
+        .textCompetences{
+            width: 90%;
+            font-weight: 400;
+            //margin-bottom: 2%;
+            @media (max-width: 900px){
+                width: 70%;
+            }
+        }
     }
     .projets{
         margin-top: 50px;
