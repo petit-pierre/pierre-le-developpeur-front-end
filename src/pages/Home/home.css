@@ -232,7 +232,7 @@
   padding: 2% 10% 2% 10%;
 }
 .home .competences .logoAndTitle {
-  width: 10%;
+  width: 15%;
   margin: auto;
   font-weight: 700;
 }
@@ -242,12 +242,17 @@
   }
 }
 .home .competences .textCompetences {
-  width: 90%;
+  width: 85%;
   font-weight: 400;
 }
 @media (max-width: 900px) {
   .home .competences .textCompetences {
     width: 70%;
+  }
+}
+@media (min-width: 900px) {
+  .home .competences .textCompetences {
+    height: 4vh;
   }
 }
 .home .projets {

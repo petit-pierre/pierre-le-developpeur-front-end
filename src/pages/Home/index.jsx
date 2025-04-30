@@ -249,15 +249,28 @@ function Home() {
                           : skills[1].english_title}
                       </p>
                     </div>
-                    <p className="textCompetences">
-                      Ma curiosité insatiable est le moteur de mon évolution
-                      constante en tant que développeur. Elle me pousse à
-                      explorer sans cesse les nouvelles technologies, les
-                      meilleures pratiques et les approches innovantes. Cette
-                      soif d'apprendre me permet de m'adapter avec agilité à
-                      tous les projets, qu'ils soient familiers ou qu'ils
-                      présentent des défis inédits.
-                    </p>
+
+                    {language === "FR" ? (
+                      <p className="textCompetences">
+                        Ma curiosité insatiable est le moteur de mon évolution
+                        constante en tant que développeur. Elle me pousse à
+                        explorer sans cesse les nouvelles technologies, les
+                        meilleures pratiques et les approches innovantes. Cette
+                        soif d'apprendre me permet de m'adapter avec agilité à
+                        tous les projets, qu'ils soient familiers ou qu'ils
+                        présentent des défis inédits.{" "}
+                      </p>
+                    ) : (
+                      <p className="textCompetences">
+                        My insatiable curiosity is the driving force behind my
+                        constant evolution as a developer. It pushes me to
+                        continuously explore new technologies, best practices,
+                        and innovative approaches. This thirst for learning
+                        allows me to adapt with agility to all projects, whether
+                        familiar or presenting new challenges.
+                      </p>
+                    )}
+
                     <div className="logoAndTitle">
                       <img
                         src={skills[2].picture_url}
@@ -270,15 +283,27 @@ function Home() {
                           : skills[2].english_title}
                       </p>
                     </div>
-                    <p className="textCompetences">
-                      Couplée à une créativité fertile, cette curiosité se
-                      traduit par ma capacité à concevoir des solutions
-                      originales et efficaces. Je ne me contente pas d'appliquer
-                      des recettes existantes, mais je cherche constamment à
-                      apporter une perspective nouvelle et à imaginer des
-                      interfaces et des fonctionnalités qui sortent de
-                      l'ordinaire.
-                    </p>
+
+                    {language === "FR" ? (
+                      <p className="textCompetences">
+                        Couplée à une créativité fertile, cette curiosité se
+                        traduit par ma capacité à concevoir des solutions
+                        originales et efficaces. Je ne me contente pas
+                        d'appliquer des recettes existantes, mais je cherche
+                        constamment à apporter une perspective nouvelle et à
+                        imaginer des interfaces et des fonctionnalités qui
+                        sortent de l'ordinaire.
+                      </p>
+                    ) : (
+                      <p className="textCompetences">
+                        Coupled with a fertile creativity, this curiosity
+                        translates into my ability to design original and
+                        effective solutions. I don't just apply existing
+                        formulas, but I constantly seek to bring a fresh
+                        perspective and imagine interfaces and features that are
+                        out of the ordinary.
+                      </p>
+                    )}
                     <div className="logoAndTitle">
                       <img
                         src={skills[13].picture_url}
@@ -291,14 +316,26 @@ function Home() {
                           : skills[13].english_title}
                       </p>
                     </div>
-                    <p className="textCompetences">
-                      La passion qui m'anime pour le développement est un
-                      ingrédient essentiel de mon engagement. Elle me donne
-                      l'énergie et la motivation nécessaires pour surmonter les
-                      obstacles et pour m'investir pleinement dans chaque
-                      projet. Cette passion transparaît dans la qualité de mon
-                      travail et dans mon souci constant de l'excellence.
-                    </p>
+
+                    {language === "FR" ? (
+                      <p className="textCompetences">
+                        La passion qui m'anime pour le développement est un
+                        ingrédient essentiel de mon engagement. Elle me donne
+                        l'énergie et la motivation nécessaires pour surmonter
+                        les obstacles et pour m'investir pleinement dans chaque
+                        projet. Cette passion transparaît dans la qualité de mon
+                        travail et dans mon souci constant de l'excellence.
+                      </p>
+                    ) : (
+                      <p className="textCompetences">
+                        The passion that drives me for development is an
+                        essential ingredient in my commitment. It gives me the
+                        energy and motivation necessary to overcome obstacles
+                        and to fully invest myself in each project. This passion
+                        shines through in the quality of my work and in my
+                        constant pursuit of excellence.
+                      </p>
+                    )}
                     <div className="logoAndTitle">
                       <img
                         src={skills[14].picture_url}
@@ -311,20 +348,42 @@ function Home() {
                           : skills[14].english_title}
                       </p>
                     </div>
-                    <p className="textCompetences">
-                      Enfin, ma nature méticuleuse garantit une attention
-                      particulière aux détails. Je crois que la rigueur et la
-                      précision sont fondamentales pour assurer la fiabilité et
-                      la performance des solutions que je développe. Cette
-                      minutie se manifeste dans mon code, dans mes tests et dans
-                      mon approche globale de chaque projet.
-                    </p>
-                    <p className="finalText">
-                      Cette combinaison de curiosité, de créativité, de passion
-                      et de minutie constitue véritablement mon 'super-pouvoir'
-                      de développeur 💪, me permettant d'aborder chaque défi
-                      avec enthousiasme et de livrer des résultats de qualité.
-                    </p>
+
+                    {language === "FR" ? (
+                      <p className="textCompetences">
+                        Enfin, ma nature méticuleuse garantit une attention
+                        particulière aux détails. Je crois que la rigueur et la
+                        précision sont fondamentales pour assurer la fiabilité
+                        et la performance des solutions que je développe. Cette
+                        minutie se manifeste dans mon code, dans mes tests et
+                        dans mon approche globale de chaque projet.
+                      </p>
+                    ) : (
+                      <p className="textCompetences">
+                        Finally, my meticulous nature guarantees a particular
+                        attention to detail. I believe that rigor and precision
+                        are fundamental to ensuring the reliability and
+                        performance of the solutions I develop. This
+                        thoroughness manifests in my code, in my testing, and in
+                        my overall approach to each project.
+                      </p>
+                    )}
+                    {language === "FR" ? (
+                      <p className="finalText">
+                        Cette combinaison de curiosité, de créativité, de
+                        passion et de minutie constitue véritablement mon
+                        'super-pouvoir' de développeur 💪, me permettant
+                        d'aborder chaque défi avec enthousiasme et de livrer des
+                        résultats de qualité.
+                      </p>
+                    ) : (
+                      <p className="finalText">
+                        This combination of curiosity, creativity, passion, and
+                        meticulousness truly constitutes my 'superpower' as a
+                        developer 💪, allowing me to approach each challenge
+                        with enthusiasm and deliver quality results
+                      </p>
+                    )}
                   </div>
                 }
               ></AreaForText>
