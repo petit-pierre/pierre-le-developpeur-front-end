@@ -7,7 +7,7 @@ import Collapse from "../../components/Collapse";
 import Cards from "../../components/Cards";
 //import { getLikesThunk } from "../../thunkActionsCreator";
 import AreaForText from "../../components/AreaForText";
-import Accueil from "../../components/Accueil";
+import NewAccueil from "../../components/NewAccueil";
 import Snow from "../../components/Snow";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -193,7 +193,7 @@ function Home() {
           <div className="fadeIn"></div>
           <div className="without">
             <span id="accueil"></span>
-            <Accueil></Accueil>
+            <NewAccueil></NewAccueil>
 
             <div className="reco">
               <span id="reco" className="recoAnchor"></span>
