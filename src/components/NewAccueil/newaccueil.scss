@@ -2,22 +2,45 @@
     position: relative;
     background-color: white;
     min-height: 100vh;
-    padding-top: 1vh;
+    padding-top: 6vh;
     padding-bottom: 1vh;
-    margin-left: 10px;
-    .negatif{
-        position: absolute;
-        top: 1vh;
-        color: red;
-        width: 100%;
-        height: 20vh;
-        left: 20px;
-        overflow: hidden;
-        .box{
-            position: absolute;
-            top: 0;
-            left: -20px;
-            z-index: 3;
+    display: flex;
+    flex-direction: row;
+    .intro{
+        //margin: auto;
+
+        width: 40%;
+        .oneSkill{
+            //text-align: center;
+            margin-left:20px;
+            //margin-top: -3vh;
         }
+        h1{
+            margin-left:20px;
+            line-height: 1vh;
+            //text-align: center;
+        }
+        /*.textareafield{
+            width: 60%;
+            position: absolute;
+            bottom: 10vh;
+        }*/
+        .cv{
+            //width: 50%;
+            //height: 10vh;
+            border: 2px solid black;
+            border-radius: 14px;
+            background-color: white;
+            cursor: pointer;
+            padding: 10px;
+            margin-left: 20px;
+            //margin: auto;
+            p{
+                display: inline;
+            }
+        }
+    }
+    .picture{
+        width: 40%;
     }
 }

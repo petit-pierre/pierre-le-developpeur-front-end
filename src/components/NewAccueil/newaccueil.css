@@ -2,22 +2,37 @@
   position: relative;
   background-color: white;
   min-height: 100vh;
-  padding-top: 1vh;
+  padding-top: 6vh;
   padding-bottom: 1vh;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
 }
-.newAccueil .negatif {
-  position: absolute;
-  top: 1vh;
-  color: red;
-  width: 100%;
-  height: 20vh;
-  left: 20px;
-  overflow: hidden;
+.newAccueil .intro {
+  width: 40%;
+  /*.textareafield{
+      width: 60%;
+      position: absolute;
+      bottom: 10vh;
+  }*/
 }
-.newAccueil .negatif .box {
-  position: absolute;
-  top: 0;
-  left: -20px;
-  z-index: 3;
+.newAccueil .intro .oneSkill {
+  margin-left: 20px;
+}
+.newAccueil .intro h1 {
+  margin-left: 20px;
+  line-height: 1vh;
+}
+.newAccueil .intro .cv {
+  border: 2px solid black;
+  border-radius: 14px;
+  background-color: white;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 20px;
+}
+.newAccueil .intro .cv p {
+  display: inline;
+}
+.newAccueil .picture {
+  width: 40%;
 }/*# sourceMappingURL=newAccueil.css.map */
