@@ -29,6 +29,7 @@
   cursor: pointer;
   padding: 10px;
   margin-left: 20px;
+  color: inherit;
 }
 .newAccueil .intro .cv p {
   display: inline;

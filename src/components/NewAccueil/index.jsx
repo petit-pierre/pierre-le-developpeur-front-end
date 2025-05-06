@@ -31,12 +31,22 @@ function Accueil() {
           }}
         ></AreaForText>
         {language === "FR" ? (
-          <a className="cv">
-            <p>Telechargez mon CV</p>{" "}
+          <a
+            className="cv"
+            href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_fr.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p>Telechargez mon CV 📝</p>{" "}
           </a>
         ) : (
-          <a className="cv">
-            <p>Download my CV</p>
+          <a
+            className="cv"
+            href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_eng.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p>Download my CV 📝</p>
           </a>
         )}
       </div>
