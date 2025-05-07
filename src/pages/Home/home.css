@@ -232,8 +232,6 @@
   padding: 2% 10% 2% 10%;
 }
 .home .competences .logoAndTitle {
-  width: 15%;
-  margin: auto;
   font-weight: 700;
 }
 @media (max-width: 900px) {

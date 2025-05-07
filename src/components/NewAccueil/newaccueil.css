@@ -1,9 +1,8 @@
 .newAccueil {
   position: relative;
   background-color: white;
-  min-height: 100vh;
   padding-top: 6vh;
-  padding-bottom: 1vh;
+  padding-bottom: 6vh;
   display: flex;
   flex-direction: row;
 }
@@ -15,25 +14,64 @@
       bottom: 10vh;
   }*/
 }
-.newAccueil .intro .oneSkill {
-  margin-left: 20px;
+.newAccueil .intro .purpleAndWitheTextarea {
+  transition: all 0.5s;
+}
+.newAccueil .intro .purpleAndWitheTextarea .cofeeComponent {
+  filter: invert(1);
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.newAccueil .intro .purpleAndWitheTextarea:hover {
+  box-shadow: rgba(0, 0, 0, 0.096) 2px 2px 2px 1px;
+}
+.newAccueil .intro .purpleAndWitheTextarea:hover .cofeeComponent {
+  opacity: 1;
+  transition: all 5s ease-out;
+}
+.newAccueil .intro .purpleAndWitheTextarea:hover .cv {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  border: 2px solid black;
 }
 .newAccueil .intro h1 {
   margin-left: 20px;
   line-height: 1vh;
 }
 .newAccueil .intro .cv {
-  border: 2px solid black;
+  border: 2px solid #99477a;
   border-radius: 14px;
-  background-color: white;
+  background-color: #99477a;
+  color: white;
   cursor: pointer;
   padding: 10px;
   margin-left: 20px;
-  color: inherit;
+  display: block;
+  margin-bottom: 20px;
 }
 .newAccueil .intro .cv p {
   display: inline;
 }
+.newAccueil .intro .cv:hover {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  border: 2px solid black;
+}
 .newAccueil .picture {
   width: 40%;
+  display: flex;
+}
+.newAccueil .picture .react {
+  margin: auto;
+  width: 20vw;
+  height: 20vw;
+}
+.newAccueil .picture img {
+  margin: auto;
+  width: 20vw;
+  height: 20vw;
 }/*# sourceMappingURL=newAccueil.css.map */

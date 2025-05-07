@@ -7,15 +7,14 @@ function Accueil() {
   const language = useSelector((state) => state.data.language);
   return (
     <div className="newAccueil">
+      <div className="picture">
+        <img
+          src="https://pierre-le-developpeur.com/assets/portrait.png"
+          alt="accueil"
+        />
+      </div>
       <div className="intro">
-        <h1>Développeur web</h1>
-        <div className="oneSkill">
-          {language === "FR" ? (
-            <h3>React.js, Node.js et autres quenouilles quantiques</h3>
-          ) : (
-            <h3>React.js, Node.js and few quantum distaffs</h3>
-          )}
-        </div>
+        <div className="oneSkill"></div>
         <AreaForText
           props={{
             french:
@@ -25,32 +24,43 @@ function Accueil() {
             likes: null,
             links: null,
             edit: false,
-            style: "empty",
+            style: "purpleAndWitheTextarea",
+            frenchTitle: "React.js, Node.js et autres quenouilles quantiques",
+            englishTitle: "React.js, Node.js and few quantum distaffs",
             id: "home01",
             sign: false,
+            cofee: true,
           }}
+          content={
+            <div>
+              {language === "FR" ? (
+                <a
+                  className="cv"
+                  href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_fr.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p>Téléchargez mon CV</p>{" "}
+                </a>
+              ) : (
+                <a
+                  className="cv"
+                  href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_eng.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p>Download my CV</p>
+                </a>
+              )}
+            </div>
+          }
         ></AreaForText>
-        {language === "FR" ? (
-          <a
-            className="cv"
-            href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_fr.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <p>Telechargez mon CV 📝</p>{" "}
-          </a>
-        ) : (
-          <a
-            className="cv"
-            href="https://www.pierre-le-developpeur.com/assets/images/cv_aubree_pierre_eng.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <p>Download my CV 📝</p>
-          </a>
-        )}
       </div>
-      <div className="picture"></div>
+      <div className="picture">
+        <div className="react">
+          <React></React>
+        </div>
+      </div>
     </div>
   );
 }

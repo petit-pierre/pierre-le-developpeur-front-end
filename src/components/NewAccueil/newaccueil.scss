@@ -1,18 +1,40 @@
 .newAccueil{
     position: relative;
     background-color: white;
-    min-height: 100vh;
+    //min-height: 100vh;
     padding-top: 6vh;
-    padding-bottom: 1vh;
+    padding-bottom: 6vh;
     display: flex;
     flex-direction: row;
     .intro{
         //margin: auto;
-
+        .purpleAndWitheTextarea{
+            transition: all 0.5s;
+            .cofeeComponent{
+                filter: invert(1);
+                position: absolute;
+                bottom: 0;
+                opacity: 0;
+                transition: all 0.5s;
+            }
+            &:hover{
+                .cofeeComponent{
+                    opacity: 1;
+                    transition: all 5s ease-out;
+                }
+                box-shadow: rgba(0, 0, 0, 0.096) 2px 2px 2px 1px;
+                .cv{
+                    background-color: white;
+                    color: black;
+                    transition: 0.5s;
+                    border: 2px solid black;
+                }
+            }
+        }
         width: 40%;
         .oneSkill{
             //text-align: center;
-            margin-left:20px;
+            //margin-left:20px;
             //margin-top: -3vh;
         }
         h1{
@@ -26,22 +48,40 @@
             bottom: 10vh;
         }*/
         .cv{
-            //width: 50%;
-            //height: 10vh;
-            border: 2px solid black;
+            border: 2px solid #99477a;
             border-radius: 14px;
-            background-color: white;
+            background-color: #99477a;
+            color: white;
             cursor: pointer;
             padding: 10px;
             margin-left: 20px;
             //margin: auto;
-            color: inherit;
+            //color: inherit;
+            display: block;
+            margin-bottom: 20px;
             p{
                 display: inline;
+            }
+            &:hover{
+                background-color: white;
+                color: black;
+                transition: 0.5s;
+                border: 2px solid black;
             }
         }
     }
     .picture{
         width: 40%;
+        display: flex;
+        .react{
+            margin: auto;
+            width: 20vw;
+            height: 20vw
+        }
+        img{
+            margin: auto;
+            width: 20vw;
+            height: 20vw
+        }
     }
 }

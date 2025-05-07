@@ -19,7 +19,11 @@ function AreaForText({ props, content }) {
     <div className="textareafield">
       <div className={props.style}>
         <div className="title">
-          <span>{props.title}</span>
+          {language === "FR" ? (
+            <span>{props.frenchTitle}</span>
+          ) : (
+            <span>{props.englishTitle}</span>
+          )}
         </div>
         <form id={props.id + "myForm"} className="mise-en-page textArea">
           <div className="fullResum">

@@ -232,7 +232,8 @@ function Home() {
                   links: null,
                   edit: false,
                   style: "purpleAndWitheTextarea",
-                  title: "Competences",
+                  frenchTitle: "Competences",
+                  englishTitle: "Skills",
                   id: "home03",
                 }}
                 content={
