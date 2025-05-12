@@ -1,9 +1,17 @@
 .home {
   position: relative;
+  width: 100%;
+  position: relative;
   overflow: hidden;
 }
+.home .fond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+}
 .home .headerLogos {
-  animation: chatBot 2s ease-in-out;
+  animation: chatBot 1.6s ease-in-out;
 }
 @keyframes chatBot {
   0% {
@@ -20,7 +28,9 @@
   background-color: white;
   opacity: 0;
   animation-name: fade;
-  animation-duration: 1000ms;
+  animation-duration: 3000ms;
+  animation-fill-mode: forwards;
+  z-index: 2;
 }
 @keyframes fade {
   0% {
@@ -65,13 +75,13 @@
   }
 }
 .home .reco {
+  z-index: 2;
   margin-top: -20px;
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100dvw;
   overflow: hidden;
-  background-color: white;
 }
 @media (min-width: 900px) {
   .home .reco {
@@ -247,7 +257,7 @@
   text-align: center;
 }
 .home .competences .logoAndTitle {
-  width: 15%;
+  min-width: 15%;
   font-weight: 700;
 }
 .home .competences .textCompetences {

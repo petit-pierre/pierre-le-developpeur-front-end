@@ -1,11 +1,11 @@
 .newAccueil {
   position: relative;
-  background-color: white;
   min-height: 100vh;
   padding-top: 6vh;
   padding-bottom: 6vh;
   display: flex;
   flex-direction: row;
+  z-index: 2;
 }
 @media (max-width: 900px) {
   .newAccueil {
@@ -48,7 +48,7 @@
   box-shadow: rgba(0, 0, 0, 0.096) 2px 2px 2px 1px;
   margin: 5%;
 }
-.newAccueil .intro .cofeeComponent {
+.newAccueil .intro .purpleAndWitheTextarea .cofeeComponent {
   filter: invert(1);
   position: absolute;
   bottom: 0;
@@ -57,11 +57,11 @@
   transition: all 0.5s;
 }
 @media (max-width: 900px) {
-  .newAccueil .intro .cofeeComponent {
+  .newAccueil .intro .purpleAndWitheTextarea .cofeeComponent {
     opacity: 1;
   }
 }
-.newAccueil .intro:hover {
+.newAccueil .intro .purpleAndWitheTextarea:hover {
   /*.cv{
       background-color: white;
       color: black;
@@ -69,7 +69,7 @@
       border: 2px solid black;
   }*/
 }
-.newAccueil .intro:hover .cofeeComponent {
+.newAccueil .intro .purpleAndWitheTextarea:hover .cofeeComponent {
   opacity: 1;
   transition: all 5s ease-out;
 }
@@ -111,7 +111,7 @@
 @media (max-width: 900px) {
   .newAccueil .picture {
     width: 100%;
-    height: calc(94vh - 150px);
+    height: 100vw;
   }
 }
 .newAccueil .picture .react {
@@ -138,9 +138,8 @@
 }
 @media (max-width: 900px) {
   .newAccueil .picture img {
-    width: 40vw;
-    height: 40vw;
-    margin: auto;
+    width: 60vw;
+    height: 60vw;
     animation: bublleMobile 1s ease-in-out;
   }
 }
@@ -167,21 +166,25 @@
 @keyframes bublleMobile {
   0% {
     opacity: 0;
-    width: 15vw;
-    height: 15vw;
+    width: 20vw;
+    height: 20vw;
+    margin-top: 10vw;
   }
   33% {
     opacity: 1;
-    width: 40vw;
-    height: 40vw;
+    width: 60vw;
+    height: 60vw;
+    margin-top: 0;
   }
   66% {
-    width: 30vw;
-    height: 30vw;
-  }
-  100% {
     width: 40vw;
     height: 40vw;
+    margin-top: 5vw;
+  }
+  100% {
+    width: 60vw;
+    height: 60vw;
+    margin-top: 0;
   }
 }
 @keyframes ReactBublle {

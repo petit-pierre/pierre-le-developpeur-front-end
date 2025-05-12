@@ -9,11 +9,12 @@ import Cards from "../../components/Cards";
 import AreaForText from "../../components/AreaForText";
 import NewAccueil from "../../components/NewAccueil";
 import Snow from "../../components/Snow";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
+  const fond = useRef();
   /*on recupere les valeurs du store redux pour le header*/
 
   const unsortedprojects = useSelector((state) => state.data.projects);
@@ -59,6 +60,21 @@ function Home() {
       //window.location.href = "http://localhost:3001/Loader/Home";
     }
   }, []);
+
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollToTop, setScrollToTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      setScrollToTop(e.target.documentElement.scrollTop);
+      setScrolling(e.target.documentElement.scrollTop > scrollToTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    if (fond.current !== undefined) {
+      fond.current.style.opacity = `calc( 1 - ${scrollToTop / 1000})`;
+    }
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollToTop]);
 
   function projectChoice() {
     setSortedProjects([]);
@@ -191,6 +207,12 @@ function Home() {
             ""
           )}
           <div className="fadeIn"></div>
+          <img
+            src="https://pierre-le-developpeur.com/assets/fond_accueil.jpg"
+            alt="fond"
+            className="fond"
+            ref={fond}
+          />
           <div className="without">
             <span id="accueil"></span>
             <NewAccueil></NewAccueil>
