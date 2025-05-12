@@ -204,6 +204,7 @@
 }
 .home .competences .contentSkills .fullResum {
   min-height: 25vh;
+  margin: 0;
 }
 .home .competences .contentSkills .softSkills {
   display: flex;
