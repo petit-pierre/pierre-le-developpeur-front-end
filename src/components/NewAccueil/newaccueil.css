@@ -52,9 +52,14 @@
   filter: invert(1);
   position: absolute;
   bottom: 0;
-  right: 7vw;
+  left: 0;
   opacity: 0;
   transition: all 0.5s;
+}
+@media (max-width: 900px) {
+  .newAccueil .intro .cofeeComponent {
+    opacity: 1;
+  }
 }
 .newAccueil .intro:hover {
   /*.cv{
@@ -136,6 +141,7 @@
     width: 40vw;
     height: 40vw;
     margin: auto;
+    animation: bublleMobile 1s ease-in-out;
   }
 }
 @keyframes bublle {
@@ -156,6 +162,26 @@
     margin-top: 0;
     width: 20vw;
     height: 20vw;
+  }
+}
+@keyframes bublleMobile {
+  0% {
+    opacity: 0;
+    width: 15vw;
+    height: 15vw;
+  }
+  33% {
+    opacity: 1;
+    width: 40vw;
+    height: 40vw;
+  }
+  66% {
+    width: 30vw;
+    height: 30vw;
+  }
+  100% {
+    width: 40vw;
+    height: 40vw;
   }
 }
 @keyframes ReactBublle {
