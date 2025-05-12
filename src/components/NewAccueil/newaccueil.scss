@@ -6,6 +6,9 @@
     padding-bottom: 6vh;
     display: flex;
     flex-direction: row;
+    @media (max-width: 900px) {
+        flex-direction: column-reverse;
+    }
     .intro{
         .fullResum{
             animation-name: intro;
@@ -62,6 +65,9 @@
             }
         
         width: 60%;
+        @media (max-width: 900px) {
+            width: 100%;
+        }
         .oneSkill{
             //text-align: center;
             //margin-left:20px;
@@ -105,6 +111,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media (max-width: 900px) {
+            width: 100%;
+            height: calc( 94vh - 150px);
+        }
         .react{
             margin: auto;
             margin-right: 10%;
@@ -114,6 +124,9 @@
             margin-bottom: 0;
             opacity: 0;
             animation: ReactBublle 1s ease-in-out 0.2s forwards;
+            @media (max-width: 900px) {
+                display: none;
+            }
         }
         img{
             margin: auto;
@@ -121,6 +134,12 @@
             height: 20vw;
             margin-top: 0vw;
             animation: bublle 1s ease-in-out;
+            @media (max-width: 900px) {
+                width: 40vw;
+                height: 40vw;
+                margin: auto;
+                //margin-bottom: 10vw;
+            }
         }
         @keyframes bublle{
             0% {
