@@ -36,7 +36,6 @@ function PostProject() {
 
   const [sliders, setSliders] = useState([]);
   const [details, setDetails] = useState([]);
-  const [links, setLinks] = useState([]);
   const [truc, setTruc] = useState(0);
   const [video, setVideo] = useState(false);
   const [videoDetails, setVideoDetails] = useState(false);
@@ -44,17 +43,10 @@ function PostProject() {
 
   useEffect(() => {
     if (projectId !== "newOne") {
-      setLinks(links.concat(project.links));
       setSliders(sliders.concat(project.sliders));
       setDetails(details.concat(project.details));
     }
   }, []);
-
-  const linkList = [
-    { id: 1, name: "web" },
-    { id: 2, name: "github" },
-    { id: 3, name: "pierre le dev" },
-  ];
 
   const Category = [
     { id: 1, name: "Front-end" },
@@ -88,7 +80,10 @@ function PostProject() {
   const date = useRef();
   const frenchDescription = useRef();
   const englishDescription = useRef();
-  const linkUrl = useRef();
+  const linkUrl0 = useRef();
+  const linkUrl1 = useRef();
+  const linkUrl2 = useRef();
+  const linkUrl3 = useRef();
   const frenchSliderContent = useRef();
   const englishSliderContent = useRef();
   const frenchDetailsContent = useRef();
@@ -170,7 +165,12 @@ function PostProject() {
         french_description: frenchDescription.current.value,
         french_resum: frenchResum.current.value,
         english_resum: englishResum.current.value,
-        links: links,
+        links: [
+          { url: linkUrl0.current.value, category: "web" },
+          { url: linkUrl1.current.value, category: "web" },
+          { url: linkUrl2.current.value, category: "web" },
+          { url: linkUrl3.current.value, category: "web" },
+        ],
         sliders: sliders,
         details: details,
         skills: projectSkills,
@@ -442,39 +442,6 @@ function PostProject() {
     evt.preventDefault();
     setTruc(truc + 1);
   }
-  function ProjectLinksUpdate(evt) {
-    evt.preventDefault();
-    const projectLinks = document.querySelectorAll(".Link");
-    let linkCategory = "";
-    for (let projectLink of projectLinks) {
-      if (projectLink.checked === true) {
-        linkCategory = projectLink.value;
-      }
-    }
-    if (linkUrl.current.value && linkCategory !== "") {
-      let linkContent = {
-        url: linkUrl.current.value,
-        category: linkCategory,
-      };
-
-      links.push(linkContent);
-      setLinks(links);
-      set(evt);
-      linkUrl.current.value = "";
-    } else {
-      alert("champs incomplets");
-    }
-    set(evt);
-  }
-
-  function ProjectLinksDellete(evt, prlink) {
-    evt.preventDefault();
-    const found = links.find((li) => li === prlink);
-    const index = links.findIndex((la) => la === found);
-    links.splice(index, 1);
-    setLinks(links);
-    set(evt);
-  }
 
   function cancelProject(evt) {
     evt.preventDefault();
@@ -731,37 +698,53 @@ function PostProject() {
           </div>
           <fieldset>
             <legend>Links :</legend>
-            {links.map((prlink) => (
-              <fieldset key={prlink._id}>
-                <p>link url : {prlink.url}</p>
-
-                <p>category : {prlink.category}</p>
-                <button onClick={(evt) => ProjectLinksDellete(evt, prlink)}>
-                  remove this link :
-                </button>
-              </fieldset>
-            ))}
 
             <div>
-              <p>link url : </p>
-              <input ref={linkUrl} type="text" />
+              <p>links url en francais (markdown) : </p>
+              <textarea
+                ref={linkUrl0}
+                defaultValue={
+                  project === null ||
+                  project === undefined ||
+                  project === "newOne"
+                    ? null
+                    : project.links[0].url
+                }
+              />
+              <p>links url in english (markdown) : </p>
+              <textarea
+                ref={linkUrl1}
+                defaultValue={
+                  project === null ||
+                  project === undefined ||
+                  project === "newOne"
+                    ? null
+                    : project.links[1].url
+                }
+              />
+              <p>links url interne en francais (markdown) : </p>
+              <textarea
+                ref={linkUrl2}
+                defaultValue={
+                  project === null ||
+                  project === undefined ||
+                  project === "newOne"
+                    ? null
+                    : project.links[2].url
+                }
+              />
+              <p>links url interne in english (markdown) : </p>
+              <textarea
+                ref={linkUrl3}
+                defaultValue={
+                  project === null ||
+                  project === undefined ||
+                  project === "newOne"
+                    ? null
+                    : project.links[3].url
+                }
+              />
             </div>
-            <legend>category :</legend>
-            {linkList.map((link) => (
-              <div key={link._id}>
-                <input
-                  className="Link"
-                  type="radio"
-                  name="Link"
-                  id={link.id}
-                  value={link.name}
-                />
-                <label htmlFor="Link">{link.name}</label>
-              </div>
-            ))}
-            <button onClick={(evt) => ProjectLinksUpdate(evt)}>
-              add this link :
-            </button>
           </fieldset>
           <fieldset className="sliderField">
             <legend>Slider :</legend>

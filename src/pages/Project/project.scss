@@ -180,11 +180,43 @@
         }
     }
     .textAndLinks{
-        width: 80dvw;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
         margin: auto;
         margin-top: 100px;
         position: relative;
         z-index: 7;
+        margin-bottom: 100px;
+            @media (max-width: 900px){
+                flex-direction: column;
+            }
+        .purpleAndWitheTextarea{
+            box-shadow: 2px 2px 2px 1px rgba(0,0,0,.096);
+                .cofeeComponent{
+                    filter: invert(1);
+                    position: absolute;
+                    bottom: 0;
+                }
+        }
+        .resum{
+            width: 60%;
+                @media (max-width: 900px){
+                width: 100%;
+                margin-bottom: 10vh;
+                }
+            .fullResum{
+                margin-bottom: 10vh;
+            }
+        }
+        .links{
+            width: 30%;
+            margin-left: 10%;
+                @media (max-width: 900px){
+                    width: 100%;
+                    margin-left: 0;
+                }
+        }
     }
     .tools{
         margin-top: 210px;

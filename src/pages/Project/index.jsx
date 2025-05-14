@@ -228,18 +228,41 @@ function Project() {
           data-aos="fade-up"
           data-aos-duration="1000"
         >
-          <AreaForText
-            props={{
-              french: project.french_description,
-              english: project.english_description,
-              likes: project.content_likes_id,
-              links: project.links,
-              edit: false,
-              style: "windows",
-              cofee: true,
-              id: "project00",
-            }}
-          ></AreaForText>
+          <div className="resum">
+            <AreaForText
+              props={{
+                french: project.french_description,
+                english: project.english_description,
+                likes: project.content_likes_id,
+                links: null,
+                //links: project.links,
+                edit: false,
+                style: "purpleAndWitheTextarea",
+                cofee: true,
+                id: "project00",
+                frenchTitle: project.french_title,
+                englishTitle: project.english_title,
+              }}
+            ></AreaForText>
+          </div>
+
+          <div className="links">
+            <AreaForText
+              props={{
+                french: project.links[0].url + "\n" + project.links[2].url,
+                english: project.links[1].url + "\n" + project.links[3].url,
+
+                links: null,
+                //links: project.links,
+                edit: false,
+                style: "purpleAndWitheTextarea",
+                cofee: false,
+                id: "project01",
+                frenchTitle: "Liens",
+                englishTitle: "Links",
+              }}
+            ></AreaForText>
+          </div>
         </div>
         <div className="description">
           {project.details.map((slide) =>

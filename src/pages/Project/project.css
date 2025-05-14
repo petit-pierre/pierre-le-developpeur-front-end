@@ -191,11 +191,49 @@
   }
 }
 .projectPage .textAndLinks {
-  width: 80dvw;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
   margin: auto;
   margin-top: 100px;
   position: relative;
   z-index: 7;
+  margin-bottom: 100px;
+}
+@media (max-width: 900px) {
+  .projectPage .textAndLinks {
+    flex-direction: column;
+  }
+}
+.projectPage .textAndLinks .purpleAndWitheTextarea {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.096);
+}
+.projectPage .textAndLinks .purpleAndWitheTextarea .cofeeComponent {
+  filter: invert(1);
+  position: absolute;
+  bottom: 0;
+}
+.projectPage .textAndLinks .resum {
+  width: 60%;
+}
+@media (max-width: 900px) {
+  .projectPage .textAndLinks .resum {
+    width: 100%;
+    margin-bottom: 10vh;
+  }
+}
+.projectPage .textAndLinks .resum .fullResum {
+  margin-bottom: 10vh;
+}
+.projectPage .textAndLinks .links {
+  width: 30%;
+  margin-left: 10%;
+}
+@media (max-width: 900px) {
+  .projectPage .textAndLinks .links {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .projectPage .tools {
   margin-top: 210px;
