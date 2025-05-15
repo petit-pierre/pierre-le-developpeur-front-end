@@ -2,9 +2,8 @@ import { useSelector } from "react-redux";
 import "./project.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Slider from "../../components/Slider";
-import LikeButton from "../../components/LikeButton";
 import Collapse from "../../components/Collapse";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AreaForText from "../../components/AreaForText";
 import Contact from "../../components/Contact";
 import AOS from "aos";
@@ -175,21 +174,6 @@ function Project() {
             alt="ceriser du japon"
           ></img>
         </div>
-        <div className="fadeIn"></div>
-        <div
-          className="scrollDown"
-          style={
-            discuss === true
-              ? {
-                  opacity: 0,
-                }
-              : {
-                  opacity: 1 - scrollToTop / 40,
-                }
-          }
-        >
-          <div className="scrollDot"></div>
-        </div>
         <span id="project"></span>
 
         <div
@@ -200,34 +184,17 @@ function Project() {
                   opacity: 0,
                 }
               : {
-                  opacity: 1 - scrollToTop / 350,
+                  opacity: 1,
                 }
           }
         >
-          <div
-            className="transition"
-            style={
-              discuss === true
-                ? {
-                    height: 2000,
-                  }
-                : {
-                    bottom: "0",
-                    height: scrollToTop * 4,
-                  }
-            }
-          ></div>
           <Slider
             sliders={project.sliders}
             mini={false}
             likeId={project.slider_likes_id}
           ></Slider>{" "}
         </div>
-        <div
-          className="textAndLinks"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="textAndLinks">
           <div className="resum">
             <AreaForText
               props={{

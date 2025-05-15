@@ -33,7 +33,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding-top: calc(103vh - 59px);
 }
 .projectPage .blabla {
   display: none;
@@ -166,10 +165,29 @@
 .projectPage .slider {
   margin-top: 0px;
   height: calc(103dvh - 59px);
-  position: fixed;
-  top: 60px;
+  position: relative;
   right: 0;
   width: 100%;
+  background-color: black;
+  box-shadow: 0px 0px 10px black;
+}
+@media (max-width: 900px) {
+  .projectPage .slider {
+    height: calc(70vw + 168px);
+  }
+  .projectPage .slider .slMax {
+    background-color: black;
+  }
+  .projectPage .slider .slMax img {
+    padding-top: 0px;
+    top: 0;
+  }
+  .projectPage .slider .sliderContainer .carousel-img {
+    width: 100%;
+    height: inherit;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 .projectPage .slider .likeContainer {
   top: 12px;
@@ -181,12 +199,6 @@
 }
 @media (max-width: 650px) {
   .projectPage .slider .likeContainer {
-    top: 130px;
-  }
-}
-@media (max-width: 650px) {
-  .projectPage .slider {
-    height: calc(100vh - 130px);
     top: 130px;
   }
 }

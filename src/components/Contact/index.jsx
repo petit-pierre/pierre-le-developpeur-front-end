@@ -191,6 +191,7 @@ function Contact({ props }) {
   /*fermeture de la modale au clique*/
 
   const closeDial = (evt) => {
+    document.querySelector(".bd").classList.remove("fullScreen");
     setDiscus(false);
     //evt.preventDefault();
     document.body.style.position = "";
@@ -216,8 +217,8 @@ function Contact({ props }) {
 
   function sendWithKey(evt) {
     //evt.preventDefault();
-    console.log(evt);
-    if (evt.code === "Enter") {
+    //console.log(evt);
+    if (evt.code === "Enter" && window.innerWidth > 900) {
       if (evt.shiftKey) {
       } else {
         send(evt);
@@ -225,8 +226,14 @@ function Contact({ props }) {
     }
   }
 
+  const fullScreenMobile = (evt) => {
+    evt.preventDefault();
+    document.querySelector(".bd").classList.add("fullScreen");
+  };
+
   function send(evt) {
     evt.preventDefault();
+    document.querySelector(".bd").classList.remove("fullScreen");
     if (content.current.value === "") {
       content.current.value = "...";
     }
@@ -384,8 +391,14 @@ function Contact({ props }) {
               <textarea
                 className="discussContent chatArea"
                 ref={content}
+                onFocus={(evt) => fullScreenMobile(evt)}
                 tabIndex={discus === true ? 12 : -1}
                 onKeyDown={(evt) => sendWithKey(evt)}
+                placeholder={
+                  language === "FR"
+                    ? "Ecrivez votre message ici"
+                    : "Write your message here"
+                }
               ></textarea>
               <button
                 className="sendButton discussContent"

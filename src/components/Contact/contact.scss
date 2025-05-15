@@ -235,8 +235,12 @@
             animation:  infinite clignote ;
             animation-duration: 2000ms;
             opacity: 1;
+            border: solid 2px black;
             @media (max-width: 650px) {
                 height: 8vh
+            }
+            @media (max-width: 900px) {
+                display: none;
             }
         }
 
@@ -249,8 +253,12 @@
             resize: none;
             border-bottom-left-radius: 20px 20px;
             transition: 0.1s;
+            border: solid 2px black;
             @media (max-width: 650px) {
                 height: 8vh;
+            }
+            @media (max-width: 900px) {
+                width: calc(100% - 60px);
             }
         }
         textarea:focus {
@@ -269,6 +277,41 @@
 }
 
         
+    }
+        .fullScreen{
+        @media (max-width: 900px) {
+            .chatArea{
+                position: fixed;
+                width: 80vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                border: none;
+                border-radius: 0;
+            }
+            .sendButton{
+                display: block;
+                position: fixed;
+                right: 0;
+                width: 20%;
+                bottom: 0;
+                border-radius: 0;
+                animation: none;
+                height: 50%;
+                //border: none;
+            }
+            .closeContact{
+                position: fixed;
+                right: 0;
+                width: 20%;
+                top: 0;
+                border-radius: 0;
+                animation: none;
+                height: 50%;  
+                border: 2px solid black;
+                background-color: white;
+            }
+    } 
     }
 }
 

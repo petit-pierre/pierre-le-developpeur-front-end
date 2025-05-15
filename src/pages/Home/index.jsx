@@ -406,6 +406,7 @@ function Home() {
 
           <div className="projets" id="projets">
             <form className="projectChoice">
+              <div className="background"></div>
               <input
                 type="radio"
                 id="topProject"
