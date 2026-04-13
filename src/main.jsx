@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./Slices/userSlice";
-import { thunk } from "redux-thunk";
+//import { thunk } from "redux-thunk";
 
 if (
   document.location.href.includes("https://pierre-le-developpeur.com/kasa") ||
@@ -31,8 +31,8 @@ if (
     reducer: combineReducers({
       data: userSlice.reducer,
     }),
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
-    devTools: true,
+    //middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+    //devTools: true,
   });
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -41,7 +41,7 @@ if (
       <Provider store={store}>
         <App />
       </Provider>
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 
   // If you want to start measuring performance in your app, pass a function

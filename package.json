@@ -1,55 +1,42 @@
 {
   "name": "pierre-le-developpeur",
-  "homepage": "http://pierre-le-developpeur.com",
-  "version": "0.1.0",
   "private": true,
+  "homepage": "http://pierre-le-developpeur.com",
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@react-native-community/cli": "^20.0.2",
-    "@react-spring/parallax": "^9.7.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "@reduxjs/toolkit": "^2.2.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
-    "i18next": "^23.10.0",
-    "i18next-http-backend": "^2.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^14.0.5",
     "react-markdown": "^8.0.6",
     "react-masonry-css": "^1.0.16",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.0",
     "react-router-hash-link": "^2.4.3",
-    "react-scripts": "5.0.1",
     "react-simple-typewriter": "^5.0.1",
-    "react-spring": "^9.7.3",
-    "react-swipeable": "^7.0.1",
     "socket.io-client": "^4.7.4",
+    "react-swipeable": "^7.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
-    "build": "react-scripts build && echo '/* /index.html  200' | cat >build/_redirects ",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^9.39.4",
+    "@rolldown/plugin-babel": "^0.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.4"
   }
 }

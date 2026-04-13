@@ -6,7 +6,7 @@ import Button from "../Button";
 import { Typewriter } from "react-simple-typewriter";
 import { userSlice } from "../../Slices/userSlice";
 import LikeButton from "../LikeButton";
-let mailToken = require(`../../code.json`);
+//let mailToken = require(`../../code.json`);
 
 function Contact({ props }) {
   const [firstRender, setFirstRender] = useState(true);
@@ -174,7 +174,7 @@ function Contact({ props }) {
       } else {
         window.open(
           "mailto:contact@pierre-le-developpeur.com?subject=Contact pierre le développeur&body=" +
-            content.current.value
+            content.current.value,
         );
       }
     });
@@ -359,8 +359,8 @@ function Contact({ props }) {
                       message.sender === "pierre"
                         ? "https://pierre-le-developpeur.com/assets/pierre.png"
                         : message.sender === "user"
-                        ? "https://pierre-le-developpeur.com/assets/avatar.png"
-                        : "https://pierre-le-developpeur.com/assets/thanks.png"
+                          ? "https://pierre-le-developpeur.com/assets/avatar.png"
+                          : "https://pierre-le-developpeur.com/assets/thanks.png"
                     }
                     className="avatar discussContent"
                     alt="avatar"
