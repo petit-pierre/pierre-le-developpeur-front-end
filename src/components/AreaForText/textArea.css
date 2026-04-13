@@ -57,16 +57,16 @@
 .textareafield .windows .padding {
   padding-right: 100px;
 }
-.textareafield .windows .fullResum {
-  line-height: 1rem;
-  margin: 20px;
-  margin-top: 40px;
-}
 .textareafield .windows .fullResum p {
   font-family: "abacaxi-devanagari", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: white;
+}
+.textareafield .windows .fullResum {
+  line-height: 1rem;
+  margin: 20px;
+  margin-top: 40px;
 }
 @media (min-width: 1600px) {
   .textareafield .windows .fullResum {
@@ -128,13 +128,13 @@
 .textareafield .purpleAndWitheTextarea .like {
   bottom: 20px;
 }
-.textareafield .purpleAndWitheTextarea .fullResum {
-  margin: 20px;
-}
 .textareafield .purpleAndWitheTextarea .fullResum p {
   font-family: "abacaxi-devanagari", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+.textareafield .purpleAndWitheTextarea .fullResum {
+  margin: 20px;
 }
 @media (min-width: 1600px) {
   .textareafield .purpleAndWitheTextarea .fullResum {

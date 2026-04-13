@@ -12,14 +12,6 @@
     flex-direction: column-reverse;
   }
 }
-.newAccueil .intro {
-  width: 60%;
-  /*.textareafield{
-      width: 60%;
-      position: absolute;
-      bottom: 10vh;
-  }*/
-}
 .newAccueil .intro .fullResum {
   animation-name: intro;
   animation-duration: 4000ms;
@@ -61,6 +53,10 @@
     opacity: 1;
   }
 }
+.newAccueil .intro .purpleAndWitheTextarea:hover .cofeeComponent {
+  opacity: 1;
+  transition: all 5s ease-out;
+}
 .newAccueil .intro .purpleAndWitheTextarea:hover {
   /*.cv{
       background-color: white;
@@ -69,9 +65,8 @@
       border: 2px solid black;
   }*/
 }
-.newAccueil .intro .purpleAndWitheTextarea:hover .cofeeComponent {
-  opacity: 1;
-  transition: all 5s ease-out;
+.newAccueil .intro {
+  width: 60%;
 }
 @media (max-width: 900px) {
   .newAccueil .intro {
@@ -81,6 +76,13 @@
 .newAccueil .intro h1 {
   margin-left: 20px;
   line-height: 1vh;
+}
+.newAccueil .intro {
+  /*.textareafield{
+      width: 60%;
+      position: absolute;
+      bottom: 10vh;
+  }*/
 }
 .newAccueil .intro .cv {
   border: 2px solid #99477a;

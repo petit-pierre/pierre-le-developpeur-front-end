@@ -5,11 +5,6 @@
   }
 }
 
-.contactField {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
 .contactField .bdMini {
   background-color: white;
   width: 0px;
@@ -48,8 +43,6 @@
   width: 160px;
   height: 30px;
   bottom: 4px;
-  opacity: 1;
-  animation: none;
 }
 @media (min-width: 1600px) {
   .contactField .bdLike {
@@ -59,6 +52,10 @@
     right: 6vw;
     font-size: 1vw;
   }
+}
+.contactField .bdLike {
+  opacity: 1;
+  animation: none;
 }
 @keyframes openBd {
   0% {
@@ -99,14 +96,16 @@
 }
 .contactField .maGanache {
   width: 100px;
-  border-radius: 100px;
-  transform: scaleX(-1);
 }
 @media (min-width: 1600px) {
   .contactField .maGanache {
     width: 8vw;
     border-radius: 8vw;
   }
+}
+.contactField .maGanache {
+  border-radius: 100px;
+  transform: scaleX(-1);
 }
 @media (min-width: 650px) {
   .contactField .headerLogos:hover .bdMini {
@@ -156,18 +155,13 @@
   width: 100%;
   margin: auto;
 }
+.contactField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 .contactField .noDiscuss {
   margin: auto;
-}
-.contactField .discuss {
-  width: 93%;
-  height: 100%;
-  padding: 10px;
-  height: calc(60vh - 100px);
-  overflow: scroll;
-  margin-top: 10px;
-  cursor: default;
-  flex-direction: column;
 }
 .contactField .discuss .hidden {
   opacity: 0;
@@ -181,6 +175,16 @@
   border-radius: 10px;
   background: linear-gradient(#ffffff, rgba(255, 255, 255, 0));
   transition: 1s;
+}
+.contactField .discuss {
+  width: 93%;
+  height: 100%;
+  padding: 10px;
+  height: calc(60vh - 100px);
+  overflow: scroll;
+  margin-top: 10px;
+  cursor: default;
+  flex-direction: column;
 }
 .contactField .discuss .txt {
   margin-left: 5px;
@@ -222,6 +226,12 @@
   height: 6vh;
   display: flex;
   cursor: pointer;
+}
+.contactField .discuss .sendButton img {
+  width: 100%;
+  margin: auto;
+}
+.contactField .discuss .sendButton {
   background-color: white;
   border-radius: 10px;
   position: absolute;
@@ -231,10 +241,6 @@
   animation-duration: 2000ms;
   opacity: 1;
   border: solid 2px black;
-}
-.contactField .discuss .sendButton img {
-  width: 100%;
-  margin: auto;
 }
 @media (max-width: 650px) {
   .contactField .discuss .sendButton {

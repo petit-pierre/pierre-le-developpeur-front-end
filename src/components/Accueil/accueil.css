@@ -1,12 +1,6 @@
 .accueilField {
   position: relative;
   height: calc(100vh - 59px);
-  margin-top: 0px;
-  margin-bottom: 20px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
 }
 @media (max-width: 900px) {
   .accueilField {
@@ -20,17 +14,19 @@
 }
 .accueilField .picturePlace {
   background-color: black;
+}
+@media (max-width: 900px) {
+  .accueilField .picturePlace {
+    background-color: white;
+  }
+}
+.accueilField .picturePlace {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
-}
-@media (max-width: 900px) {
-  .accueilField .picturePlace {
-    background-color: white;
-  }
 }
 .accueilField .picturePlace img {
   width: 25%;
@@ -235,6 +231,13 @@
   width: 100px;
   display: flex;
   justify-content: center;
+}
+@media (min-width: 1600px) {
+  .accueilField .contactMe {
+    width: 10vw;
+  }
+}
+.accueilField .contactMe {
   margin: auto;
   cursor: pointer;
   z-index: 2;
@@ -246,11 +249,6 @@
   font: inherit;
   cursor: pointer;
   animation: clignote 1s infinite;
-}
-@media (min-width: 1600px) {
-  .accueilField .contactMe {
-    width: 10vw;
-  }
 }
 .accueilField .contactMe img {
   width: 100%;
@@ -283,6 +281,14 @@
   100% {
     opacity: 1;
   }
+}
+.accueilField {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 @keyframes comming {
   0% {
@@ -336,14 +342,6 @@
     margin-left: 0;
   }
 }
-.accueilField .videoInReact {
-  width: 100%;
-  height: calc(100vh - 59px);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-}
 @media (max-width: 900px) {
   .accueilField .videoInReact {
     flex-direction: column;
@@ -355,13 +353,19 @@
     height: calc(200vh - 150px);
   }
 }
+.accueilField .videoInReact {
+  width: 100%;
+  height: calc(100vh - 59px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
 .accueilField .videoInReact .hardSkills {
   color: white;
   z-index: 2;
   margin-top: 10vh;
   position: relative;
-  width: 35%;
-  min-height: 200px;
 }
 @media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills {
@@ -414,12 +418,14 @@
 }
 .accueilField .videoInReact .hardSkills .oneSkill {
   height: 2vw;
-  overflow: hidden;
 }
 @media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills .oneSkill {
     height: 4vh;
   }
+}
+.accueilField .videoInReact .hardSkills .oneSkill {
+  overflow: hidden;
 }
 .accueilField .videoInReact .hardSkills .oneSkill h3 {
   margin-left: 2vw;
@@ -431,6 +437,10 @@
   .accueilField .videoInReact .hardSkills .oneSkill h3 {
     text-align: left;
   }
+}
+.accueilField .videoInReact .hardSkills {
+  width: 35%;
+  min-height: 200px;
 }
 @media (max-width: 900px) {
   .accueilField .videoInReact .hardSkills {
@@ -478,10 +488,6 @@
 }
 .accueilField .buttonPlace {
   width: 100px;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  position: absolute;
-  z-index: 4;
 }
 @media (min-width: 1600px) {
   .accueilField .buttonPlace {
@@ -489,6 +495,12 @@
     top: calc(50% - 4.5vw);
     left: calc(50% - 4.5vw);
   }
+}
+.accueilField .buttonPlace {
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  position: absolute;
+  z-index: 4;
 }
 @media (max-width: 900px) {
   .accueilField .buttonPlace {

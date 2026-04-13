@@ -1,8 +1,6 @@
 .home {
   position: relative;
   width: 100%;
-  position: relative;
-  overflow: hidden;
 }
 .home .fond {
   position: fixed;
@@ -42,6 +40,10 @@
 }
 .home .without {
   background-color: white;
+}
+.home {
+  position: relative;
+  overflow: hidden;
 }
 .home .background {
   position: absolute;
@@ -123,13 +125,15 @@
   width: 100%;
   justify-content: center;
   margin-top: 80px;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 @media (max-width: 650px) {
   .home .tools {
     flex-direction: column;
   }
+}
+.home .tools {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .home .collapse {
   width: 30%;
@@ -163,16 +167,18 @@
 }
 .home .competences .contentSkills {
   width: 80%;
-  margin: auto;
-  position: relative;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
 }
 @media (max-width: 900px) {
   .home .competences .contentSkills {
     width: 100%;
   }
+}
+.home .competences .contentSkills {
+  margin: auto;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
 }
 @media (max-width: 649px) {
   .home .competences .contentSkills {

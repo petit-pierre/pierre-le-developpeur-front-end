@@ -9,8 +9,6 @@
   cursor: pointer;
   margin: 20px;
   z-index: 5;
-  border: solid white;
-  text-align: center;
 }
 @media (min-width: 1600px) {
   .cardField {
@@ -75,6 +73,10 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+}
+.cardField {
+  border: solid white;
+  text-align: center;
 }
 .cardField .likeSlide {
   position: relative;

@@ -1,14 +1,16 @@
 .projectContentAndBackground {
   position: relative;
   height: 55dvh;
-  width: 80%;
-  margin: auto;
-  margin-top: 12dvh;
 }
 @media (max-width: 650px) {
   .projectContentAndBackground {
     height: 85vh;
   }
+}
+.projectContentAndBackground {
+  width: 80%;
+  margin: auto;
+  margin-top: 12dvh;
 }
 .projectContentAndBackground .projectContent {
   position: absolute;
@@ -254,12 +256,14 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
-  margin-top: 120px;
 }
 @media (max-width: 650px) {
   .projectPage .tools {
     flex-direction: column;
   }
+}
+.projectPage .tools {
+  margin-top: 120px;
 }
 .projectPage .collapse {
   width: 30%;

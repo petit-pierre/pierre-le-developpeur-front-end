@@ -1,12 +1,14 @@
 .error404 {
   height: calc(100dvh - 60px);
-  position: relative;
-  overflow: hidden;
 }
 @media (max-width: 650px) {
   .error404 {
     height: calc(100dvh - 150px);
   }
+}
+.error404 {
+  position: relative;
+  overflow: hidden;
 }
 .error404 .errorRedirect {
   text-align: center;

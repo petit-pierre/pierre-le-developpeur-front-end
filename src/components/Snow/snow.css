@@ -1,6 +1,3 @@
-.snowFall {
-  /* Start */
-}
 .snowFall blockquote {
   overflow: hidden;
   background: linear-gradient(rgba(0, 0, 255, 0), rgba(157, 59, 143, 0));
@@ -14,6 +11,9 @@
 .snowFall body {
   background: #333;
   overflow: hidden;
+}
+.snowFall {
+  /* Start */
 }
 .snowFall .side::before, .snowFall .side::after {
   display: none;
