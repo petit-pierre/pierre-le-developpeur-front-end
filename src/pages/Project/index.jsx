@@ -8,12 +8,10 @@ import AreaForText from "../../components/AreaForText";
 import Contact from "../../components/Contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import io from "socket.io-client";
+import { socket } from "../../socket";
 
 function Project() {
   const navigate = useNavigate();
-  const socket = io.connect("https://api.pierre-le-developpeur.com");
-  /*on recupere les valeurs du store redux pour le header*/
 
   const language = useSelector((state) => state.data.language);
   const skills = useSelector((state) => state.data.skills);
@@ -106,7 +104,7 @@ function Project() {
         {
           notation: "compact",
           maximumFractionDigits: 2,
-        }
+        },
       ).format(found.likes);
     }
   }
@@ -298,7 +296,7 @@ function Project() {
                   {(divCounter = !divCounter)}
                 </div>
               </div>
-            )
+            ),
           )}
         </div>
         <div className="tools">

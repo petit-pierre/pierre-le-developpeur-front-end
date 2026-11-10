@@ -1,4 +1,4 @@
-import io from "socket.io-client";
+import { socket } from "../../socket";
 import "./like.css";
 import { useSelector } from "react-redux";
 
@@ -7,7 +7,6 @@ function LikeButton({ propsLike }) {
 
   const sendLike = (evt, propsLike) => {
     evt.preventDefault();
-    const socket = io.connect("https://api.pierre-le-developpeur.com");
     let message = propsLike.id;
 
     let counter = document.getElementById(propsLike.id).innerText;
@@ -41,7 +40,7 @@ function LikeButton({ propsLike }) {
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(like),
-      }
+      },
     );
   }
 

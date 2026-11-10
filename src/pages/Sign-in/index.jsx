@@ -5,11 +5,9 @@ import { setTokenThunk } from "../../thunkActionsCreator";
 import "./signin.css";
 import Snow from "../../components/Snow";
 import Contact from "../../components/Contact";
-import io from "socket.io-client";
+import { socket } from "../../socket";
 
 function SignIn() {
-  const socket = io.connect("https://api.pierre-le-developpeur.com");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,7 +58,7 @@ function SignIn() {
         {
           notation: "compact",
           maximumFractionDigits: 2,
-        }
+        },
       ).format(found.likes);
     }
   }
@@ -130,7 +128,7 @@ function SignIn() {
     const rememberChecked = remember.current.checked;
     if (emailRegExp.test(name.current.value) && pass.current.value !== "") {
       const setTokenResult = await dispatch(
-        setTokenThunk(email, password, rememberChecked)
+        setTokenThunk(email, password, rememberChecked),
       );
 
       if (setTokenResult) {

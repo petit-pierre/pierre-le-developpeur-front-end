@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import "./home.css";
-import io from "socket.io-client";
+import { socket } from "../../socket";
 import LikeButton from "../../components/LikeButton";
 import Contact from "../../components/Contact";
 import Collapse from "../../components/Collapse";
@@ -41,10 +41,6 @@ function Home() {
   //console.log(newTab);
   const [loading, setLoading] = useState(true);
   const [sortedProjects, setSortedProjects] = useState(newTab);
-
-  /*on demare l'ecoute du server websocket pour pouvoire receptionner les likes des autres utilisateurs en temps reel*/
-
-  const socket = io.connect("https://api.pierre-le-developpeur.com");
 
   useEffect(() => {
     if (
@@ -152,7 +148,7 @@ function Home() {
         {
           notation: "compact",
           maximumFractionDigits: 2,
-        }
+        },
       ).format(found.likes);
     }
   }
@@ -355,7 +351,7 @@ function Home() {
                       </div>
                     ) : (
                       ""
-                    )
+                    ),
                   )}
                 ></Collapse>
               </div>
@@ -376,7 +372,7 @@ function Home() {
                       </div>
                     ) : (
                       ""
-                    )
+                    ),
                   )}
                 ></Collapse>
               </div>
@@ -397,7 +393,7 @@ function Home() {
                       </div>
                     ) : (
                       ""
-                    )
+                    ),
                   )}
                 ></Collapse>
               </div>
