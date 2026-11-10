@@ -13,6 +13,7 @@ function Contact({ props }) {
 
   const dispatch = useDispatch();
   const content = useRef();
+  const mood = useSelector((state) => state.data.chatbotMood);
 
   /*on recupere les valeurs du store redux*/
 
@@ -321,7 +322,11 @@ function Contact({ props }) {
         tabIndex={13}
       >
         <img
-          src="https://pierre-le-developpeur.com/assets/chatbot.svg"
+          src={
+            mood === "thx"
+              ? "https://pierre-le-developpeur.com/assets/chatbot_bla.svg"
+              : "https://pierre-le-developpeur.com/assets/chatbot.svg"
+          }
           className="maGanache"
           alt="thank you"
           onMouseOver={(e) => {
@@ -335,10 +340,22 @@ function Contact({ props }) {
           //onClick={openDial}
         ></img>
         <div
-          className={discus === true ? "bdMaxi bd discussContent" : "bdMini bd"}
+          className={
+            discus === true
+              ? mood === "thx"
+                ? "bdMaxi bd discussContent bdLike"
+                : "bdMaxi bd discussContent"
+              : mood === "thx"
+                ? "bdMini bd bdLike"
+                : "bdMini bd"
+          }
         >
           {discus === false ? (
-            <span className="noDiscuss">?</span>
+            mood === "thx" ? (
+              <span className="noDiscuss">Oh un like !</span>
+            ) : (
+              <span className="noDiscuss">?</span>
+            )
           ) : (
             <div className="discuss discussContent">
               <div

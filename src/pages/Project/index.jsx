@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./project.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Slider from "../../components/Slider";
@@ -9,10 +9,11 @@ import Contact from "../../components/Contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { socket } from "../../socket";
+import { userSlice } from "../../Slices/userSlice";
 
 function Project() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.data.language);
   const skills = useSelector((state) => state.data.skills);
   const likes = useSelector((state) => state.data.likes);
@@ -136,65 +137,89 @@ function Project() {
   //     //bd.className = "bdMini";
   //   }, 150);
   // });
+  // useEffect(() => {
+  //   async function getOldLikes(response) {
+  //     const get = await fetch(
+  //       "https://api.pierre-le-developpeur.com/api/likes",
+  //       {
+  //         method: "GET",
+  //       },
+  //     );
+  //     const newlikes = await get.json();
+  //     const found = newlikes.find((like) => like._id === response.message);
+
+  //     if (document.getElementById(response.message) != null) {
+  //       document.getElementById(response.message).innerText = Intl.NumberFormat(
+  //         "en-US",
+  //         {
+  //           notation: "compact",
+  //           maximumFractionDigits: 2,
+  //         },
+  //       ).format(found.likes);
+  //     }
+  //   }
+
+  //   const handleReceiveMessage = (response) => {
+  //     let bd = document.querySelector(".bd");
+  //     if (bd !== null) {
+  //       bd.classList.add("bdLike");
+
+  //       if (bd.className.includes("bdMini") === true) {
+  //         bd.classList.remove("bdMini");
+  //         bd.childNodes[0].innerText = "Oh un like !";
+  //         document.querySelector(".maGanache").src =
+  //           "https://pierre-le-developpeur.com/assets/chatbot_bla.svg";
+  //         setTimeout(() => {
+  //           document.querySelector(".maGanache").src =
+  //             "https://pierre-le-developpeur.com/assets/chatbot.svg";
+  //         }, 1000);
+
+  //         setTimeout(() => {
+  //           if (!bd.className.includes("bdMaxi")) {
+  //             bd.classList.add("bdMini");
+  //             bd.childNodes[0].innerText = "?";
+  //           }
+  //           bd.classList.remove("bdLike");
+  //         }, 1500);
+  //       }
+  //     }
+
+  //     setTimeout(() => {
+  //       getOldLikes(response);
+  //     }, 150);
+  //   };
+
+  //   // S'abonne une seule fois au montage
+  //   socket.on("receive_message", handleReceiveMessage);
+
+  //   return () => {
+  //     socket.off("receive_message", handleReceiveMessage);
+  //   };
+  // }, []);
   useEffect(() => {
-    async function getOldLikes(response) {
-      const get = await fetch(
-        "https://api.pierre-le-developpeur.com/api/likes",
-        {
-          method: "GET",
-        },
+    // Écoute de l'événement WebSocket global émis par le serveur
+    socket.on("receive_message", (data) => {
+      console.log("Mise à jour temps réel reçue pour le like :", data);
+
+      // Mise à jour instantanée du store Redux pour tous les clients connectés
+      dispatch(
+        userSlice.actions.updateLike({
+          id: data.id,
+          likes: data.likes,
+        }),
       );
-      const newlikes = await get.json();
-      const found = newlikes.find((like) => like._id === response.message);
+      dispatch(userSlice.actions.setChatbotMood("thx"));
 
-      if (document.getElementById(response.message) != null) {
-        document.getElementById(response.message).innerText = Intl.NumberFormat(
-          "en-US",
-          {
-            notation: "compact",
-            maximumFractionDigits: 2,
-          },
-        ).format(found.likes);
-      }
-    }
-
-    const handleReceiveMessage = (response) => {
-      let bd = document.querySelector(".bd");
-      if (bd !== null) {
-        bd.classList.add("bdLike");
-
-        if (bd.className.includes("bdMini") === true) {
-          bd.classList.remove("bdMini");
-          bd.childNodes[0].innerText = "Oh un like !";
-          document.querySelector(".maGanache").src =
-            "https://pierre-le-developpeur.com/assets/chatbot_bla.svg";
-          setTimeout(() => {
-            document.querySelector(".maGanache").src =
-              "https://pierre-le-developpeur.com/assets/chatbot.svg";
-          }, 1000);
-
-          setTimeout(() => {
-            if (!bd.className.includes("bdMaxi")) {
-              bd.classList.add("bdMini");
-              bd.childNodes[0].innerText = "?";
-            }
-            bd.classList.remove("bdLike");
-          }, 1500);
-        }
-      }
-
+      // 3. Optionnel : le faire revenir à "normal" après 4 secondes
       setTimeout(() => {
-        getOldLikes(response);
-      }, 150);
-    };
-
-    // S'abonne une seule fois au montage
-    socket.on("receive_message", handleReceiveMessage);
+        dispatch(userSlice.actions.setChatbotMood("normal"));
+      }, 1500);
+    });
 
     return () => {
-      socket.off("receive_message", handleReceiveMessage);
+      socket.off("receive_message");
     };
-  }, []);
+  }, [dispatch]);
 
   /*on verifie que les valeurs sont bien dans le store, dans le cas contraire on fait un refresh*/
 

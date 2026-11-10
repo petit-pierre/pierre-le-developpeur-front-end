@@ -11,6 +11,7 @@ export const userSlice = createSlice({
     sliders: [],
     likes: null,
     language: "FR",
+    chatbotMood: "normal",
   },
   reducers: {
     setToken: (currentState, action) => {
@@ -56,6 +57,23 @@ export const userSlice = createSlice({
     setContactMenu: (currentState, action) => {
       const contactMenu = { ...currentState, contactMenu: action.payload };
       return contactMenu;
+    },
+
+    updateLike: (currentState, action) => {
+      // action.payload attend { id, likes }
+      const updatedLikes = currentState.likes
+        ? currentState.likes.map((like) => {
+            if (like._id === action.payload.id) {
+              return { ...like, likes: action.payload.likes };
+            }
+            return like;
+          })
+        : [];
+
+      return { ...currentState, likes: updatedLikes };
+    },
+    setChatbotMood: (currentState, action) => {
+      return { ...currentState, chatbotMood: action.payload };
     },
   },
 });

@@ -12,7 +12,7 @@ export const setTokenThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify({ email, password }),
-      }
+      },
     );
 
     if (response.ok) {
@@ -38,7 +38,7 @@ export const setProjectPictureThunk =
           Authorization: "Bearer " + token,
         },
         body: formData,
-      }
+      },
     );
     let result = await response.json();
     if (response.ok) {
@@ -58,7 +58,7 @@ export const deletePictureThunk = (id, token) => async (dispatch, getstate) => {
       headers: {
         Authorization: "Bearer " + token,
       },
-    }
+    },
   );
   let result = await response.json();
   if (response.ok) {
@@ -80,7 +80,7 @@ export const setProjectThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(newProject),
-      }
+      },
     );
     let result = await response.json();
     const getProjects = async () => {
@@ -99,7 +99,7 @@ export const getProjectsThunk =
       "https://api.pierre-le-developpeur.com/api/projects",
       {
         method: "GET",
-      }
+      },
     );
     let result = await response.json();
     dispatch(userSlice.actions.setProjects(result));
@@ -119,7 +119,7 @@ export const deleteProjectThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const getProjects = async () => {
@@ -145,7 +145,7 @@ export const putProjectThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(newProject),
-      }
+      },
     );
 
     let result = await response.json();
@@ -172,13 +172,13 @@ export const setTranslationThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(projectTranslation),
-      }
+      },
     );
 
     let result = await response.json();
     const setTranslationsProjects = async () => {
       const getProjectsTranslationResult = await dispatch(
-        getTranslationsThunk()
+        getTranslationsThunk(),
       );
     };
     setTranslationsProjects();
@@ -198,12 +198,12 @@ export const deleteTranslationThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const setTranslationsProjects = async () => {
       const getProjectsTranslationResult = await dispatch(
-        getTranslationsThunk()
+        getTranslationsThunk(),
       );
     };
     setTranslationsProjects();
@@ -218,7 +218,7 @@ export const getTranslationsThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/translations",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -234,7 +234,7 @@ export const getTranslationThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/translations/65d740360e76aef74b084e09",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -257,7 +257,7 @@ export const putTranslationThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(translation),
-      }
+      },
     );
 
     let result = await response.json();
@@ -283,7 +283,7 @@ export const setSkillThunk = (skill, token) => async (dispatch, getstate) => {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(skill),
-    }
+    },
   );
 
   let result = await response.json();
@@ -310,7 +310,7 @@ export const putSkillThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(skill),
-      }
+      },
     );
 
     let result = await response.json();
@@ -334,7 +334,7 @@ export const deleteSkillThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const setSkills = async () => {
@@ -352,7 +352,7 @@ export const getSkillsThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/skills",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -375,7 +375,7 @@ export const setToolThunk = (tool, token) => async (dispatch, getstate) => {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(tool),
-    }
+    },
   );
 
   let result = await response.json();
@@ -402,7 +402,7 @@ export const putToolThunk =
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(tool),
-      }
+      },
     );
 
     let result = await response.json();
@@ -426,7 +426,7 @@ export const deleteToolThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const setTools = async () => {
@@ -444,7 +444,7 @@ export const getToolsThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/tools",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -467,7 +467,7 @@ export const setSlideThunk = (slide, token) => async (dispatch, getstate) => {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(slide),
-    }
+    },
   );
 
   let result = await response.json();
@@ -491,7 +491,7 @@ export const deleteSlideThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const getSliders = async () => {
@@ -509,7 +509,7 @@ export const getSlidersThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/sliders",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -532,7 +532,7 @@ export const setLikeThunk = (likes, token) => async (dispatch, getstate) => {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(likes),
-    }
+    },
   );
 
   let result = await response.json();
@@ -556,7 +556,7 @@ export const deleteLikesThunk =
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
     let result = await response.json();
     const getLikes = async () => {
@@ -574,7 +574,7 @@ export const getLikesThunk = () => async (dispatch, getstate) => {
     "https://api.pierre-le-developpeur.com/api/likes",
     {
       method: "GET",
-    }
+    },
   );
 
   let result = await response.json();
@@ -584,6 +584,27 @@ export const getLikesThunk = () => async (dispatch, getstate) => {
   }
   return false;
 };
+
+// export const putLikeThunk = (like, token) => async (dispatch, getstate) => {
+//   const response = await fetch(
+//     "https://api.pierre-le-developpeur.com/api/likes/" + like._id,
+//     {
+//       method: "PUT",
+//       headers: {
+//         Authorization: "Bearer " + token,
+//         Accept: "application/json",
+//         "Content-Type": "application/json;charset=utf-8",
+//       },
+//       body: JSON.stringify(like),
+//     }
+//   );
+
+//   let result = await response.json();
+//   if (response.ok) {
+//     return result;
+//   }
+//   return false;
+// };
 
 export const putLikeThunk = (like, token) => async (dispatch, getstate) => {
   const response = await fetch(
@@ -595,12 +616,22 @@ export const putLikeThunk = (like, token) => async (dispatch, getstate) => {
         Accept: "application/json",
         "Content-Type": "application/json;charset=utf-8",
       },
+      // Le body n'est même plus strictement nécessaire si le serveur fait un $inc automatique,
+      // mais tu peux laisser JSON.stringify(like) si ton routeur l'attend.
       body: JSON.stringify(like),
-    }
+    },
   );
 
   let result = await response.json();
   if (response.ok) {
+    // Optionnel : tu peux dispatcher directement ici pour ton propre client,
+    // mais le socket "receive_message" s'en chargera aussi pour tout le monde.
+    dispatch(
+      userSlice.actions.updateLike({
+        id: result.updatedLike._id,
+        likes: result.updatedLike.likes,
+      }),
+    );
     return result;
   }
   return false;
