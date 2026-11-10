@@ -91,51 +91,110 @@ function Project() {
 
   const project = projects.find((project) => project.french_title === title);
 
-  async function getOldLikes(response) {
-    const get = await fetch("https://api.pierre-le-developpeur.com/api/likes", {
-      method: "GET",
-    });
-    const newlikes = await get.json();
-    const found = newlikes.find((like) => like._id === response.message);
+  // async function getOldLikes(response) {
+  //   const get = await fetch("https://api.pierre-le-developpeur.com/api/likes", {
+  //     method: "GET",
+  //   });
+  //   const newlikes = await get.json();
+  //   const found = newlikes.find((like) => like._id === response.message);
 
-    if (document.getElementById(response.message) != null) {
-      document.getElementById(response.message).innerText = Intl.NumberFormat(
-        "en-US",
+  //   if (document.getElementById(response.message) != null) {
+  //     document.getElementById(response.message).innerText = Intl.NumberFormat(
+  //       "en-US",
+  //       {
+  //         notation: "compact",
+  //         maximumFractionDigits: 2,
+  //       },
+  //     ).format(found.likes);
+  //   }
+  // }
+
+  // socket.on("receive_message", (response) => {
+  //   let bd = document.querySelector(".bd");
+  //   if (bd !== null) {
+  //     bd.classList.add("bdLike");
+  //     //console.log(response.message);
+
+  //     if (bd.className.includes("bdMini") === true) {
+  //       bd.classList.remove("bdMini");
+
+  //       bd.childNodes[0].innerText = "Oh un like !";
+
+  //       setTimeout(() => {
+  //         if (bd.className.includes("bdMaxi")) {
+  //         } else {
+  //           bd.classList.add("bdMini");
+  //           bd.childNodes[0].innerText = "?";
+  //         }
+  //         bd.classList.remove("bdLike");
+  //       }, 1500);
+  //     }
+  //   }
+
+  //   setTimeout(() => {
+  //     getOldLikes(response);
+  //     //bd.className = "bdMini";
+  //   }, 150);
+  // });
+  useEffect(() => {
+    async function getOldLikes(response) {
+      const get = await fetch(
+        "https://api.pierre-le-developpeur.com/api/likes",
         {
-          notation: "compact",
-          maximumFractionDigits: 2,
+          method: "GET",
         },
-      ).format(found.likes);
-    }
-  }
+      );
+      const newlikes = await get.json();
+      const found = newlikes.find((like) => like._id === response.message);
 
-  socket.on("receive_message", (response) => {
-    let bd = document.querySelector(".bd");
-    if (bd !== null) {
-      bd.classList.add("bdLike");
-      //console.log(response.message);
-
-      if (bd.className.includes("bdMini") === true) {
-        bd.classList.remove("bdMini");
-
-        bd.childNodes[0].innerText = "Oh un like !";
-
-        setTimeout(() => {
-          if (bd.className.includes("bdMaxi")) {
-          } else {
-            bd.classList.add("bdMini");
-            bd.childNodes[0].innerText = "?";
-          }
-          bd.classList.remove("bdLike");
-        }, 1500);
+      if (document.getElementById(response.message) != null) {
+        document.getElementById(response.message).innerText = Intl.NumberFormat(
+          "en-US",
+          {
+            notation: "compact",
+            maximumFractionDigits: 2,
+          },
+        ).format(found.likes);
       }
     }
 
-    setTimeout(() => {
-      getOldLikes(response);
-      //bd.className = "bdMini";
-    }, 150);
-  });
+    const handleReceiveMessage = (response) => {
+      let bd = document.querySelector(".bd");
+      if (bd !== null) {
+        bd.classList.add("bdLike");
+
+        if (bd.className.includes("bdMini") === true) {
+          bd.classList.remove("bdMini");
+          bd.childNodes[0].innerText = "Oh un like !";
+          document.querySelector(".maGanache").src =
+            "https://pierre-le-developpeur.com/assets/chatbot_bla.svg";
+          setTimeout(() => {
+            document.querySelector(".maGanache").src =
+              "https://pierre-le-developpeur.com/assets/chatbot.svg";
+          }, 1000);
+
+          setTimeout(() => {
+            if (!bd.className.includes("bdMaxi")) {
+              bd.classList.add("bdMini");
+              bd.childNodes[0].innerText = "?";
+            }
+            bd.classList.remove("bdLike");
+          }, 1500);
+        }
+      }
+
+      setTimeout(() => {
+        getOldLikes(response);
+      }, 150);
+    };
+
+    // S'abonne une seule fois au montage
+    socket.on("receive_message", handleReceiveMessage);
+
+    return () => {
+      socket.off("receive_message", handleReceiveMessage);
+    };
+  }, []);
 
   /*on verifie que les valeurs sont bien dans le store, dans le cas contraire on fait un refresh*/
 
