@@ -1,4 +1,3 @@
-export function setStorage(token, password) {
+export function setStorage(token) {
   localStorage.setItem("persistantState", token);
-  localStorage.setItem("password", password);
 }

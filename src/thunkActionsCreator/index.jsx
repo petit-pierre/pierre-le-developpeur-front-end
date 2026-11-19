@@ -19,7 +19,7 @@ export const setTokenThunk =
       const result = await response.json();
       dispatch(userSlice.actions.setToken(result.token));
       if (rememberChecked === true) {
-        setStorage(result.token, result.password);
+        setStorage(result.token);
       }
       return true;
     }

@@ -6,17 +6,26 @@ import { userSlice } from "../../Slices/userSlice";
 
 function Contact({ props }) {
   const [firstRender, setFirstRender] = useState(true);
-  const [writer, setWriter] = useState(0);
 
   const dispatch = useDispatch();
   const content = useRef();
-  const mood = useSelector((state) => state.data.chatbotMood);
 
+  const mood = useSelector((state) => state.data.chatbotMood);
   const language = useSelector((state) => state.data.language);
   const discuss = useSelector((state) => state.data.contactMenu);
+  const conversationId = useSelector((state) => state.data.conversationId);
+  const histo = useSelector((state) => state.data.chatHisto);
 
-  // État pour stocker l'ID de conversation renvoyé par le back-end
-  const [conversationId, setConversationId] = useState(null);
+  // Initialise writer au nombre de blocs du dernier message pour éviter
+  // de relancer l'animation machine à écrire après un F5 ou un changement de page
+  const lastMessage = histo[histo.length - 1];
+  const [writer, setWriter] = useState(
+    lastMessage?.blocks ? lastMessage.blocks.length : 0,
+  );
+
+  const [scrollTop, setScrollTop] = useState(0);
+  const [oldScrollTop, setOldScrollTop] = useState(0);
+  const [discus, setDiscus] = useState(false);
 
   useEffect(() => {
     discuss === true ? openDial() : closeDial();
@@ -39,62 +48,44 @@ function Contact({ props }) {
     }
   }, [discuss]);
 
-  const [scrollTop, setScrollTop] = useState(0);
-  const [oldScrollTop, setOldScrollTop] = useState(0);
-
   useEffect(() => {
     const onScroll = (e) => {
       setScrollTop(e.target.documentElement.scrollTop);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop]);
+  }, []);
 
-  const [discus, setDiscus] = useState(false);
+  // Gestion propre des écouteurs clic extérieur et touche Échap
+  useEffect(() => {
+    const handleClickOutside = (evt) => {
+      if (
+        discus === true &&
+        !evt.target.closest(".discuss") &&
+        !evt.target.closest(".headerLogos")
+      ) {
+        setDiscus(false);
+        dispatch(userSlice.actions.setContactMenu(false));
+      }
+    };
 
-  // Historique initialisé avec le message d'accueil de l'assistant
-  const [histo, setHisto] = useState([
-    {
-      content: "Bonjour ! Comment puis-je vous aider dans votre projet ?",
-      contentEng: "Hello! How can I help you with your project?",
-      sender: "pierre",
-      blocks: [
-        {
-          type: "text",
-          text: "Bonjour ! Comment puis-je vous aider dans votre projet ?",
-        },
-        {
-          label: "un lien",
-          url: "https://calendly.com/l-araignee/entretien-en-visio",
-          sender: "pierre",
-          type: "link",
-        },
-      ],
-    },
-  ]);
+    const handleKeyDown = (evt) => {
+      if (evt.key === "Escape" && discus === true) {
+        setDiscus(false);
+        dispatch(userSlice.actions.setContactMenu(false));
+      }
+    };
 
-  document.addEventListener("click", function (evt) {
-    if (
-      evt.target.className !== "bdMaxi" &&
-      discus === true &&
-      evt.target.className !== "headerLogos" &&
-      evt.target.className !== "maGanache" &&
-      evt.target.className !== "discuss" &&
-      evt.target.classList.contains("discussContent") === false
-    ) {
-      setDiscus(false);
-      dispatch(userSlice.actions.setContactMenu(false));
-    }
-  });
+    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
 
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      setDiscus(false);
-      document.body.click();
-    }
-  });
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [discus, dispatch]);
 
-  // Fonction utilitaire pour découper le Markdown de l'IA en blocs exploitables
+  // Découpe le Markdown de l'IA en blocs exploitables (dont liens dans les puces)
   const parseMarkdownIntoBlocks = (markdownText) => {
     if (!markdownText) return [];
 
@@ -110,7 +101,6 @@ function Contact({ props }) {
       const trimmedLine = line.trim();
       if (!trimmedLine) return;
 
-      // 1. Si la ligne est une puce (* ou -), on extrait ses sous-parties (texte + liens)
       if (/^(\*|-)\s+/.test(trimmedLine)) {
         const bulletContent = trimmedLine.replace(/^(\*|-)\s+/, "").trim();
         const bulletParts = bulletContent
@@ -138,7 +128,6 @@ function Contact({ props }) {
         return;
       }
 
-      // 2. Sinon, traitement classique (texte et liens hors puce)
       const parts = trimmedLine
         .split(linkSplitRegex)
         .filter((p) => p.trim() !== "");
@@ -175,14 +164,14 @@ function Contact({ props }) {
     const userMessage = content.current.value.trim();
     if (!userMessage) return;
 
-    // 1. On met à jour l'historique local avec le message de l'utilisateur
-    let newHistor = structuredClone(histo);
-    newHistor.push({
-      content: userMessage,
-      contentEng: userMessage,
-      sender: "user",
-    });
-    setHisto(newHistor);
+    // 1. Ajout du message utilisateur dans Redux
+    dispatch(
+      userSlice.actions.addChatMessage({
+        content: userMessage,
+        contentEng: userMessage,
+        sender: "user",
+      }),
+    );
     content.current.value = "";
 
     try {
@@ -209,31 +198,33 @@ function Contact({ props }) {
 
       const data = await response.json();
 
-      // 3. On met à jour le conversationId avec celui renvoyé par le serveur
+      // 3. Mise à jour du conversationId dans Redux
       if (data.conversationId) {
-        setConversationId(data.conversationId);
+        dispatch(userSlice.actions.setConversationId(data.conversationId));
       }
 
       const parsedBlocks = parseMarkdownIntoBlocks(data.reply);
 
-      // 4. On ajoute la réponse de l'assistant à l'historique
-      newHistor.push({
-        content: data.reply,
-        blocks: parsedBlocks,
-        contentEng: data.reply,
-        sender: "pierre",
-      });
+      // 4. Ajout de la réponse de l'assistant dans Redux + déclenchement de Typewrite
       setWriter(0);
-      setHisto([...newHistor]);
+      dispatch(
+        userSlice.actions.addChatMessage({
+          content: data.reply,
+          blocks: parsedBlocks,
+          contentEng: data.reply,
+          sender: "pierre",
+        }),
+      );
     } catch (error) {
       console.error("Erreur chat:", error);
-      newHistor.push({
-        content:
-          "Désolé, une erreur technique est survenue. Vous pouvez contacter Pierre directement par e-mail.",
-        contentEng: "Sorry, a technical error occurred.",
-        sender: "pierre",
-      });
-      setHisto([...newHistor]);
+      dispatch(
+        userSlice.actions.addChatMessage({
+          content:
+            "Désolé, une erreur technique est survenue. Vous pouvez contacter Pierre directement par e-mail.",
+          contentEng: "Sorry, a technical error occurred.",
+          sender: "pierre",
+        }),
+      );
     }
 
     // Scroll automatique vers le bas
@@ -245,7 +236,7 @@ function Contact({ props }) {
     }, 100);
   }
 
-  const closeDial = (evt) => {
+  const closeDial = () => {
     document.querySelector(".bd")?.classList.remove("fullScreen");
     setDiscus(false);
     document.body.style.position = "";
@@ -298,7 +289,6 @@ function Contact({ props }) {
     }, 100);
   }
 
-  // Helper pour le rendu d'une puce (avec texte + liens)
   const renderBulletParts = (parts) => (
     <p>
       {parts.map((part, pIdx) =>
