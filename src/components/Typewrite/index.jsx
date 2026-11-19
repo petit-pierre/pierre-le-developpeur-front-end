@@ -60,11 +60,11 @@ function Typewrite({ props = {} }) {
   if (!text) return null;
 
   return (
-    <p className="autoTyper discussContent">
+    <div className="autoTyper discussContent">
       <p className="discussContent">
         {typed.source === text ? typed.value : ""}
       </p>
-    </p>
+    </div>
   );
 }
 

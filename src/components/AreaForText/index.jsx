@@ -29,10 +29,20 @@ function AreaForText({ props, content }) {
           <div className="fullResum">
             {language === "FR"
               ? french.map((content, index) => (
-                  <ReactMarkdown children={content}>{content}</ReactMarkdown>
+                  <ReactMarkdown
+                    children={content}
+                    key={`${language}-${index}`}
+                  >
+                    {content}
+                  </ReactMarkdown>
                 ))
               : english.map((content, index) => (
-                  <ReactMarkdown children={content}>{content}</ReactMarkdown>
+                  <ReactMarkdown
+                    children={content}
+                    key={`${language}-${index}`}
+                  >
+                    {content}
+                  </ReactMarkdown>
                 ))}{" "}
           </div>
           <br></br>
@@ -41,8 +51,8 @@ function AreaForText({ props, content }) {
             <div className="textareaLinks">
               {" "}
               <h1> {language === "FR" ? "Liens :" : "Links :"} </h1>
-              {props.links.map((link) => (
-                <div key={link._id}>
+              {props.links.map((link, index) => (
+                <div key={`textarea-${index}`}>
                   <a
                     href={link.url}
                     target={link.category === "pierre le dev" ? "" : "_blank"}

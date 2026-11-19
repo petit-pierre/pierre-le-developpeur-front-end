@@ -3,7 +3,6 @@ import "./contact.css";
 import { useEffect, useRef, useState } from "react";
 import Typewrite from "../Typewrite";
 import { userSlice } from "../../Slices/userSlice";
-import ReactMarkdown from "react-markdown";
 
 function Contact({ props }) {
   const [firstRender, setFirstRender] = useState(true);
@@ -14,7 +13,6 @@ function Contact({ props }) {
   const mood = useSelector((state) => state.data.chatbotMood);
 
   const language = useSelector((state) => state.data.language);
-  // const translations = useSelector((state) => state.data.translations);
   const discuss = useSelector((state) => state.data.contactMenu);
 
   // État pour stocker l'ID de conversation renvoyé par le back-end
@@ -27,15 +25,15 @@ function Contact({ props }) {
       if (window.location.hash === "#competences") {
         document
           .getElementById("competences")
-          .scrollIntoView({ behavior: "smooth" });
+          ?.scrollIntoView({ behavior: "smooth" });
       }
       if (window.location.hash === "#reco") {
-        document.getElementById("reco").scrollIntoView({ behavior: "smooth" });
+        document.getElementById("reco")?.scrollIntoView({ behavior: "smooth" });
       }
       if (window.location.hash === "#projets") {
         document
           .getElementById("projets")
-          .scrollIntoView({ behavior: "smooth" });
+          ?.scrollIntoView({ behavior: "smooth" });
       }
       setFirstRender(false);
     }
@@ -52,7 +50,6 @@ function Contact({ props }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
 
-  // const [sended, setSended] = useState(false);
   const [discus, setDiscus] = useState(false);
 
   // Historique initialisé avec le message d'accueil de l'assistant
@@ -97,10 +94,83 @@ function Contact({ props }) {
     }
   });
 
+  // Fonction utilitaire pour découper le Markdown de l'IA en blocs exploitables
+  const parseMarkdownIntoBlocks = (markdownText) => {
+    if (!markdownText) return [];
+
+    const cleanedMarkdown = markdownText
+      .replace(/\*\*\*(.*?)\*\*\*/gs, "$1")
+      .replace(/\*\*(.*?)\*\*/gs, "$1")
+      .replace(/(^|\s)_([^_]+)_(\s|[.,!?;:]|$)/g, "$1$2$3");
+
+    const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
+    const blocks = [];
+
+    cleanedMarkdown.split("\n").forEach((line) => {
+      const trimmedLine = line.trim();
+      if (!trimmedLine) return;
+
+      // 1. Si la ligne est une puce (* ou -), on extrait ses sous-parties (texte + liens)
+      if (/^(\*|-)\s+/.test(trimmedLine)) {
+        const bulletContent = trimmedLine.replace(/^(\*|-)\s+/, "").trim();
+        const bulletParts = bulletContent
+          .split(linkSplitRegex)
+          .filter((p) => p.trim() !== "")
+          .map((part) => {
+            const mdLinkMatch = part.trim().match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+            if (mdLinkMatch) {
+              return {
+                type: "link",
+                label: mdLinkMatch[1],
+                url: mdLinkMatch[2],
+              };
+            }
+            return {
+              type: "text",
+              text: part.trim(),
+            };
+          });
+
+        blocks.push({
+          type: "bullet",
+          parts: bulletParts,
+        });
+        return;
+      }
+
+      // 2. Sinon, traitement classique (texte et liens hors puce)
+      const parts = trimmedLine
+        .split(linkSplitRegex)
+        .filter((p) => p.trim() !== "");
+
+      parts.forEach((part) => {
+        const mdLinkMatch = part.trim().match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+
+        if (mdLinkMatch) {
+          blocks.push({
+            type: "link",
+            label: mdLinkMatch[1],
+            url: mdLinkMatch[2],
+          });
+        } else {
+          const cleanText = part.trim();
+          if (cleanText) {
+            blocks.push({
+              type: "text",
+              text: cleanText,
+            });
+          }
+        }
+      });
+    });
+
+    return blocks;
+  };
+
   /* Fonction d'envoi connectée à ton API back-end /api/chat */
   async function send(evt) {
     evt.preventDefault();
-    document.querySelector(".bd").classList.remove("fullScreen");
+    document.querySelector(".bd")?.classList.remove("fullScreen");
 
     const userMessage = content.current.value.trim();
     if (!userMessage) return;
@@ -143,67 +213,18 @@ function Contact({ props }) {
       if (data.conversationId) {
         setConversationId(data.conversationId);
       }
-      // Fonction utilitaire pour découper le Markdown de l'IA en blocs exploitables
-      const parseMarkdownIntoBlocks = (markdownText) => {
-        if (!markdownText) return [];
-        console.log(JSON.stringify(markdownText));
-        const cleanedMarkdown = markdownText
-          .replace(/\*\*\*(.*?)\*\*\*/gs, "$1")
-          .replace(/\*\*(.*?)\*\*/gs, "$1")
-          .replace(/(^|\s)_([^_]+)_(\s|[.,!?;:]|$)/g, "$1$2$3");
-        const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
-        const blocks = [];
-
-        cleanedMarkdown.split("\n").forEach((line) => {
-          if (!line.trim()) return;
-
-          const parts = line
-            .split(linkSplitRegex)
-            .filter((p) => p.trim() !== "");
-
-          parts.forEach((part) => {
-            const mdLinkMatch = part.trim().match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-
-            if (mdLinkMatch) {
-              blocks.push({
-                type: "link",
-                label: mdLinkMatch[1],
-                url: mdLinkMatch[2],
-              });
-            } else {
-              const cleanText = part.replace(/\*\*(.*?)\*\*/g, "$1").trim();
-              if (!cleanText) return;
-
-              if (/^(\*|-)\s+/.test(cleanText)) {
-                blocks.push({
-                  type: "bullet",
-                  text: cleanText.replace(/^(\*|-)\s+/, "").trim(),
-                });
-              } else {
-                blocks.push({
-                  type: "text",
-                  text: cleanText,
-                });
-              }
-            }
-          });
-        });
-
-        return blocks;
-      };
 
       const parsedBlocks = parseMarkdownIntoBlocks(data.reply);
 
       // 4. On ajoute la réponse de l'assistant à l'historique
       newHistor.push({
-        content: data.reply, // On garde le texte brut d'origine si besoin
-        blocks: parsedBlocks, // Le tableau de blocs découpés prêts à être affichés
+        content: data.reply,
+        blocks: parsedBlocks,
         contentEng: data.reply,
         sender: "pierre",
       });
       setWriter(0);
       setHisto([...newHistor]);
-      console.log(histo);
     } catch (error) {
       console.error("Erreur chat:", error);
       newHistor.push({
@@ -223,12 +244,6 @@ function Contact({ props }) {
       }
     }, 100);
   }
-
-  const dial = (evt) => {
-    evt.preventDefault();
-    document.querySelector(".contact00")?.focus();
-    dispatch(userSlice.actions.setContactMenu(true));
-  };
 
   const closeDial = (evt) => {
     document.querySelector(".bd")?.classList.remove("fullScreen");
@@ -282,6 +297,26 @@ function Contact({ props }) {
       }
     }, 100);
   }
+
+  // Helper pour le rendu d'une puce (avec texte + liens)
+  const renderBulletParts = (parts) => (
+    <p>
+      {parts.map((part, pIdx) =>
+        part.type === "link" ? (
+          <a
+            key={pIdx}
+            href={part.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {part.label}
+          </a>
+        ) : (
+          <span key={pIdx}>{part.text} </span>
+        ),
+      )}
+    </p>
+  );
 
   return (
     <div className="contactField">
@@ -353,44 +388,46 @@ function Contact({ props }) {
                   ></img>
                   <div className="txt discussContent">
                     {id === histo.length - 1 && message.sender === "pierre" ? (
-                      // Si le message a des blocs structurés, on les affiche un par un
                       message.blocks ? (
                         message.blocks.map((block, bIdx) => {
                           if (bIdx > writer) return null;
 
                           if (block.type === "bullet") {
+                            const fullBulletText = block.parts
+                              .map((p) =>
+                                p.type === "link" ? p.label : p.text,
+                              )
+                              .join(" ");
+
                             return (
                               <ul key={bIdx} className="discussContent">
                                 <li>
-                                  <p>
-                                    {bIdx < writer ? (
-                                      block.text
-                                    ) : (
-                                      <Typewrite
-                                        props={{
-                                          text: block.text,
-                                          setWriter,
-                                          writer,
-                                          bIdx,
-                                        }}
-                                      />
-                                    )}
-                                  </p>
+                                  {bIdx < writer ? (
+                                    renderBulletParts(block.parts)
+                                  ) : (
+                                    <Typewrite
+                                      props={{
+                                        text: fullBulletText,
+                                        setWriter,
+                                        writer,
+                                        bIdx,
+                                      }}
+                                    />
+                                  )}
                                 </li>
                               </ul>
                             );
                           }
                           if (block.type === "link") {
-                            // Extraction simple ou affichage direct du lien s'il contient l'URL du Calendly
                             return (
-                              <p key={bIdx} className="discussContent">
+                              <div key={bIdx} className="discussContent">
                                 <a
                                   href={block.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                 >
                                   {bIdx < writer ? (
-                                    block.label
+                                    <p>{block.label}</p>
                                   ) : (
                                     <Typewrite
                                       props={{
@@ -402,14 +439,13 @@ function Contact({ props }) {
                                     />
                                   )}
                                 </a>
-                              </p>
+                              </div>
                             );
                           }
-                          // Bloc texte classique avec effet machine à écrire
                           return (
-                            <p key={bIdx} className="discussContent">
+                            <div key={bIdx} className="discussContent">
                               {bIdx < writer ? (
-                                block.text
+                                <p>{block.text}</p>
                               ) : (
                                 <Typewrite
                                   props={{
@@ -420,11 +456,10 @@ function Contact({ props }) {
                                   }}
                                 />
                               )}
-                            </p>
+                            </div>
                           );
                         })
                       ) : (
-                        // Fallback au cas où
                         <Typewrite
                           props={{
                             text:
@@ -434,13 +469,40 @@ function Contact({ props }) {
                           }}
                         />
                       )
+                    ) : message.blocks ? (
+                      message.blocks.map((block, bIdx) => {
+                        if (block.type === "bullet") {
+                          return (
+                            <ul key={bIdx} className="discussContent">
+                              <li>{renderBulletParts(block.parts)}</li>
+                            </ul>
+                          );
+                        }
+                        if (block.type === "link") {
+                          return (
+                            <div key={bIdx} className="discussContent">
+                              <a
+                                href={block.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <p>{block.label}</p>
+                              </a>
+                            </div>
+                          );
+                        }
+                        return (
+                          <div key={bIdx} className="discussContent">
+                            <p>{block.text}</p>
+                          </div>
+                        );
+                      })
                     ) : (
-                      // Pour l'historique des messages précédents, on garde ReactMarkdown pour un affichage instantané et propre
-                      <ReactMarkdown className="markdown-content">
+                      <p>
                         {language === "FR"
                           ? message.content
                           : message.contentEng}
-                      </ReactMarkdown>
+                      </p>
                     )}
                   </div>
                 </div>
