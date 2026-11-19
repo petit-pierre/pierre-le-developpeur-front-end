@@ -1,321 +1,309 @@
-.contactHidden{
-    @media (max-width: 650px) {
-        transition: 1s;
-        z-index: -1;
-    }
+.contactHidden {
+  @media (max-width: 650px) {
+    transition: 1s;
+    z-index: -1;
+  }
 }
-.contactField{
-    .bdMini{
-        background-color: white;
-        width: 0px;
-        height: 0px;
-        border: solid 2px black;
-        position: absolute;
-        bottom: 34px;
-        right: 60px;
-        border-radius: 30px;
-        border-top-right-radius: 0px 80px;
-        transition: 0.25s;
-        opacity: 0;
-        //transform-origin: top right;
-        display: flex;
-        margin: auto;
-        @media (max-width: 650px) {
-            animation: openBd 8s linear infinite ;
-        }
-        @media (min-width: 1600px){
-            right: 6vw;
-          }
-
+.contactField {
+  .bdMini {
+    background-color: white;
+    width: 0px;
+    height: 0px;
+    border: solid 2px black;
+    position: absolute;
+    bottom: 34px;
+    right: 60px;
+    border-radius: 30px;
+    border-top-right-radius: 0px 80px;
+    transition: 0.25s;
+    opacity: 0;
+    //transform-origin: top right;
+    display: flex;
+    margin: auto;
+    @media (max-width: 650px) {
+      animation: openBd 8s linear infinite;
     }
-    .bdLike{
-        background-color: white;
-        border: solid 2px black;
-        position: absolute;
-        right: 60px;
-        border-radius: 30px;
-        border-top-right-radius: 0px 80px;
-        display: flex;
-        margin: auto;
+    @media (min-width: 1600px) {
+      right: 6vw;
+    }
+  }
+  .bdLike {
+    background-color: white;
+    border: solid 2px black;
+    position: absolute;
+    right: 60px;
+    border-radius: 30px;
+    border-top-right-radius: 0px 80px;
+    display: flex;
+    margin: auto;
+    transition: 0.25s;
+    width: 160px;
+    height: 30px;
+    bottom: 4px;
+    @media (min-width: 1600px) {
+      width: 8vw;
+      height: 2vw;
+      bottom: 4px;
+      right: 6vw;
+      font-size: 1vw;
+    }
+    opacity: 1;
+    animation: none;
+  }
+  @keyframes openBd {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    89% {
+      width: 0px;
+      height: 0px;
+      bottom: 4px;
+      opacity: 0;
+    }
+    90% {
+      width: 80px;
+      height: 30px;
+      bottom: 4px;
+      opacity: 1;
+    }
+    100% {
+      width: 80px;
+      height: 30px;
+      bottom: 4px;
+      opacity: 1;
+    }
+  }
+  .headerLogos {
+    z-index: 11;
+    cursor: pointer;
+    transform-origin: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transition: 0.4s;
+    &.inactive {
+      @media (max-width: 900px) {
+        right: -50vw;
+        //transition: all 0.1s;
+      }
+    }
+  }
+  .maGanache {
+    width: 100px;
+    @media (min-width: 1600px) {
+      width: 8vw;
+      border-radius: 8vw;
+    }
+    border-radius: 100px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  .headerLogos:hover {
+    .bdMini {
+      @media (min-width: 650px) {
         transition: 0.25s;
-        width: 160px;
+        width: 80px;
         height: 30px;
         bottom: 4px;
-        @media (min-width: 1600px){
-            width: 8vw;
-            height: 2vw;
-            bottom: 4px;
-            right: 6vw;
-            font-size: 1vw;
-          }
         opacity: 1;
-        animation: none;
+        @media (min-width: 1600px) {
+          width: 8vw;
+          height: 2vw;
+          font-size: 1vw;
+        }
+      }
     }
-    @keyframes openBd{
-        0% {
-            transform: rotateZ(0deg) ;
-
-        }
-        89%{
-            width: 0px;
-            height: 0px;
-            bottom: 4px;
-            opacity: 0;          
-        }
-        90%{
-            width: 80px;
-            height: 30px;
-            bottom: 4px;
-            opacity: 1;
-        }
-        100%{
-            width: 80px;
-            height: 30px;
-            bottom: 4px;
-            opacity: 1;
-        }
-    }
-    .headerLogos{
-        z-index: 11;
-        cursor: pointer;
-        transform-origin: center;
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        transition: 0.4s;
-        &.inactive{
-            @media (max-width: 900px){
-                right: -50vw;
-                //transition: all 0.1s;
-            }
-        }
-    }
-    .maGanache{
-        width: 100px;
-        @media (min-width: 1600px){
-            width: 8vw;
-            border-radius: 8vw;
-          }
-        border-radius: 100px;
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-
-    }
-    .headerLogos:hover{
-        .bdMini{
-            @media (min-width: 650px) {
-                transition: 0.25s;
-                width: 80px;
-                height: 30px;
-                bottom: 4px;
-                opacity: 1;
-                @media (min-width: 1600px){
-                    width: 8vw;
-                    height: 2vw;
-                    font-size: 1vw;
-                  }
-            }
-
-        }
-    }
-    .bdMaxi{
-        transition: 0.25s;
-        width: 35vw;
-        right: 0;
-        height: 60vh;
-        bottom: 4px;
-        opacity: 1;
-        border-radius: 30px;
-        border-bottom-right-radius: 0px 80px;
-        background-color: white;
-        border: solid 2px black;
-        position: absolute;
-        //z-index: 11;
-        transition: 0.25s;
-        .closeContact{
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            background: none;
-	        color: inherit;
-	        border: none;
-	        padding: 0;
-	        font: inherit;
-	        outline: inherit;
-            img{
-                width: 100%;
-                margin: auto;
-            }
-        }
-    }
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    .noDiscuss{
+  }
+  .bdMaxi {
+    transition: 0.25s;
+    width: 35vw;
+    right: 0;
+    height: 60vh;
+    bottom: 4px;
+    opacity: 1;
+    border-radius: 30px;
+    border-bottom-right-radius: 0px 80px;
+    background-color: white;
+    border: solid 2px black;
+    position: absolute;
+    //z-index: 11;
+    transition: 0.25s;
+    .closeContact {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      outline: inherit;
+      img {
+        width: 100%;
         margin: auto;
+      }
     }
-    .discuss{
-        .hidden{
-            opacity: 0;
-            transition: 1s;
-        }
-        .gradient{
-            position: absolute;
-            width: 93%;
-            height: 150px;
-            top: 2px;
-            //margin-left: 5px;
-            border-radius: 10px;
-            background: linear-gradient(#ffffff, #ffffff00);
-            transition: 1s;
-        }
-        width: 93%;
-        height: 100%;
-        padding: 10px;
-        height: calc(60vh - 100px);
-        overflow: scroll;
-        margin-top: 10px;
-        cursor: default;
-        flex-direction: column;
-
-        .txt{
-            margin-left: 5px;
-            margin-top: -10px;
-            //margin-right: 15px;
-            @media (max-width: 650px) {
-                margin-top: 0;
-            }
-        }
-        .oneMessage{
-            //position: relative;
-            display: flex;
-            flex-direction: row;
-            //
-
-            //flex-direction: row;
-
-        }
-        .avatar{
-            width: 30px;
-            height: 30px;
-            @media (min-width: 1600px){
-                width: 2.4vw;
-                height: 2.4vw;
-              }
-        }
-        @keyframes clignote{
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-              opacity: 1 ;
-            }  
-          }
-        .sendButton{
-            width: calc(18% - 30px);
-            min-width: 30px;
-            height: 6vh;
-            display: flex;
-            cursor: pointer;
-            img{
-                width: 100%;
-                margin: auto;
-            }
-            background-color: white;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            animation:  infinite clignote ;
-            animation-duration: 2000ms;
-            opacity: 1;
-            border: solid 2px black;
-            @media (max-width: 650px) {
-                height: 8vh
-            }
-            @media (max-width: 900px) {
-                display: none;
-            }
-        }
-
-        textarea{
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            width: calc(85% - 30px);
-            height: 6vh;
-            resize: none;
-            border-bottom-left-radius: 20px 20px;
-            transition: 0.1s;
-            border: solid 2px black;
-            @media (max-width: 650px) {
-                height: 8vh;
-            }
-            @media (max-width: 900px) {
-                width: calc(100% - 60px);
-            }
-        }
-        textarea:focus {
-            //outline: none !important;
-            //outline: red;
-            outline:2px solid #99477ab7;
-            transition: 0.1s;
-            //box-shadow: 0 0 10px #719ECE;
-          }
+  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .noDiscuss {
+    margin: auto;
+  }
+  .discuss {
+    .hidden {
+      opacity: 0;
+      transition: 1s;
     }
-    @media (max-width: 650px) {
-        
-.bdMaxi{
-    width: 90vw;
-    height: calc(100dvh - 190px);
+    .gradient {
+      position: absolute;
+      pointer-events: none;
+      width: 93%;
+      height: 150px;
+      top: 2px;
+      //margin-left: 5px;
+      border-radius: 10px;
+      background: linear-gradient(#ffffff, #ffffff00);
+      transition: 1s;
+    }
+    width: 93%;
+    height: 100%;
+    padding: 10px;
+    height: calc(60vh - 100px);
+    overflow: scroll;
+    margin-top: 10px;
+    cursor: default;
+    flex-direction: column;
+
+    .txt {
+      margin-left: 5px;
+      margin-top: -10px;
+      //margin-right: 15px;
+      @media (max-width: 650px) {
+        margin-top: 0;
+      }
+    }
+    .oneMessage {
+      //position: relative;
+      display: flex;
+      flex-direction: row;
+      //
+
+      //flex-direction: row;
+    }
+    .avatar {
+      width: 30px;
+      height: 30px;
+      @media (min-width: 1600px) {
+        width: 2.4vw;
+        height: 2.4vw;
+      }
+    }
+    @keyframes clignote {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .sendButton {
+      width: calc(18% - 30px);
+      min-width: 30px;
+      height: 6vh;
+      display: flex;
+      cursor: pointer;
+      img {
+        width: 100%;
+        margin: auto;
+      }
+      background-color: white;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      animation: infinite clignote;
+      animation-duration: 2000ms;
+      opacity: 1;
+      border: solid 2px black;
+      @media (max-width: 650px) {
+        height: 8vh;
+      }
+      @media (max-width: 900px) {
+        display: none;
+      }
+    }
+
+    textarea {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: calc(85% - 30px);
+      height: 6vh;
+      resize: none;
+      border-bottom-left-radius: 20px 20px;
+      transition: 0.1s;
+      border: solid 2px black;
+      @media (max-width: 650px) {
+        height: 8vh;
+      }
+      @media (max-width: 900px) {
+        width: calc(100% - 60px);
+      }
+    }
+    textarea:focus {
+      //outline: none !important;
+      //outline: red;
+      outline: 2px solid #99477ab7;
+      transition: 0.1s;
+      //box-shadow: 0 0 10px #719ECE;
+    }
+  }
+  @media (max-width: 650px) {
+    .bdMaxi {
+      width: 90vw;
+      height: calc(100dvh - 190px);
+    }
+  }
+  .fullScreen {
+    @media (max-width: 900px) {
+      .chatArea {
+        position: fixed;
+        width: 80vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        border: none;
+        border-radius: 0;
+      }
+      .sendButton {
+        display: block;
+        position: fixed;
+        right: 0;
+        width: 20%;
+        bottom: 0;
+        border-radius: 0;
+        animation: none;
+        height: 50%;
+        //border: none;
+      }
+      .closeContact {
+        position: fixed;
+        right: 0;
+        width: 20%;
+        top: 0;
+        border-radius: 0;
+        animation: none;
+        height: 50%;
+        border: 2px solid black;
+        background-color: white;
+      }
+    }
+  }
 }
-
-        
-    }
-        .fullScreen{
-        @media (max-width: 900px) {
-            .chatArea{
-                position: fixed;
-                width: 80vw;
-                height: 100vh;
-                top: 0;
-                left: 0;
-                border: none;
-                border-radius: 0;
-            }
-            .sendButton{
-                display: block;
-                position: fixed;
-                right: 0;
-                width: 20%;
-                bottom: 0;
-                border-radius: 0;
-                animation: none;
-                height: 50%;
-                //border: none;
-            }
-            .closeContact{
-                position: fixed;
-                right: 0;
-                width: 20%;
-                top: 0;
-                border-radius: 0;
-                animation: none;
-                height: 50%;  
-                border: 2px solid black;
-                background-color: white;
-            }
-    } 
-    }
-}
-
-
-
-
-

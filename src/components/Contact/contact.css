@@ -169,6 +169,7 @@
 }
 .contactField .discuss .gradient {
   position: absolute;
+  pointer-events: none;
   width: 93%;
   height: 150px;
   top: 2px;

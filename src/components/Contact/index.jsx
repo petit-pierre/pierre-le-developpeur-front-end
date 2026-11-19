@@ -2,25 +2,23 @@ import { useDispatch, useSelector } from "react-redux";
 import "./contact.css";
 import { useEffect, useRef, useState } from "react";
 import Typewrite from "../Typewrite";
-import Button from "../Button";
-import { Typewriter } from "react-simple-typewriter";
 import { userSlice } from "../../Slices/userSlice";
-import LikeButton from "../LikeButton";
-//let mailToken = require(`../../code.json`);
+import ReactMarkdown from "react-markdown";
 
 function Contact({ props }) {
   const [firstRender, setFirstRender] = useState(true);
+  const [writer, setWriter] = useState(0);
 
   const dispatch = useDispatch();
   const content = useRef();
   const mood = useSelector((state) => state.data.chatbotMood);
 
-  /*on recupere les valeurs du store redux*/
-
-  const contact = useSelector((state) => state.data.translations);
   const language = useSelector((state) => state.data.language);
-  const translations = useSelector((state) => state.data.translations);
+  // const translations = useSelector((state) => state.data.translations);
   const discuss = useSelector((state) => state.data.contactMenu);
+
+  // État pour stocker l'ID de conversation renvoyé par le back-end
+  const [conversationId, setConversationId] = useState(null);
 
   useEffect(() => {
     discuss === true ? openDial() : closeDial();
@@ -49,35 +47,36 @@ function Contact({ props }) {
   useEffect(() => {
     const onScroll = (e) => {
       setScrollTop(e.target.documentElement.scrollTop);
-      //setScrolling(e.target.documentElement.scrollTop > scrollTop);
     };
     window.addEventListener("scroll", onScroll);
-
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
 
-  /*on declare les differentes erreurs*/
-
-  const [errorMail, setErrorMail] = useState(true);
-  const [errorContent, setErrorContent] = useState(true);
-  const [wichError, setWichError] = useState("nothing");
-  const [sended, setSended] = useState(false);
+  // const [sended, setSended] = useState(false);
   const [discus, setDiscus] = useState(false);
+
+  // Historique initialisé avec le message d'accueil de l'assistant
   const [histo, setHisto] = useState([
     {
-      content: "Bonjour, quel est votre message ?",
-      contentEng: "Hello, what is your message ?",
+      content: "Bonjour ! Comment puis-je vous aider dans votre projet ?",
+      contentEng: "Hello! How can I help you with your project?",
       sender: "pierre",
+      blocks: [
+        {
+          type: "text",
+          text: "Bonjour ! Comment puis-je vous aider dans votre projet ?",
+        },
+        {
+          label: "un lien",
+          url: "https://calendly.com/l-araignee/entretien-en-visio",
+          sender: "pierre",
+          type: "link",
+        },
+      ],
     },
   ]);
-  const [contenu, setContenu] = useState({});
-
-  /*on recupere les valeurs des champs de formulaires*/
-
-  const mail = useRef();
 
   document.addEventListener("click", function (evt) {
-    //console.log(evt.target.className);
     if (
       evt.target.className !== "bdMaxi" &&
       discus === true &&
@@ -86,127 +85,158 @@ function Contact({ props }) {
       evt.target.className !== "discuss" &&
       evt.target.classList.contains("discussContent") === false
     ) {
-      //console.log(evt.target);
       setDiscus(false);
       dispatch(userSlice.actions.setContactMenu(false));
     }
   });
+
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
-      //discus !== false && closeDial();
-      /*document.body.style.position = "";
-        document.body.style.top = "";
-        window.scrollTo(0, oldScrollTop);*/
-
-      //setOldScrollTop(scrollTop);
       setDiscus(false);
       document.body.click();
     }
   });
 
-  /*on gere les erreurs sur le mail avec la methode du formulaire controlé*/
+  /* Fonction d'envoi connectée à ton API back-end /api/chat */
+  async function send(evt) {
+    evt.preventDefault();
+    document.querySelector(".bd").classList.remove("fullScreen");
 
-  const formMailError = (e) => {
-    e.preventDefault();
-    setSended(false);
-    const emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
-    if (emailRegExp.test(e.target.value)) {
-      setErrorMail(false);
-      if (errorContent === false) {
-        setWichError("nothing");
-      } else {
-        setWichError("content");
-      }
-    } else {
-      setErrorMail(true);
-      setWichError("mail");
-    }
-  };
+    const userMessage = content.current.value.trim();
+    if (!userMessage) return;
 
-  /*on gere les erreurs sur le message avec la methode du formulaire controlé*/
+    // 1. On met à jour l'historique local avec le message de l'utilisateur
+    let newHistor = structuredClone(histo);
+    newHistor.push({
+      content: userMessage,
+      contentEng: userMessage,
+      sender: "user",
+    });
+    setHisto(newHistor);
+    content.current.value = "";
 
-  const formContentError = (e) => {
-    e.preventDefault();
-    setSended(false);
+    try {
+      // 2. Requête vers ton back-end Express
+      const response = await fetch(
+        "https://api.pierre-le-developpeur.com/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: userMessage,
+            ...(conversationId && { conversationId }),
+          }),
+        },
+      );
 
-    if (
-      e.target.value.length > 6 &&
-      e.target.value !== translations.english.succes &&
-      e.target.value !== translations.french.succes &&
-      e.target.value !== translations.english.content &&
-      e.target.value !== translations.french.content
-    ) {
-      setErrorContent(false);
-      if (errorMail === false) {
-        setWichError("nothing");
-      } else {
-        setWichError("mail");
-      }
-    } else {
-      setErrorContent(true);
-      setWichError("content");
-    }
-  };
-
-  /*fonction pour l'envoi du mail, en cas d'erreur un mailto est utilisé en remplacement*/
-
-  const sendMail = (contenu, content, newHistor) => {
-    //e.preventDefault();
-    const elastic = {
-      SecureToken: mailToken.code,
-      To: "contact@pierre-le-developpeur.com",
-      From: "contact@pierre-le-developpeur.com",
-      Subject: "Site pierre le developpeur",
-      Body:
-        "email : " + content.current.value + " message : " + contenu.content,
-    };
-    window.Email.send(elastic).then((message) => {
-      if (message === "OK") {
-        newHistor.push({
-          content: "Message envoyé, je vous repondrai bientot. Autre chose ?",
-          contentEng: "Message sent. What else ?",
-          sender: "thanks",
-        });
-        setErrorContent(true);
-        setTimeout(() => {
-          document.querySelector(".discuss").scrollTop +=
-            document.querySelector(".discuss").scrollHeight + 50;
-        }, 100);
-      } else {
-        window.open(
-          "mailto:contact@pierre-le-developpeur.com?subject=Contact pierre le développeur&body=" +
-            content.current.value,
+      if (!response.ok) {
+        throw new Error(
+          "Erreur réseau lors de la communication avec le chatbot.",
         );
       }
-    });
-  };
 
-  /*ouverture de la modale*/
+      const data = await response.json();
+
+      // 3. On met à jour le conversationId avec celui renvoyé par le serveur
+      if (data.conversationId) {
+        setConversationId(data.conversationId);
+      }
+      // Fonction utilitaire pour découper le Markdown de l'IA en blocs exploitables
+      const parseMarkdownIntoBlocks = (markdownText) => {
+        if (!markdownText) return [];
+        console.log(JSON.stringify(markdownText));
+        const cleanedMarkdown = markdownText
+          .replace(/\*\*\*(.*?)\*\*\*/gs, "$1")
+          .replace(/\*\*(.*?)\*\*/gs, "$1")
+          .replace(/(^|\s)_([^_]+)_(\s|[.,!?;:]|$)/g, "$1$2$3");
+        const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
+        const blocks = [];
+
+        cleanedMarkdown.split("\n").forEach((line) => {
+          if (!line.trim()) return;
+
+          const parts = line
+            .split(linkSplitRegex)
+            .filter((p) => p.trim() !== "");
+
+          parts.forEach((part) => {
+            const mdLinkMatch = part.trim().match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+
+            if (mdLinkMatch) {
+              blocks.push({
+                type: "link",
+                label: mdLinkMatch[1],
+                url: mdLinkMatch[2],
+              });
+            } else {
+              const cleanText = part.replace(/\*\*(.*?)\*\*/g, "$1").trim();
+              if (!cleanText) return;
+
+              if (/^(\*|-)\s+/.test(cleanText)) {
+                blocks.push({
+                  type: "bullet",
+                  text: cleanText.replace(/^(\*|-)\s+/, "").trim(),
+                });
+              } else {
+                blocks.push({
+                  type: "text",
+                  text: cleanText,
+                });
+              }
+            }
+          });
+        });
+
+        return blocks;
+      };
+
+      const parsedBlocks = parseMarkdownIntoBlocks(data.reply);
+
+      // 4. On ajoute la réponse de l'assistant à l'historique
+      newHistor.push({
+        content: data.reply, // On garde le texte brut d'origine si besoin
+        blocks: parsedBlocks, // Le tableau de blocs découpés prêts à être affichés
+        contentEng: data.reply,
+        sender: "pierre",
+      });
+      setWriter(0);
+      setHisto([...newHistor]);
+      console.log(histo);
+    } catch (error) {
+      console.error("Erreur chat:", error);
+      newHistor.push({
+        content:
+          "Désolé, une erreur technique est survenue. Vous pouvez contacter Pierre directement par e-mail.",
+        contentEng: "Sorry, a technical error occurred.",
+        sender: "pierre",
+      });
+      setHisto([...newHistor]);
+    }
+
+    // Scroll automatique vers le bas
+    setTimeout(() => {
+      const discussContainer = document.querySelector(".discuss");
+      if (discussContainer) {
+        discussContainer.scrollTop = discussContainer.scrollHeight;
+      }
+    }, 100);
+  }
 
   const dial = (evt) => {
     evt.preventDefault();
-    document.querySelector(".contact00").focus();
+    document.querySelector(".contact00")?.focus();
     dispatch(userSlice.actions.setContactMenu(true));
   };
 
-  /*fermeture de la modale au clique*/
-
   const closeDial = (evt) => {
-    document.querySelector(".bd").classList.remove("fullScreen");
+    document.querySelector(".bd")?.classList.remove("fullScreen");
     setDiscus(false);
-    //evt.preventDefault();
     document.body.style.position = "";
     document.body.style.top = "";
     window.scrollTo(0, oldScrollTop);
     dispatch(userSlice.actions.setContactMenu(false));
-  };
-
-  /*fermeture de la modale au clavier pour l'accessibilité*/
-
-  const closeDialByKey = (evt) => {
-    if (evt.code === "Enter") {
-      closeDial(evt);
-    }
   };
 
   function openDialByKey(evt) {
@@ -217,11 +247,8 @@ function Contact({ props }) {
   }
 
   function sendWithKey(evt) {
-    //evt.preventDefault();
-    //console.log(evt);
     if (evt.code === "Enter" && window.innerWidth > 900) {
-      if (evt.shiftKey) {
-      } else {
+      if (!evt.shiftKey) {
         send(evt);
       }
     }
@@ -229,62 +256,8 @@ function Contact({ props }) {
 
   const fullScreenMobile = (evt) => {
     evt.preventDefault();
-    document.querySelector(".bd").classList.add("fullScreen");
+    document.querySelector(".bd")?.classList.add("fullScreen");
   };
-
-  function send(evt) {
-    evt.preventDefault();
-    document.querySelector(".bd").classList.remove("fullScreen");
-    if (content.current.value === "") {
-      content.current.value = "...";
-    }
-    const emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
-
-    let newHistor = structuredClone(histo);
-    newHistor.push({
-      content: content.current.value,
-      contentEng: content.current.value,
-      sender: "user",
-    });
-    setHisto(newHistor);
-    if (errorContent === false) {
-      if (emailRegExp.test(content.current.value)) {
-        sendMail(contenu, content, newHistor);
-      } else {
-        newHistor.push({
-          content: "Cet e-mail n'est pas valide.",
-          contentEng: "Invalid e-mail.",
-          sender: "pierre",
-        });
-      }
-    } else {
-      if (content.current.value.length < 4) {
-        newHistor.push({
-          content: "Ce message est trop court.",
-          contentEng: "This message is too short.",
-
-          sender: "pierre",
-        });
-      } else {
-        setErrorContent(false);
-        newHistor.push({
-          content: "Laissez-moi votre e-mail afin que je puisse vous repondre.",
-          contentEng: "Give me your e-mail and i will answer.",
-
-          sender: "pierre",
-        });
-        setContenu({ content: content.current.value });
-      }
-    }
-    //console.log(contenu);
-    content.current.value = "";
-    setTimeout(() => {
-      document.querySelector(".discuss").scrollTop +=
-        document.querySelector(".discuss").scrollHeight + 50;
-    }, 100);
-  }
-
-  /*ouverture de la modale (et fermeture du burger menu)*/
 
   function openDial() {
     if (discus !== true) {
@@ -303,14 +276,11 @@ function Contact({ props }) {
     }
 
     setTimeout(() => {
-      if (document.querySelector(".discuss") !== null) {
-        document.querySelector(".discuss").scrollTop +=
-          document.querySelector(".discuss").scrollHeight + 50;
+      const discussContainer = document.querySelector(".discuss");
+      if (discussContainer !== null) {
+        discussContainer.scrollTop = discussContainer.scrollHeight;
       }
     }, 100);
-
-    //dispatch(userSlice.actions.setContactMenu(!discuss));
-    //burgerOff();
   }
 
   return (
@@ -337,7 +307,6 @@ function Contact({ props }) {
             e.target.src =
               "https://pierre-le-developpeur.com/assets/chatbot.svg";
           }}
-          //onClick={openDial}
         ></img>
         <div
           className={
@@ -383,24 +352,95 @@ function Contact({ props }) {
                     alt="avatar"
                   ></img>
                   <div className="txt discussContent">
-                    {id === histo.length - 1 ? (
-                      language === "FR" ? (
-                        <Typewrite
-                          props={{ text: message.content }}
-                        ></Typewrite>
+                    {id === histo.length - 1 && message.sender === "pierre" ? (
+                      // Si le message a des blocs structurés, on les affiche un par un
+                      message.blocks ? (
+                        message.blocks.map((block, bIdx) => {
+                          if (bIdx > writer) return null;
+
+                          if (block.type === "bullet") {
+                            return (
+                              <ul key={bIdx} className="discussContent">
+                                <li>
+                                  <p>
+                                    {bIdx < writer ? (
+                                      block.text
+                                    ) : (
+                                      <Typewrite
+                                        props={{
+                                          text: block.text,
+                                          setWriter,
+                                          writer,
+                                          bIdx,
+                                        }}
+                                      />
+                                    )}
+                                  </p>
+                                </li>
+                              </ul>
+                            );
+                          }
+                          if (block.type === "link") {
+                            // Extraction simple ou affichage direct du lien s'il contient l'URL du Calendly
+                            return (
+                              <p key={bIdx} className="discussContent">
+                                <a
+                                  href={block.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {bIdx < writer ? (
+                                    block.label
+                                  ) : (
+                                    <Typewrite
+                                      props={{
+                                        text: block.label,
+                                        setWriter,
+                                        writer,
+                                        bIdx,
+                                      }}
+                                    />
+                                  )}
+                                </a>
+                              </p>
+                            );
+                          }
+                          // Bloc texte classique avec effet machine à écrire
+                          return (
+                            <p key={bIdx} className="discussContent">
+                              {bIdx < writer ? (
+                                block.text
+                              ) : (
+                                <Typewrite
+                                  props={{
+                                    text: block.text,
+                                    setWriter,
+                                    writer,
+                                    bIdx,
+                                  }}
+                                />
+                              )}
+                            </p>
+                          );
+                        })
                       ) : (
-                        <div className="discussContent">
-                          <Typewrite
-                            props={{ text: message.contentEng }}
-                          ></Typewrite>
-                        </div>
+                        // Fallback au cas où
+                        <Typewrite
+                          props={{
+                            text:
+                              language === "FR"
+                                ? message.content
+                                : message.contentEng,
+                          }}
+                        />
                       )
                     ) : (
-                      <p>
+                      // Pour l'historique des messages précédents, on garde ReactMarkdown pour un affichage instantané et propre
+                      <ReactMarkdown className="markdown-content">
                         {language === "FR"
                           ? message.content
-                          : message.contentEng}{" "}
-                      </p>
+                          : message.contentEng}
+                      </ReactMarkdown>
                     )}
                   </div>
                 </div>
@@ -446,4 +486,5 @@ function Contact({ props }) {
     </div>
   );
 }
+
 export default Contact;
