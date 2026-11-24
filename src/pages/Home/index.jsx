@@ -326,7 +326,7 @@ function Home() {
               ></LikeButton>
             </div>
           </div>
-          <div className="contact"></div>
+          {/* <div className="contact"></div> */}
           <div className="gradient"></div>
           <div className="competences">
             <span id="competences"></span>
