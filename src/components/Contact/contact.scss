@@ -6,6 +6,11 @@
 }
 
 .contactField {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   position: relative;
   display: flex;
   flex-direction: column;
@@ -299,13 +304,14 @@
       transition: 0.1s;
       outline: solid 2px black;
       @media (max-width: 900px) {
-        width: calc(100% - 4px);
+        width: 100%;
         border-radius: 0;
         outline: 1px solid black;
         margin: 0;
         left: 0;
-        bottom: 50px;
-        height: calc((var(--app-height, 100dvh) - 200px) / 2);
+        top: 150px;
+        top: calc(var(--app-height, 100dvh) - 301px);
+        height: 100px;
       }
     }
 
@@ -340,14 +346,23 @@
       .discuss {
         width: 100%;
         // height: 100%;
-        height: calc((var(--app-height, 100dvh) - 200px) / 2);
+        // height: calc((var(--app-height, 100dvh) - 200px) / 2);
+        // height: calc(var(--app-height, 100dvh) - 166px);
+        // height: 150px;
+        height: calc(var(--app-height, 100dvh) - 301px);
+        // padding-bottom: calc((var(--app-height, 100dvh) - 166px) / 2);
         top: 0;
         left: 0;
         overflow: hidden;
         overflow-y: scroll;
-
+        margin-top: 0;
+        //position: relative;
         .gradient {
-          width: 150%;
+          width: 100%;
+          border-radius: 0;
+          top: 0;
+          left: 0;
+          height: 75px;
         }
       }
     }

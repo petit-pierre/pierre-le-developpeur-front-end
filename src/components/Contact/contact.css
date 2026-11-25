@@ -5,6 +5,11 @@
   }
 }
 
+.contactField * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .contactField {
   position: relative;
   display: flex;
@@ -304,13 +309,14 @@
 }
 @media (max-width: 900px) {
   .contactField .discuss textarea {
-    width: calc(100% - 4px);
+    width: 100%;
     border-radius: 0;
     outline: 1px solid black;
     margin: 0;
     left: 0;
-    bottom: 50px;
-    height: calc((var(--app-height, 100dvh) - 200px) / 2);
+    top: 150px;
+    top: calc(var(--app-height, 100dvh) - 301px);
+    height: 100px;
   }
 }
 .contactField .discuss textarea:focus {
@@ -335,14 +341,19 @@
   }
   .contactField .bd .discuss {
     width: 100%;
-    height: calc((var(--app-height, 100dvh) - 200px) / 2);
+    height: calc(var(--app-height, 100dvh) - 301px);
     top: 0;
     left: 0;
     overflow: hidden;
     overflow-y: scroll;
+    margin-top: 0;
   }
   .contactField .bd .discuss .gradient {
-    width: 150%;
+    width: 100%;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    height: 75px;
   }
   .contactField .chatArea {
     position: absolute;
