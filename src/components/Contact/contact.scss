@@ -5,6 +5,12 @@
   }
 }
 
+header {
+  @media (max-width: 900px) {
+    top: var(--app-offset-top, 0px);
+  }
+}
+
 .contactField {
   * {
     margin: 0;
@@ -84,7 +90,7 @@
 
   @keyframes openBd {
     0% {
-      transform: rotateZ(0deg);
+      // transform: rotateZ(0deg);
     }
     89% {
       width: 0px;
@@ -329,15 +335,18 @@
   }
 
   @media (max-width: 900px) {
-    .bd {
+    .bd.bdMaxi {
       position: fixed;
       width: 100%;
-      top: calc(150px + var(--app-offset-top, 0px));
       height: calc(var(--app-height, 100dvh) - 150px);
-      overflow: hidden;
-      border-radius: 0;
-      border: none;
 
+      overflow: hidden;
+      &.bdMaxi {
+        top: calc(150px + var(--app-offset-top, 0px));
+        border-radius: 0;
+        border: none;
+      }
+      //
       &.fullScreen {
         // top: var(--app-offset-top, 0px);
         // height: var(--app-height, 100dvh);

@@ -82,7 +82,7 @@ function Header() {
       : dispatch(userSlice.actions.setLanguage("FR"));
   }
   return (
-    <div className="allHeader">
+    <header className="allHeader">
       <div className="headerfield">
         <div className="header ">
           <nav id="nav" className={burger === true ? "active" : ""}>
@@ -225,7 +225,7 @@ function Header() {
 
       <div className="shape"></div>
       <div className="placeforheader"></div>
-    </div>
+    </header>
   );
 }
 

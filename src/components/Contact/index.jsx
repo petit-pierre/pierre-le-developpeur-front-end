@@ -154,16 +154,7 @@ function Contact({ props }) {
     };
   }, [discus, dispatch]);
 
-  // Auto-resize du textarea compatible iOS/Android/Desktop
-  const autoResize = (e) => {
-    e.target.style.height = "auto";
-    e.target.style.height = `${e.target.scrollHeight}px`;
-    e.target.style.maxHeight = "auto";
-    e.target.style.maxHeight = `50%`;
-    e.target.style.minHeight = `20%`;
-  };
-
-  /* Fonction d'envoi connectée à ton API back-end /api/chat */
+  /* Fonction d'envoi connectée à l'API back-end /api/chat */
   async function send(evt) {
     evt.preventDefault();
     exitFullScreenMobile();
@@ -181,7 +172,7 @@ function Contact({ props }) {
       }),
     );
     content.current.value = "";
-    content.current.style.height = "auto";
+    // content.current.style.height = "auto";
     setIsLoading(true);
 
     // Scroll immédiat pour afficher le message utilisateur + les "..."

@@ -5,6 +5,12 @@
   }
 }
 
+@media (max-width: 900px) {
+  header {
+    top: var(--app-offset-top, 0px);
+  }
+}
+
 .contactField * {
   margin: 0;
   padding: 0;
@@ -85,9 +91,6 @@
   animation: none;
 }
 @keyframes openBd {
-  0% {
-    transform: rotateZ(0deg);
-  }
   89% {
     width: 0px;
     height: 0px;
@@ -330,16 +333,18 @@
   }
 }
 @media (max-width: 900px) {
-  .contactField .bd {
+  .contactField .bd.bdMaxi {
     position: fixed;
     width: 100%;
-    top: calc(150px + var(--app-offset-top, 0px));
     height: calc(var(--app-height, 100dvh) - 150px);
     overflow: hidden;
+  }
+  .contactField .bd.bdMaxi.bdMaxi {
+    top: calc(150px + var(--app-offset-top, 0px));
     border-radius: 0;
     border: none;
   }
-  .contactField .bd .discuss {
+  .contactField .bd.bdMaxi .discuss {
     width: 100%;
     height: calc(var(--app-height, 100dvh) - 301px);
     top: 0;
@@ -348,7 +353,7 @@
     overflow-y: scroll;
     margin-top: 0;
   }
-  .contactField .bd .discuss .gradient {
+  .contactField .bd.bdMaxi .discuss .gradient {
     width: 100%;
     border-radius: 0;
     top: 0;
