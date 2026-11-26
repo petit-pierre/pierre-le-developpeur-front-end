@@ -275,6 +275,10 @@ function Contact({ props }) {
     document.addEventListener("touchmove", preventTouchScroll, {
       passive: false,
     });
+    const discussContainer = document.querySelector(".discuss");
+    if (discussContainer) {
+      discussContainer.scrollTop = discussContainer.scrollHeight;
+    }
   };
 
   const exitFullScreenMobile = () => {
